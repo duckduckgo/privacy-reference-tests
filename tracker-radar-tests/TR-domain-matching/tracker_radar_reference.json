@@ -101,5 +101,12 @@
         }
     },
     "cnames": {},
-    "domains": {}
+    "domains": {
+        "bad.third-party.site": "Test Site for Tracker Blocking",
+        "broken.third-party.site": "Test Site for Tracker Blocking",
+        "third-party.site": "Test Site for Tracker Blocking",
+        "tracker.test": "Test Site for Tracker Blocking",
+        "ignore.test": "ignore Site for Tracker Blocking",
+        "sub.ignore.test": "ignore Site for Tracker Blocking"
+    }
 }
