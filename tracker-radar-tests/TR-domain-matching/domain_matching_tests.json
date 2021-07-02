@@ -70,6 +70,30 @@
                 "expectAction": "block"
             },
             {
+                "name": "random blocks cname tracker",
+                "siteURL": "https://randomsite123.com/",
+                "requestURL": "https://bad.cnames.test/something",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "random allows sub.cname tracker",
+                "siteURL": "https://randomsite123.com/",
+                "requestURL": "https://also.bad.cnames.test/something",
+                "requestType": "script",
+                "expectAction": null,
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "random allows notbad cname tracker",
+                "siteURL": "https://randomsite123.com/",
+                "requestURL": "https://notbad.cnames.test/something",
+                "requestType": "script",
+                "expectAction": null
+            },
+            {
                 "name": "sub.ignore loads tracker",
                 "siteURL": "https://sub.ignore.test/",
                 "requestURL": "https://bad.third-party.site/",
