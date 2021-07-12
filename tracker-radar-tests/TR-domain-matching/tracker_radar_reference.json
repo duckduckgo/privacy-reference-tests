@@ -100,7 +100,9 @@
             "displayName": "ignore Site for Tracker Blocking"
         }
     },
-    "cnames": {},
+    "cnames": {
+        "bad.cnames.test": "cname.tracker.test"
+    },
     "domains": {
         "bad.third-party.site": "Test Site for Tracker Blocking",
         "broken.third-party.site": "Test Site for Tracker Blocking",
