@@ -5,6 +5,11 @@
                 "rule": "allowlist-tracker-1.com/videos.js",
                 "domains": ["testsite.com"],
                 "reason": "match single resource on single site"
+            },
+            {
+                "rule": "allowlist-tracker-1.com/images.php$",
+                "domains": ["<all>"],
+                "reason": "match on exact resource, no wildcard at end of rule"
             }
         ]
     },
@@ -19,6 +24,15 @@
                 "rule": "allowlist-tracker-2.com/login.js",
                 "domains": ["<all>"],
                 "reason": "match single resource on all sites"
+            }
+        ]
+    },
+    "allowlist-tracker-3.com": {
+        "rules": [
+            {
+                "rule": "allowlist-tracker-3.com",
+                "domains": ["<all>"],
+                "reason": "match all requests"
             }
         ]
     }
