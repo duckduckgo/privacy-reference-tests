@@ -48,9 +48,15 @@
         "isAllowlisted": true
     },
     {
-        "description": "should not match on query strings if end of line character is given",
+        "description": "should match on query strings if end of line character is given",
         "site": "https://testsite.com",
         "request": "https://allowlist-tracker-1.com/images.php?a=123",
+        "isAllowlisted": true
+    },
+    {
+        "description": "should not match on end of line wild card if end of line character is given",
+        "site": "https://testsite.com",
+        "request": "https://allowlist-tracker-1.com/images.phps",
         "isAllowlisted": false
     }
 ]
