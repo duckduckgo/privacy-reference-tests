@@ -44,13 +44,13 @@
     {
         "description": "should match all requests for a whole domain rule",
         "site": "https://testsite.com",
-        "request": "https://allow-tracker-3.com/tracker.js",
-        "isAllowed": true
+        "request": "https://allowlist-tracker-3.com/tracker.js",
+        "isAllowlisted": true
     },
     {
         "description": "should not match on query strings if end of line character is given",
         "site": "https://testsite.com",
         "request": "https://allowlist-tracker-1.com/images.php?a=123",
-        "isAllowed": false
+        "isAllowlisted": false
     }
 ]
