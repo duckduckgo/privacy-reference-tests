@@ -12,6 +12,12 @@
         "isAllowlisted": true
     },
     {
+        "description": "should remove port from the tracker request",
+        "site": "https://a.b.c.testsite.com",
+        "request": "https://allowlist-tracker-1.com:5000/videos.js",
+        "isAllowlisted": true
+    },
+    {
         "description": "should match on all subdomains of an allowlisted tracker",
         "site": "https://testsite.com",
         "request": "https://a.b.c.allowlist-tracker-1.com/videos.js",
@@ -24,7 +30,7 @@
         "isAllowlisted": false
     },
     {
-        "description": "should not match on a substring of the domain",
+        "description": "should not match on a domain in the url path",
         "site": "https://anothertestsite.com",
         "request": "https://allowlist-tracker-1.com/something/allowlist-tracker-1.com/videos.js",
         "isAllowlisted": false
