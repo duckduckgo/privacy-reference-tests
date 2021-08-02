@@ -5,11 +5,6 @@
                 "rule": "allowlist-tracker-1.com/videos.js",
                 "domains": ["testsite.com"],
                 "reason": "match single resource on single site"
-            },
-            {
-                "rule": "allowlist-tracker-1.com/images.php$",
-                "domains": ["<all>"],
-                "reason": "match on exact resource, no wildcard at end of rule"
             }
         ]
     },
