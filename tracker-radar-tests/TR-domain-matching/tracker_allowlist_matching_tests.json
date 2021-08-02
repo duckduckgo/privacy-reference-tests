@@ -36,12 +36,6 @@
         "isAllowlisted": false
     },
     {
-        "description": "should not match on a domain in the url path",
-        "site": "https://testsite.com",
-        "request": "https://allowlist-tracker-1.com/something/allowlist-tracker-1.com/videos.js",
-        "isAllowlisted": false
-    },
-    {
         "description": "should not match on a site not listed in the allowlist entry domains list",
         "site": "https://testsite2.com",
         "request": "https://allowlist-tracker-1.com/videos.js",
