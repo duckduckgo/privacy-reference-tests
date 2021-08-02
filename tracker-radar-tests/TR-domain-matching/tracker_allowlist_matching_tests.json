@@ -18,6 +18,12 @@
         "isAllowlisted": true
     },
     {
+        "description": "should not remove port from url paths",
+        "site": "https://a.b.c.testsite.com",
+        "request": "https://allowlist-tracker-1.com/allowlist-tracker-1.com:5000/videos.js",
+        "isAllowlisted": false
+    },
+    {
         "description": "should match on all subdomains of an allowlisted tracker",
         "site": "https://testsite.com",
         "request": "https://a.b.c.allowlist-tracker-1.com/videos.js",
