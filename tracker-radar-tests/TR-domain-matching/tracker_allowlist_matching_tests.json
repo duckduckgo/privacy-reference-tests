@@ -37,7 +37,7 @@
     },
     {
         "description": "should not match on a domain in the url path",
-        "site": "https://anothertestsite.com",
+        "site": "https://testsite.com",
         "request": "https://allowlist-tracker-1.com/something/allowlist-tracker-1.com/videos.js",
         "isAllowlisted": false
     },
