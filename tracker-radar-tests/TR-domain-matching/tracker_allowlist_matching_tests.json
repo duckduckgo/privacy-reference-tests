@@ -68,19 +68,19 @@
     {
         "description": "should match on specific subdomain rules",
         "site": "https://testsite.com",
-        "request": "http://videos.allowlist-tracker-3.com/a.js",
+        "request": "http://videos.allowlist-tracker-2.com/a.js",
         "isAllowlisted": true
     },
     {
         "description": "should not match on root domain for a subdomain rule",
         "site": "https://testsite.com",
-        "request": "http://allowlist-tracker-3.com/a.js",
+        "request": "http://allowlist-tracker-2.com/a.js",
         "isAllowlisted": false
     },
     {
         "description": "should match on subdomain of a subdomain rule",
         "site": "https://testsite.com",
-        "request": "http://a.b.c.videos.allowlist-tracker-3.com/a.js",
+        "request": "http://a.b.c.videos.allowlist-tracker-2.com/a.js",
         "isAllowlisted": true
     }
 ]

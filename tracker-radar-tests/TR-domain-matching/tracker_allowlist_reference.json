@@ -11,6 +11,11 @@
     "allowlist-tracker-2.com": {
         "rules" : [
             {
+                "rule": "videos.allowlist-tracker-2.com/a.js",
+                "domains": ["testsite.com"],
+                "reason": "specific subdomain rule"
+            },
+            {
                 "rule": "allowlist-tracker-2.com/comments/",
                 "domains": ["<all>"],
                 "reason": "match all sites and all paths"
@@ -28,11 +33,6 @@
                 "rule": "allowlist-tracker-3.com",
                 "domains": ["<all>"],
                 "reason": "match all requests"
-            },
-            {
-                "rule": "videos.allowlist-tracker-3.com/a.js",
-                "domains": ["testsite.com"],
-                "reason": "specific subdomain rule"
             }
         ]
     }
