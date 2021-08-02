@@ -28,6 +28,11 @@
                 "rule": "allowlist-tracker-3.com",
                 "domains": ["<all>"],
                 "reason": "match all requests"
+            },
+            {
+                "rule": "videos.allowlist-tracker-3.com/a.js",
+                "domains": ["testsite.com"],
+                "reason": "specific subdomain rule"
             }
         ]
     }
