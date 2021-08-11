@@ -78,6 +78,30 @@
                     "rule": "ignore\\.test\\/tracker"
                 }
             ]
+        },
+        "surrogates.test": {
+            "domain": "surrogates.test",
+            "owner": {
+                "name": "Test Site for surrogates",
+                "displayName": "Bad Third Party Site",
+                "privacyPolicy": "",
+                "url": "http://surrogates.test"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "rules": [
+                {
+                    "rule": "surrogates\\.test\\/tracker",
+                    "surrogate": "tracker"
+                },
+                {
+                    "rule": "surrogates\\.test\\/anothertracker",
+                    "surrogate": "missingsurrogate"
+                }
+            ],
+            "default": "ignore"
         }
     },
     "entities": {
@@ -86,7 +110,8 @@
                 "bad.third-party.site",
                 "broken.third-party.site",
                 "third-party.site",
-                "tracker.test"
+                "tracker.test",
+                "surrogates.test"
             ],
             "prevalence": 0.1,
             "displayName": "Test Site for Tracker Blocking"
@@ -109,6 +134,7 @@
         "third-party.site": "Test Site for Tracker Blocking",
         "tracker.test": "Test Site for Tracker Blocking",
         "ignore.test": "ignore Site for Tracker Blocking",
-        "sub.ignore.test": "ignore Site for Tracker Blocking"
+        "sub.ignore.test": "ignore Site for Tracker Blocking",
+        "surrogates.test": "Test Site for surrogates"
     }
 }
