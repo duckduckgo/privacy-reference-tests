@@ -179,6 +179,49 @@
             }
         ]
     },
+    "surrogateTests": {
+        "name": "surrogate-tests",
+        "desc": "interactions between root domain and resource URLs for surrogates",
+        "tests": [
+            {
+                "name": "handle surrogates",
+                "siteURL": "https://random.test/",
+                "requestURL": "https://surrogates.test/tracker?abc=2",
+                "requestType": "script",
+                "expectAction": "redirect",
+                "expectRedirect": "data:application/javascript;base64,KGZ1bmN0aW9uKCkge3ZhciB0cmFja2VyPXRydWV9KSgpOw=="
+            },
+            {
+                "name": "skip surrogates for same entity",
+                "siteURL": "https://tracker.test/",
+                "requestURL": "https://surrogates.test/tracker?abc=2",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "surrogates match on substrings",
+                "siteURL": "https://random.test/",
+                "requestURL": "https://surrogates.test/trackerNOT?abc=2",
+                "requestType": "script",
+                "expectAction": "redirect",
+                "expectRedirect": "data:application/javascript;base64,KGZ1bmN0aW9uKCkge3ZhciB0cmFja2VyPXRydWV9KSgpOw=="
+            },
+            {
+                "name": "require exact match for surrogates",
+                "siteURL": "https://random.test/",
+                "requestURL": "https://surrogates.test/NOTtracker?abc=2",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "block on undefined surrogates",
+                "siteURL": "https://random.test/",
+                "requestURL": "https://surrogates.test/anothertracker?abc=2",
+                "requestType": "script",
+                "expectAction": "block"
+            }
+        ]
+    },
     "safeTests": {
         "name": "safe-matching",
         "desc": "tests for safelist interactions",
