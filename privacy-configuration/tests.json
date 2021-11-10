@@ -402,7 +402,7 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "tracker blocking should be disabled due to a local exception",
+                "name": "tracker blocking should be disabled due to a local exception - exception domain with a subdomain",
                 "featureName": "contentBlocking",
                 "siteURL": "https://dont.block.co.uk",
                 "expectFeatureEnabled": false,
