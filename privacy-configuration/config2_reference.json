@@ -77,7 +77,9 @@
         },
         "fingerprintingCanvas": {
             "state": "enabled",
-            "aboutBlankEnabled": false,
+            "settings": {
+                "aboutBlankEnabled": false
+            },
             "exceptions": [
                 {
                     "domain": "exception.com",
@@ -87,12 +89,14 @@
         },
         "fingerprintingAudio": {
             "state": "enabled",
-            "aboutBlankSites": [
-                {
-                    "domain": "blank-iframe.com",
-                    "reason": "about blank iframes should not include this feature on this site"
-                }
-            ],
+            "settings": {
+                "aboutBlankSites": [
+                    {
+                        "domain": "blank-iframe.com",
+                        "reason": "about blank iframes should not include this feature on this site"
+                    }
+                ]
+            },
             "exceptions": [
                 {
                     "domain": "exception.com",
