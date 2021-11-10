@@ -78,7 +78,7 @@
         "fingerprintingCanvas": {
             "state": "enabled",
             "settings": {
-                "aboutBlankEnabled": false
+                "aboutBlankEnabled": "disabled"
             },
             "exceptions": [
                 {
