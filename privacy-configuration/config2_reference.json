@@ -20,6 +20,10 @@
                 {
                     "domain": "exception.com",
                     "reason": "Feature should be disabled for given domain."
+                },
+                {
+                    "domain": "dont.block.co.uk",
+                    "reason": "Feature should be disabled for given domain."
                 }
             ]
         },
