@@ -127,7 +127,7 @@
             "settings": {
                 "scripts": [
                     {
-                        "domain": "skip.third-party.com",
+                        "domain": "^https?:\/\/([^/]+\.)?skip\.third-party\.com",
                         "reason": "Feature should not be disabled if requested by script from this domain"
                     }
                 ]
