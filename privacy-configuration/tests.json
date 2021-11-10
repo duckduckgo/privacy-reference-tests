@@ -523,7 +523,7 @@
             {
                 "name": "Features should be disabled in blank iframes if they match the blocklist",
                 "featureName": "fingerprintingAudio",
-                "siteURL": "blank-iframe.com",
+                "siteURL": "https://blank-iframe.com",
                 "frameURL": "about:blank",
                 "expectFeatureEnabled": false,
                 "exceptPlatforms": [
