@@ -624,6 +624,7 @@
                 "siteURL": "https://example.org",
                 "expectFeatureEnabled": false,
                 "exceptPlatforms": []
-            },
+            }
+        ]
     }
 }
