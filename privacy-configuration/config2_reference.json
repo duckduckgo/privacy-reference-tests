@@ -91,10 +91,7 @@
             "state": "enabled",
             "settings": {
                 "aboutBlankSites": [
-                    {
-                        "domain": "blank-iframe.com",
-                        "reason": "about blank iframes should not include this feature on this site"
-                    }
+                    "blank-iframe.com"
                 ]
             },
             "exceptions": [
