@@ -3,7 +3,7 @@ name: Linting
 on: [push, pull_request]
 
 jobs:
-  unit:
+  linting:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
@@ -11,9 +11,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
-      - working-directory: ./_scripts/
       - name: Install dependencies
         run: npm install
+        working-directory: ./_scripts
       - uses: ./
       - name: Run tests
         run: npm run test
+        working-directory: ./_scripts
