@@ -14,7 +14,6 @@ jobs:
       - name: Install dependencies
         run: npm install
         working-directory: ./_scripts
-      - uses: ./
       - name: Run tests
         run: npm run test
         working-directory: ./_scripts
