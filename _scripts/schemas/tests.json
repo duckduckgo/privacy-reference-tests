@@ -1,0 +1,49 @@
+{
+    "type": "object",
+    "patternProperties": {
+        "^[a-zA-Z]*$": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "tests": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "exceptPlatforms": {
+                                "type": "array",
+                                "items": {
+                                    "enum": ["ios-browser", "android-browser", "macos-browser", "windows-browser", "web-extension", "safari-extension"] 
+                                }
+                            }
+                        },
+                        "patternProperties": {
+                            "^[a-zA-Z]*$": {}
+                        },
+                        "required": [
+                            "name"
+                        ],
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "patternProperties": {
+                "^[a-zA-Z]*$": {}
+            },
+            "required": [
+                "name",
+                "tests"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "additionalProperties": false
+}
