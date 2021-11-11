@@ -10,13 +10,14 @@ const root = path.resolve(__dirname, '../');
 const FOLDER_FORMAT = /^([a-z]+\-)*[a-z]+$/;
 const TEST_FILE_SCHEMA = JSON.parse(fs.readFileSync('./schemas/tests.json'))
 const testValidate = ajv.compile(TEST_FILE_SCHEMA);
+const EXCLUDED_FOLDERS = ['_scripts'];
 
-const dirs = glob.sync("/*/", {root});
+const dirs = glob.sync("/*/", { root });
 
 dirs.forEach(dir => {
     const featureFolderName = path.basename(dir);
 
-    if (featureFolderName === '_scripts') {
+    if (EXCLUDED_FOLDERS.includes(featureFolderName)) {
         return;
     }
 
@@ -27,7 +28,7 @@ dirs.forEach(dir => {
 
     console.log('Processing feature directory:', featureFolderName);
 
-    const files = glob.sync("/**/?(*_)tests.json", {root: path.resolve(root, featureFolderName)});
+    const files = glob.sync("/**/?(*_)tests.json", { root: path.resolve(root, featureFolderName) });
 
     if (files.length === 0) {
         console.error(`❌ tests file missing in the feature folder ${featureFolderName}`);
