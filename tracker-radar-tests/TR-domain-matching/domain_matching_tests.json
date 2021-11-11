@@ -4,7 +4,7 @@
         "desc": "interactions between root domain and resource URLs from tracker lists",
         "tests": [
             {
-                "name2": "same party tracker",
+                "name": "same party tracker",
                 "siteURL": "https://bad.third-party.site/",
                 "requestURL": "https://bad.third-party.site/",
                 "requestType": "script",
