@@ -11,8 +11,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
-      - uses: ./_scripts/
+      - run: cd _scripts/
       - name: Install dependencies
         run: npm install
+      - uses: ./
       - name: Run tests
         run: npm run test
