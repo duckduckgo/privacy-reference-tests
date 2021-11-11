@@ -46,7 +46,7 @@ dirs.forEach(dir => {
 
         if (!testValidate(testFileObject)) {
             console.error(`❌ ${testFile} doesn't follow the expected format:`);
-            console.error(testValidate.errors.map(item => `- ${item.schemaPath}: ${item.message}`).join('\n'));
+            console.error(testValidate.errors.map(item => `- ${item.instancePath}: ${item.message}`).join('\n'));
             exit(1);
         }
     });
