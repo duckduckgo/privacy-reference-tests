@@ -1,88 +1,57 @@
 # Contributing guidelines
 
-# Reporting broken sites
+When adding new tests please follow the format and naming convention specified below. Once the new set is ready, please open a PR, make sure that all automatic checks pass and assign it to one of the DRIs of [Privacy Reference Test's AoR](https://app.asana.com/0/1200606622205980/list).
 
-Report broken websites using the "Report Broken Site" link on the extension popup.
+# Template
 
-# Reporting bugs
+To make it easier to start we prepared a template for new tests - [/_template-new-feature/](/_template-new-feature). It will help you follow the conventions listed below.
 
-1. First check to see if the bug has not already been [reported](https://github.com/duckduckgo/duckduckgo-privacy-extension/issues).
-2. Create a bug report [issue](https://github.com/duckduckgo/duckduckgo-privacy-extension/issues/new?template=bug_report.md).
+# File structure
 
-# Feature requests
+Each privacy feature should have its own top level folder e.g. `/privacy-reference-tests/privacy-configuration/`.
+Within each folder following files are expected:
 
-There are two ways to submit feedback:
-1. You can send anonymous feedback using the "Send feedback" link on the extension's options page.
-2. You can submit your request as an [issue](https://github.com/duckduckgo/duckduckgo-privacy-extension/issues/new?template=feature_request.md). First check to see if the feature has not already been [suggested](https://github.com/duckduckgo/duckduckgo-privacy-extension/issues).
+- `README.md` - explaining what feature is being tested, how, and describing all non-standard fields used in the `tests.json`
+- `tests.json` - test metadata file (see next section). If needed there can be multiple of those following the `*_tests.json` naming convention.
+- `*_reference.*` - optional reference files (e.g. tracker blocklists, feature configurations, surrogates) required to perform the test
 
-# Development
+# tests.json
 
-## New features
+The expected outline of the file is as follows:
 
-Right now all new feature development is handled internally.
+```js
+{
+    "setName": { // id of a given set of tests
+        "name": "", // name of the set
+        "desc": "", // description of the set
+        "tests": [
+            {
+                "name": "", // name of the particular test
+                // test set specific fields go in here
+                "expectSomething": "result" // field that is meant to verify the result should be prefixed with "expect"
+                "exceptPlatforms": [] // platforms on which given test should be skipped (see "exceptPlatforms" section)
+            }
+        ]
+    },
+    "anotherSet": {
+      //…
+    }
+}
+```
 
-## Bug fixes
+Each `tests.json` file can contain multiple sets of tests. All fields should follow the camelCase format. `tests.json` is expected to be a valid JSON file (e.g. field names have to be in double quotes).
 
-Most bug fixes are handled internally, but we will except pull requests for bug fixes if you first:
-1. Create an issue describing the bug. see [Reporting bugs](CONTRIBUTING.md#reporting-bugs)
-2. Get approval from DDG staff before working on it. Since most bug fixes and feature development are handled internally, we want to make sure that your work doesn't conflict with any current projects.
+## Custom fields
 
-## Testing locally
+Your tests will require some custom fields to set the stage for the test e.g. `"siteURL"`, `"scriptURL"`, `"requestType"` and a field that's responsible for validating the result e.g. `"expectAction": "block"`, `"expectFeatureEnabled": false`.
 
-### Pre-Requisites
-- [Node.js](https://nodejs.org) installation
-- [Grunt](https://www.npmjs.com/package/grunt)
-- Tests use [Selenium Webdriver](http://seleniumhq.github.io/selenium/docs/api/javascript/index.html).
+## exceptPlatforms
 
-### Building the extension
-- Firefox
- 1. Run `npm run dev-firefox`
- 2. Load the extension in Firefox from the `build/firefox/dev` directory
-[Temporary installation in Firefox - Mozilla | MDN](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/Temporary_Installation_in_Firefox)
-    Alternatively running `web-ext run -s build/firefox/dev` loads the extension into a temporary profile.
+If test should be skipped on some platforms, e.g. because of the known limitations of the platform, please specify excepted platforms via `exceptPlatforms` field. Possible options are:
 
-- Chrome
- 1. Run `npm run dev-chrome`
- 2. Load the extension in Chrome from the `build/chrome/dev` directory
-[Getting Started: Building a Chrome Extension - Google Chrome](https://developer.chrome.com/extensions/getstarted#unpacked)
-
-- Safari
-
-  The Safari extension is no longer supported.
-
-### Development flow
-
-The `shared` directory contains JS, CSS, and images that are shared by all browsers.
-
-The popup UI is in `shared/js/ui`
-
-The background JS is in `shared/js/`
-
-Browser specific files, including manifest files, are located in `browsers/<browser-name>`
-
-Run the dev build task for your browser from the 'Build' section above. The generated build files are located in `/build/<browser>/dev`.
-
-After running the build task it will continue watching for changes to any of the source files. After saving any changes to these files it will automatically rebuild the `dev` directory for you.
-
-### Testing
-- Unit tests: `npm test`
-- Integration Tests
-  - Local, requires Chrome: `npm run test-int`
-    - You can filter to one test with: `KEEP_OPEN=1 npm run test-int -- -f integration-test/background/test-fp-fingerprint.js`
-  - Headless, requires xvfb: `npm run test-ci`
-
-### Selenium Testing (ratings.js)
-
-**Setup**
-
-1. For remote linux machine, first setup xvfb: `source selenium-test/setup.sh`
-2. `npm install`
-3. `grunt`
-
-**Testing Single Site** `./selenium-test/ratings.js -u https://website.com`
-
-**Testing Top 500** `./selenium-test/ratings.js -n 2` (where n = [1 - 500])
-
-**Testing Multiple Sites** `./selenium-test/ratings.js -f urls.txt` (file should have 1 url on each line)
-
-**Using XVFB** To test on a remote server with XVBF installed, add `-x` flag: `./selenium-test/ratings.js -x -u https://website.com`
+- "web-extension" - our [Chrome/Firefox/Edge/Brave extension](https://github.com/duckduckgo/duckduckgo-privacy-extension)
+- "safari-extension" - our [Safari extension](https://github.com/duckduckgo/privacy-essentials-safari)
+- "ios-browser" - our [iOS application](https://github.com/duckduckgo/iOS)
+- "android-browser" - our [Android application](https://github.com/duckduckgo/Android)
+- "macos-browser" - our macOS browser
+- "windows-browser" - our Windows browser
