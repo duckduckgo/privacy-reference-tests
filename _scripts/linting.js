@@ -1,27 +1,28 @@
 const glob = require('glob');
 const fs = require('fs');
-const Ajv = require('ajv').default;
-const ajv = new Ajv();
-
 const path = require('path');
 const { exit } = require('process');
-const root = path.resolve(__dirname, '../');
+const Ajv = require('ajv').default;
+const ajv = new Ajv();
 
 const FOLDER_FORMAT = /^([a-z]+\-)*[a-z]+$/;
 const TEST_FILE_SCHEMA = JSON.parse(fs.readFileSync('./schemas/tests.json'))
 const testValidate = ajv.compile(TEST_FILE_SCHEMA);
-const EXCLUDED_FOLDERS = ['_scripts'];
+const SKIP_FOLDERS = ['_scripts'];
+const IGNORE_FOLDER_FORMAT = ['_template-new-feature'];
+const SKIP_TEST_FILES = ['tracker_allowlist_matching_tests.json']; // doesn't follow the format, skip
 
+const root = path.resolve(__dirname, '../');
 const dirs = glob.sync("/*/", { root });
 
 dirs.forEach(dir => {
     const featureFolderName = path.basename(dir);
 
-    if (EXCLUDED_FOLDERS.includes(featureFolderName)) {
+    if (SKIP_FOLDERS.includes(featureFolderName)) {
         return;
     }
 
-    if (!FOLDER_FORMAT.test(featureFolderName)) {
+    if (!IGNORE_FOLDER_FORMAT.includes(featureFolderName) && !FOLDER_FORMAT.test(featureFolderName)) {
         console.error(`❌ ${featureFolderName} doesn't follow the folder naming format`);
         exit(1);
     }
@@ -36,18 +37,20 @@ dirs.forEach(dir => {
     }
 
     files.forEach(testFile => {
-        // doesn't follow the format, skip
-        if (path.basename(testFile) === 'tracker_allowlist_matching_tests.json') {
+        const testBasename = path.basename(testFile);
+
+        if (SKIP_TEST_FILES.includes(testBasename)) {
+            console.log(` - ⚠️ skipping ${testBasename}`)
             return;
         }
 
-        console.log(`- validating ${path.basename(testFile)}`);
+        console.log(` - validating ${testBasename}`);
 
         const testFileObject = JSON.parse(fs.readFileSync(testFile));
 
         if (!testValidate(testFileObject)) {
-            console.error(`❌ ${testFile} doesn't follow the expected format:`);
-            console.error(testValidate.errors.map(item => `- ${item.instancePath}: ${item.message}`).join('\n'));
+            console.error(` ❌ ${testFile} doesn't follow the expected format:`);
+            console.error(testValidate.errors.map(item => `  - ${item.instancePath}: ${item.message}`).join('\n'));
             exit(1);
         }
     });

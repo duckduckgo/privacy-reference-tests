@@ -7,7 +7,7 @@
                 "name": {
                     "type": "string"
                 },
-                "description": {
+                "desc": {
                     "type": "string"
                 },
                 "tests": {
@@ -32,7 +32,8 @@
                             "name"
                         ],
                         "additionalProperties": false
-                    }
+                    },
+                    "minItems": 1
                 }
             },
             "patternProperties": {
