@@ -221,10 +221,5 @@
                 "expectAction": "block"
             }
         ]
-    },
-    "safeTests": {
-        "name": "safe-matching",
-        "desc": "tests for safelist interactions",
-        "tests": []
     }
 }
