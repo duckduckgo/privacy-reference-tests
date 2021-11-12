@@ -1,10 +1,11 @@
 # DuckDuckGo Privacy Reference Tests
 
-This is a repo of test metadata, used by DuckDuckGo projects.
+Test metadata used by DuckDuckGo apps and extensions to verify implementation of privacy features.
 
 ## Development
 
-We're not accepting new feature pull requests right now. For bug fixes see [Development](CONTRIBUTING.md#development)
+Please note that we are not taking external contributions.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for information about the format and instructions on how to add new tests.
 
 ## Questions or help with the search engine
-See [help pages](https://duck.co/help)
+See our [help pages](https://duck.co/help).
