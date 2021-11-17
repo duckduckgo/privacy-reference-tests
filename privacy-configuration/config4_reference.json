@@ -3,7 +3,12 @@
     "features": {
         "trackingLinks": {
             "state": "enabled",
-            "exceptions": [],
+            "exceptions": [
+                {
+                    "domain": "example2.com",
+                    "reason": "Site breakage"
+                }
+            ],
             "settings": {
                 "ampLinkFormats": [
                     "https?:\\/\\/(?:w{3}\\.)?google\\.\\w{2,}\\/amp\\/s\\/(\\S+)",

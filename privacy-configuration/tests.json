@@ -667,6 +667,18 @@
                     "macos-browser",
                     "windows-browser"
                 ]
+            },
+            {
+                "name": "A URL is not extracted from a google formatted URL because the resulting URL is in the exceptions.",
+                "ampUrl": "https://www.google.com/amp/s/www.example2.com/some/article",
+                "expectUrl": "",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "safari-extension",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
+                ]
             }
         ]
     },
@@ -726,6 +738,18 @@
             {
                 "name": "A URL is not able to be detected using amp patterns",
                 "ampUrl": "https://example.com/some/article",
+                "expectAmpDetected": false,
+                "exceptPlatforms": [
+                    "web-extension",
+                    "safari-extension",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
+                ]
+            },
+            {
+                "name": "A URL is not able to be detected because the domain is in the exceptions",
+                "ampUrl": "https://example2.com/amp/some/article",
                 "expectAmpDetected": false,
                 "exceptPlatforms": [
                     "web-extension",
