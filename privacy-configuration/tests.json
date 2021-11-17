@@ -713,7 +713,7 @@
             },
             {
                 "name": "A URL is able to be detected using ?amp patterns",
-                "ampUrl": "https://www.independent.co.uk/news/world/americas/us-politics/fauci-dog-tests-congress-letter-b1944407.html?am",
+                "ampUrl": "https://www.independent.co.uk/news/world/americas/us-politics/fauci-dog-tests-congress-letter-b1944407.html?amp",
                 "expectAmpDetected": true,
                 "exceptPlatforms": [
                     "web-extension",
