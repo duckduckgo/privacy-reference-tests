@@ -1,4 +1,4 @@
-# Privacy Configuration Tests
+# Tracker blocking related tests
 
 Privacy Feature: https://app.asana.com/0/1198207348643509/1199981227466169/f
 
