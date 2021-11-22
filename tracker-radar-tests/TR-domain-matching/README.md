@@ -15,7 +15,6 @@ Files in the folder:
 - `domain_matching_tests.json` - tests for tracker blocking, CNAME cloaking and surrogates
 - `tracker_radar_reference.json` - reference blocklist file that should be used with `domain_matching_tests.json` tests
 - `surrogates.txt` - reference surrogates file that should be used with `domain_matching_tests.json` tests
-- `surrogates.js` - web extension friendly version of `surrogates.txt` (other platforms should use `surrogates.txt`)
 
 Test suite specific fields:
 - `siteURL` - URL - page where request in question is made
