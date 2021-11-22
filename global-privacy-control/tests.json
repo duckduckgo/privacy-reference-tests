@@ -1,0 +1,84 @@
+{
+    "gpcHeader": {
+        "name": "Tests related to the GPC request header",
+        "desc": "description of the set",
+        "tests": [
+            {
+                "name": "Header injected - navigational requests",
+                "siteURL": "http://global-privacy-control.glitch.me",
+                "requestURL": "http://global-privacy-control.glitch.me",
+                "requestType": "main_frame",
+                "expectGPCHeader": true,
+                "expectHeader": "Sec-GPC: 1",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Header not injected - privacy config local exception (gpc/exceptions)",
+                "siteURL": "https://www.nytimes.com",
+                "requestURL": "https://www.nytimes.com",
+                "requestType": "main_frame",
+                "expectGPCHeader": false,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Header not injected - privacy config global exception (unprotectedTemporary)",
+                "siteURL": "https://globalprivacycontrol.org/",
+                "requestURL": "https://globalprivacycontrol.org/",
+                "requestType": "main_frame",
+                "expectGPCHeader": false,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Header injected - subrequest",
+                "siteURL": "https://example.com/",
+                "requestURL": "https://example.com/image.png",
+                "requestType": "image",
+                "expectGPCHeader": true,
+                "expectHeader": "Sec-GPC: 1",
+                "exceptPlatforms": [
+                    "ios-browser",
+                    "macos-browser",
+                    "android-browser"
+                ]
+            },
+            {
+                "name": "Header not injected - subrequest on a excluded site (gpc/exceptions)",
+                "siteURL": "https://www.nytimes.com",
+                "requestURL": "https://example.com/image.png",
+                "requestType": "image",
+                "expectGPCHeader": false,
+                "exceptPlatforms": [
+                    "ios-browser",
+                    "macos-browser",
+                    "android-browser"
+                ]
+            },
+            {
+                "name": "Header not injected - subrequest on a excluded site (unprotectedTemporary)",
+                "siteURL": "https://globalprivacycontrol.org/",
+                "requestURL": "https://example.com/image.png",
+                "requestType": "image",
+                "expectGPCHeader": false,
+                "exceptPlatforms": [
+                    "ios-browser",
+                    "macos-browser",
+                    "android-browser"
+                ]
+            }
+        ]
+    },
+    "gpcJavaScriptAPI": {
+        "name": "Tests related to GPC JavaScript API",
+        "desc": "description of the set",
+        "tests": [
+            {
+                "name": "API injected - main frame",
+                "siteURL": "http://global-privacy-control.glitch.me",
+                "frameURL": "https://subframe.com",
+                "expectGPCAPI": true,
+                "expectJavaScriptToBeTrue": "Navigator.prototype.globalPrivacyControl === true",
+                "exceptPlatforms": []
+            }
+        ]
+    }
+}
