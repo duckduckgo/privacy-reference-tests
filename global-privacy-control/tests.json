@@ -15,8 +15,8 @@
             },
             {
                 "name": "Header not injected - privacy config local exception (gpc/exceptions)",
-                "siteURL": "https://www.nytimes.com",
-                "requestURL": "https://www.nytimes.com",
+                "siteURL": "https://www.washingtonpost.com/",
+                "requestURL": "https://www.washingtonpost.com/",
                 "requestType": "main_frame",
                 "expectGPCHeader": false,
                 "exceptPlatforms": []
@@ -43,7 +43,7 @@
             },
             {
                 "name": "Header not injected - subrequest on a excluded site (gpc/exceptions)",
-                "siteURL": "https://www.nytimes.com",
+                "siteURL": "https://www.washingtonpost.com/",
                 "requestURL": "https://example.com/image.png",
                 "requestType": "image",
                 "expectGPCHeader": false,
@@ -87,7 +87,7 @@
             },
             {
                 "name": "API NOT injected - excluded site (gpc/exceptions)",
-                "siteURL": "https://www.nytimes.com",
+                "siteURL": "https://www.washingtonpost.com/",
                 "expectGPCAPI": false,
                 "exceptPlatforms": []
             },
