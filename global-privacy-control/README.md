@@ -51,4 +51,7 @@ for $testSet in test.json
 
         expect($gpcAPIInjected === $test.expectGPCAPI)
 
+        if $test has 'expectJavaScriptToBeTrue'
+            expect(evalInFrame($test.expectJavaScriptToBeTrue) === true)
+
 ```
