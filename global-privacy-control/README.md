@@ -20,7 +20,7 @@ Test suite specific fields:
 - `requestType` - mostly "image" or "main_frame" (navigational request), but can be any of https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/ResourceType - type of the resource being fetched
 - `gpcUserSettingOn` - boolean - if user controlled GPC setting is on or off (optional - if not set assume on)
 - `expectGPCAPI` - boolean - if we expect GPC API to be available in given conditions
-- `expectGPCAPIValue` - boolean/null - expected `Navigator.prototype.globalPrivacyControl` value (either true, false or null for undefined)
+- `expectGPCAPIValue` - "true", "false" or "undefined" - stringified expected value of `Navigator.prototype.globalPrivacyControl`
 - `expectGPCHeader` - boolean - if we expect GPC header to be included with given request
 - `expectGPCHeaderValue` - string - expected value of the `Sec-GPC` header
 

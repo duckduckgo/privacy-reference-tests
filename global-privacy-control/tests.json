@@ -90,7 +90,7 @@
                 "siteURL": "http://global-privacy-control.glitch.me",
                 "gpcUserSettingOn": true,
                 "expectGPCAPI": true,
-                "expectGPCAPIValue": true,
+                "expectGPCAPIValue": "true",
                 "exceptPlatforms": []
             },
             {
@@ -106,7 +106,7 @@
                 "siteURL": "https://www.washingtonpost.com/",
                 "gpcUserSettingOn": true,
                 "expectGPCAPI": false,
-                "expectGPCAPIValue": null,
+                "expectGPCAPIValue": "undefined",
                 "exceptPlatforms": []
             },
             {
@@ -121,7 +121,7 @@
                 "siteURL": "http://global-privacy-control.glitch.me",
                 "gpcUserSettingOn": false,
                 "expectGPCAPI": true,
-                "expectGPCAPIValue": false,
+                "expectGPCAPIValue": "false",
                 "exceptPlatforms": []
             }
         ]
