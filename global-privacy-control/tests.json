@@ -20,9 +20,7 @@
                 "requestURL": "http://global-privacy-control.glitch.me",
                 "requestType": "main_frame",
                 "gpcUserSettingOn": false,
-                "expectGPCHeader": true,
-                "expectHeaderName": "Sec-GPC",
-                "expectHeaderValue": "1",
+                "expectGPCHeader": false,
                 "exceptPlatforms": []
             },
             {
@@ -119,8 +117,8 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "API NOT injected - subframe on a excluded site (unprotectedTemporary)",
-                "siteURL": "https://globalprivacycontrol.org/",
+                "name": "API NOT injected - user opted out of GPC",
+                "siteURL": "http://global-privacy-control.glitch.me",
                 "gpcUserSettingOn": false,
                 "expectGPCAPI": false,
                 "expectJavaScriptToBeTrue": "((Navigator.prototype.globalPrivacyControl === false) && (navigator.globalPrivacyControl === false))",
