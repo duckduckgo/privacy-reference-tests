@@ -20,10 +20,9 @@ Test suite specific fields:
 - `requestType` - mostly "image" or "main_frame" (navigational request), but can be any of https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/ResourceType - type of the resource being fetched
 - `gpcUserSettingOn` - boolean - if user controlled GPC setting is on or off (optional - if not set assume on)
 - `expectGPCAPI` - boolean - if we expect GPC API to be available in given conditions
+- `expectGPCAPIValue` - boolean/null - expected `Navigator.prototype.globalPrivacyControl` value (either true, false or null for undefined)
 - `expectGPCHeader` - boolean - if we expect GPC header to be included with given request
-- `expectHeaderName` - string - expected name of the GPC header
-- `expectHeaderValue` - string - expected value of the GPC header
-- `expectJavaScriptToBeTrue` - string - JavaScript code that, when evaluated in given context, should return `true`
+- `expectGPCHeaderValue` - string - expected value of the `Sec-GPC` header
 
 ## Pseudo-code implementation
 
@@ -39,23 +38,20 @@ for $testSet in test.json
     setSetting('GPC', $test.gpcUserSettingOn or true)
 
     if $test has 'expectGPCHeader'
-        $gpcHeader = getGPCHeader($test.siteURL, $test.frameURL, $test.requestType)
-        $enabled = ($gpcHeader !== null)
+        $headers = getHeaders($test.siteURL, $test.frameURL, $test.requestType)
+        $enabled = $headers has 'Sec-GPC'
 
         expect($enabled === $test.expectGPCHeader)
 
-        if $test has 'expectHeaderName'
-            expect($gpcHeader.name === $test.expectHeaderName)
-
-        if $test has 'expectHeaderValue'
-            expect($gpcHeader.value === $test.expectHeaderValue)
+        if $test has 'expectGPCHeaderValue'
+            expect(headerValue($headers, 'Sec-GPC') === $test.expectGPCHeaderValue)
 
     else if $test has 'expectGPCAPI'
         $gpcAPIInjected = isGPCInjected($test.siteURL, $test.frameURL)
 
         expect($gpcAPIInjected === $test.expectGPCAPI)
 
-        if $test has 'expectJavaScriptToBeTrue'
-            expect(evalInFrame($test.expectJavaScriptToBeTrue) === true)
+        if $test has 'expectGPCAPIValue'
+            expect(getJSPropertyValue('Navigator.prototype.globalPrivacyControl') === $test.expectGPCAPIValue)
 
 ```

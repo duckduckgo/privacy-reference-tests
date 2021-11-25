@@ -10,8 +10,7 @@
                 "requestType": "main_frame",
                 "gpcUserSettingOn": true,
                 "expectGPCHeader": true,
-                "expectHeaderName": "Sec-GPC",
-                "expectHeaderValue": "1",
+                "expectGPCHeaderValue": "1",
                 "exceptPlatforms": []
             },
             {
@@ -91,7 +90,7 @@
                 "siteURL": "http://global-privacy-control.glitch.me",
                 "gpcUserSettingOn": true,
                 "expectGPCAPI": true,
-                "expectJavaScriptToBeTrue": "((Navigator.prototype.globalPrivacyControl === true) && (navigator.globalPrivacyControl === true))",
+                "expectNavigatorGPCValue": true,
                 "exceptPlatforms": []
             },
             {
@@ -107,6 +106,7 @@
                 "siteURL": "https://www.washingtonpost.com/",
                 "gpcUserSettingOn": true,
                 "expectGPCAPI": false,
+                "expectNavigatorGPCValue": null,
                 "exceptPlatforms": []
             },
             {
@@ -121,7 +121,7 @@
                 "siteURL": "http://global-privacy-control.glitch.me",
                 "gpcUserSettingOn": false,
                 "expectGPCAPI": true,
-                "expectJavaScriptToBeTrue": "((Navigator.prototype.globalPrivacyControl === false) && (navigator.globalPrivacyControl === false))",
+                "expectNavigatorGPCValue": false,
                 "exceptPlatforms": []
             }
         ]
