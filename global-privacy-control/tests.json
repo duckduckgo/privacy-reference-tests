@@ -83,7 +83,7 @@
     },
     "gpcJavaScriptAPI": {
         "name": "Tests related to GPC JavaScript API",
-        "desc": "Check if navigator.globalPrivacyControl is set to true in all frames",
+        "desc": "Check if Navigator.prototype.globalPrivacyControl is set to true in all frames",
         "tests": [
             {
                 "name": "API injected - main frame",
