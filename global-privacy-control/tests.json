@@ -8,6 +8,18 @@
                 "siteURL": "http://global-privacy-control.glitch.me",
                 "requestURL": "http://global-privacy-control.glitch.me",
                 "requestType": "main_frame",
+                "gpcUserSettingOn": true,
+                "expectGPCHeader": true,
+                "expectHeaderName": "Sec-GPC",
+                "expectHeaderValue": "1",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Header not injected - user opted out of GPC",
+                "siteURL": "http://global-privacy-control.glitch.me",
+                "requestURL": "http://global-privacy-control.glitch.me",
+                "requestType": "main_frame",
+                "gpcUserSettingOn": false,
                 "expectGPCHeader": true,
                 "expectHeaderName": "Sec-GPC",
                 "expectHeaderValue": "1",
@@ -18,6 +30,7 @@
                 "siteURL": "https://www.washingtonpost.com/",
                 "requestURL": "https://www.washingtonpost.com/",
                 "requestType": "main_frame",
+                "gpcUserSettingOn": true,
                 "expectGPCHeader": false,
                 "exceptPlatforms": []
             },
@@ -26,6 +39,7 @@
                 "siteURL": "https://globalprivacycontrol.org/",
                 "requestURL": "https://globalprivacycontrol.org/",
                 "requestType": "main_frame",
+                "gpcUserSettingOn": true,
                 "expectGPCHeader": false,
                 "exceptPlatforms": []
             },
@@ -34,6 +48,7 @@
                 "siteURL": "https://example.com/",
                 "requestURL": "https://example.com/image.png",
                 "requestType": "image",
+                "gpcUserSettingOn": true,
                 "expectGPCHeader": true,
                 "exceptPlatforms": [
                     "ios-browser",
@@ -46,6 +61,7 @@
                 "siteURL": "https://www.washingtonpost.com/",
                 "requestURL": "https://example.com/image.png",
                 "requestType": "image",
+                "gpcUserSettingOn": true,
                 "expectGPCHeader": false,
                 "exceptPlatforms": [
                     "ios-browser",
@@ -58,6 +74,7 @@
                 "siteURL": "https://globalprivacycontrol.org/",
                 "requestURL": "https://example.com/image.png",
                 "requestType": "image",
+                "gpcUserSettingOn": true,
                 "expectGPCHeader": false,
                 "exceptPlatforms": [
                     "ios-browser",
@@ -74,6 +91,7 @@
             {
                 "name": "API injected - main frame",
                 "siteURL": "http://global-privacy-control.glitch.me",
+                "gpcUserSettingOn": true,
                 "expectGPCAPI": true,
                 "expectJavaScriptToBeTrue": "((Navigator.prototype.globalPrivacyControl === true) && (navigator.globalPrivacyControl === true))",
                 "exceptPlatforms": []
@@ -82,19 +100,30 @@
                 "name": "API injected - sub frame",
                 "siteURL": "http://global-privacy-control.glitch.me",
                 "frameURL": "https://subframe.com",
+                "gpcUserSettingOn": true,
                 "expectGPCAPI": true,
                 "exceptPlatforms": []
             },
             {
                 "name": "API NOT injected - excluded site (gpc/exceptions)",
                 "siteURL": "https://www.washingtonpost.com/",
+                "gpcUserSettingOn": true,
                 "expectGPCAPI": false,
                 "exceptPlatforms": []
             },
             {
                 "name": "API NOT injected - subframe on a excluded site (unprotectedTemporary)",
                 "siteURL": "https://globalprivacycontrol.org/",
+                "gpcUserSettingOn": true,
                 "expectGPCAPI": false,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "API NOT injected - subframe on a excluded site (unprotectedTemporary)",
+                "siteURL": "https://globalprivacycontrol.org/",
+                "gpcUserSettingOn": false,
+                "expectGPCAPI": false,
+                "expectJavaScriptToBeTrue": "((Navigator.prototype.globalPrivacyControl === false) && (navigator.globalPrivacyControl === false))",
                 "exceptPlatforms": []
             }
         ]

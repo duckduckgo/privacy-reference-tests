@@ -17,6 +17,7 @@ Test suite specific fields:
 - `siteURL` - string - currently loaded website's URL (as seen in the URL bar)
 - `frameURL` - string - URL of an iframe in which the feature is operating (optional - if not set assume main frame context)
 - `requestType` - mostly "image" or "main_frame" (navigational request), but can be any of https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/ResourceType - type of the resource being fetched
+- `gpcUserSettingOn` - boolean - if user controlled GPC setting is on or off (optional - if not set assume on)
 - `expectGPCAPI` - boolean - if we expect GPC API to be available in given conditions
 - `expectGPCHeader` - boolean - if we expect GPC header to be included with given request
 - `expectHeaderName` - string - expected name of the GPC header
@@ -33,6 +34,8 @@ for $testSet in test.json
   for $test in $testSet
     if $test.exceptPlatforms includes 'current-platform'
         skip
+
+    setSetting('GPC', $test.gpcUserSettingOn or true)
 
     if $test has 'expectGPCHeader'
         $gpcHeader = getGPCHeader($test.siteURL, $test.frameURL, $test.requestType)
