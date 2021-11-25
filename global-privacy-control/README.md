@@ -7,7 +7,8 @@ Privacy Feature: https://app.asana.com/0/1198207348643509/1199115248606508/f
 This set of tests verifies implementation of Global Privacy Control signal. In particular it focuses on verifying that:
 
 - that the GPC header appears on all requests
-- that `navigator.globalPrivacyControl` API is available in all frames and
+- that `navigator.globalPrivacyControl` API is available in all frames
+- that the right thing happens when user opts out of GPC and
 - that excluded domains, as defined in the privacy remote configuration, are taken into account.
 
 ## Structure
@@ -22,7 +23,7 @@ Test suite specific fields:
 - `expectGPCHeader` - boolean - if we expect GPC header to be included with given request
 - `expectHeaderName` - string - expected name of the GPC header
 - `expectHeaderValue` - string - expected value of the GPC header
-- `expectJavaScriptToBeTrue` - string - JavaScript code that can be evaluated 
+- `expectJavaScriptToBeTrue` - string - JavaScript code that, when evaluated in given context, should return `true`
 
 ## Pseudo-code implementation
 
