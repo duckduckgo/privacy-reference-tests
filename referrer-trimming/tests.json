@@ -58,6 +58,15 @@
                 "exceptPlatforms": []
             },
             {
+                "name": "navigating between two different safe domains from the same entity, referrer removed by the referrer policy - don't add the referrer",
+                "siteURL": "https://company1.com/path/to/something.html?cool=123",
+                "targetURL": "https://company1.co.uk/whatever",
+                "requestType": "main_frame",
+                "refererHeaderValue": null,
+                "expectRefererHeaderValue": null,
+                "exceptPlatforms": []
+            },
+            {
                 "name": "navigating to a tracking domain - referrer path, query and subdomain dropped",
                 "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
                 "targetURL": "https://tracker.com/whatever",
