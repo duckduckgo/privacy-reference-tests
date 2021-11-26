@@ -74,6 +74,24 @@
                 "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://safe1.com/",
                 "exceptPlatforms": []
+            },
+            {
+                "name": "navigating from a safelisted domain to tracking domain - referrer should not change",
+                "siteURL": "https://super.keep-referrer.com/path/to/something.html?cool=123",
+                "targetURL": "https://tracker.test/whatever",
+                "requestType": "main_frame",
+                "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
+                "expectRefererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "navigating to a safelisted domain - referrer should not change",
+                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "targetURL": "https://global-keep-referrer.com/whatever",
+                "requestType": "main_frame",
+                "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
+                "expectRefererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
+                "exceptPlatforms": []
             }
         ]
     },
