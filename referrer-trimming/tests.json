@@ -60,7 +60,7 @@
             {
                 "name": "navigating to a tracking domain - referrer path, query and subdomain dropped",
                 "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
-                "targetURL": "https://tracker.test/whatever",
+                "targetURL": "https://tracker.com/whatever",
                 "requestType": "main_frame",
                 "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://safe1.com/",
@@ -69,7 +69,7 @@
             {
                 "name": "navigating to a tracking domain with default action 'ignore' - referrer path, query and subdomain dropped",
                 "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
-                "targetURL": "https://tracker.test/whatever",
+                "targetURL": "https://tracker.com/whatever",
                 "requestType": "main_frame",
                 "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://safe1.com/",
@@ -78,7 +78,7 @@
             {
                 "name": "navigating from a safelisted domain to tracking domain - referrer should not change",
                 "siteURL": "https://super.keep-referrer.com/path/to/something.html?cool=123",
-                "targetURL": "https://tracker.test/whatever",
+                "targetURL": "https://tracker.com/whatever",
                 "requestType": "main_frame",
                 "refererHeaderValue": "https://super.keep-referrer.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://super.keep-referrer.com/path/to/something.html?cool=123",
