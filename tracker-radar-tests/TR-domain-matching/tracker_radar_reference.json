@@ -126,7 +126,8 @@
         }
     },
     "cnames": {
-        "bad.cnames.test": "cname.tracker.test"
+        "bad.cnames.test": "cname.tracker.test",
+        "fake-ignore.tracker.test": "ignore.test"
     },
     "domains": {
         "bad.third-party.site": "Test Site for Tracker Blocking",

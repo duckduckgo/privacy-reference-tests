@@ -94,6 +94,13 @@
                 "expectAction": null
             },
             {
+                "name": "tracker.test CNAME'd to ignore.test should still be blocked",
+                "siteURL": "https://randomsite123.com/",
+                "requestURL": "https://fake-ignore.tracker.test/spy/script.js",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
                 "name": "sub.ignore loads tracker",
                 "siteURL": "https://sub.ignore.test/",
                 "requestURL": "https://bad.third-party.site/",
