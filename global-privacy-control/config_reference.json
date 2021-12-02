@@ -6,7 +6,7 @@
             "exceptions": [
                 {
                     "domain": "washingtonpost.com",
-                    "reason": "This is one of the domains where our iOS/Android apps do inject hte"
+                    "reason": "This is a domain where our iOS/Android apps inject the Sec-GPC request header"
                 }
             ]
         }
