@@ -108,6 +108,13 @@
                 "expectAction": "block"
             },
             {
+                "name": "no blocklist entry for an uncloacked domain - request should not be blocked",
+                "siteURL": "https://randomsite123.com/",
+                "requestURL": "https://domain.cloaked.test/some/script.js",
+                "requestType": "script",
+                "expectAction": null
+            },
+            {
                 "name": "sub.ignore loads tracker",
                 "siteURL": "https://sub.ignore.test/",
                 "requestURL": "https://bad.third-party.site/",
