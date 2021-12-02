@@ -58,7 +58,12 @@
             "fingerprinting": 3,
             "cookies": 0.1,
             "categories": [],
-            "default": "block"
+            "default": "block",
+            "rules": [
+                {
+                    "rule": "tracker\\.test\\/breakage"
+                }
+            ]
         },
         "ignore.test": {
             "domain": "ignore.test",

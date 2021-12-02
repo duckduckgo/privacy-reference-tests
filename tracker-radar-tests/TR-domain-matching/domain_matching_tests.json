@@ -77,6 +77,13 @@
                 "expectAction": "block"
             },
             {
+                "name": "uncloacked tracker should contain original path and be checked against the ignore rules",
+                "siteURL": "https://randomsite123.com/",
+                "requestURL": "https://bad.cnames.test/breakage",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
                 "name": "random allows sub.cname tracker",
                 "siteURL": "https://randomsite123.com/",
                 "requestURL": "https://also.bad.cnames.test/something",
