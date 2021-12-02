@@ -12,9 +12,9 @@ This set of tests verifies implementation of …. In particular it focuses on ve
 
 Test suite specific fields:
 
-- featureName - string - name of the privacy feature as defined in the config
+- `featureName` - string - name of the privacy feature as defined in the config
 - …
-- expectFeatureEnabled - bool - if feature is expected to be disabled or not
+- `expectFeatureEnabled` - bool - if feature is expected to be disabled or not
 
 ## Pseudo-code implementation
 
