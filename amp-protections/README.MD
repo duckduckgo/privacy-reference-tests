@@ -1,6 +1,6 @@
 # AMP Protections Tests
 
-Privacy Feature: https://app.asana.com/0/1198207348643509/1199981227466169/f
+Privacy Feature: https://app.asana.com/0/1198207348643509/1201460259279674/f
 
 ## Goals
 
