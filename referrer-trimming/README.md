@@ -14,8 +14,10 @@ This set of tests verifies implementation of referrer trimming protection. In pa
 
 Test suite specific fields:
 
-- `featureName` - string - name of the privacy feature as defined in the config
-- `expectFeatureEnabled` - bool - if feature is expected to be disabled or not
+- `navigatingFromURL` - 
+- `navigatingToURL` - 
+- `refererHeaderValue` - 
+- `expectRefererHeaderValue` - 
 
 ## Pseudo-code implementation
 

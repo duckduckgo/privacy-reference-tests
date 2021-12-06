@@ -5,99 +5,88 @@
         "tests": [
             {
                 "name": "navigating between two sites on the same domain - referrer not changed",
-                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
-                "targetURL": "https://super.safe1.com/path/to/something-else.html",
-                "requestType": "main_frame",
+                "navigatingFromURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "navigatingToURL": "https://super.safe1.com/path/to/something-else.html",
                 "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
                 "exceptPlatforms": []
             },
             {
                 "name": "navigating between two different domains not in the blocklist - referrer path and query dropped",
-                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
-                "targetURL": "https://super.safe2.com/whatever",
-                "requestType": "main_frame",
+                "navigatingFromURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "navigatingToURL": "https://super.safe2.com/whatever",
                 "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://super.safe1.com/",
                 "exceptPlatforms": []
             },
             {
                 "name": "navigating between two different safe domains from the same entity - referrer not changed",
-                "siteURL": "https://company1.com/path/to/something.html?cool=123",
-                "targetURL": "https://company1.co.uk/whatever",
-                "requestType": "main_frame",
+                "navigatingFromURL": "https://company1.com/path/to/something.html?cool=123",
+                "navigatingToURL": "https://company1.co.uk/whatever",
                 "refererHeaderValue": "https://company1.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://company1.com/path/to/something.html?cool=123",
                 "exceptPlatforms": []
             },
             {
                 "name": "navigating between two different tracking domains from the same entity - referrer not changed",
-                "siteURL": "https://tracker.com/path/to/something.html?cool=123",
-                "targetURL": "https://tracker.test/whatever",
-                "requestType": "main_frame",
+                "navigatingFromURL": "https://tracker.com/path/to/something.html?cool=123",
+                "navigatingToURL": "https://tracker.test/whatever",
                 "refererHeaderValue": "https://tracker.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://tracker.com/path/to/something.html?cool=123",
                 "exceptPlatforms": []
             },
             {
                 "name": "navigating between two different sites from the same domain, referrer already trimmed by the referrer policy - don't expand the referrer",
-                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
-                "targetURL": "https://super.safe1.com/path/to/something-else.html",
-                "requestType": "main_frame",
+                "navigatingFromURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "navigatingToURL": "https://super.safe1.com/path/to/something-else.html",
                 "refererHeaderValue": "https://super.safe1.com/",
                 "expectRefererHeaderValue": "https://super.safe1.com/",
                 "exceptPlatforms": []
             },
             {
                 "name": "navigating between two different safe domains from the same entity, referrer already trimmed by the referrer policy - don't expand the referrer",
-                "siteURL": "https://company1.com/path/to/something.html?cool=123",
-                "targetURL": "https://company1.co.uk/whatever",
-                "requestType": "main_frame",
+                "navigatingFromURL": "https://company1.com/path/to/something.html?cool=123",
+                "navigatingToURL": "https://company1.co.uk/whatever",
                 "refererHeaderValue": "https://company1.com/",
                 "expectRefererHeaderValue": "https://company1.com/",
                 "exceptPlatforms": []
             },
             {
                 "name": "navigating between two different safe domains from the same entity, referrer removed by the referrer policy - don't add the referrer",
-                "siteURL": "https://company1.com/path/to/something.html?cool=123",
-                "targetURL": "https://company1.co.uk/whatever",
-                "requestType": "main_frame",
+                "navigatingFromURL": "https://company1.com/path/to/something.html?cool=123",
+                "navigatingToURL": "https://company1.co.uk/whatever",
                 "refererHeaderValue": null,
                 "expectRefererHeaderValue": null,
                 "exceptPlatforms": []
             },
             {
                 "name": "navigating to a tracking domain - referrer path, query and subdomain dropped",
-                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
-                "targetURL": "https://tracker.com/whatever",
-                "requestType": "main_frame",
+                "navigatingFromURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "navigatingToURL": "https://tracker.com/whatever",
                 "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://safe1.com/",
                 "exceptPlatforms": []
             },
             {
                 "name": "navigating to a tracking domain with default action 'ignore' - referrer path, query and subdomain dropped",
-                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
-                "targetURL": "https://tracker.com/whatever",
-                "requestType": "main_frame",
+                "navigatingFromURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "navigatingToURL": "https://tracker.com/whatever",
                 "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://safe1.com/",
                 "exceptPlatforms": []
             },
             {
                 "name": "navigating from a safelisted domain to tracking domain - referrer should not change",
-                "siteURL": "https://super.keep-referrer.com/path/to/something.html?cool=123",
-                "targetURL": "https://tracker.com/whatever",
-                "requestType": "main_frame",
+                "navigatingFromURL": "https://super.keep-referrer.com/path/to/something.html?cool=123",
+                "navigatingToURL": "https://tracker.com/whatever",
                 "refererHeaderValue": "https://super.keep-referrer.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://super.keep-referrer.com/path/to/something.html?cool=123",
                 "exceptPlatforms": []
             },
             {
                 "name": "navigating to a safelisted domain - referrer should not change",
-                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
-                "targetURL": "https://global-keep-referrer.com/whatever",
-                "requestType": "main_frame",
+                "navigatingFromURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "navigatingToURL": "https://global-keep-referrer.com/whatever",
                 "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
                 "exceptPlatforms": []
