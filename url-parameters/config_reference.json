@@ -4,7 +4,10 @@
         "trackingParameters": {
             "state": "enabled",
             "exceptions": [
-                "example2.com"
+                {
+                    "domain": "example2.com",
+                    "reason": "site breakage"
+                }
             ],
             "settings": {
                 "parameters": [
