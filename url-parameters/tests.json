@@ -25,7 +25,7 @@
             {
                 "name": "Don't remove parameters because domain is in exceptions list",
                 "testURL": "http://example2.com/test.html?gclid=test&fbclid=test",
-                "expectURL": "http://example2.com/test.html?gclid=test&fbclid=test",
+                "expectURL": "",
                 "exceptPlatforms": []
             },
             {
