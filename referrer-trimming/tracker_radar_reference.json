@@ -65,6 +65,7 @@
         }
     },
     "cnames": {
+        "tracker.cname.com": "bad.tracker.com"
     },
     "domains": {
         "company1.com": "Company 1",

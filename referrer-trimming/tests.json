@@ -70,7 +70,7 @@
             {
                 "name": "navigating to a tracking domain with default action 'ignore' - referrer path, query and subdomain dropped",
                 "navigatingFromURL": "https://super.safe1.com/path/to/something.html?cool=123",
-                "navigatingToURL": "https://tracker.com/whatever",
+                "navigatingToURL": "https://unblockable-tracker.net/whatever",
                 "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
                 "expectRefererHeaderValue": "https://safe1.com/",
                 "exceptPlatforms": []
@@ -96,7 +96,116 @@
     "refererHeaderSubrequests": {
         "name": "Referer header subrequest tests",
         "desc": "Tests verifying changes to the 'Referer' header when loading subresources",
-        "tests": []
+        "tests": [
+            {
+                "name": "loading resource from the same domain - referrer not changed",
+                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "requestURL": "https://super.safe1.com/script.js",
+                "requestType": "script",
+                "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
+                "expectRefererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "loading resource from a different domain that's not on the blocklist - referrer path and query dropped",
+                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "requestURL": "https://super.safe2.com/script.js",
+                "requestType": "script",
+                "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
+                "expectRefererHeaderValue": "https://super.safe1.com/",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "loading resource from the same entity - referrer not changed",
+                "siteURL": "https://company1.com/path/to/something.html?cool=123",
+                "requestURL": "https://company1.co.uk/script.js",
+                "requestType": "script",
+                "refererHeaderValue": "https://company1.com/path/to/something.html?cool=123",
+                "expectRefererHeaderValue": "https://company1.com/path/to/something.html?cool=123",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "loading resource from the same tracking entity - referrer not changed",
+                "siteURL": "https://tracker.com/path/to/something.html?cool=123",
+                "requestURL": "https://tracker.test/script.js",
+                "requestType": "script",
+                "refererHeaderValue": "https://tracker.com/path/to/something.html?cool=123",
+                "expectRefererHeaderValue": "https://tracker.com/path/to/something.html?cool=123",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "loading resource from the same domain, referrer already trimmed by the referrer policy - don't expand the referrer",
+                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "requestURL": "https://super.safe1.com/script.js",
+                "requestType": "script",
+                "refererHeaderValue": "https://super.safe1.com/",
+                "expectRefererHeaderValue": "https://super.safe1.com/",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "loading resource from the same entity, referrer already trimmed by the referrer policy - don't expand the referrer",
+                "siteURL": "https://company1.com/path/to/something.html?cool=123",
+                "requestURL": "https://company1.co.uk/script.js",
+                "requestType": "script",
+                "refererHeaderValue": "https://company1.com/",
+                "expectRefererHeaderValue": "https://company1.com/",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "loading resource from the same entity, referrer removed by the referrer policy - don't add the referrer",
+                "siteURL": "https://company1.com/path/to/something.html?cool=123",
+                "requestURL": "https://company1.co.uk/script.js",
+                "requestType": "script",
+                "refererHeaderValue": null,
+                "expectRefererHeaderValue": null,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "loading resource from a tracking domain - referrer path, query and subdomain dropped",
+                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "requestURL": "https://tracker.com/script.js",
+                "requestType": "script",
+                "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
+                "expectRefererHeaderValue": "https://safe1.com/",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "loading resource from a tracking domain with default action 'ignore' - referrer path, query and subdomain should still be dropped",
+                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "requestURL": "https://unblockable-tracker.net/script.js",
+                "requestType": "script",
+                "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
+                "expectRefererHeaderValue": "https://safe1.com/",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "loading resource from a domain that's safelisted - referrer should not change",
+                "siteURL": "https://super.keep-referrer.com/path/to/something.html?cool=123",
+                "requestURL": "https://tracker.com/script.js",
+                "requestType": "script",
+                "refererHeaderValue": "https://super.keep-referrer.com/path/to/something.html?cool=123",
+                "expectRefererHeaderValue": "https://super.keep-referrer.com/path/to/something.html?cool=123",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "navigating to a safelisted domain - referrer should not change",
+                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "requestURL": "https://global-keep-referrer.com/script.js",
+                "requestType": "script",
+                "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
+                "expectRefererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "loading resource from a CNAME'd tracker - referrer path, query and subdomain dropped",
+                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "requestURL": "https://tracker.cname.com/script.js",
+                "requestType": "script",
+                "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
+                "expectRefererHeaderValue": "https://safe1.com/",
+                "exceptPlatforms": []
+            }
+        ]
     },
     "refererAPI": {
         "name": "document.referrer JavaScript API",

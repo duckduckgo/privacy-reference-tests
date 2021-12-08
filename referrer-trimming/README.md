@@ -18,7 +18,9 @@ Test suite specific fields:
 - `navigatingToURL` - 
 - `refererHeaderValue` - 
 - `expectRefererHeaderValue` - 
-
+- `siteURL`
+- `requestURL`
+- `requestType`
 ## Pseudo-code implementation
 
 ```
