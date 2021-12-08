@@ -198,7 +198,7 @@
             },
             {
                 "name": "loading resource from a CNAME'd tracker - referrer path, query and subdomain dropped",
-                "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
+                "siteURL": "https://cname.com/path/to/something.html?cool=123",
                 "requestURL": "https://tracker.cname.com/script.js",
                 "requestType": "script",
                 "refererHeaderValue": "https://super.safe1.com/path/to/something.html?cool=123",
