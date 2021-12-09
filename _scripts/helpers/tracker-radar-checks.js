@@ -1,3 +1,9 @@
+/**
+ * Basic sanity checks for Tracker Radar blocklists. Those are usually crafted by hend for purpose of testing and can have errors.
+ * 
+ * @param {{trackers: Object<string, any>, entities: Object<string, any>, domains: Object<string, string>}} trackerRadarObject 
+ * @returns {Array<{message:string, location: string}>}
+ */
 module.exports = (trackerRadarObject) => {
     const errors = [];
 
