@@ -16,11 +16,14 @@ Test suite specific fields:
 
 - `navigatingFromURL` - 
 - `navigatingToURL` - 
-- `refererHeaderValue` - 
-- `expectRefererHeaderValue` - 
-- `siteURL`
+- `referrerValue` - 
+- `expectReferrerHeaderValue` - 
+- `siteURL` - string - currently loaded website's URL (as seen in the URL bar)
+- `frameURL` - string - URL of an iframe in which the feature is operating (optional - if not set assume main frame context)
 - `requestURL`
-- `requestType`
+- `requestType` - mostly "script" or "main_frame" (navigational request), but can be any of https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/ResourceType - type of the resource being fetched
+- `referrerAPIValue` -
+- `expectReferrerAPIValue` -
 ## Pseudo-code implementation
 
 ```
