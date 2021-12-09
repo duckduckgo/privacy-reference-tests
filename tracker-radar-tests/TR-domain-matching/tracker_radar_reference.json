@@ -132,6 +132,7 @@
         },
         "Test Site for Surrogates": {
             "domains": [
+                "other-surrogates.test",
                 "surrogates.test"
             ],
             "prevalence": 0.1,
@@ -150,6 +151,7 @@
         "tracker.test": "Test Site for Tracker Blocking",
         "ignore.test": "Ignore Site for Tracker Blocking",
         "sub.ignore.test": "Ignore Site for Tracker Blocking",
-        "surrogates.test": "Test Site for Surrogates"
+        "surrogates.test": "Test Site for Surrogates",
+        "other-surrogates.test": "Test Site for Surrogates"
     }
 }
