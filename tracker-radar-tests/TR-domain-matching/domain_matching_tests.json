@@ -202,7 +202,10 @@
                 "siteURL": "https://random.test/",
                 "requestURL": "https://ignore.test/tracker?abc=2",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             }
         ]
     },
