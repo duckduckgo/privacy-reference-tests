@@ -1,4 +1,4 @@
-# Feature Name Tests
+# Global Privacy Control Tests
 
 Privacy Feature: https://app.asana.com/0/1198207348643509/1199115248606508/f
 
