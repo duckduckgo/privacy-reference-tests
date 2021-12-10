@@ -195,7 +195,10 @@
                 "siteURL": "https://third-party.site/",
                 "requestURL": "https://tracker.test/",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "block tracker path in ignore domain",
