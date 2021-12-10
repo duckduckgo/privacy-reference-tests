@@ -1,0 +1,21 @@
+{
+    "readme": "This configuration includes only the https upgrades feature.",
+    "https": {
+        "referrer": {
+            "state": "enabled",
+            "exceptions": [
+                {
+                    "domain": "quora.com",
+                    "reason": "requests to this domain should not be upgraded to https"
+                }
+            ]
+        }
+    },
+    "version": 1635943904459,
+    "unprotectedTemporary": [
+        {
+            "domain": "github.com",
+            "reason": "requests to this domain should not be upgraded to https"
+        }
+    ]
+}

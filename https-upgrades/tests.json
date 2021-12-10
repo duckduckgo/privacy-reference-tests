@@ -1,0 +1,98 @@
+{
+    "setName": {
+        "name": "name of the set",
+        "desc": "description of the set",
+        "tests": [
+            {
+                "name": "bloom filter match - should be upgraded",
+                "requestURL": "http://stackoverflow.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "https://stackoverflow.com/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "unknown subdomain - should not be upgraded",
+                "requestURL": "http://fake.stackoverflow.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://fake.stackoverflow.com/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "bloom filter allowlist match - should not be upgraded",
+                "requestURL": "http://hobbyncoffee.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://hobbyncoffee.com/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "already https - should not be modified",
+                "requestURL": "https://youtube.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "https://youtube.com/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "insecure web socket - should be upgraded",
+                "requestURL": "ws://facebook.com/path/socket?search=query&another=one#fragment",
+                "expectURL": "wss://facebook.com/path/socket?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "negative bloom filter match - should not be upgraded",
+                "requestURL": "http://example.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://example.com/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "negative bloom filter allowlist match - should be upgraded",
+                "requestURL": "http://awfulapp.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "https://awfulapp.com/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "remote config local excpetion - should not be upgraded",
+                "requestURL": "http://quora.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://quora.com/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "remote config unprotectedTemporary excpetion - should not be upgraded",
+                "requestURL": "http://github.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://github.com/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "localhost - should not be upgraded",
+                "requestURL": "http://localhost/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://localhost/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "localhost TLD - should not be upgraded",
+                "requestURL": "http://test.localhost/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://test.localhost/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "example TLD - should not be upgraded",
+                "requestURL": "http://test.example/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://test.example/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "test TLD - should not be upgraded",
+                "requestURL": "http://test.test/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://test.test/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Private IPv4 - should not be upgraded",
+                "requestURL": "http://169.254.1.1/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://169.254.1.1/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Private IPv6 - should not be upgraded",
+                "requestURL": "http://[fd7b:d40d:c3f5:4cfd::]/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://[fd7b:d40d:c3f5:4cfd::]/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            }
+        ]
+    }
+}
