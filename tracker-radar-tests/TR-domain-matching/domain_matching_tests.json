@@ -81,7 +81,10 @@
                 "siteURL": "https://randomsite123.com/",
                 "requestURL": "https://bad.cnames.test/breakage",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "random allows sub.cname tracker",
@@ -98,7 +101,10 @@
                 "siteURL": "https://randomsite123.com/",
                 "requestURL": "https://notbad.cnames.test/something",
                 "requestType": "script",
-                "expectAction": null
+                "expectAction": null,
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "tracker.test CNAME'd to ignore.test should still be blocked",
