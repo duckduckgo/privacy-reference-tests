@@ -116,8 +116,7 @@
                 "bad.third-party.site",
                 "broken.third-party.site",
                 "third-party.site",
-                "tracker.test",
-                "surrogates.test"
+                "tracker.test"
             ],
             "prevalence": 0.1,
             "displayName": "Test Site for Tracker Blocking"

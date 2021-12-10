@@ -28,6 +28,12 @@ module.exports = (trackerRadarObject) => {
             }
         }
 
+        const entityOwners = Object.keys(trackerRadarObject.entities).filter(owner => trackerRadarObject.entities[owner].domains.includes(domain));
+
+        if (entityOwners.length > 1) {
+            error(`${domain} has multiple owners`, 'entities', entityOwners[0]);
+        }
+
         const domainsOwnerName = trackerRadarObject.domains[domain];
 
         if (!domainsOwnerName) {
