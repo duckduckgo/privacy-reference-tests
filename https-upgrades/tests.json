@@ -1,96 +1,156 @@
 {
-    "setName": {
-        "name": "name of the set",
-        "desc": "description of the set",
+    "navigations": {
+        "name": "Navigations",
+        "desc": "Navigations should be upgraded to https",
         "tests": [
             {
                 "name": "bloom filter match - should be upgraded",
+                "siteURL": "http://stackoverflow.com/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://stackoverflow.com/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "https://stackoverflow.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "unknown subdomain - should not be upgraded",
+                "siteURL": "http://fake.stackoverflow.com/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://fake.stackoverflow.com/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "http://fake.stackoverflow.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "bloom filter allowlist match - should not be upgraded",
+                "siteURL": "http://hobbyncoffee.com/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://hobbyncoffee.com/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "http://hobbyncoffee.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "already https - should not be modified",
+                "siteURL": "https://youtube.com/path/file.html?search=query&another=one#fragment",
                 "requestURL": "https://youtube.com/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "https://youtube.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
-                "name": "insecure web socket - should be upgraded",
-                "requestURL": "ws://facebook.com/path/socket?search=query&another=one#fragment",
-                "expectURL": "wss://facebook.com/path/socket?search=query&another=one#fragment",
-                "exceptPlatforms": []
-            },
-            {
                 "name": "negative bloom filter match - should not be upgraded",
+                "siteURL": "http://example.com/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://example.com/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "http://example.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "negative bloom filter allowlist match - should be upgraded",
+                "siteURL": "http://awfulapp.com/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://awfulapp.com/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "https://awfulapp.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
-                "name": "remote config local excpetion - should not be upgraded",
+                "name": "remote config local exception - should not be upgraded",
+                "siteURL": "http://quora.com/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://quora.com/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "http://quora.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
-                "name": "remote config unprotectedTemporary excpetion - should not be upgraded",
+                "name": "remote config unprotectedTemporary exception - should not be upgraded",
+                "siteURL": "http://github.com/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://github.com/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "http://github.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "localhost - should not be upgraded",
+                "siteURL": "http://localhost/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://localhost/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "http://localhost/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "localhost TLD - should not be upgraded",
+                "siteURL": "http://test.localhost/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://test.localhost/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "http://test.localhost/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "example TLD - should not be upgraded",
+                "siteURL": "http://test.example/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://test.example/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "http://test.example/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "test TLD - should not be upgraded",
+                "siteURL": "http://test.test/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://test.test/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "http://test.test/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "Private IPv4 - should not be upgraded",
+                "siteURL": "http://169.254.1.1/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://169.254.1.1/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "http://169.254.1.1/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "Private IPv6 - should not be upgraded",
+                "siteURL": "http://[fd7b:d40d:c3f5:4cfd::]/path/file.html?search=query&another=one#fragment",
                 "requestURL": "http://[fd7b:d40d:c3f5:4cfd::]/path/file.html?search=query&another=one#fragment",
+                "requestType": "main_frame",
                 "expectURL": "http://[fd7b:d40d:c3f5:4cfd::]/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            }
+        ]
+    },
+    "subrequests": {
+        "name": "Subrequests",
+        "desc": "Subrequests should be upgraded to https",
+        "tests": [
+            {
+                "name": "bloom filter match - should be upgraded",
+                "siteURL": "http://test.site/path/file.html?search=query&another=one#fragment",
+                "requestURL": "http://stackoverflow.com/image.png",
+                "requestType": "image",
+                "expectURL": "https://stackoverflow.com/image.png",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "insecure web socket - should be upgraded",
+                "siteURL": "https://facebook.com/",
+                "requestURL": "ws://facebook.com/path/socket?search=query&another=one#fragment",
+                "requestType": "websocket",
+                "expectURL": "wss://facebook.com/path/socket?search=query&another=one#fragment",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Private IPv4 - should not be upgraded",
+                "siteURL": "http://test.site/",
+                "requestURL": "http://169.254.1.1/image.png",
+                "requestType": "image",
+                "expectURL": "http://169.254.1.1/image.png",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "remote config local exception - should not be upgraded",
+                "siteURL": "http://test.site/",
+                "requestURL": "http://quora.com/script.js",
+                "requestType": "script",
+                "expectURL": "http://quora.com/script.js",
                 "exceptPlatforms": []
             }
         ]
