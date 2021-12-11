@@ -146,11 +146,11 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "remote config local exception - should not be upgraded",
-                "siteURL": "http://test.site/",
-                "requestURL": "http://quora.com/script.js",
+                "name": "remote config - site matches local exception - should not be upgraded",
+                "siteURL": "http://quora.com/",
+                "requestURL": "http://facebook.com/script.js",
                 "requestType": "script",
-                "expectURL": "http://quora.com/script.js",
+                "expectURL": "http://facebook.com/script.js",
                 "exceptPlatforms": []
             }
         ]
