@@ -1,10 +1,9 @@
 {
-    "setName": {
-        "name": "name of the set",
-        "desc": "description of the set",
+    "reportURL": {
+        "name": "Broken site report testing",
         "tests": [
             {
-                "name": "name of the particular test",
+                "name": "basic ",
                 "siteURL": "https://example.test/",
                 "wasUpgraded": true,
                 "category": "content",
@@ -12,6 +11,15 @@
                 "surrogates": ["surrogate.domain.test"],
                 "atb": "v123-456g",
                 "blocklistVersion": "abc123",
+                "expectReportURLPrefix": "https://improving.duckduckgo.com/t/epbf",
+                "expectReportURLParams": [
+                    {"name": "category", "value": "content"},
+                    {"name": "siteUrl", "value": "https%3A%2F%2Fexample.test%2F"},
+                    {"name": "upgradedHttps", "value": "true"},
+                    {"name": "tds", "value": "abc123"},
+                    {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test,surrogate.domain.test"},
+                    {"name": "surrogates", "value": "surrogate.domain.test"}
+                ],
                 "exceptPlatforms": []
             }
         ]
