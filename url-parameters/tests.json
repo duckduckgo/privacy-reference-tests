@@ -49,7 +49,7 @@
             {
                 "name": "Param ALMOST matches",
                 "testURL": "http://www.example.com/test.html?fbclid1=test",
-                "expectURL": "",
+                "expectURL": "http://www.example.com/test.html?fbclid1=test",
                 "exceptPlatforms": []
             }
         ]
