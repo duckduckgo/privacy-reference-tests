@@ -33,6 +33,24 @@
                 "testURL": "http://www.example.com/test.html?utm_source=test&utm_medium=test&q=test&id=5",
                 "expectURL": "http://www.example.com/test.html?q=test&id=5",
                 "exceptPlatforms": []
+            },
+            {
+                "name": "Param is in URL path",
+                "testURL": "http://gclid.example.com/fbclid=123",
+                "expectURL": "",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Param has no value",
+                "testURL": "http://www.example.com/test.html?fbclid&gclid",
+                "expectURL": "http://www.example.com/test.html",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Param ALMOST matches",
+                "testURL": "http://www.example.com/test.html?fbclid1=test",
+                "expectURL": "",
+                "exceptPlatforms": []
             }
         ]
     }
