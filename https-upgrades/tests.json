@@ -37,10 +37,10 @@
             },
             {
                 "name": "negative bloom filter match - should not be upgraded",
-                "siteURL": "http://example.com/path/file.html?search=query&another=one#fragment",
-                "requestURL": "http://example.com/path/file.html?search=query&another=one#fragment",
+                "siteURL": "http://www.staggeringbeauty.com/path/file.html?search=query&another=one#fragment",
+                "requestURL": "http://www.staggeringbeauty.com/path/file.html?search=query&another=one#fragment",
                 "requestType": "main_frame",
-                "expectURL": "http://example.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://www.staggeringbeauty.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
