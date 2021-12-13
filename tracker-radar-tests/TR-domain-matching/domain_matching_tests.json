@@ -101,17 +101,17 @@
                 "siteURL": "https://randomsite123.com/",
                 "requestURL": "https://notbad.cnames.test/something",
                 "requestType": "script",
-                "expectAction": null,
-                "exceptPlatforms": [
-                    "ios-browser"
-                ]
+                "expectAction": null
             },
             {
                 "name": "tracker.test CNAME'd to ignore.test should still be blocked",
                 "siteURL": "https://randomsite123.com/",
                 "requestURL": "https://fake-ignore.tracker.test/spy/script.js",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "no blocklist entry for an uncloacked domain - request should not be blocked",
@@ -195,20 +195,14 @@
                 "siteURL": "https://third-party.site/",
                 "requestURL": "https://tracker.test/",
                 "requestType": "script",
-                "expectAction": "ignore",
-                "exceptPlatforms": [
-                    "ios-browser"
-                ]
+                "expectAction": "ignore"
             },
             {
                 "name": "block tracker path in ignore domain",
                 "siteURL": "https://random.test/",
                 "requestURL": "https://ignore.test/tracker?abc=2",
                 "requestType": "script",
-                "expectAction": "block",
-                "exceptPlatforms": [
-                    "ios-browser"
-                ]
+                "expectAction": "block"
             }
         ]
     },
