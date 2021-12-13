@@ -8,8 +8,8 @@
                 "siteURL": "https://example.test/",
                 "wasUpgraded": true,
                 "category": "content",
-                "blockedTrackers": [],
-                "surrogates": [],
+                "blockedTrackers": ["bad.tracker.test", "tracking.test"],
+                "surrogates": ["surrogate.domain.test"],
                 "atb": "v123-456g",
                 "blocklistVersion": "abc123",
                 "exceptPlatforms": []
