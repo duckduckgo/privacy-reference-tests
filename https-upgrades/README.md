@@ -9,7 +9,7 @@ This set of tests verifies implementation of HTTPS upgrading (Smarter Encryption
 - domains from the main bloom filter are upgraded,
 - domains from the main allowlist are not upgraded,
 - domains from the negative bloom filter are not upgraded,
-- domains from the nagetive allowlist are upgraded,
+- domains from the negative allowlist are upgraded,
 - domains allowlisted in the remote config are not upgraded,
 - local urls (localhost and friends) are not upgraded.
 
