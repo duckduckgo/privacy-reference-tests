@@ -41,6 +41,37 @@
                     {"name": "surrogates", "value": ""}
                 ],
                 "exceptPlatforms": []
+            },
+            {
+                "name": "Native app specific fields",
+                "siteURL": "http://unsafe.example.test/path/to/thing.html?query=value#item123",
+                "wasUpgraded": false,
+                "category": "images",
+                "blockedTrackers": ["bad.tracker.test", "tracking.test"],
+                "surrogates": ["surrogate.domain.test"],
+                "atb": "v123-456g",
+                "blocklistVersion": "abc123",
+                "manufacturer": "IBM",
+                "model": "305 RAMAC",
+                "os": "OS/2",
+                "gpcEnabled": true,
+                "expectReportURLPrefix": "https://improving.duckduckgo.com/t/epbf",
+                "expectReportURLParams": [
+                    {"name": "category", "value": "images"},
+                    {"name": "siteUrl", "value": "http%3A%2F%2Funsafe.example.test%2F"},
+                    {"name": "upgradedHttps", "value": "false"},
+                    {"name": "tds", "value": "abc123"},
+                    {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test,surrogate.domain.test"},
+                    {"name": "surrogates", "value": "surrogate.domain.test"},
+                    {"name": "manufacturer", "value": "IBM"},
+                    {"name": "model", "value": "305 RAMAC"},
+                    {"name": "os", "value": "OS%2F2"},
+                    {"name": "gpc", "value": "true"}
+                ],
+                "exceptPlatforms": [
+                    "web-extension",
+                    "safari-extension"
+                ]
             }
         ]
     }

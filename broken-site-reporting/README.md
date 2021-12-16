@@ -10,22 +10,47 @@ This set of tests verifies implementation of broken site reporting. In particula
 
 Test suite specific fields:
 
-- `featureName` - string - name of the privacy feature as defined in the config
-- `expectFeatureEnabled` - bool - if feature is expected to be disabled or not
+- `siteURL` - string - currently loaded website's URL (as seen in the URL bar)
+- `wasUpgraded` - bool - if request was upgraded to HTTPS by us or not
+- `category` - string - user picked breakage category e.g. 'content', 'images', 'paywall', 'login'
+- `blockedTrackers` - array of strings - array of hostnames of trackers that were blocked
+- `surrogates` - array of strings - array of hostnames of trackers that were replaced with a surrogate
+- `atb` - string - ATB cohort
+- `blocklistVersion` - string - version of the blocklist
+- `manufacturer` - string - name of the device manufacturer (native apps only)
+- `model` - string - name of the device model (native apps only)
+- `os` - string - operating system name (native apps only)
+- `gpcEnabled` - boolean - if GPC is enabled or not (native apps only) - GPC can be disabled by user or by remote config
+- `expectReportURLPrefix` - string - resulting report URL should be prefixed with this string
+- `expectReportURLParams` - Array of `{name: '', value: ''}` objects - resulting report URL should have the following set of URL parameters with matching values
 
 ## Pseudo-code implementation
 
 ```
 for $testSet in test.json
-  loadReferenceConfig('config_reference.json')
 
   for $test in $testSet
     if $test.exceptPlatforms includes 'current-platform'
         skip
 
-    $enabled = isFeatureEnabled(
-        feature=$test.featureName,
+    $url = getReportURL(
+        siteURL=$test.siteURL,
+        wasUpgraded=$test.wasUpgraded,
+        reportCategory=$test.category,
+        blockedTrackers=$test.blockedTrackers,
+        surrogates=$test.surrogates,
+        atb=$test.atb,
+        blocklistVersion=$test.blocklistVersion,
+        manufacturer=$test.manufacturer,
+        model=$test.model,
+        os=$test.os,
+        gpcEnabled=$test.gpcEnabled
     )
 
-    expect($enabled === $test.expectFeatureEnabled)
+    if $test.expectReportURLPrefix
+        expect($url.startsWith($test.expectReportURLPrefix))
+    
+    if $test.expectReportURLParams
+        for $param in $test.expectReportURLParams
+            expect($url.contains($param.name + '=' + $param.value))
 ```
