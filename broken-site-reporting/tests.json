@@ -3,7 +3,7 @@
         "name": "Broken site report testing",
         "tests": [
             {
-                "name": "basic ",
+                "name": "Simple test with a common set of fields",
                 "siteURL": "https://example.test/",
                 "wasUpgraded": true,
                 "category": "content",
@@ -19,6 +19,26 @@
                     {"name": "tds", "value": "abc123"},
                     {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test,surrogate.domain.test"},
                     {"name": "surrogates", "value": "surrogate.domain.test"}
+                ],
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Making sure that siteURL gets trimmed - path, query and fragment should be dropped",
+                "siteURL": "https://sub.example.test/path/to/thing.html?query=value#item123",
+                "wasUpgraded": false,
+                "category": "paywall",
+                "blockedTrackers": [],
+                "surrogates": [],
+                "atb": "v123-456g",
+                "blocklistVersion": "abc123",
+                "expectReportURLPrefix": "https://improving.duckduckgo.com/t/epbf",
+                "expectReportURLParams": [
+                    {"name": "category", "value": "paywall"},
+                    {"name": "siteUrl", "value": "https%3A%2F%2Fsub.example.test%2F"},
+                    {"name": "upgradedHttps", "value": "false"},
+                    {"name": "tds", "value": "abc123"},
+                    {"name": "blockedTrackers", "value": ""},
+                    {"name": "surrogates", "value": ""}
                 ],
                 "exceptPlatforms": []
             }
