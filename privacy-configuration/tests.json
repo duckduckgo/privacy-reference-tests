@@ -189,7 +189,8 @@
                     "safari-extension",
                     "ios-browser",
                     "macos-browser",
-                    "windows-browser"
+                    "windows-browser",
+                    "web-extension"
                 ]
             }
         ]
@@ -384,7 +385,8 @@
                     "safari-extension",
                     "ios-browser",
                     "macos-browser",
-                    "windows-browser"
+                    "windows-browser",
+                    "web-extension"
                 ]
             }
         ]
