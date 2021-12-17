@@ -37,7 +37,7 @@
             {
                 "name": "Param is in URL path",
                 "testURL": "http://gclid.example.com/fbclid=123",
-                "expectURL": "",
+                "expectURL": "http://gclid.example.com/fbclid=123",
                 "exceptPlatforms": []
             },
             {
