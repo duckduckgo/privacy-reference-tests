@@ -1,5 +1,5 @@
 {
-    "readme": "This configuration has only tracking link features",
+    "readme": "This configuration has only the ampLinks feature",
     "features": {
         "ampLinks": {
             "state": "enabled",

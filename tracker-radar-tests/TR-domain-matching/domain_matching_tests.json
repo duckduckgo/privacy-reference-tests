@@ -87,7 +87,10 @@
                 "siteURL": "https://randomsite123.com/",
                 "requestURL": "https://bad.cnames.test/breakage",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "random allows sub.cname tracker",
@@ -111,7 +114,10 @@
                 "siteURL": "https://randomsite123.com/",
                 "requestURL": "https://fake-ignore.tracker.test/spy/script.js",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "no blocklist entry for an uncloacked domain - request should not be blocked",
