@@ -17,7 +17,7 @@
                     {"name": "siteUrl", "value": "https%3A%2F%2Fexample.test%2F"},
                     {"name": "upgradedHttps", "value": "true"},
                     {"name": "tds", "value": "abc123"},
-                    {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test,surrogate.domain.test"},
+                    {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test"},
                     {"name": "surrogates", "value": "surrogate.domain.test"}
                 ],
                 "exceptPlatforms": []
@@ -53,7 +53,7 @@
                 "blocklistVersion": "abc123",
                 "manufacturer": "IBM",
                 "model": "305 RAMAC",
-                "os": "OS/2",
+                "os": "12",
                 "gpcEnabled": true,
                 "expectReportURLPrefix": "https://improving.duckduckgo.com/t/epbf",
                 "expectReportURLParams": [
@@ -61,11 +61,11 @@
                     {"name": "siteUrl", "value": "http%3A%2F%2Funsafe.example.test%2F"},
                     {"name": "upgradedHttps", "value": "false"},
                     {"name": "tds", "value": "abc123"},
-                    {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test,surrogate.domain.test"},
+                    {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test"},
                     {"name": "surrogates", "value": "surrogate.domain.test"},
                     {"name": "manufacturer", "value": "IBM"},
                     {"name": "model", "value": "305 RAMAC"},
-                    {"name": "os", "value": "OS%2F2"},
+                    {"name": "os", "value": "12"},
                     {"name": "gpc", "value": "true"}
                 ],
                 "exceptPlatforms": [
