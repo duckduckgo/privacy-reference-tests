@@ -17,8 +17,9 @@ This set of tests verifies implementation of HTTPS upgrading (Smarter Encryption
 
 Files in the folder:
 - `config_reference.json` - reference remote config with https exceptions
-- `https_bloomfilter_reference.json` - the main bloom filter with hostnames that should be upgraded
+- `https_bloomfilter_reference.json` and `https_bloomfilter_reference.bin` - the main bloom filter in two formats with hostnames that should be upgraded
 - `https_allowlist_reference.json` - allowlist to the main bloom filter with hostnames that should not be upgraded
+- `https_bloomfilter_spec_reference.json` - specificication of the `.bin` bloom filter
 - `https_negative_allowlist_reference.json` - inverse/negative boom filter with hostnames that should not be upgraded
 - `https_negative_bloomfilter_reference.json` - allowlist to the negative bloom filter with hostnames that should be upgraded
 
