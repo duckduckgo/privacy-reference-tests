@@ -37,20 +37,20 @@
             },
             {
                 "name": "negative bloom filter match - should not be upgraded",
-                "siteURL": "http://www.staggeringbeauty.com/path/file.html?search=query&another=one#fragment",
-                "requestURL": "http://www.staggeringbeauty.com/path/file.html?search=query&another=one#fragment",
+                "siteURL": "http://negativetest.com/path/file.html?search=query&another=one#fragment",
+                "requestURL": "http://negativetest.com/path/file.html?search=query&another=one#fragment",
                 "requestType": "main_frame",
-                "expectURL": "http://www.staggeringbeauty.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://negativetest.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": [
                     "android-browser"
                 ]
             },
             {
                 "name": "negative bloom filter allowlist match - should be upgraded",
-                "siteURL": "http://awfulapp.com/path/file.html?search=query&another=one#fragment",
-                "requestURL": "http://awfulapp.com/path/file.html?search=query&another=one#fragment",
+                "siteURL": "http://s.secondnegative.com/path/file.html?search=query&another=one#fragment",
+                "requestURL": "http://s.secondnegative.com/path/file.html?search=query&another=one#fragment",
                 "requestType": "main_frame",
-                "expectURL": "https://awfulapp.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "https://s.secondnegative.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": [
                     "android-browser"
                 ]

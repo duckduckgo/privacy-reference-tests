@@ -55,3 +55,20 @@ for $testSet in test.json
 
     expect($upgradedRequestURL === $test.expectURL)
 ```
+
+## Bloom filter sources
+
+Main bloom filter was built based on this list:
+
+firsttest.com
+secondtest.com
+secure.thirdtest.com
+s.fourthtest.com
+fifth-test.com
+a.b.c.d.e.sixthtest.com
+
+And negative bloom filter was built based on this list:
+
+negativetest.com
+s.secondnegative.com
+thirdnegative.com
