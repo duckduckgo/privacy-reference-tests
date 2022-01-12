@@ -52,5 +52,5 @@ for $testSet in test.json
     
     if $test.expectReportURLParams
         for $param in $test.expectReportURLParams
-            expect($url.contains($param.name + '=' + $param.value))
+            expect($url.matchesRegex(/[?&] + $param.name + '=' + $param.value + [&$]/))
 ```

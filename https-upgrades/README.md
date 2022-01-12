@@ -17,8 +17,9 @@ This set of tests verifies implementation of HTTPS upgrading (Smarter Encryption
 
 Files in the folder:
 - `config_reference.json` - reference remote config with https exceptions
-- `https_bloomfilter_reference.json` - the main bloom filter with hostnames that should be upgraded
+- `https_bloomfilter_reference.json` and `https_bloomfilter_reference.bin` - the main bloom filter in two formats with hostnames that should be upgraded
 - `https_allowlist_reference.json` - allowlist to the main bloom filter with hostnames that should not be upgraded
+- `https_bloomfilter_spec_reference.json` - specificication of the `.bin` bloom filter
 - `https_negative_allowlist_reference.json` - inverse/negative boom filter with hostnames that should not be upgraded
 - `https_negative_bloomfilter_reference.json` - allowlist to the negative bloom filter with hostnames that should be upgraded
 
@@ -54,3 +55,25 @@ for $testSet in test.json
 
     expect($upgradedRequestURL === $test.expectURL)
 ```
+
+## Bloom filter sources
+
+Main bloom filter was built based on this list:
+
+firsttest.com
+secondtest.com
+secure.thirdtest.com
+s.fourthtest.com
+fifth-test.com
+a.b.c.d.e.sixthtest.com
+
+And negative bloom filter was built based on this list:
+
+negativetest.com
+s.secondnegative.com
+thirdnegative.com
+
+## Platform exceptions
+
+- Android doesn't support negative bloom filter because it's only needed for platforms where Smarter Encryption API is available
+- Android doesn't support updating subrequests because of WebView limitations (request can be canceled, but not modified)

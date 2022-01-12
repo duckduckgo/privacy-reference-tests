@@ -32,3 +32,7 @@ for $testSet in test.json
 
     expect($enabled === $test.expectFeatureEnabled)
 ```
+
+## Platform exceptions
+
+- Explanations for any platform exceptions (`exceptPlatforms`)

@@ -5,66 +5,70 @@
         "tests": [
             {
                 "name": "bloom filter match - should be upgraded",
-                "siteURL": "http://stackoverflow.com/path/file.html?search=query&another=one#fragment",
-                "requestURL": "http://stackoverflow.com/path/file.html?search=query&another=one#fragment",
+                "siteURL": "http://firsttest.com/path/file.html?search=query&another=one#fragment",
+                "requestURL": "http://firsttest.com/path/file.html?search=query&another=one#fragment",
                 "requestType": "main_frame",
-                "expectURL": "https://stackoverflow.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "https://firsttest.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "unknown subdomain - should not be upgraded",
-                "siteURL": "http://fake.stackoverflow.com/path/file.html?search=query&another=one#fragment",
-                "requestURL": "http://fake.stackoverflow.com/path/file.html?search=query&another=one#fragment",
+                "siteURL": "http://fake.firsttest.com/path/file.html?search=query&another=one#fragment",
+                "requestURL": "http://fake.firsttest.com/path/file.html?search=query&another=one#fragment",
                 "requestType": "main_frame",
-                "expectURL": "http://fake.stackoverflow.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://fake.firsttest.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "bloom filter allowlist match - should not be upgraded",
-                "siteURL": "http://hobbyncoffee.com/path/file.html?search=query&another=one#fragment",
-                "requestURL": "http://hobbyncoffee.com/path/file.html?search=query&another=one#fragment",
+                "siteURL": "http://secondtest.com/path/file.html?search=query&another=one#fragment",
+                "requestURL": "http://secondtest.com/path/file.html?search=query&another=one#fragment",
                 "requestType": "main_frame",
-                "expectURL": "http://hobbyncoffee.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://secondtest.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "already https - should not be modified",
-                "siteURL": "https://youtube.com/path/file.html?search=query&another=one#fragment",
-                "requestURL": "https://youtube.com/path/file.html?search=query&another=one#fragment",
+                "siteURL": "https://firsttest.com/path/file.html?search=query&another=one#fragment",
+                "requestURL": "https://firsttest.com/path/file.html?search=query&another=one#fragment",
                 "requestType": "main_frame",
-                "expectURL": "https://youtube.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "https://firsttest.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "negative bloom filter match - should not be upgraded",
-                "siteURL": "http://www.staggeringbeauty.com/path/file.html?search=query&another=one#fragment",
-                "requestURL": "http://www.staggeringbeauty.com/path/file.html?search=query&another=one#fragment",
+                "siteURL": "http://negativetest.com/path/file.html?search=query&another=one#fragment",
+                "requestURL": "http://negativetest.com/path/file.html?search=query&another=one#fragment",
                 "requestType": "main_frame",
-                "expectURL": "http://www.staggeringbeauty.com/path/file.html?search=query&another=one#fragment",
-                "exceptPlatforms": []
+                "expectURL": "http://negativetest.com/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": [
+                    "android-browser"
+                ]
             },
             {
                 "name": "negative bloom filter allowlist match - should be upgraded",
-                "siteURL": "http://awfulapp.com/path/file.html?search=query&another=one#fragment",
-                "requestURL": "http://awfulapp.com/path/file.html?search=query&another=one#fragment",
+                "siteURL": "http://s.secondnegative.com/path/file.html?search=query&another=one#fragment",
+                "requestURL": "http://s.secondnegative.com/path/file.html?search=query&another=one#fragment",
                 "requestType": "main_frame",
-                "expectURL": "https://awfulapp.com/path/file.html?search=query&another=one#fragment",
-                "exceptPlatforms": []
+                "expectURL": "https://s.secondnegative.com/path/file.html?search=query&another=one#fragment",
+                "exceptPlatforms": [
+                    "android-browser"
+                ]
             },
             {
                 "name": "remote config local exception - should not be upgraded",
-                "siteURL": "http://quora.com/path/file.html?search=query&another=one#fragment",
-                "requestURL": "http://quora.com/path/file.html?search=query&another=one#fragment",
+                "siteURL": "http://secure.thirdtest.com/path/file.html?search=query&another=one#fragment",
+                "requestURL": "http://secure.thirdtest.com/path/file.html?search=query&another=one#fragment",
                 "requestType": "main_frame",
-                "expectURL": "http://quora.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://secure.thirdtest.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
                 "name": "remote config unprotectedTemporary exception - should not be upgraded",
-                "siteURL": "http://github.com/path/file.html?search=query&another=one#fragment",
-                "requestURL": "http://github.com/path/file.html?search=query&another=one#fragment",
+                "siteURL": "http://s.fourthtest.com/path/file.html?search=query&another=one#fragment",
+                "requestURL": "http://s.fourthtest.com/path/file.html?search=query&another=one#fragment",
                 "requestType": "main_frame",
-                "expectURL": "http://github.com/path/file.html?search=query&another=one#fragment",
+                "expectURL": "http://s.fourthtest.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": []
             },
             {
@@ -124,18 +128,22 @@
             {
                 "name": "bloom filter match - should be upgraded",
                 "siteURL": "http://test.site/path/file.html?search=query&another=one#fragment",
-                "requestURL": "http://stackoverflow.com/image.png",
+                "requestURL": "http://firsttest.com/image.png",
                 "requestType": "image",
-                "expectURL": "https://stackoverflow.com/image.png",
-                "exceptPlatforms": []
+                "expectURL": "https://firsttest.com/image.png",
+                "exceptPlatforms": [
+                    "android-browser"
+                ]
             },
             {
                 "name": "insecure web socket - should be upgraded",
-                "siteURL": "https://facebook.com/",
-                "requestURL": "ws://facebook.com/path/socket?search=query&another=one#fragment",
+                "siteURL": "https://fifth-test.com/",
+                "requestURL": "ws://fifth-test.com/path/socket?search=query&another=one#fragment",
                 "requestType": "websocket",
-                "expectURL": "wss://facebook.com/path/socket?search=query&another=one#fragment",
-                "exceptPlatforms": []
+                "expectURL": "wss://fifth-test.com/path/socket?search=query&another=one#fragment",
+                "exceptPlatforms": [
+                    "android-browser"
+                ]
             },
             {
                 "name": "Private IPv4 - should not be upgraded",
@@ -143,15 +151,19 @@
                 "requestURL": "http://169.254.1.1/image.png",
                 "requestType": "image",
                 "expectURL": "http://169.254.1.1/image.png",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                    "android-browser"
+                ]
             },
             {
                 "name": "remote config - site matches local exception - should not be upgraded",
-                "siteURL": "http://quora.com/",
-                "requestURL": "http://facebook.com/script.js",
+                "siteURL": "http://secure.thirdtest.com/",
+                "requestURL": "http://firsttest.com/script.js",
                 "requestType": "script",
-                "expectURL": "http://facebook.com/script.js",
-                "exceptPlatforms": []
+                "expectURL": "http://firsttest.com/script.js",
+                "exceptPlatforms": [
+                    "android-browser"
+                ]
             }
         ]
     }
