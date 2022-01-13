@@ -5,7 +5,7 @@
             "settings": {
                 "excludedCookieDomains": [
                     {
-                        "domain": "excluded.cookie.test",
+                        "domain": "excluded-cookie-tracker.com",
                         "reason": "Site breakage"
                     }
                 ]

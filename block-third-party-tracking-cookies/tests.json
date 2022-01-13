@@ -85,6 +85,16 @@
                 "exceptPlatforms": []
             },
             {
+                "name": "cookie header sent to a tracker excluded via excludedCookieDomains - subdomain match",
+                "siteURL": "https://example.com/path",
+                "requestURL": "https://sub.excluded-cookie-tracker.com/track",
+                "requestHeaders": [
+                    {"name": "Cookie", "value": "PHPSESSID=298zf09hf012fh2; csrftoken=u32t4o3tb3gg43; _gat=1"}
+                ],
+                "expectCookieHeadersRemoved": false,
+                "exceptPlatforms": []
+            },
+            {
                 "name": "cookie header sent to a CNAMED tracker",
                 "siteURL": "https://example.com/path",
                 "requestURL": "https://tracker.cname.com/track",
@@ -175,6 +185,16 @@
                 "name": "set-cookie header received from a tracker excluded via excludedCookieDomains",
                 "siteURL": "https://example.com/path",
                 "requestURL": "https://excluded-cookie-tracker.com/track",
+                "responseHeaders": [
+                    {"name": "Set-Cookie", "value": "__Secure-ID=123; Secure; Domain=excluded-cookie-tracker.com"}
+                ],
+                "expectSetCookieHeadersRemoved": false,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "set-cookie header received from a tracker excluded via excludedCookieDomains - subdomain match",
+                "siteURL": "https://example.com/path",
+                "requestURL": "https://sub.excluded-cookie-tracker.com/track",
                 "responseHeaders": [
                     {"name": "Set-Cookie", "value": "__Secure-ID=123; Secure; Domain=excluded-cookie-tracker.com"}
                 ],
