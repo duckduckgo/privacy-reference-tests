@@ -246,7 +246,7 @@
                 "siteURL": "https://exception.local.site/path?query=value",
                 "frameURL": "https://tracker.com/track",
                 "setDocumentCookie": "favorite_food=tripe",
-                "expectDocumentCookieSet": false,
+                "expectDocumentCookieSet": true,
                 "exceptPlatforms": []
             },
             {
@@ -254,7 +254,7 @@
                 "siteURL": "https://exception.global.site/path?query=value",
                 "frameURL": "https://tracker.com/track",
                 "setDocumentCookie": "favorite_food=tripe",
-                "expectDocumentCookieSet": false,
+                "expectDocumentCookieSet": true,
                 "exceptPlatforms": []
             },
             {
@@ -262,7 +262,7 @@
                 "siteURL": "https://tracker.com/some-page.html",
                 "frameURL": "https://tracker.com/track",
                 "setDocumentCookie": "favorite_food=tripe",
-                "expectDocumentCookieSet": false,
+                "expectDocumentCookieSet": true,
                 "exceptPlatforms": []
             },
             {
@@ -270,7 +270,7 @@
                 "siteURL": "https://example.com/path",
                 "frameURL": "https://excluded-cookie-tracker.com/track",
                 "setDocumentCookie": "favorite_food=tripe",
-                "expectDocumentCookieSet": false,
+                "expectDocumentCookieSet": true,
                 "exceptPlatforms": []
             },
             {
@@ -278,7 +278,7 @@
                 "siteURL": "https://example.com/path",
                 "frameURL": "https://tracker.cname.com/track",
                 "setDocumentCookie": "favorite_food=tripe",
-                "expectDocumentCookieSet": true,
+                "expectDocumentCookieSet": false,
                 "exceptPlatforms": []
             }
         ]
