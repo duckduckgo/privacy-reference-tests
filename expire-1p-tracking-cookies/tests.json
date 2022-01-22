@@ -7,7 +7,7 @@
                 "name": "below treshold",
                 "siteURL": "http://example.com/",
                 "scriptURL": "http://tracker.com/script.js",
-                "cookieString": "foo=bar; Max-Age=1000; Domain=.example.com; Path=/; HttpOnly; Secure",
+                "cookieString": "foo=bar; Max-Age=1000; Domain=example.com; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 1000,
                 "exceptPlatforms": []
@@ -16,7 +16,7 @@
                 "name": "above treshold",
                 "siteURL": "http://example.com/",
                 "scriptURL": "http://tracker.com/script.js",
-                "cookieString": "foo=bar; Max-Age=900000; Domain=.example.com; Path=/; HttpOnly; Secure",
+                "cookieString": "foo=bar; Max-Age=900000; Domain=example.com; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 86400,
                 "exceptPlatforms": []
@@ -25,7 +25,7 @@
                 "name": "same origin",
                 "siteURL": "http://tracker.com/",
                 "scriptURL": "http://tracker.com/script.js",
-                "cookieString": "foo=bar; Max-Age=900000; Domain=.tracker.com; Path=/; HttpOnly; Secure",
+                "cookieString": "foo=bar; Max-Age=900000; Domain=tracker.com; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 900000,
                 "exceptPlatforms": []
@@ -34,7 +34,7 @@
                 "name": "site safelisted locally",
                 "siteURL": "http://local-exception.test/",
                 "scriptURL": "http://tracker.com/script.js",
-                "cookieString": "foo=bar; Max-Age=900000; Domain=.local-exception.test; Path=/; HttpOnly; Secure",
+                "cookieString": "foo=bar; Max-Age=900000; Domain=local-exception.test; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 900000,
                 "exceptPlatforms": []
@@ -43,7 +43,7 @@
                 "name": "site safelisted globally",
                 "siteURL": "http://global-exception.test/",
                 "scriptURL": "http://tracker.com/script.js",
-                "cookieString": "foo=bar; Max-Age=900000; Domain=.global-exception.test; Path=/; HttpOnly; Secure",
+                "cookieString": "foo=bar; Max-Age=900000; Domain=global-exception.test; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 900000,
                 "exceptPlatforms": []
@@ -52,7 +52,7 @@
                 "name": "not a tracking script",
                 "siteURL": "http://example.com/",
                 "scriptURL": "http://not-a-tracker.com/script.js",
-                "cookieString": "foo=bar; Max-Age=900000; Domain=.example.com; Path=/; HttpOnly; Secure",
+                "cookieString": "foo=bar; Max-Age=900000; Domain=example.com; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 900000,
                 "exceptPlatforms": []
@@ -61,7 +61,7 @@
                 "name": "above treshold - cnamed tracking script",
                 "siteURL": "http://example.com/",
                 "scriptURL": "http://tracker.cname.com/script.js",
-                "cookieString": "foo=bar; Max-Age=900000; Domain=.example.com; Path=/; HttpOnly; Secure",
+                "cookieString": "foo=bar; Max-Age=900000; Domain=example.com; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 86400,
                 "exceptPlatforms": []
@@ -70,7 +70,7 @@
                 "name": "above treshold - unblockable tracking script (action=ignore)",
                 "siteURL": "http://example.com/",
                 "scriptURL": "http://unblockable-tracker.net/script.js",
-                "cookieString": "foo=bar; Max-Age=900000; Domain=.example.com; Path=/; HttpOnly; Secure",
+                "cookieString": "foo=bar; Max-Age=900000; Domain=example.com; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 86400,
                 "exceptPlatforms": []
@@ -79,7 +79,7 @@
                 "name": "above treshold - expiration set to a specific date",
                 "siteURL": "http://example.com/",
                 "scriptURL": "http://tracker.com/script.js",
-                "cookieString": "foo=bar; expires=Wed, 21 Aug 2030 20:00:00 UTC; Domain=.example.com; Path=/; HttpOnly; Secure",
+                "cookieString": "foo=bar; expires=Wed, 21 Aug 2030 20:00:00 UTC; Domain=example.com; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 86400,
                 "exceptPlatforms": []
@@ -88,7 +88,7 @@
                 "name": "below treshold - expiration set in the past",
                 "siteURL": "http://example.com/",
                 "scriptURL": "http://tracker.com/script.js",
-                "cookieString": "foo=bar; expires=Thu, 01-Jan-1970 00:00:01 GMT; Domain=.example.com; Path=/; HttpOnly; Secure",
+                "cookieString": "foo=bar; expires=Thu, 01-Jan-1970 00:00:01 GMT; Domain=example.com; Path=/; Secure",
                 "expectCookieSet": false,
                 "exceptPlatforms": []
             }
