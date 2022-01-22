@@ -1,5 +1,5 @@
 {
-    "expire1pTrackingCookies": {
+    "expireFirstPartyTrackingCookies": {
         "name": "Expire 1p tracking cookies",
         "desc": "Expiration date should be modified for 1p cookies set by trackers according to the policy from config",
         "tests": [
