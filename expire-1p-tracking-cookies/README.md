@@ -15,9 +15,11 @@ This set of tests verifies implementation of expiring first party cookies set by
 
 Test suite specific fields:
 
-- `featureName` - string - name of the privacy feature as defined in the config
-- …
-- `expectFeatureEnabled` - bool - if feature is expected to be disabled or not
+- `siteURL` - string - currently loaded website's URL (as seen in the URL bar)
+- `scriptURL` - string - URL of the script setting the cookie
+- `cookieString` - string - cookie creation string, as assigned to `document.cookie`
+- `expectCookieSet` - boolean - if cookie is expected to be created/stored
+- `expectExpiryToBe` - number - expeced expiry date in seconds from when the cookie was set
 
 ## Pseudo-code implementation
 
