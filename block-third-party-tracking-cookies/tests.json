@@ -102,7 +102,9 @@
                     {"name": "Cookie", "value": "PHPSESSID=298zf09hf012fh2; csrftoken=u32t4o3tb3gg43; _gat=1"}
                 ],
                 "expectCookieHeadersRemoved": true,
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                    "web-extension"
+                ]
             }
         ]
     },
@@ -209,7 +211,9 @@
                     {"name": "Set-Cookie", "value": "__Secure-ID=123; Secure; Domain=tracker.cname.com"}
                 ],
                 "expectSetCookieHeadersRemoved": true,
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                    "web-extension"
+                ]
             }
         ]
     },
@@ -279,7 +283,9 @@
                 "frameURL": "https://tracker.cname.com/track",
                 "setDocumentCookie": "favorite_food=tripe",
                 "expectDocumentCookieSet": false,
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                    "web-extension"
+                ]
             }
         ]
     }
