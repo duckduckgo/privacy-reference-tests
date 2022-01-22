@@ -23,7 +23,7 @@
             },
             {
                 "name": "same origin - expiry not modified",
-                "siteURL": "https://tracker.test/",
+                "siteURL": "https://tracker.com/",
                 "scriptURL": "https://tracker.com/script.js",
                 "cookieString": "foo=bar; Max-Age=900000; Domain=tracker.com; Path=/; Secure",
                 "expectCookieSet": true,
@@ -32,9 +32,9 @@
             },
             {
                 "name": "same entity - expiry not modified",
-                "siteURL": "https://tracker.com/",
+                "siteURL": "https://tracker.test/",
                 "scriptURL": "https://tracker.com/script.js",
-                "cookieString": "foo=bar; Max-Age=900000; Domain=tracker.com; Path=/; Secure",
+                "cookieString": "foo=bar; Max-Age=900000; Domain=tracker.test; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 900000,
                 "exceptPlatforms": []
