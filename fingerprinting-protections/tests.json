@@ -1,0 +1,146 @@
+{
+    "batteryAPI": {
+        "name": "Battery API",
+        "desc": "description of the set",
+        "tests": [
+            {
+                "name": "charging property",
+                "property": "navigator.getBattery().then(battery => battery.charging)",
+                "expectPropertyValue": "true",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "chargingTime property",
+                "property": "navigator.getBattery().then(battery => battery.chargingTime)",
+                "expectPropertyValue": "0",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "dischargingTime property",
+                "property": "navigator.getBattery().then(battery => battery.dischargingTime)",
+                "expectPropertyValue": "Infinity",
+                "exceptPlatforms": []
+            }
+        ]
+    },
+    "hardwareAPIs": {
+        "name": "Hardware APIs",
+        "desc": "description of the set",
+        "tests": [
+            {
+                "name": "keyboard property",
+                "property": "navigator.keyboard",
+                "expectPropertyValue": "undefined",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "keyboard property - prototype access",
+                "property": "Navigator.prototype.keyboard",
+                "expectPropertyValue": "undefined",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "hardwareConcurrency property",
+                "property": "navigator.hardwareConcurrency",
+                "expectPropertyValue": "2",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "hardwareConcurrency property - prototype access",
+                "property": "Navigator.prototype.hardwareConcurrency",
+                "expectPropertyValue": "2",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "deviceMemory property",
+                "property": "navigator.deviceMemory",
+                "expectPropertyValue": "8",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "deviceMemory property - prototype access",
+                "property": "Navigator.prototype.deviceMemory",
+                "expectPropertyValue": "8",
+                "exceptPlatforms": []
+            }
+        ]
+    },
+    "screenAPI": {
+        "name": "Screen APIs",
+        "desc": "description of the set",
+        "tests": [
+            {
+                "name": "availTop property",
+                "property": "screen.availTop",
+                "expectPropertyValue": "0",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "availTop property - prototype access",
+                "property": "Screen.prototype.availTop",
+                "expectPropertyValue": "0",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "availLeft property",
+                "property": "screen.availLeft",
+                "expectPropertyValue": "0",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "availLeft property - prototype access",
+                "property": "Screen.prototype.availLeft",
+                "expectPropertyValue": "0",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "availWidth property",
+                "property": "screen.availWidth === screen.width",
+                "expectPropertyValue": "true",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "availWidth property - prototype access",
+                "property": "Screen.prototype.availWidth === screen.width",
+                "expectPropertyValue": "true",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "availHeight property",
+                "property": "screen.availHeight === screen.height",
+                "expectPropertyValue": "true",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "availHeight property - prototype access",
+                "property": "Screen.prototype.availHeight === screen.height",
+                "expectPropertyValue": "true",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "colorDepth property",
+                "property": "screen.colorDepth",
+                "expectPropertyValue": "24",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "colorDepth property - prototype access",
+                "property": "Screen.prototype.colorDepth",
+                "expectPropertyValue": "24",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "pixelDepth property",
+                "property": "screen.pixelDepth",
+                "expectPropertyValue": "24",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "pixelDepth property - prototype access",
+                "property": "Screen.prototype.pixelDepth",
+                "expectPropertyValue": "24",
+                "exceptPlatforms": []
+            }
+        ]
+    }
+}
