@@ -17,27 +17,41 @@ Test suite specific fields:
 
 - `siteURL` - string - currently loaded website's URL (as seen in the URL bar)
 - `scriptURL` - string - URL of the script setting the cookie
-- `cookieString` - string - cookie creation string, as assigned to `document.cookie`
+- `setDocumentCookie` - string - cookie creation string, as assigned to `document.cookie`
 - `expectCookieSet` - boolean - if cookie is expected to be created/stored
-- `expectExpiryToBe` - number - expeced expiry date in seconds from when the cookie was set
+- `expectExpiryToBe` - number - expeced expiry date in seconds from when the cookie was set ("-1" if session cookie is expected)
 
 ## Pseudo-code implementation
 
 ```
 for $testSet in test.json
   loadReferenceConfig('config_reference.json')
+  loadReferenceBlocklist('tracker_radar_reference.json')
 
   for $test in $testSet
     if $test.exceptPlatforms includes 'current-platform'
         skip
 
-    $enabled = isFeatureEnabled(
-        feature=$test.featureName,
+    $page = createPage(
+        siteURL = $test.siteURL,
     )
 
-    expect($enabled === $test.expectFeatureEnabled)
+    $page.evalAs('document.cookie = ' + $test.setDocumentCookie, $test.scriptURL)
+
+    if ($test.expectCookieSet) {
+        cookie = $page.getCookies()[0]
+        
+        if ($test.expectExpiryToBe === -1) {
+            expect(cookie.isSessionCookie()).toBe(true)
+        } else {
+            expect(cookie.isSessionCookie()).toBe(false)
+            expect(cookie.expiresInSeconds()).toBe($test.expectExpiryToBe)
+        }
+    } else {
+        expect($page.getCookies().length).toBe(0)
+    }
 ```
 
 ## Platform exceptions
 
-- Explanations for any platform exceptions (`exceptPlatforms`)
+- web extension is not validating the same entity rule
