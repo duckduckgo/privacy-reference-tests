@@ -37,7 +37,9 @@
                 "cookieString": "foo=bar; Max-Age=900000; Domain=tracker.test; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 900000,
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                    "web-extension"
+                ]
             },
             {
                 "name": "site safelisted locally - expiry not modified",
@@ -99,6 +101,14 @@
                 "scriptURL": "https://tracker.com/script.js",
                 "cookieString": "foo=bar; expires=Thu, 01-Jan-1970 00:00:01 GMT; Domain=example.com; Path=/; Secure",
                 "expectCookieSet": false,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "session cookie - expiry not modified",
+                "siteURL": "https://example.com/",
+                "scriptURL": "https://tracker.com/script.js",
+                "cookieString": "foo=bar",
+                "expectCookieSet": true,
                 "exceptPlatforms": []
             }
         ]
