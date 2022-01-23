@@ -15,7 +15,7 @@
             "default": "block",
             "rules": [
                 {
-                    "rule": "tracker\\.com\\/track",
+                    "rule": "tracker\\.com\\/script.js",
                     "action": "ignore"
                 }
             ]
