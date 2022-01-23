@@ -1,3 +1,24 @@
 {
-    "description": "stub feature configuration that should be loaded in order to perform tests"
+    "readme": "This configuration has fingerprinting protections only with some exceptions",
+    "features": {
+        "fingerprintingBattery": {
+            "exceptions": [],
+            "state": "enabled"
+        },
+        "fingerprintingHardware": {
+            "exceptions": [],
+            "state": "enabled"
+        },
+        "fingerprintingScreenSize": {
+            "exceptions": [],
+            "state": "enabled"
+        }
+    },
+    "version": 1635943904459,
+    "unprotectedTemporary": [
+        {
+            "domain": "global-exception.test",
+            "reason": "This exception should disable all features"
+        }
+    ]
 }
