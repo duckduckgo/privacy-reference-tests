@@ -5,20 +5,37 @@
         "tests": [
             {
                 "name": "charging property",
+                "siteURL": "https://example.com/",
                 "property": "navigator.getBattery().then(battery => battery.charging)",
                 "expectPropertyValue": "true",
                 "exceptPlatforms": []
             },
             {
                 "name": "chargingTime property",
+                "siteURL": "https://example.com/",
                 "property": "navigator.getBattery().then(battery => battery.chargingTime)",
                 "expectPropertyValue": "0",
                 "exceptPlatforms": []
             },
             {
                 "name": "dischargingTime property",
+                "siteURL": "https://example.com/",
                 "property": "navigator.getBattery().then(battery => battery.dischargingTime)",
                 "expectPropertyValue": "Infinity",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "chargingTime property - local exception",
+                "siteURL": "https://battery-exception.test/",
+                "property": "navigator.getBattery().then(battery => battery.chargingTime)",
+                "expectPropertyValue": "12345",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "chargingTime property - global exception",
+                "siteURL": "https://global-exception.test",
+                "property": "navigator.getBattery().then(battery => battery.chargingTime)",
+                "expectPropertyValue": "12345",
                 "exceptPlatforms": []
             }
         ]
@@ -29,38 +46,58 @@
         "tests": [
             {
                 "name": "keyboard property",
+                "siteURL": "https://battery-exception.test/",
                 "property": "navigator.keyboard",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": []
             },
             {
                 "name": "keyboard property - prototype access",
+                "siteURL": "https://battery-exception.test/",
                 "property": "Navigator.prototype.keyboard",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": []
             },
             {
                 "name": "hardwareConcurrency property",
+                "siteURL": "https://battery-exception.test/",
                 "property": "navigator.hardwareConcurrency",
                 "expectPropertyValue": "2",
                 "exceptPlatforms": []
             },
             {
                 "name": "hardwareConcurrency property - prototype access",
+                "siteURL": "https://battery-exception.test/",
                 "property": "Navigator.prototype.hardwareConcurrency",
                 "expectPropertyValue": "2",
                 "exceptPlatforms": []
             },
             {
                 "name": "deviceMemory property",
+                "siteURL": "https://battery-exception.test/",
                 "property": "navigator.deviceMemory",
                 "expectPropertyValue": "8",
                 "exceptPlatforms": []
             },
             {
                 "name": "deviceMemory property - prototype access",
+                "siteURL": "https://battery-exception.test/",
                 "property": "Navigator.prototype.deviceMemory",
                 "expectPropertyValue": "8",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "deviceMemory property - local exception",
+                "siteURL": "https://hardware-exception.test/path/file.html",
+                "property": "Navigator.prototype.deviceMemory",
+                "expectPropertyValue": "12345",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "deviceMemory property - global exception",
+                "siteURL": "https://global-exception.test/path/file.html",
+                "property": "Navigator.prototype.deviceMemory",
+                "expectPropertyValue": "12345",
                 "exceptPlatforms": []
             }
         ]
@@ -139,6 +176,20 @@
                 "name": "pixelDepth property - prototype access",
                 "property": "Screen.prototype.pixelDepth",
                 "expectPropertyValue": "24",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "pixelDepth property - local exception",
+                "siteURL": "https://sub.screensize-exception.test/path/file.html",
+                "property": "Screen.prototype.pixelDepth",
+                "expectPropertyValue": "12345",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "pixelDepth property - global exception",
+                "siteURL": "https://global-exception.test/path/file.html",
+                "property": "Screen.prototype.pixelDepth",
+                "expectPropertyValue": "12345",
                 "exceptPlatforms": []
             }
         ]

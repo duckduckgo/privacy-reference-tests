@@ -2,15 +2,21 @@
     "readme": "This configuration has fingerprinting protections only with some exceptions",
     "features": {
         "fingerprintingBattery": {
-            "exceptions": [],
+            "exceptions": [
+                "battery-exception.test"
+            ],
             "state": "enabled"
         },
         "fingerprintingHardware": {
-            "exceptions": [],
+            "exceptions": [
+                "hardware-exception.test"
+            ],
             "state": "enabled"
         },
         "fingerprintingScreenSize": {
-            "exceptions": [],
+            "exceptions": [
+                "screensize-exception.test"
+            ],
             "state": "enabled"
         }
     },

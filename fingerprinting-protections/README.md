@@ -12,6 +12,7 @@ This set of tests verifies implementation of fingerprinting protections. In part
 
 Test suite specific fields:
 
+- `siteURL` - string - 
 - `property` - string - 
 - `expectPropertyValue` - string - 
 
