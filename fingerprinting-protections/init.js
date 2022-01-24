@@ -1,8 +1,8 @@
 function init(window) {
     const BatteryManager = function BatteryManager () {}
-    Object.defineProperty(BatteryManager, 'charging', { get: () => false, configurable: true });
-    Object.defineProperty(BatteryManager, 'chargingTime', { get: () => 12345, configurable: true });
-    Object.defineProperty(BatteryManager, 'dischargingTime', { get: () => 12345, configurable: true });
+    Object.defineProperty(BatteryManager.prototype, 'charging', { get: () => false, configurable: true });
+    Object.defineProperty(BatteryManager.prototype, 'chargingTime', { get: () => 12345, configurable: true });
+    Object.defineProperty(BatteryManager.prototype, 'dischargingTime', { get: () => 12345, configurable: true });
     
     window.BatteryManager = BatteryManager;
     window.navigator.getBattery = () => Promise.resolve(new BatteryManager());
