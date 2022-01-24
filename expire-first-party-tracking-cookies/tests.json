@@ -13,7 +13,7 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "above treshold - expiry modified",
+                "name": "above threshold - expiry modified",
                 "siteURL": "https://example.com/",
                 "scriptURL": "https://tracker.com/script.js",
                 "setDocumentCookie": "foo=bar; Max-Age=900000; Domain=example.com; Path=/; Secure",
