@@ -18,7 +18,7 @@ Test suite specific files:
 Test suite specific fields:
 
 - `siteURL` - string - currently loaded website's URL (as seen in the URL bar) 
-- `property` - string - JavaScript code extracting value of given property/API
+- `property` - string - JavaScript code extracting value of given property/API. Note that in some cases this code is async, please wait for returned promise to resolve.
 - `expectPropertyValue` - string - expected value of the property
 
 ## Pseudo-code implementation

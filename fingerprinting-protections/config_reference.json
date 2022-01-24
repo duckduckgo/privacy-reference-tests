@@ -27,6 +27,15 @@
                 }
             ],
             "state": "enabled"
+        },
+        "fingerprintingTemporaryStorage": {
+            "exceptions": [
+                {
+                    "domain": "tempstorage-exception.test",
+                    "reason": "Disable screen API protection"
+                }
+            ],
+            "state": "enabled"
         }
     },
     "version": 1635943904459,

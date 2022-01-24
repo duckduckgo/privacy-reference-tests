@@ -1,7 +1,7 @@
 {
     "batteryAPI": {
         "name": "Battery API",
-        "desc": "description of the set",
+        "desc": "Battery API should be modified not to leak information about current state of battery / charging",
         "tests": [
             {
                 "name": "charging property",
@@ -42,46 +42,46 @@
     },
     "hardwareAPIs": {
         "name": "Hardware APIs",
-        "desc": "description of the set",
+        "desc": "Various hardware APIs should be modified not to leak information about machine capabilities",
         "tests": [
             {
                 "name": "keyboard property",
-                "siteURL": "https://battery-exception.test/",
+                "siteURL": "https://example.com/",
                 "property": "navigator.keyboard",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": []
             },
             {
                 "name": "keyboard property - prototype access",
-                "siteURL": "https://battery-exception.test/",
+                "siteURL": "https://example.com/",
                 "property": "Navigator.prototype.keyboard",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": []
             },
             {
                 "name": "hardwareConcurrency property",
-                "siteURL": "https://battery-exception.test/",
+                "siteURL": "https://example.com/",
                 "property": "navigator.hardwareConcurrency",
                 "expectPropertyValue": "2",
                 "exceptPlatforms": []
             },
             {
                 "name": "hardwareConcurrency property - prototype access",
-                "siteURL": "https://battery-exception.test/",
+                "siteURL": "https://example.com/",
                 "property": "Navigator.prototype.hardwareConcurrency",
                 "expectPropertyValue": "2",
                 "exceptPlatforms": []
             },
             {
                 "name": "deviceMemory property",
-                "siteURL": "https://battery-exception.test/",
+                "siteURL": "https://example.com/",
                 "property": "navigator.deviceMemory",
                 "expectPropertyValue": "8",
                 "exceptPlatforms": []
             },
             {
                 "name": "deviceMemory property - prototype access",
-                "siteURL": "https://battery-exception.test/",
+                "siteURL": "https://example.com/",
                 "property": "Navigator.prototype.deviceMemory",
                 "expectPropertyValue": "8",
                 "exceptPlatforms": []
@@ -104,76 +104,88 @@
     },
     "screenAPI": {
         "name": "Screen APIs",
-        "desc": "description of the set",
+        "desc": "Screen API should be modified not to leak information about browser window size and position",
         "tests": [
             {
                 "name": "availTop property",
+                "siteURL": "https://example.com/",
                 "property": "screen.availTop",
                 "expectPropertyValue": "0",
                 "exceptPlatforms": []
             },
             {
                 "name": "availTop property - prototype access",
+                "siteURL": "https://example.com/",
                 "property": "Screen.prototype.availTop",
                 "expectPropertyValue": "0",
                 "exceptPlatforms": []
             },
             {
                 "name": "availLeft property",
+                "siteURL": "https://example.com/",
                 "property": "screen.availLeft",
                 "expectPropertyValue": "0",
                 "exceptPlatforms": []
             },
             {
                 "name": "availLeft property - prototype access",
+                "siteURL": "https://example.com/",
                 "property": "Screen.prototype.availLeft",
                 "expectPropertyValue": "0",
                 "exceptPlatforms": []
             },
             {
                 "name": "availWidth property",
+                "siteURL": "https://example.com/",
                 "property": "screen.availWidth === screen.width",
                 "expectPropertyValue": "true",
                 "exceptPlatforms": []
             },
             {
                 "name": "availWidth property - prototype access",
+                "siteURL": "https://example.com/",
                 "property": "Screen.prototype.availWidth === screen.width",
                 "expectPropertyValue": "true",
                 "exceptPlatforms": []
             },
             {
                 "name": "availHeight property",
+                "siteURL": "https://example.com/",
                 "property": "screen.availHeight === screen.height",
                 "expectPropertyValue": "true",
                 "exceptPlatforms": []
             },
             {
                 "name": "availHeight property - prototype access",
+                "siteURL": "https://example.com/",
                 "property": "Screen.prototype.availHeight === screen.height",
                 "expectPropertyValue": "true",
                 "exceptPlatforms": []
             },
             {
                 "name": "colorDepth property",
+                "siteURL": "https://example.com/",
                 "property": "screen.colorDepth",
                 "expectPropertyValue": "24",
                 "exceptPlatforms": []
             },
             {
                 "name": "colorDepth property - prototype access",
+                "siteURL": "https://example.com/",
                 "property": "Screen.prototype.colorDepth",
                 "expectPropertyValue": "24",
                 "exceptPlatforms": []
             },
             {
                 "name": "pixelDepth property",
+                "siteURL": "https://example.com/",
                 "property": "screen.pixelDepth",
                 "expectPropertyValue": "24",
                 "exceptPlatforms": []
             },
             {
                 "name": "pixelDepth property - prototype access",
+                "siteURL": "https://example.com/",
                 "property": "Screen.prototype.pixelDepth",
                 "expectPropertyValue": "24",
                 "exceptPlatforms": []
@@ -190,6 +202,33 @@
                 "siteURL": "https://global-exception.test/path/file.html",
                 "property": "Screen.prototype.pixelDepth",
                 "expectPropertyValue": "12345",
+                "exceptPlatforms": []
+            }
+        ]
+    },
+    "temporaryStorageAPI": {
+        "name": "(Deprecated) Temporary Storage API",
+        "desc": "Temporary Storage shold be modified not to leak information about free disk space",
+        "tests": [
+            {
+                "name": "queryUsageAndQuota granted space value",
+                "siteURL": "https://example.com/",
+                "property": "new Promise(resolve => {navigator.webkitTemporaryStorage.queryUsageAndQuota((used, granted) => resolve(granted))})",
+                "expectPropertyValue": "4294967296",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "queryUsageAndQuota granted space value - global exception",
+                "siteURL": "https://tempstorage-exception.test/path/file.html",
+                "property": "new Promise(resolve => {navigator.webkitTemporaryStorage.queryUsageAndQuota((used, granted) => resolve(granted))})",
+                "expectPropertyValue": "9999999999",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "queryUsageAndQuota granted space value - global exception",
+                "siteURL": "https://global-exception.test/path/file.html",
+                "property": "new Promise(resolve => {navigator.webkitTemporaryStorage.queryUsageAndQuota((used, granted) => resolve(granted))})",
+                "expectPropertyValue": "9999999999",
                 "exceptPlatforms": []
             }
         ]

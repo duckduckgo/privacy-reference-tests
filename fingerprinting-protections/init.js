@@ -17,6 +17,9 @@ function init(window) {
     Object.defineProperty(window.Screen.prototype, 'colorDepth', { get: () => 12345, configurable: true });
     Object.defineProperty(window.Screen.prototype, 'pixelDepth', { get: () => 12345, configurable: true });
 
+    navigator.webkitTemporaryStorage = {
+        queryUsageAndQuota: callback => callback(0, 9999999999)
+    }
 }
 
 if (typeof module !== 'undefined' && module.exports) {
