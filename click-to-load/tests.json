@@ -58,6 +58,14 @@
                 "userUnblocked": true,
                 "expectAction": "ignore",
                 "exceptPlatforms": []
+            },
+            {
+                "name": "excluded subdomain - tracker request should not be blocked",
+                "siteURL": "https://example.com/",
+                "requestURL": "https://excluded.tracker.test/something-else",
+                "userUnblocked": false,
+                "expectAction": "ignore",
+                "exceptPlatforms": []
             }
         ]
     }
