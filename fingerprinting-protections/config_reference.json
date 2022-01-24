@@ -3,19 +3,28 @@
     "features": {
         "fingerprintingBattery": {
             "exceptions": [
-                "battery-exception.test"
+                {
+                    "domain": "battery-exception.test",
+                    "reason": "Disable battery API protection"
+                }
             ],
             "state": "enabled"
         },
         "fingerprintingHardware": {
             "exceptions": [
-                "hardware-exception.test"
+                {
+                    "domain": "hardware-exception.test",
+                    "reason": "Disable hardware APIs protection"
+                }
             ],
             "state": "enabled"
         },
         "fingerprintingScreenSize": {
             "exceptions": [
-                "screensize-exception.test"
+                {
+                    "domain": "screensize-exception.test",
+                    "reason": "Disable screen API protection"
+                }
             ],
             "state": "enabled"
         }
