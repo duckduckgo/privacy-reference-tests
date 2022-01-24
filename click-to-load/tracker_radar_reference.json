@@ -1,0 +1,36 @@
+{
+    "trackers": {
+        "tracker.com": {
+            "domain": "tracker.test",
+            "owner": {
+                "name": "Tracker INC",
+                "displayName": "Tracker INC",
+                "privacyPolicy": "https://tracker.test/lies",
+                "url": "https://tracker.test/"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "ignore",
+            "rules": []
+        }
+    },
+    "entities": {
+        "Tracker INC": {
+            "domains": [
+                "tracker.net",
+                "tracker.test"
+            ],
+            "prevalence": 0.1,
+            "displayName": "Tracker INC"
+        }
+    },
+    "cnames": {
+        "tracker.cname.com": "bad.tracker.test"
+    },
+    "domains": {
+        "tracker.net": "Tracker INC",
+        "tracker.test": "Tracker INC"
+    }
+}

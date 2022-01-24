@@ -1,0 +1,50 @@
+{
+    "Tracker": {
+        "domains": [
+            "tracker.test",
+            "tracker.net"
+        ],
+        "excludedSubdomains": [
+            "excluded.tracker.test"
+        ],
+        "excludedDomains": [
+            {
+                "domain": "local-exception.test",
+                "reason": "Local exception"
+            }
+        ],
+        "surrogates": [
+            {
+                "rule": "tracker\\.test\\/[a-z_A-Z]+\\/sdk.js",
+                "surrogate": "surrogate.js",
+                "xray": "surrogate-xray.js"
+            }
+        ],
+        "informationalModal": {
+            "icon": "blocked_logo.svg",
+            "messageTitle": "Logging in with Tracker lets them track you",
+            "messageBody": "Once you're logged in, DuckDuckGo can't block Tracker content from tracking you on this site.",
+            "confirmButtonText": "Log In",
+            "rejectButtonText": "Go back"
+        },
+        "clicksBeforeSimpleVersion": 3,
+        "elementData": {
+            "Page iFrames": {
+                "selectors": [
+                    "iframe[src*='://www.tracker.com/plugins/page']",
+                    "iframe[src*='://www.tracker.com/v2.0/plugins/page']"
+                ],
+                "replaceSettings": {
+                    "type": "dialog",
+                    "buttonText": "Unblock Page",
+                    "infoTitle": "DuckDuckGo blocked this Tracker Page",
+                    "infoText": "We blocked Tracker from tracking you when the page loaded. If you unblock this page, Tracker will know your activity. ",
+                    "simpleInfoText": "We blocked Tracker from tracking you when the page loaded. If you unblock this page, Tracker will know your activity."
+                },
+                "clickAction": {
+                    "type": "originalElement"
+                }
+            }
+        }
+    }
+}
