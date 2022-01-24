@@ -1,6 +1,6 @@
 {
     "trackers": {
-        "tracker.com": {
+        "tracker.test": {
             "domain": "tracker.test",
             "owner": {
                 "name": "Tracker INC",
