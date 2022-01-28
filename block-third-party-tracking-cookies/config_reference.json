@@ -1,0 +1,29 @@
+{
+    "readme": "This configuration has only the trackingCookies3p feature",
+    "features": {
+        "trackingCookies3p": {
+            "settings": {
+                "excludedCookieDomains": [
+                    {
+                        "domain": "excluded-cookie-tracker.com",
+                        "reason": "Site breakage"
+                    }
+                ]
+            },
+            "exceptions": [
+                {
+                    "domain": "exception.local.site",
+                    "reason": "Site breakage"
+                }
+            ],
+            "state": "enabled"
+        }
+    },
+    "version": 1635943904459,
+    "unprotectedTemporary": [
+        {
+            "domain": "exception.global.site",
+            "reason": "Site breakage"
+        }
+    ]
+}
