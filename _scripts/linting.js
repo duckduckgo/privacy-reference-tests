@@ -15,6 +15,8 @@ const SKIP_TEST_FILES = ['tracker_allowlist_matching_tests.json']; // doesn't fo
 
 const root = path.resolve(__dirname, '../');
 const dirs = glob.sync("/*/", { root });
+let featuresCount = 0;
+let testsCount = 0;
 
 dirs.forEach(dir => {
     const featureFolderName = path.basename(dir);
@@ -29,6 +31,8 @@ dirs.forEach(dir => {
     }
 
     console.log('Processing feature directory:', featureFolderName);
+
+    featuresCount++;
 
     const testFiles = glob.sync("/**/?(*_)tests.json", { root: path.resolve(root, featureFolderName) });
 
@@ -54,6 +58,8 @@ dirs.forEach(dir => {
             console.error(testValidate.errors.map(item => `  - ${item.instancePath}: ${item.message}`).join('\n'));
             exit(1);
         }
+
+        Object.keys(testFileObject).forEach(set => testsCount += testFileObject[set].tests.length);
     });
 
     const trackerRadarFiles = glob.sync("/**/tracker_radar*.json", { root: path.resolve(root, featureFolderName) });;
@@ -76,4 +82,7 @@ dirs.forEach(dir => {
 
 });
 
-console.log('All good ✅');
+console.log(`
+Number of features: ${featuresCount}
+Number of tests: ${testsCount}
+All good ✅`);
