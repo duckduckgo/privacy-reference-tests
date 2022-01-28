@@ -1,0 +1,27 @@
+{
+    "readme": "This configuration includes only the 1p cookie expiry feature.",
+    "features": {
+        "trackingCookies1p": {
+            "settings": {
+                "firstPartyTrackerCookiePolicy": {
+                    "threshold": 604800,
+                    "maxAge": 86400
+                }
+            },
+            "exceptions": [
+                {
+                    "domain": "local-exception.test",
+                    "reason": "cookie should not be modified"
+                }
+            ],
+            "state": "enabled"
+        }
+    },
+    "version": 1635943904459,
+    "unprotectedTemporary": [
+        {
+            "domain": "global-exception.test",
+            "reason": "cookie should not be modified"
+        }
+    ]
+}
