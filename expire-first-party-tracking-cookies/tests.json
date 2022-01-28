@@ -81,7 +81,7 @@
                 "scriptURL": "https://tracker.cname.com/script.js",
                 "setDocumentCookie": "foo=bar; Max-Age=900000; Domain=example.com; Path=/; Secure",
                 "expectCookieSet": true,
-                "expectExpiryToBe": 86400,
+                "expectExpiryToBe": 900000,
                 "exceptPlatforms": []
             },
             {
