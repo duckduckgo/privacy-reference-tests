@@ -37,9 +37,7 @@
                 "setDocumentCookie": "foo=bar; Max-Age=900000; Domain=tracker.test; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 900000,
-                "exceptPlatforms": [
-                    "web-extension"
-                ]
+                "exceptPlatforms": []
             },
             {
                 "name": "site safelisted locally - expiry not modified",
