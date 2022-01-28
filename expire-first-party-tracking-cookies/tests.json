@@ -79,7 +79,7 @@
                 "name": "above treshold - tracker cnamed to the same eTLD+1 - expiry not modified",
                 "siteURL": "https://tracker.com/",
                 "scriptURL": "https://tracker.cname.com/script.js",
-                "setDocumentCookie": "foo=bar; Max-Age=900000; Domain=example.com; Path=/; Secure",
+                "setDocumentCookie": "foo=bar; Max-Age=900000; Domain=tracker.com; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 900000,
                 "exceptPlatforms": []
