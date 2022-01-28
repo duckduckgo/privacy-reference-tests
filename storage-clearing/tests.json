@@ -29,13 +29,6 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "cookie is set on a non-fireproofed subdomain - cookie should be cleared",
-                "cookieDomain": "sub.fireproofed.test",
-                "cookieName": "test",
-                "expectCookieRemoved": true,
-                "exceptPlatforms": []
-            },
-            {
                 "name": "duckduckgo.com settings cookie - cookie should not be cleared",
                 "cookieDomain": "duckduckgo.com",
                 "cookieName": "setting",

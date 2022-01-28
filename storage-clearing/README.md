@@ -1,4 +1,4 @@
-# Feature Name Tests
+# Storage Clearing (Fire Button & Fireproofing)
 
 Privacy Feature: https://app.asana.com/0/0/1201277458549583/f
 
