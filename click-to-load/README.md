@@ -1,4 +1,4 @@
-# Feature Name Tests
+# Click To Load Tests
 
 Privacy Feature: https://app.asana.com/0/1198207348643509/1199651947726592/f
 
