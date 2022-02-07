@@ -28,6 +28,14 @@
                 "exceptPlatforms": []
             },
             {
+                "name": "domain is considered a tracker by click to load config, but not by tracker radar config - don't block",
+                "siteURL": "https://example.com",
+                "requestURL": "https://tracker.net/track.js",
+                "userUnblocked": false,
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
                 "name": "exception - tracker request should not be blocked",
                 "siteURL": "https://local-exception.test/path/file.html?query=value#frag",
                 "requestURL": "https://tracker.test/track.js",
