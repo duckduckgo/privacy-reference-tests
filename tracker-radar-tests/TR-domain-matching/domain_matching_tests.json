@@ -215,7 +215,10 @@
                 "siteURL": "https://random.test/",
                 "requestURL": "https://bad.third-party.site:8080/ignore",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "web-extension"
+                ]
             }
         ]
     },

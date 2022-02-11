@@ -41,3 +41,7 @@ for $testSet in test.json
 
         expect($value.toSting()).toBe($test.expectPropertyValue)
 ```
+
+## Platform exceptions
+
+- "ports are ignored when matching rules" disabled for web extensions ([bug report](https://app.asana.com/0/892838074342800/1201806214352982/f))
