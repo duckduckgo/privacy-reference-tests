@@ -1,4 +1,4 @@
-# Feature Name Tests
+# Fingerprinting Protection Tests
 
 Privacy Feature: https://app.asana.com/0/1198207348643509/1199583771657237/f
 

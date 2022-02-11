@@ -1,4 +1,7 @@
 function init(window) {
+    // values of properties are being set by this script on purpose to be 'outlier' values,
+    // so the test can verify protection in a platform agnostic way
+
     const BatteryManager = function BatteryManager () {}
     Object.defineProperty(BatteryManager.prototype, 'charging', { get: () => false, configurable: true });
     Object.defineProperty(BatteryManager.prototype, 'chargingTime', { get: () => 12345, configurable: true });
