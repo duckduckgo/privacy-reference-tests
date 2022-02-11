@@ -1,0 +1,48 @@
+{
+    "readme": "This configuration has fingerprinting protections only with some exceptions",
+    "features": {
+        "fingerprintingBattery": {
+            "exceptions": [
+                {
+                    "domain": "battery-exception.test",
+                    "reason": "Disable battery API protection"
+                }
+            ],
+            "state": "enabled"
+        },
+        "fingerprintingHardware": {
+            "exceptions": [
+                {
+                    "domain": "hardware-exception.test",
+                    "reason": "Disable hardware APIs protection"
+                }
+            ],
+            "state": "enabled"
+        },
+        "fingerprintingScreenSize": {
+            "exceptions": [
+                {
+                    "domain": "screensize-exception.test",
+                    "reason": "Disable screen API protection"
+                }
+            ],
+            "state": "enabled"
+        },
+        "fingerprintingTemporaryStorage": {
+            "exceptions": [
+                {
+                    "domain": "tempstorage-exception.test",
+                    "reason": "Disable screen API protection"
+                }
+            ],
+            "state": "enabled"
+        }
+    },
+    "version": 1635943904459,
+    "unprotectedTemporary": [
+        {
+            "domain": "global-exception.test",
+            "reason": "This exception should disable all features"
+        }
+    ]
+}
