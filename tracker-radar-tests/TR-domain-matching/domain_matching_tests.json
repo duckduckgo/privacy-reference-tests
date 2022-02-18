@@ -217,7 +217,8 @@
                 "requestType": "script",
                 "expectAction": "ignore",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "ios-browser"
                 ]
             }
         ]
