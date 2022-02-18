@@ -23,10 +23,14 @@ Test suite specific fields:
 - `expectAction` - one of: null (don't block, not on a blocklist), ignore (don't block, exception), block, redirect (when should be repalced with a surrogate) - expected action that client should take
 - `expectRedirect` - string - only if action is "redirect" this should contain url of the surrogate (base64'ed version of the correct surrogate file)
 
+#### Platform exceptions
+
+- "ports are ignored when matching rules" disabled for Apple platform ([bug report](https://app.asana.com/0/1163321984198618/1201849181617632/f))
+
 ### Privacy config allowlist
 
 Files in the folder:
-- `tracker_allowlist_matching_tests.json` - test for tracker allowlist feature - ⚠️ those tests don't follow the format used by other tests ⚠️ 
+- `tracker_allowlist_matching_tests.json` - test for tracker allowlist feature - ⚠️ those tests don't follow the format used by other tests ⚠️
 - `tracker_allowlist_tds_references.json` - reference blocklist file that should be used with `tracker_allowlist_matching_tests.json` tests
 - `tracker_allowlist_references.json` - reference privacy config file that should be used with `tracker_allowlist_matching_tests.json` tests
 
