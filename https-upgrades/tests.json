@@ -42,7 +42,8 @@
                 "requestType": "main_frame",
                 "expectURL": "http://negativetest.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": [
-                    "android-browser"
+                    "android-browser",
+                    "ios-browser"
                 ]
             },
             {
@@ -52,7 +53,8 @@
                 "requestType": "main_frame",
                 "expectURL": "https://s.secondnegative.com/path/file.html?search=query&another=one#fragment",
                 "exceptPlatforms": [
-                    "android-browser"
+                    "android-browser",
+                    "ios-browser"
                 ]
             },
             {
@@ -132,7 +134,8 @@
                 "requestType": "image",
                 "expectURL": "https://firsttest.com/image.png",
                 "exceptPlatforms": [
-                    "android-browser"
+                    "android-browser",
+                    "ios-browser"
                 ]
             },
             {
@@ -142,7 +145,8 @@
                 "requestType": "websocket",
                 "expectURL": "wss://fifth-test.com/path/socket?search=query&another=one#fragment",
                 "exceptPlatforms": [
-                    "android-browser"
+                    "android-browser",
+                    "ios-browser"
                 ]
             },
             {
@@ -152,7 +156,8 @@
                 "requestType": "image",
                 "expectURL": "http://169.254.1.1/image.png",
                 "exceptPlatforms": [
-                    "android-browser"
+                    "android-browser",
+                    "ios-browser"
                 ]
             },
             {
@@ -162,7 +167,8 @@
                 "requestType": "script",
                 "expectURL": "http://firsttest.com/script.js",
                 "exceptPlatforms": [
-                    "android-browser"
+                    "android-browser",
+                    "ios-browser"
                 ]
             }
         ]
