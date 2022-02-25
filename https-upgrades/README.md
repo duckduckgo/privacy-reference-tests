@@ -75,5 +75,5 @@ thirdnegative.com
 
 ## Platform exceptions
 
-- Android doesn't support negative bloom filter because it's only needed for platforms where Smarter Encryption API is available
-- Android doesn't support updating subrequests because of WebView limitations (request can be canceled, but not modified)
+- Android, iOS and macOS don't support negative bloom filter because it's only needed for platforms where Smarter Encryption API is available
+- Android, iOS and macOS don't support updating subrequests because of WebView limitations (request can be canceled, but not modified)
