@@ -57,13 +57,7 @@
                 "name": "A URL is able to be detected using .amp patterns",
                 "ampURL": "https://www.bbc.com/news/world-asia-china-19432800.amp",
                 "expectAmpDetected": true,
-                "exceptPlatforms": [
-                    "web-extension",
-                    "safari-extension",
-                    "android-browser",
-                    "macos-browser",
-                    "windows-browser"
-                ]
+                "exceptPlatforms": []
             },
             {
                 "name": "A URL is able to be detected using amp. patterns",
