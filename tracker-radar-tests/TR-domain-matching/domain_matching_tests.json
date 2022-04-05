@@ -263,6 +263,20 @@
                 "requestURL": "https://surrogates.test/anothertracker?abc=2",
                 "requestType": "script",
                 "expectAction": "block"
+            },
+            {
+                "name": "ignore on default-block tracker's surrogates that match rule exception",
+                "siteURL": "https://exceptedfromsurrogates.org/random",
+                "requestURL": "https://blockedsurrogates.test/tracker?abc=2",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "ignore on default-ignore tracker's surrogates that match rule exception",
+                "siteURL": "https://exceptedfromsurrogates.org/random",
+                "requestURL": "https://surrogates.test/tracker?abc=2",
+                "requestType": "script",
+                "expectAction": "ignore"
             }
         ]
     }
