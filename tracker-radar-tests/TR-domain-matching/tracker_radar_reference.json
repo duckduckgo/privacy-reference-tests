@@ -117,7 +117,7 @@
         "blockedsurrogates.test": {
             "domain": "blockedsurrogates.test",
             "owner": {
-                "name": "Test Site for Surrogates With Default Block Action",
+                "name": "Test Site for Surrogates",
                 "displayName": "Surrogates Site",
                 "privacyPolicy": "",
                 "url": "http://blockedsurrogates.test"
