@@ -100,7 +100,12 @@
             "rules": [
                 {
                     "rule": "surrogates\\.test\\/tracker",
-                    "surrogate": "tracker"
+                    "surrogate": "tracker",
+                    "exceptions": {
+                        "domains": [
+                            "exceptedfromsurrogates.org"
+                        ]
+                    }
                 },
                 {
                     "rule": "surrogates\\.test\\/anothertracker",
@@ -108,6 +113,31 @@
                 }
             ],
             "default": "ignore"
+        },
+        "blockedsurrogates.test": {
+            "domain": "blockedsurrogates.test",
+            "owner": {
+                "name": "Test Site for Surrogates",
+                "displayName": "Surrogates Site",
+                "privacyPolicy": "",
+                "url": "http://blockedsurrogates.test"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "rules": [
+                {
+                    "rule": "blockedsurrogates\\.test\\/tracker",
+                    "surrogate": "tracker",
+                    "exceptions": {
+                        "domains": [
+                            "exceptedfromsurrogates.org"
+                        ]
+                    }
+                }
+            ],
+            "default": "block"
         }
     },
     "entities": {
@@ -132,8 +162,9 @@
         "Test Site for Surrogates": {
             "domains": [
                 "other-surrogates.test",
-                "surrogates.test"
-            ],
+                "surrogates.test",
+                "blockedsurrogates.test"
+              ],
             "prevalence": 0.1,
             "displayName": "Test Site for Surrogates"
         }
@@ -151,6 +182,7 @@
         "ignore.test": "Ignore Site for Tracker Blocking",
         "sub.ignore.test": "Ignore Site for Tracker Blocking",
         "surrogates.test": "Test Site for Surrogates",
-        "other-surrogates.test": "Test Site for Surrogates"
+        "other-surrogates.test": "Test Site for Surrogates",
+        "blockedsurrogates.test": "Test Site for Surrogates"
     }
 }
