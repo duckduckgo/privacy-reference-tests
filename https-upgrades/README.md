@@ -22,6 +22,8 @@ Files in the folder:
 - `https_bloomfilter_spec_reference.json` - specification of the `.bin` bloom filter
 - `https_negative_allowlist_reference.json` - inverse/negative boom filter with hostnames that should not be upgraded
 - `https_negative_bloomfilter_reference.json` - allowlist to the negative bloom filter with hostnames that should be upgraded
+ - `https_upgrade_hostnames.txt` - plaintext list of domains that should be upgraded
+ - `https_dont_upgrade_hostnames.txt` - plaintext list of domains that should not be upgraded
 
 Test suite specific fields:
 
