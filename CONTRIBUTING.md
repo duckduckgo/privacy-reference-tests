@@ -49,7 +49,7 @@ Your tests will require some custom fields to set the stage for the test e.g. `"
 
 If test should be skipped on some platforms, e.g. because of the known limitations of the platform, please specify excepted platforms via `exceptPlatforms` field. Possible options are:
 
-- "web-extension" - our [Chrome/Firefox/Edge/Brave extension](https://github.com/duckduckgo/duckduckgo-privacy-extension)
+- "web-extension" & "web-extension-mv3" - our [Chrome/Firefox/Edge/Brave extension](https://github.com/duckduckgo/duckduckgo-privacy-extension)
 - "safari-extension" - our [Safari extension](https://github.com/duckduckgo/privacy-essentials-safari)
 - "ios-browser" - our [iOS application](https://github.com/duckduckgo/iOS)
 - "android-browser" - our [Android application](https://github.com/duckduckgo/Android)

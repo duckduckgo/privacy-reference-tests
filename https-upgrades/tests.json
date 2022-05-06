@@ -146,7 +146,8 @@
                 "expectURL": "wss://fifth-test.com/path/socket?search=query&another=one#fragment",
                 "exceptPlatforms": [
                     "android-browser",
-                    "ios-browser"
+                    "ios-browser",
+                    "web-extension-mv3"
                 ]
             },
             {
