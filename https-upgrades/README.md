@@ -1,4 +1,4 @@
-# HTTPS Upgreades
+# HTTPS Upgrades
 
 Privacy Feature: https://app.asana.com/0/1198207348643509/1199103718890894/f
 
@@ -19,7 +19,7 @@ Files in the folder:
 - `config_reference.json` - reference remote config with https exceptions
 - `https_bloomfilter_reference.json` and `https_bloomfilter_reference.bin` - the main bloom filter in two formats with hostnames that should be upgraded
 - `https_allowlist_reference.json` - allowlist to the main bloom filter with hostnames that should not be upgraded
-- `https_bloomfilter_spec_reference.json` - specificication of the `.bin` bloom filter
+- `https_bloomfilter_spec_reference.json` - specification of the `.bin` bloom filter
 - `https_negative_allowlist_reference.json` - inverse/negative boom filter with hostnames that should not be upgraded
 - `https_negative_bloomfilter_reference.json` - allowlist to the negative bloom filter with hostnames that should be upgraded
 
@@ -76,4 +76,4 @@ thirdnegative.com
 ## Platform exceptions
 
 - Android, iOS and macOS don't support negative bloom filter because it's only needed for platforms where Smarter Encryption API is available
-- Android, iOS and macOS don't support updating subrequests because of WebView limitations (request can be canceled, but not modified)
+- Android, iOS and macOS don't support updating subrequests because of WebView limitations (request can be cancelled, but not modified)

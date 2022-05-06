@@ -24,7 +24,7 @@ Test suite specific fields:
 - `requestURL` - string - URL to a request being made
 - `requestHeaders` - array of `{name: string, value:string}` objects - input array of request headers (with `cookie` headers)
 - `responseHeaders` - array of `{name: string, value:string}` objects - input array of response headers (with `set-cookie` headers)
-- `expectCookieHeadersRemoved` - boolean - if all `cookie` headers are expected to be filterd out for this request
+- `expectCookieHeadersRemoved` - boolean - if all `cookie` headers are expected to be filtered out for this request
 - `expectSetCookieHeadersRemoved` - boolean - if all `set-cookie` headers are expected to be filtered out for this response
 - `setDocumentCookie` - string - value that should be assigned to `document.cookie` to test if cookie will be stored
 - `expectDocumentCookieSet` - boolean - if cookie set via `document.cookie` is supposed to be stored
