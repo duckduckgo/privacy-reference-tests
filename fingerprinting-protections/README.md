@@ -7,7 +7,7 @@ Privacy Feature: https://app.asana.com/0/1198207348643509/1199583771657237/f
 This set of tests verifies implementation of fingerprinting protections. In particular it focuses on verifying that:
 
 - exceptions from configuration file are respected,
-- values of properites are modified correctly.
+- values of properties are modified correctly.
 
 ## Structure
 

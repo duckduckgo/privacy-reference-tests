@@ -19,7 +19,7 @@ Test suite specific fields:
 - `scriptURL` - string - URL of the script setting the cookie
 - `setDocumentCookie` - string - cookie creation string, as assigned to `document.cookie`
 - `expectCookieSet` - boolean - if cookie is expected to be created/stored
-- `expectExpiryToBe` - number - expeced expiry date in seconds from when the cookie was set ("-1" if session cookie is expected)
+- `expectExpiryToBe` - number - expected expiry date in seconds from when the cookie was set ("-1" if session cookie is expected)
 
 ## Pseudo-code implementation
 
