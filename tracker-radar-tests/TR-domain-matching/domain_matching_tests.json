@@ -99,7 +99,8 @@
                 "requestType": "script",
                 "expectAction": null,
                 "exceptPlatforms": [
-                    "ios-browser"
+                    "ios-browser",
+                    "web-extension-mv3"
                 ]
             },
             {
@@ -218,7 +219,8 @@
                 "expectAction": "ignore",
                 "exceptPlatforms": [
                     "web-extension",
-                    "ios-browser"
+                    "ios-browser",
+                    "web-extension-mv3"
                 ]
             }
         ]
