@@ -1,11 +1,11 @@
 {
-    "readme": "This configuration has only the trackingCookies3p feature",
+    "readme": "This configuration has only the nonTracking3pCookies feature",
     "features": {
-        "trackingCookies3p": {
+        "nonTracking3pCookies": {
             "settings": {
                 "excludedCookieDomains": [
                     {
-                        "domain": "excluded-cookie-tracker.com",
+                        "domain": "excluded-cookie-domain.com",
                         "reason": "Site breakage"
                     }
                 ]
@@ -18,7 +18,7 @@
             ],
             "state": "enabled"
         },
-        "nonTracking3pCookies": {
+        "trackingCookies3p": {
             "state": "disabled",
             "settings": {
                 "excludedCookieDomains": [ ]
