@@ -15,6 +15,29 @@
                 }
             ],
             "state": "enabled"
+        },
+        "cookie": {
+            "state": "enabled",
+            "settings": {
+                "excludedCookieDomains": [
+                    {
+                        "domain": "excluded-cookie-domain.com",
+                        "reason": "Site breakage"
+                    }
+                ],
+                "trackerCookie": "disabled",
+                "nonTrackerCookie": "disabled",
+                "firstPartyTrackerCookiePolicy": {
+                    "threshold": 604800,
+                    "maxAge": 86400
+                }
+            },
+            "exceptions": [
+                {
+                    "domain": "local-exception.test",
+                    "reason": "cookie should not be modified"
+                }
+            ]
         }
     },
     "version": 1635943904459,
