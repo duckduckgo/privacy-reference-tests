@@ -1,0 +1,80 @@
+{
+    "requestBlocking": {
+        "name": "Request Blocking",
+        "desc": "Requests to a tracker should be blocked or surrogated according to the specification in config",
+        "tests": [
+            {
+                "name": "tracker request should be blocked",
+                "siteURL": "https://example.com/",
+                "requestURL": "https://tracker.test/track.js",
+                "userUnblocked": false,
+                "expectAction": "block",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "same domain - tracker request should not be blocked",
+                "siteURL": "https://tracker.test/",
+                "requestURL": "https://tracker.test/track.js",
+                "userUnblocked": false,
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "same entity - tracker request should not be blocked",
+                "siteURL": "https://tracker.net/path/file.html?query=value#frag",
+                "requestURL": "https://tracker.test/track.js",
+                "userUnblocked": false,
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "domain is considered a tracker by click to load config, but not by tracker radar config - don't block",
+                "siteURL": "https://example.com",
+                "requestURL": "https://tracker.net/track.js",
+                "userUnblocked": false,
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "exception - tracker request should not be blocked",
+                "siteURL": "https://local-exception.test/path/file.html?query=value#frag",
+                "requestURL": "https://tracker.test/track.js",
+                "userUnblocked": false,
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "tracker request should be surrogated",
+                "siteURL": "https://example.com/",
+                "requestURL": "https://tracker.test/scripts/sdk.js",
+                "userUnblocked": false,
+                "expectAction": "redirect",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "user unblocked the widget - tracker request should not be blocked",
+                "siteURL": "https://example.com/",
+                "requestURL": "https://tracker.test/track.js",
+                "userUnblocked": true,
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "user unblocked the widget - tracker request should not be surrogated",
+                "siteURL": "https://example.com/",
+                "requestURL": "https://tracker.test/scripts/sdk.js",
+                "userUnblocked": true,
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "excluded subdomain - tracker request should not be blocked",
+                "siteURL": "https://example.com/",
+                "requestURL": "https://excluded.tracker.test/something-else",
+                "userUnblocked": false,
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            }
+        ]
+    }
+}
