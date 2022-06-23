@@ -3,7 +3,7 @@
     "features": {
         "trackingCookies1p": {
             "settings": {
-                "firstPartyTrackerCookiePolicy": {
+                "firstPartyCookiePolicy": {
                     "threshold": 604800,
                     "maxAge": 86400
                 }
@@ -27,7 +27,7 @@
                 ],
                 "trackerCookie": "disabled",
                 "nonTrackerCookie": "disabled",
-                "firstPartyTrackerCookiePolicy": {
+                "firstPartyCookiePolicy": {
                     "threshold": 604800,
                     "maxAge": 86400
                 }
