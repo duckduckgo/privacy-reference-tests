@@ -1,13 +1,12 @@
-# Expire First Party Tracking Cookies
+# Expire First Party JavaScript Cookies
 
 Privacy Feature: https://app.asana.com/0/1198207348643509/1200040513378697/f
 
 ## Goals
 
-This set of tests verifies implementation of expiring first party cookies set by trackers. In particular it focuses on verifying that:
+This set of tests verifies implementation of expiring first party cookies set by scripts. In particular it focuses on verifying that:
 
 - cookie policy from the configuration file is correctly extracted and applied,
-- only first party cookies set by trackers are affected,
 - exceptions from the config are respected,
 - reduced expiry time is correctly calculated and applied.
 
@@ -40,7 +39,7 @@ for $testSet in test.json
 
     if ($test.expectCookieSet) {
         cookie = $page.getCookies()[0]
-        
+
         if ($test.expectExpiryToBe === -1) {
             expect(cookie.isSessionCookie()).toBe(true)
         } else {
@@ -54,4 +53,4 @@ for $testSet in test.json
 
 ## Platform exceptions
 
-- web extension is not validating the same entity rule
+N/A
