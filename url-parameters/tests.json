@@ -124,13 +124,13 @@
             {
                 "name": "Unremoved parameters that are url encoded are not modified.",
                 "testURL": "http://www.example.com/test.html?utm_medium=test&c=%7B%7D&d=20220406%2Fus-east-1",
-                "expectURL": "http://www.example.com/test.html?c=%7B%7Dd=20220406%2Fus-east-1",
+                "expectURL": "http://www.example.com/test.html?c=%7B%7D&d=20220406%2Fus-east-1",
                 "exceptPlatforms": []
             },
             {
                 "name": "A URL with no tracking parameters but contains url encoded parameters is not modified.",
                 "testURL": "http://www.example.com/test.html?c=%7B%7D&d=20220406%2Fus-east-1",
-                "expectURL": "http://www.example.com/test.html?c=%7B%7Dd=20220406%2Fus-east-1",
+                "expectURL": "http://www.example.com/test.html?c=%7B%7D&d=20220406%2Fus-east-1",
                 "exceptPlatforms": []
             }
         ]
