@@ -1,7 +1,7 @@
 {
     "expireFirstPartyTrackingCookies": {
-        "name": "Expire 1p tracking cookies",
-        "desc": "Expiration date should be modified for 1p cookies set by trackers according to the policy from config",
+        "name": "Expire 1p JavaScript cookies",
+        "desc": "Expiration date should be modified for 1p cookies set by scripts according to the policy from config",
         "tests": [
             {
                 "name": "below treshold - expiry not modified",
@@ -22,21 +22,21 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "same origin - expiry not modified",
+                "name": "same origin, above threshold - expiry modified",
                 "siteURL": "https://tracker.com/",
                 "scriptURL": "https://tracker.com/script.js",
                 "setDocumentCookie": "foo=bar; Max-Age=900000; Domain=tracker.com; Path=/; Secure",
                 "expectCookieSet": true,
-                "expectExpiryToBe": 900000,
+                "expectExpiryToBe": 86400,
                 "exceptPlatforms": []
             },
             {
-                "name": "same entity - expiry not modified",
+                "name": "same entity, above threshold - expiry modified",
                 "siteURL": "https://tracker.test/",
                 "scriptURL": "https://tracker.com/script.js",
                 "setDocumentCookie": "foo=bar; Max-Age=900000; Domain=tracker.test; Path=/; Secure",
                 "expectCookieSet": true,
-                "expectExpiryToBe": 900000,
+                "expectExpiryToBe": 86400,
                 "exceptPlatforms": []
             },
             {
@@ -53,33 +53,6 @@
                 "siteURL": "https://global-exception.test/",
                 "scriptURL": "https://tracker.com/script.js",
                 "setDocumentCookie": "foo=bar; Max-Age=900000; Domain=global-exception.test; Path=/; Secure",
-                "expectCookieSet": true,
-                "expectExpiryToBe": 900000,
-                "exceptPlatforms": []
-            },
-            {
-                "name": "not a tracking script - expiry not modified",
-                "siteURL": "https://example.com/",
-                "scriptURL": "https://not-a-tracker.com/script.js",
-                "setDocumentCookie": "foo=bar; Max-Age=900000; Domain=example.com; Path=/; Secure",
-                "expectCookieSet": true,
-                "expectExpiryToBe": 900000,
-                "exceptPlatforms": []
-            },
-            {
-                "name": "above treshold - cnamed tracking script - expiry modified",
-                "siteURL": "https://example.com/",
-                "scriptURL": "https://tracker.cname.com/script.js",
-                "setDocumentCookie": "foo=bar; Max-Age=900000; Domain=example.com; Path=/; Secure",
-                "expectCookieSet": true,
-                "expectExpiryToBe": 86400,
-                "exceptPlatforms": []
-            },
-            {
-                "name": "above treshold - tracker cnamed to the same eTLD+1 - expiry not modified",
-                "siteURL": "https://tracker.com/",
-                "scriptURL": "https://tracker.cname.com/script.js",
-                "setDocumentCookie": "foo=bar; Max-Age=900000; Domain=tracker.com; Path=/; Secure",
                 "expectCookieSet": true,
                 "expectExpiryToBe": 900000,
                 "exceptPlatforms": []

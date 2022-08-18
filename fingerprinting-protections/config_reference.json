@@ -17,7 +17,12 @@
                     "reason": "Disable hardware APIs protection"
                 }
             ],
-            "state": "enabled"
+            "state": "enabled",
+            "settings": {
+                "keyboard": {"type": "undefined"},
+                "hardwareConcurrency": {"type": "number", "value": 2},
+                "deviceMemory": {"type": "number", "value": 8}
+            }
         },
         "fingerprintingScreenSize": {
             "exceptions": [
@@ -26,7 +31,13 @@
                     "reason": "Disable screen API protection"
                 }
             ],
-            "state": "enabled"
+            "state": "enabled",
+            "settings": {
+                "availTop": {"type": "number", "value": 0},
+                "availLeft": {"type": "number", "value": 0},
+                "colorDepth": {"type": "number", "value": 24},
+                "pixelDepth": {"type": "number", "value": 24}
+            }
         },
         "fingerprintingTemporaryStorage": {
             "exceptions": [
