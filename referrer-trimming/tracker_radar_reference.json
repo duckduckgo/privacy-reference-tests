@@ -32,7 +32,7 @@
         }
     },
     "entities": {
-        "Company1": {
+        "Company 1": {
             "domains": [
                 "company1.com",
                 "company1.co.uk"
@@ -40,7 +40,7 @@
             "prevalence": 0.1,
             "displayName": "Company 1"
         },
-        "Company2": {
+        "Company 2": {
             "domains": [
                 "company2.com",
                 "company2.co.uk"
