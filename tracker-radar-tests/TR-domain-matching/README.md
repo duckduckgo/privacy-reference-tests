@@ -26,7 +26,6 @@ Test suite specific fields:
 #### Platform exceptions
 
 - "ports are ignored when matching rules" disabled for Apple platform ([bug report](https://app.asana.com/0/1163321984198618/1201849181617632/f))
-- "ports are ignored when matching rules" disabled for Android platform ([bug report](https://app.asana.com/0/488551667048375/1203150323419031/f))
 
 ### Privacy config allowlist
 
