@@ -208,6 +208,6 @@
         "surrogates.test": "Test Site for Surrogates",
         "other-surrogates.test": "Test Site for Surrogates",
         "blockedsurrogates.test": "Test Site for Surrogates",
-        "unknown-action.site": "Site for testing unknown actions"
+        "unknown-action.site": "Ignore Site for Tracker Blocking"
     }
 }
