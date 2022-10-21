@@ -150,7 +150,7 @@
         "unknown-action.site": {
             "domain": "unknown-action.site",
             "owner": {
-                "name": "Test Site for Tracker Blocking",
+                "name": "Ignore Site for Tracker Blocking",
                 "displayName": "Ignore unknown actions",
                 "privacyPolicy": "",
                 "url": "http://unknown-action.site"
