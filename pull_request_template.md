@@ -1,6 +1,6 @@
-<!-- Please add the WIP label if the PR isn't complete. -->
+<!-- Please create the PR as a draft if is not ready for final review and merge -->
 
-**Reviewer:** 
+**Reviewer:** <!-- ideally the feature DRI, otherwise reference tests DRI or secondary as fallbacks -->
 
 <!-- Optional fields
 **CC:**
