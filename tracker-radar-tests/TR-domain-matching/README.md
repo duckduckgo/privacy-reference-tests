@@ -24,7 +24,7 @@ Test suite specific fields:
 - `expectRedirect` - string - only if action is "redirect". This should contain url of the surrogate (base64'ed version of the correct surrogate file)
 - `expectExpression` - string - only if action is "redirect". This should contain the expression to validate if the surrogate was correctly injected.
 
-### ⚠️ Note ⚠️
+#### ⚠️ Note ⚠️
 
 For this test to be valid you need to assert either `expectRedirect` and/or `expectExpression` (at least one). The reason we have two different fields is because some platforms (like macOS/iOS) cannot assert against `expectRedirect`.
 
