@@ -26,7 +26,7 @@ Test suite specific fields:
 
 #### ⚠️ Note ⚠️
 
-For this test to be valid you need to assert either `expectRedirect` and/or `expectExpression` (at least one). The reason we have two different fields is because some platforms (like macOS/iOS) cannot assert against `expectRedirect`.
+For tests with `expectAction == redirect` to be valid you need to assert either `expectRedirect` and/or `expectExpression` (at least one). The reason we have two different fields is because some platforms (like macOS/iOS) cannot assert against `expectRedirect`.
 
 #### Platform exceptions
 
