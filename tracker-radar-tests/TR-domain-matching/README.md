@@ -21,7 +21,12 @@ Test suite specific fields:
 - `requestURL` - URL - request in question
 - `requestType` - mostly "image" or "script", but can be any of https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest/ResourceType - type of the resource being fetched
 - `expectAction` - one of: null (don't block, not on a blocklist), ignore (don't block, exception), block, redirect (when should be replaced with a surrogate) - expected action that client should take
-- `expectRedirect` - string - only if action is "redirect" this should contain url of the surrogate (base64'ed version of the correct surrogate file)
+- `expectRedirect` - string - only if action is "redirect". This should contain url of the surrogate (base64'ed version of the correct surrogate file)
+- `expectExpression` - string - only if action is "redirect". This should contain the expression to validate if the surrogate was correctly injected.
+
+#### ⚠️ Note ⚠️
+
+For tests with `expectAction == redirect` to be valid you need to assert either `expectRedirect` and/or `expectExpression` (at least one). The reason we have two different fields is because some platforms (like macOS/iOS) cannot assert against `expectRedirect`.
 
 #### Platform exceptions
 
