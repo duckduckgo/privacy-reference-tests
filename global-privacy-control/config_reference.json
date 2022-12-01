@@ -11,7 +11,10 @@
             ],
             "settings": {
                 "gpcHeaderEnabledSites": [
-                    "global-privacy-control.glitch.me"
+                    "global-privacy-control.glitch.me",
+                    "washingtonpost.com",
+                    "globalprivacycontrol.org",
+                    "example.com"
                 ]
             }
         }
