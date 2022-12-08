@@ -8,35 +8,50 @@
                 "siteURL": "https://example.com/",
                 "property": "navigator.getBattery().then(battery => battery.charging)",
                 "expectPropertyValue": "true",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             },
             {
                 "name": "chargingTime property",
                 "siteURL": "https://example.com/",
                 "property": "navigator.getBattery().then(battery => battery.chargingTime)",
                 "expectPropertyValue": "0",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             },
             {
                 "name": "dischargingTime property",
                 "siteURL": "https://example.com/",
                 "property": "navigator.getBattery().then(battery => battery.dischargingTime)",
                 "expectPropertyValue": "Infinity",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             },
             {
                 "name": "chargingTime property - local exception",
                 "siteURL": "https://battery-exception.test/",
                 "property": "navigator.getBattery().then(battery => battery.chargingTime)",
                 "expectPropertyValue": "12345",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             },
             {
                 "name": "chargingTime property - global exception",
                 "siteURL": "https://global-exception.test",
                 "property": "navigator.getBattery().then(battery => battery.chargingTime)",
                 "expectPropertyValue": "12345",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             }
         ]
     },
@@ -49,14 +64,20 @@
                 "siteURL": "https://example.com/",
                 "property": "navigator.keyboard",
                 "expectPropertyValue": "undefined",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser",
+                   ]
             },
             {
                 "name": "keyboard property - prototype access",
                 "siteURL": "https://example.com/",
                 "property": "Navigator.prototype.keyboard",
                 "expectPropertyValue": "undefined",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser",
+                   ]
             },
             {
                 "name": "hardwareConcurrency property",
@@ -77,28 +98,40 @@
                 "siteURL": "https://example.com/",
                 "property": "navigator.deviceMemory",
                 "expectPropertyValue": "8",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             },
             {
                 "name": "deviceMemory property - prototype access",
                 "siteURL": "https://example.com/",
                 "property": "Navigator.prototype.deviceMemory",
                 "expectPropertyValue": "8",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             },
             {
                 "name": "deviceMemory property - local exception",
                 "siteURL": "https://hardware-exception.test/path/file.html",
                 "property": "Navigator.prototype.deviceMemory",
                 "expectPropertyValue": "12345",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             },
             {
                 "name": "deviceMemory property - global exception",
                 "siteURL": "https://global-exception.test/path/file.html",
                 "property": "Navigator.prototype.deviceMemory",
                 "expectPropertyValue": "12345",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             }
         ]
     },
@@ -195,14 +228,20 @@
                 "siteURL": "https://sub.screensize-exception.test/path/file.html",
                 "property": "Screen.prototype.pixelDepth",
                 "expectPropertyValue": "12345",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser",
+                   ]
             },
             {
                 "name": "pixelDepth property - global exception",
                 "siteURL": "https://global-exception.test/path/file.html",
                 "property": "Screen.prototype.pixelDepth",
                 "expectPropertyValue": "12345",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             }
         ]
     },
@@ -215,21 +254,30 @@
                 "siteURL": "https://example.com/",
                 "property": "new Promise(resolve => {navigator.webkitTemporaryStorage.queryUsageAndQuota((used, granted) => resolve(granted))})",
                 "expectPropertyValue": "4294967296",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             },
             {
                 "name": "queryUsageAndQuota granted space value - global exception",
                 "siteURL": "https://tempstorage-exception.test/path/file.html",
                 "property": "new Promise(resolve => {navigator.webkitTemporaryStorage.queryUsageAndQuota((used, granted) => resolve(granted))})",
                 "expectPropertyValue": "9999999999",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             },
             {
                 "name": "queryUsageAndQuota granted space value - global exception",
                 "siteURL": "https://global-exception.test/path/file.html",
                 "property": "new Promise(resolve => {navigator.webkitTemporaryStorage.queryUsageAndQuota((used, granted) => resolve(granted))})",
                 "expectPropertyValue": "9999999999",
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                       "ios-browser",
+                       "macos-browser"
+                   ]
             }
         ]
     }
