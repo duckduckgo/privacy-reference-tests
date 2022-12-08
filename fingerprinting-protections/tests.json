@@ -230,7 +230,7 @@
                 "expectPropertyValue": "12345",
                 "exceptPlatforms": [
                        "ios-browser",
-                       "macos-browser",
+                       "macos-browser"
                    ]
             },
             {
