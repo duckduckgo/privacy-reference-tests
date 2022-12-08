@@ -98,40 +98,28 @@
                 "siteURL": "https://example.com/",
                 "property": "navigator.deviceMemory",
                 "expectPropertyValue": "8",
-                "exceptPlatforms": [
-                       "ios-browser",
-                       "macos-browser"
-                   ]
+                "exceptPlatforms": []
             },
             {
                 "name": "deviceMemory property - prototype access",
                 "siteURL": "https://example.com/",
                 "property": "Navigator.prototype.deviceMemory",
                 "expectPropertyValue": "8",
-                "exceptPlatforms": [
-                       "ios-browser",
-                       "macos-browser"
-                   ]
+                "exceptPlatforms": []
             },
             {
                 "name": "deviceMemory property - local exception",
                 "siteURL": "https://hardware-exception.test/path/file.html",
                 "property": "Navigator.prototype.deviceMemory",
                 "expectPropertyValue": "12345",
-                "exceptPlatforms": [
-                       "ios-browser",
-                       "macos-browser"
-                   ]
+                "exceptPlatforms": []
             },
             {
                 "name": "deviceMemory property - global exception",
                 "siteURL": "https://global-exception.test/path/file.html",
                 "property": "Navigator.prototype.deviceMemory",
                 "expectPropertyValue": "12345",
-                "exceptPlatforms": [
-                       "ios-browser",
-                       "macos-browser"
-                   ]
+                "exceptPlatforms": []
             }
         ]
     },
@@ -228,20 +216,14 @@
                 "siteURL": "https://sub.screensize-exception.test/path/file.html",
                 "property": "Screen.prototype.pixelDepth",
                 "expectPropertyValue": "12345",
-                "exceptPlatforms": [
-                       "ios-browser",
-                       "macos-browser"
-                   ]
+                "exceptPlatforms": []
             },
             {
                 "name": "pixelDepth property - global exception",
                 "siteURL": "https://global-exception.test/path/file.html",
                 "property": "Screen.prototype.pixelDepth",
                 "expectPropertyValue": "12345",
-                "exceptPlatforms": [
-                       "ios-browser",
-                       "macos-browser"
-                   ]
+                "exceptPlatforms": []
             }
         ]
     },
