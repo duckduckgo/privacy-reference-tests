@@ -1,3 +1,4 @@
+function init(window) {
     // values of properties are being set by this script on purpose to be 'outlier' values,
     // so the test can verify protection in a platform agnostic way
 
@@ -24,6 +25,7 @@
             callback(0, 9999999999)
         }
     };
+}
 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = init
