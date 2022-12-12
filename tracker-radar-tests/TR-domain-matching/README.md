@@ -43,3 +43,7 @@ Test suite specific fields:
 - `site` - URL - page where request in question is made
 - `request` - URL - request in question
 - `isAllowlisted` - bool - if request is expected to be allowlisted or not
+
+## Platform exceptions
+
+- android-browser: Blocks when CNAME is same-entity. https://app.asana.com/0/414730916066338/1203532296782616/f
