@@ -23,7 +23,6 @@ Test suite specific fields:
 
 ```
 for $testSet in test.json
-  loadReferenceConfig('config_reference.json')
 
   for $site in $testSet.fireproofedSites
     fireproof($site)
