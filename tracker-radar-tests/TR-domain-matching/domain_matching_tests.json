@@ -80,7 +80,7 @@
                 "expectAction": "block"
             },
             {
-                "name": "uncloacked tracker should contain original path and be checked against the ignore rules",
+                "name": "uncloaked tracker should contain original path and be checked against the ignore rules",
                 "siteURL": "https://randomsite123.com/",
                 "requestURL": "https://bad.cnames.test/breakage",
                 "requestType": "script",
@@ -240,6 +240,27 @@
                     "ios-browser",
                     "web-extension-mv3"
                 ]
+            },
+            {
+                "name": "unknown site default action results in default behavior",
+                "siteURL": "https://random678.site/",
+                "requestURL": "https://unknown-action.site/",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "unknown rule action results in default ignore behavior",
+                "siteURL": "https://random.test/",
+                "requestURL": "action.ignore.test/tracker",
+                "requestType": "script",
+                "expectAction": null
+            },
+            {
+                "name": "unknown rule action results in default block behavior",
+                "siteURL": "https://random678.site/",
+                "requestURL": "https://tracker.test/new-new-thing/",
+                "requestType": "script",
+                "expectAction": "block"
             }
         ]
     },

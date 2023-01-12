@@ -63,6 +63,10 @@
                 {
                     "action": "ignore",
                     "rule": "tracker\\.test\\/breakage"
+                },
+                {
+                    "rule": "tracker\\.test\\/new-new-thing",
+                    "action": "ignore-unknown-action"
                 }
             ]
         },
@@ -82,6 +86,10 @@
             "rules": [
                 {
                     "rule": "ignore\\.test\\/tracker"
+                },
+                {
+                    "rule": "action\\.ignore\\.test\\/tracker",
+                    "action": "ignore-unknown-action"
                 }
             ]
         },
@@ -138,6 +146,21 @@
                 }
             ],
             "default": "block"
+        },
+        "unknown-action.site": {
+            "domain": "unknown-action.site",
+            "owner": {
+                "name": "Ignore Site for Tracker Blocking",
+                "displayName": "Ignore unknown actions",
+                "privacyPolicy": "",
+                "url": "http://unknown-action.site"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "rules": [],
+            "default": "ignore-unknown-action"
         }
     },
     "entities": {
@@ -154,7 +177,8 @@
         "Ignore Site for Tracker Blocking": {
             "domains": [
                 "ignore.test",
-                "sub.ignore.test"
+                "sub.ignore.test",
+                "unknown-action.site"
             ],
             "prevalence": 0.1,
             "displayName": "Ignore Site for Tracker Blocking"
@@ -183,6 +207,7 @@
         "sub.ignore.test": "Ignore Site for Tracker Blocking",
         "surrogates.test": "Test Site for Surrogates",
         "other-surrogates.test": "Test Site for Surrogates",
-        "blockedsurrogates.test": "Test Site for Surrogates"
+        "blockedsurrogates.test": "Test Site for Surrogates",
+        "unknown-action.site": "Ignore Site for Tracker Blocking"
     }
 }
