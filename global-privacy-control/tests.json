@@ -36,6 +36,19 @@
                 ]
             },
             {
+                "name": "Header injected - domain is excluded from gpcHeaderEnabledSites",
+                "siteURL": "http://anotherexample.com",
+                "requestURL": "http://anotherexample.com",
+                "requestType": "main_frame",
+                "gpcUserSettingOn": true,
+                "expectGPCHeader": true,
+                "exceptPlatforms": [
+                    "ios-browser",
+                    "macos-browser",
+                    "android-browser"
+                ]
+            },
+            {
                 "name": "Header not injected - privacy config local exception (gpc/exceptions)",
                 "siteURL": "https://www.washingtonpost.com/",
                 "requestURL": "https://www.washingtonpost.com/",
@@ -120,11 +133,7 @@
                 "gpcUserSettingOn": true,
                 "expectGPCAPI": true,
                 "expectGPCAPIValue": "true",
-                "exceptPlatforms": [
-                    "web-extension",
-                    "safari-extension",
-                    "windows-browser"
-                ]
+                "exceptPlatforms": []
             },
             {
                 "name": "API NOT injected - excluded site (gpc/exceptions)",
