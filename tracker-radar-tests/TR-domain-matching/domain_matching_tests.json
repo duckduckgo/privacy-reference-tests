@@ -229,6 +229,13 @@
                 "expectAction": "block"
             },
             {
+                "name": "block a CNAME tracker path in ignore domain",
+                "siteURL": "https://random.test/",
+                "requestURL": "https://ignore.cloaked.test/tracker?abc=2",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
                 "name": "ports are ignored when matching rules",
                 "siteURL": "https://random.test/",
                 "requestURL": "https://bad.third-party.site:8080/ignore",
