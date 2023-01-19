@@ -10,6 +10,7 @@ This set of tests verifies implementation of Global Privacy Control signal. In p
 - that `navigator.globalPrivacyControl` API is available in all frames
 - that the right thing happens when user opts out of GPC and
 - that excluded domains, as defined in the privacy remote configuration, are taken into account.
+- note: On platforms where header modifications is limited (i.e. iOS, Android, macOS) headers should only be modified on sites listed in gpcHeaderEnabledSites inside the settings of the gpc feature of the remote config.
 
 ## Structure
 
