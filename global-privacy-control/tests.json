@@ -32,7 +32,8 @@
                 "exceptPlatforms": [
                     "web-extension",
                     "safari-extension",
-                    "windows-browser"
+                    "windows-browser",
+                    "android-browser"
                 ]
             },
             {
