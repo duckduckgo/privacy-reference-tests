@@ -23,7 +23,7 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "Header not injected - domain is excluded from gpcHeaderEnabledSites",
+                "name": "Header not injected on platforms using gpcHeaderEnabledSites - domain is excluded from gpcHeaderEnabledSites",
                 "siteURL": "http://anotherexample.com",
                 "requestURL": "http://anotherexample.com",
                 "requestType": "main_frame",
@@ -36,7 +36,7 @@
                 ]
             },
             {
-                "name": "Header injected - domain is excluded from gpcHeaderEnabledSites",
+                "name": "Header injected on platforms not using gpcHeaderEnabledSites - domain is excluded from gpcHeaderEnabledSites",
                 "siteURL": "http://anotherexample.com",
                 "requestURL": "http://anotherexample.com",
                 "requestType": "main_frame",
