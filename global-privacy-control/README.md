@@ -55,3 +55,7 @@ for $testSet in test.json
             expect(getJSPropertyValue('Navigator.prototype.globalPrivacyControl') === $test.expectGPCAPIValue)
 
 ```
+
+## Platform exceptions
+
+- On platforms where header modifications is limited headers should only be modified on sites listed in gpcHeaderEnabledSites inside the settings of the gpc feature of the remote config.
