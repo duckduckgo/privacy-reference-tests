@@ -1,0 +1,69 @@
+{
+    "trackers": {
+        "facebook.com": {
+            "domain": "facebook.com",
+            "default": "block",
+            "owner": {
+                "name": "Facebook",
+                "displayName": "Facebook"
+            }
+        },
+        "facebook.net": {
+            "domain": "facebook.net",
+            "default": "ignore",
+            "owner": {
+                "name": "Facebook",
+                "displayName": "Facebook"
+            },
+            "rules": [
+                {
+                    "rule": "facebook\\.net/first-tracker",
+                    "action": "block-ctl-fb"
+                },
+                {
+                    "rule": "facebook\\.net/different-tracker",
+                    "action": "block-ctl-fb2"
+                },
+                {
+                    "rule": "facebook\\.net/unknown-tracker",
+                    "action": "block-ctl-unknown"
+                },
+                {
+                    "rule": "facebook\\.net/script\\.js",
+                    "surrogate": "sdk.js",
+                    "action": "block-ctl-fb"
+                }
+            ]
+        },
+        "tracker.example": {
+            "domain": "tracker.example",
+            "default": "block",
+            "owner": {
+                "name": "Trackers Incorporated",
+                "displayName": "Trackers Inc."
+            }
+        }
+    },
+    "entities": {
+        "Facebook": {
+            "domains": [
+                "facebook.com",
+                "facebook.net"
+            ],
+            "displayName": "Facebook"
+        },
+        "Trackers Incorporated": {
+            "domains": [
+                "trackers.example"
+            ],
+            "displayName": "Trackers Inc."
+        }
+    },
+    "domains": {
+        "facebook.com": "Facebook",
+        "facebook.net": "Facebook",
+        "tracker.example": "Trackers Incorporated"
+    },
+    "cnames": {
+    }
+}
