@@ -1,0 +1,22 @@
+{
+    "readme": "Test configuration for the Click to Load feature.",
+    "features": {
+        "clickToPlay": {
+            "state": "enabled",
+            "exceptions": [{
+                "domain": "allowed.example",
+                "reason": "A really good reason"
+            }],
+            "settings": {
+                "Facebook": {
+                    "state": "enabled",
+                    "ruleActions": ["block-ctl-fb", "block-ctl-fb2"]
+                }
+            }
+        },
+        "contentBlocking": {
+            "state": "enabled"
+        }
+    },
+    "version": 1676030961458
+}
