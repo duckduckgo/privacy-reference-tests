@@ -184,6 +184,7 @@
         "Test Site for Tracker Blocking": {
             "domains": [
                 "bad.third-party.site",
+                "sometimes-bad.third-party.site",
                 "broken.third-party.site",
                 "third-party.site",
                 "tracker.test"
@@ -216,6 +217,7 @@
     },
     "domains": {
         "bad.third-party.site": "Test Site for Tracker Blocking",
+        "sometimes-bad.third-party.site": "Test Site for Tracker Blocking",
         "broken.third-party.site": "Test Site for Tracker Blocking",
         "third-party.site": "Test Site for Tracker Blocking",
         "tracker.test": "Test Site for Tracker Blocking",
