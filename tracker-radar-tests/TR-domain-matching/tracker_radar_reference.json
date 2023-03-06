@@ -19,6 +19,14 @@
                     "action": "ignore"
                 },
                 {
+                    "rule": "bad\\.third-party\\.site\\/option-blocking-only",
+                    "options": {
+                        "domains": [
+                            "site-that-tracks.com"
+                        ]
+                    }
+                },
+                {
                     "rule": "bad\\.third-party\\.site",
                     "exceptions": {
                         "domains": [

@@ -250,6 +250,20 @@
                 "requestURL": "https://ignore.test/unsupported-action",
                 "requestType": "script",
                 "expectAction": "ignore"
+            },
+            {
+                "name": "block tracker with site matching options domains",
+                "siteUR:": "https://site-that-tracks.com",
+                "requestURL": "https://bad.third-party.site/options-blocking-only",
+                "requestType": "image",
+                "expectAction": "block"
+            },
+            {
+                "name": "don't block tracker with site not  matching options domains",
+                "siteUR:": "https://example.com",
+                "requestURL": "https://bad.third-party.site/options-blocking-only",
+                "requestType": "image",
+                "expectAction": "block"
             }
         ]
     },
