@@ -253,17 +253,17 @@
             },
             {
                 "name": "block tracker with site matching options domains",
-                "siteUR:": "https://site-that-tracks.com",
-                "requestURL": "https://bad.third-party.site/options-blocking-only",
+                "siteURL": "https://site-that-tracks.com",
+                "requestURL": "https://sometimes-bad.third-party.site/option-blocking-only",
                 "requestType": "image",
                 "expectAction": "block"
             },
             {
                 "name": "don't block tracker with site not  matching options domains",
-                "siteUR:": "https://example.com",
-                "requestURL": "https://bad.third-party.site/options-blocking-only",
+                "siteURL": "https://example.com",
+                "requestURL": "https://sometimes-bad.third-party.site/option-blocking-only",
                 "requestType": "image",
-                "expectAction": "block"
+                "expectAction": "ignore"
             }
         ]
     },

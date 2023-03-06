@@ -39,6 +39,30 @@
                 }
             ]
         },
+        "sometimes-bad.third-party.site": {
+            "domain": "sometimes-bad.third-party.site",
+            "owner": {
+                "name": "Test Site for Tracker Blocking",
+                "displayName": "Bad Third Party Site",
+                "privacyPolicy": "",
+                "url": "http://bad.third-party.site"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "ignore",
+            "rules": [
+                {
+                    "rule": "sometimes-bad\\.third-party\\.site\\/option-blocking-only",
+                    "options": {
+                        "domains": [
+                            "site-that-tracks.com"
+                        ]
+                    }
+                }
+            ]
+        },
         "broken.third-party.site": {
             "domain": "broken.third-party.site",
             "owner": {
