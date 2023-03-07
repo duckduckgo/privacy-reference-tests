@@ -1,16 +1,24 @@
 {
     "readme": "Test configuration for the Click to Load feature.",
     "features": {
-        "clickToPlay": {
+        "clickToLoad": {
             "state": "enabled",
             "exceptions": [{
                 "domain": "allowed.example",
                 "reason": "A really good reason"
             }],
             "settings": {
-                "Facebook": {
+                "Facebook, Inc.": {
                     "state": "enabled",
                     "ruleActions": ["block-ctl-fb", "block-ctl-fb2"]
+                },
+                "Second Entity": {
+                    "state": "disabled",
+                    "ruleActions": ["block-ctl-second"]
+                },
+                "Third Entity": {
+                    "state": "enabled",
+                    "ruleActions": ["block-ctl-third"]
                 }
             }
         },
