@@ -259,11 +259,25 @@
                 "expectAction": "block"
             },
             {
+                "name": "don't block tracker with site matching options domains and exceptions",
+                "siteURL": "https://site-that-tracks.com",
+                "requestURL": "https://sometimes-bad.third-party.site/option-blocking-only",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
                 "name": "don't block tracker with site not  matching options domains",
                 "siteURL": "https://example.com",
                 "requestURL": "https://sometimes-bad.third-party.site/option-blocking-only",
                 "requestType": "image",
                 "expectAction": "ignore"
+            },
+            {
+                "name": "surrogate for site matching options domains",
+                "siteURL": "https://site-that-tracks.com",
+                "requestURL": "https://sometimes-bad.third-party.site/surrogate-and-option-blocking-only",
+                "requestType": "image",
+                "expectAction": "redirect"
             }
         ]
     },

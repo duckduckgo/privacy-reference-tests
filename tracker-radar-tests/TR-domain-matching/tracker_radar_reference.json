@@ -59,7 +59,21 @@
                         "domains": [
                             "site-that-tracks.com"
                         ]
+                    },
+                    "exceptions": {
+                        "types": [
+                            "script"
+                        ]
                     }
+                },
+                {
+                    "rule": "sometimes-bad\\.third-party\\.site\\/surrogate-and-option-blocking-only",
+                    "options": {
+                        "domains": [
+                            "site-that-tracks.com"
+                        ]
+                    },
+                    "surrogate": "tracker"
                 }
             ]
         },
