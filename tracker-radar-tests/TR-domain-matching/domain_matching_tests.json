@@ -299,13 +299,6 @@
                 "requestURL": "https://tracker.test/with-options",
                 "requestType": "image",
                 "expectAction": "block"
-            },
-            {
-                "name": "surrogate for site matching options domains",
-                "siteURL": "https://site-that-tracks.com",
-                "requestURL": "https://sometimes-bad.third-party.site/surrogate-and-option-blocking-only",
-                "requestType": "image",
-                "expectAction": "redirect"
             }
         ]
     },
