@@ -49,7 +49,8 @@
                     "rule": "sometimes-bad\\.third-party\\.site\\/option-blocking-only",
                     "options": {
                         "domains": [
-                            "site-that-tracks.com"
+                            "site-that-tracks.com",
+                            "subdomain.site-that-also-tracks.com"
                         ]
                     },
                     "exceptions": {
@@ -63,6 +64,9 @@
                     "options": {
                         "domains": [
                             "site-that-tracks.com"
+                        ],
+                        "types": [
+                            "image"
                         ]
                     },
                     "surrogate": "tracker"
@@ -105,6 +109,14 @@
                 {
                     "action": "unsupported-action",
                     "rule": "tracker\\.test\\/unsupported-action"
+                },
+                {
+                    "rule": "tracker\\.test\\/with-options",
+                    "options": {
+                        "domains": [
+                            "example.com"
+                        ]
+                    }
                 }
             ]
         },

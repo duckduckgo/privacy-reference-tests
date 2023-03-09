@@ -259,8 +259,22 @@
                 "expectAction": "block"
             },
             {
+                "name": "don't block tracker with site matching options domains but not types",
+                "siteURL": "https://site-that-tracks.com",
+                "requestURL": "https://sometimes-bad.third-party.site/option-blocking-only",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
                 "name": "don't block tracker with site matching options domains and exceptions",
                 "siteURL": "https://site-that-tracks.com",
+                "requestURL": "https://sometimes-bad.third-party.site/option-blocking-only",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "don't block tracker not matching option subdomain",
+                "siteURL": "https://site-that-also-tracks.com",
                 "requestURL": "https://sometimes-bad.third-party.site/option-blocking-only",
                 "requestType": "script",
                 "expectAction": "ignore"
@@ -271,6 +285,20 @@
                 "requestURL": "https://sometimes-bad.third-party.site/option-blocking-only",
                 "requestType": "image",
                 "expectAction": "ignore"
+            },
+            {
+                "name": "block default block tracker matching  option domains",
+                "siteURL": "https://example.com",
+                "requestURL": "https://tracker.test/with-options",
+                "requestType": "image",
+                "expectAction": "block"
+            },
+            {
+                "name": "block default block tracker not matching option domains",
+                "siteURL": "https://example2.com",
+                "requestURL": "https://tracker.test/with-options",
+                "requestType": "image",
+                "expectAction": "block"
             },
             {
                 "name": "surrogate for site matching options domains",
