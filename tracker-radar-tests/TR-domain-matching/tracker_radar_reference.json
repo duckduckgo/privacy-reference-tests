@@ -49,8 +49,7 @@
                     "rule": "sometimes-bad\\.third-party\\.site\\/option-blocking-only",
                     "options": {
                         "domains": [
-                            "site-that-tracks.com",
-                            "subdomain.site-that-also-tracks.com"
+                            "site-that-tracks.com"
                         ]
                     },
                     "exceptions": {
