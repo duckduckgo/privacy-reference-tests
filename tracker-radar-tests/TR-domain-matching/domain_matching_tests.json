@@ -259,6 +259,13 @@
                 "expectAction": "block"
             },
             {
+                "name": "test option match fallback to next rule",
+                "siteURL": "https://site-that-tracks.com",
+                "requestURL": "https://sometimes-bad.third-party.site/option-fallback/option-blocking-only2",
+                "requestType": "image",
+                "expectAction": "block"
+            },
+            {
                 "name": "don't block tracker with site not matching the option subdomain",
                 "siteURL": "https://ok-subdomain.also-site-that-tracks.com",
                 "requestURL": "https://sometimes-bad.third-party.site/option-blocking-only",

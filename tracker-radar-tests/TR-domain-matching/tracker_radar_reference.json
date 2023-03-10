@@ -70,6 +70,17 @@
                         ]
                     },
                     "surrogate": "tracker"
+                },
+                {
+                    "rule": "sometimes-bad\\.third-party\\.site\\/.*\\/option-blocking-only2",
+                    "options": {
+                        "domains": [
+                            "test-domain.com"
+                        ]
+                    }
+                },
+                {
+                    "rule": "sometimes-bad\\.third-party\\.site\\/option-fallback\\/option-blocking-only2"
                 }
             ]
         },
