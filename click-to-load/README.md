@@ -39,8 +39,8 @@ loadReferenceBlocklist(tds_reference.json')
 
 // Find the list of supported Click to Load rule actions.
 $supportedRuleActions = []
-if $config.features.clickToPlay.state == enabled:
-  for $entity, $entity_settings in $config.features.clickToPlay.settings:
+if $config.features.clickToLoad.state == enabled:
+  for $entity, $entity_settings in $config.features.clickToLoad.settings:
      if $entity_settings.state == enabled:
        for $ruleAction in $entity_settings.ruleActions:
           $supportedRuleActions.push($ruleAction)
@@ -57,12 +57,12 @@ for $testSet in test.json
 
     // Prevent first-party blocking.
     $entity = findParentEntity($test.siteUrl)
-    if $config.features.clickToPlay.settings[$entity]:
-        for $action in $config.features.clickToPlay.settings[$entity].ruleActions:
+    if $config.features.clickToLoad.settings[$entity]:
+        for $action in $config.features.clickToLoad.settings[$entity].ruleActions:
            $actions.remove($action)
 
     // Prevent blocking Click to Load content if feature is disabled for tab.
-    if !checkFeatureEnabled($test.siteUrl, "clickToPlay"):
+    if !checkFeatureEnabled($test.siteUrl, "clickToLoad"):
       $actions = []
 
     // Check the expected matching outcome is correct for the test request.

@@ -98,6 +98,46 @@
                 "userUnblockedRuleActions": ["block-ctl-fb", "block-ctl-fb2"],
                 "expectedOutcome": "ignore",
                 "exceptPlatforms": []
+            },
+            {
+                "name": "Disabled Click to Load entity",
+                "siteUrl": "https://third-party.example",
+                "requestUrl": "https://second.example/tracker",
+                "userUnblockedRuleActions": [],
+                "expectedOutcome": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Request initiated by different Click to Load entity",
+                "siteUrl": "https://facebook.com",
+                "requestUrl": "https://third.example/tracker",
+                "userUnblockedRuleActions": [],
+                "expectedOutcome": "block",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Different Click to Load rule actions unblocked",
+                "siteUrl": "https://third-party.example",
+                "requestUrl": "https://third.example/tracker",
+                "userUnblockedRuleActions": ["block-ctl-fb", "block-ctl-fb2"],
+                "expectedOutcome": "block",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Third entity rule action unblocked",
+                "siteUrl": "https://third-party.example",
+                "requestUrl": "https://third.example/tracker",
+                "userUnblockedRuleActions": ["block-ctl-third"],
+                "expectedOutcome": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Third entity first-party",
+                "siteUrl": "https://third.example",
+                "requestUrl": "https://third.example/tracker",
+                "userUnblockedRuleActions": [],
+                "expectedOutcome": "ignore",
+                "exceptPlatforms": []
             }
         ]
     }
