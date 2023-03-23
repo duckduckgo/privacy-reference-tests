@@ -290,7 +290,9 @@
                 "sometimes-bad.third-party.site",
                 "broken.third-party.site",
                 "third-party.site",
-                "tracker.test"
+                "tracker.test",
+                "options1.test",
+                "options2.test"
             ],
             "prevalence": 0.1,
             "displayName": "Test Site for Tracker Blocking"
