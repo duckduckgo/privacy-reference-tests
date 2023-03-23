@@ -349,6 +349,7 @@
                 "name": "options2 - ignore on non-matching options fallback ignore",
                 "siteURL": "https://example2.com",
                 "requestURL": "https://options2.test/script.js",
+                "requestType": "script",
                 "expectAction": "ignore"
             },
             {
