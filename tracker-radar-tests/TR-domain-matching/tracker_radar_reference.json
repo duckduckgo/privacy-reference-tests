@@ -326,6 +326,8 @@
         "broken.third-party.site": "Test Site for Tracker Blocking",
         "third-party.site": "Test Site for Tracker Blocking",
         "tracker.test": "Test Site for Tracker Blocking",
+        "options1.test": "Test Site for Tracker Blocking",
+        "options2.test": "Test Site for Tracker Blocking",
         "ignore.test": "Ignore Site for Tracker Blocking",
         "sub.ignore.test": "Ignore Site for Tracker Blocking",
         "surrogates.test": "Test Site for Surrogates",
