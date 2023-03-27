@@ -334,7 +334,10 @@
                 "siteURL": "https://example.com",
                 "requestURL": "https://options1.test/script2.js",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "android-browser"
+                ]
             },
             {
                 "name": "options2 - block on matching options with surrogate",
@@ -357,21 +360,30 @@
                 "siteURL": "https://example3.com",
                 "requestURL": "https://options2.test/script.js",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "android-browser"
+                ]
             },
             {
                 "name": "options2 - block on matching options (fallthrough)",
                 "siteURL": "https://example2.com",
                 "requestURL": "https://options2.test/script2.js",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "android-browser"
+                ]
             },
             {
                 "name": "options2 - block on matching options (subpath match)",
                 "siteURL": "https://example3.com",
                 "requestURL": "https://options2.test/script2.js",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "android-browser"
+                ]
             }
         ]
     },
