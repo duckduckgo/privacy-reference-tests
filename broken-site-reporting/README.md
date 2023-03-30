@@ -28,7 +28,7 @@ Test suite specific fields:
 - `expectReportURLPrefix` - string - resulting report URL should be prefixed with this string
 - `expectReportURLParams` - Array of `{name: '', value: ''}` objects - resulting report URL should have the following set of URL parameters with matching values
 - `remoteConfigEtag` - string - string representation of remote configuration etag
-- `remoteConfigVersion` - string - string representation of remote configuration version
+- `remoteConfigVersion` - string - string representation of remote configuration version (note, this is the numeric version found in the remote config (e.g, `1680178584671`, not `v1` or `v2`))
 - `providedDescription` - string - user-provided breakage description
 
 ## Pseudo-code implementation
