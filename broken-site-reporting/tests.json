@@ -8,7 +8,7 @@
                 "wasUpgraded": true,
                 "category": "content",
                 "blockedTrackers": ["bad.tracker.test", "tracking.test"],
-                "surrogates": ["surrogate.domain.test"],
+                "surrogates": ["surrogate.domain.test", "domain2.test"],
                 "atb": "v123-456g",
                 "blocklistVersion": "abc123",
                 "remoteConfigEtag": "abd142",
@@ -22,7 +22,7 @@
                     {"name": "remoteConfigEtag", "value": "abd142"},
                     {"name": "remoteConfigVersion", "value": "1234"},
                     {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test"},
-                    {"name": "surrogates", "value": "surrogate.domain.test"}
+                    {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"}
                 ],
                 "exceptPlatforms": []
             },
