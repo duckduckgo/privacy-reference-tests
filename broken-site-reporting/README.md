@@ -14,10 +14,10 @@ Test suite specific fields:
 - `wasUpgraded` - bool - if request was upgraded to HTTPS by us or not
 - `category` - string - user picked breakage category e.g. 'content', 'images', 'paywall', 'login'
 - `blockedTrackers` - array of strings - array of hostnames of trackers that were blocked
-- `noActionRequests` - array of strings - array of hostnames of requests that had `none` action
-- `adAttributionRequests` - array of strings - array of hostnames of requests that had `ad-attribution` action
-- `ignoredByUserRequests` - array of strings - array of hostnames of requests that had `ignore-user` action
-- `ignoreRequests` - array of strings - array of hostnames of requests that had `ignore` action
+- `noActionRequests` - array of strings - array of hostnames of requests that were not on the blocklist
+- `adAttributionRequests` - array of strings - array of hostnames of requests that were ignored due to ad-attribution
+- `ignoredByUserRequests` - array of strings - array of hostnames of requests that were allowed due to protections disabled by the user
+- `ignoreRequests` - array of strings - array of hostnames of requests that were ignored for other reasons (e.g., blocklist ignore)
 - `surrogates` - array of strings - array of hostnames of trackers that were replaced with a surrogate
 - `atb` - string - ATB cohort
 - `blocklistVersion` - string - version of the blocklist
