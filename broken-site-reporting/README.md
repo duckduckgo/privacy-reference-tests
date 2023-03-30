@@ -23,6 +23,8 @@ Test suite specific fields:
 - `gpcEnabled` - boolean - if GPC is enabled or not (native apps only) - GPC can be disabled by user or by remote config
 - `expectReportURLPrefix` - string - resulting report URL should be prefixed with this string
 - `expectReportURLParams` - Array of `{name: '', value: ''}` objects - resulting report URL should have the following set of URL parameters with matching values
+- `remoteConfigEtag` - string - string representation of remote configuration etag
+- `remoteConfigVersion` - string - string representation of remote configuration version
 
 ## Pseudo-code implementation
 
