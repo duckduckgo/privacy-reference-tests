@@ -27,6 +27,54 @@
                 "exceptPlatforms": []
             },
             {
+                "name": "Test correct encoding of weak etags.",
+                "siteURL": "https://example.test/",
+                "wasUpgraded": true,
+                "category": "content",
+                "blockedTrackers": ["bad.tracker.test", "tracking.test"],
+                "surrogates": ["surrogate.domain.test", "domain2.test"],
+                "atb": "v123-456g",
+                "blocklistVersion": "W/\"cb62f38dda52e13f76c06147b7aea50c\"",
+                "remoteConfigEtag": "W/\"4acd4754aff66f5da1ea044580a60cd3\"",
+                "remoteConfigVersion": "1234",
+                "expectReportURLPrefix": "https://improving.duckduckgo.com/t/epbf",
+                "expectReportURLParams": [
+                    {"name": "category", "value": "content"},
+                    {"name": "siteUrl", "value": "https%3A%2F%2Fexample.test%2F"},
+                    {"name": "upgradedHttps", "value": "true"},
+                    {"name": "tds", "value": "W%2F%22cb62f38dda52e13f76c06147b7aea50c%22"},
+                    {"name": "remoteConfigEtag", "value": "W%2F%224acd4754aff66f5da1ea044580a60cd3%22"},
+                    {"name": "remoteConfigVersion", "value": "1234"},
+                    {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test"},
+                    {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"}
+                ],
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Test correct encoding of non-weak etags.",
+                "siteURL": "https://example.test/",
+                "wasUpgraded": true,
+                "category": "content",
+                "blockedTrackers": ["bad.tracker.test", "tracking.test"],
+                "surrogates": ["surrogate.domain.test", "domain2.test"],
+                "atb": "v123-456g",
+                "blocklistVersion": "\"cb62f38dda52e13f76c06147b7aea50c\"",
+                "remoteConfigEtag": "\"4acd4754aff66f5da1ea044580a60cd3\"",
+                "remoteConfigVersion": "1234",
+                "expectReportURLPrefix": "https://improving.duckduckgo.com/t/epbf",
+                "expectReportURLParams": [
+                    {"name": "category", "value": "content"},
+                    {"name": "siteUrl", "value": "https%3A%2F%2Fexample.test%2F"},
+                    {"name": "upgradedHttps", "value": "true"},
+                    {"name": "tds", "value": "%22cb62f38dda52e13f76c06147b7aea50c%22"},
+                    {"name": "remoteConfigEtag", "value": "%224acd4754aff66f5da1ea044580a60cd3%22"},
+                    {"name": "remoteConfigVersion", "value": "1234"},
+                    {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test"},
+                    {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"}
+                ],
+                "exceptPlatforms": []
+            },
+            {
                 "name": "Making sure that siteURL gets trimmed - path, query and fragment should be dropped",
                 "siteURL": "https://sub.example.test/path/to/thing.html?query=value#item123",
                 "wasUpgraded": false,
