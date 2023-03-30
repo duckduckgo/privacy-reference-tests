@@ -29,6 +29,7 @@ Test suite specific fields:
 - `expectReportURLParams` - Array of `{name: '', value: ''}` objects - resulting report URL should have the following set of URL parameters with matching values
 - `remoteConfigEtag` - string - string representation of remote configuration etag
 - `remoteConfigVersion` - string - string representation of remote configuration version
+- `providedDescription` - string - user-provided breakage description
 
 ## Pseudo-code implementation
 

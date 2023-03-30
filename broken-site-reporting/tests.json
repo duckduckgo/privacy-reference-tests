@@ -47,6 +47,32 @@
                 "exceptPlatforms": []
             },
             {
+                "name": "Test that descriptions are correctly encoded",
+                "siteURL": "https://example.test/",
+                "wasUpgraded": true,
+                "category": "content",
+                "blockedTrackers": ["bad.tracker.test", "tracking.test"],
+                "surrogates": ["surrogate.domain.test", "domain2.test"],
+                "atb": "v123-456g",
+                "blocklistVersion": "abc123",
+                "providedDescription": "This is+a&description./\nThat spans %20lines\"'. With \\emoji: 😀",
+                "expectReportURLPrefix": "https://improving.duckduckgo.com/t/epbf",
+                "expectReportURLParams": [
+                    {"name": "category", "value": "content"},
+                    {"name": "siteUrl", "value": "https%3A%2F%2Fexample.test%2F"},
+                    {"name": "description", "value": "This+is%2Ba%26description.%2F%0AThat+spans+%2520lines%22%27.+With+%5Cemoji%3A+%F0%9F%98%80"},
+                    {"name": "upgradedHttps", "value": "true"},
+                    {"name": "tds", "value": "abc123"},
+                    {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test"},
+                    {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"}
+                ],
+                "exceptPlatforms": [
+                    "android-browser",
+                    "ios-browser",
+                    "safari-extension"
+                ]
+            },
+            {
                 "name": "Native app specific fields",
                 "siteURL": "http://unsafe.example.test/path/to/thing.html?query=value#item123",
                 "wasUpgraded": false,
