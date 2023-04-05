@@ -56,7 +56,7 @@ for $testSet in test.json
 
     if $test.expectReportURLPrefix
         expect($url.startsWith($test.expectReportURLPrefix))
-    
+
     if $test.expectReportURLParams
         for $param in $test.expectReportURLParams
             expect($url.matchesRegex(/[?&] + $param.name + '=' + $param.value + [&$]/))
@@ -69,6 +69,10 @@ current platform support and further links. A summary of exceptions affecting
 the reference tests is provided below:
 
 - description tests:
-  - the following platforms do not currently allow users to provide a description: `android-browser`, `ios-browser`, `safari-extension`
+  - the following platforms do not currently allow users to provide a description:
+    - `android-browser`, see https://app.asana.com/0/1163321984198618/1203936449485101/f
+    - `ios-browser`, see https://app.asana.com/0/1163321984198618/1203944813756141
+    - `safari-extension`, see https://app.asana.com/0/1201602070177732/1204307004967346
 - truncation tests:
   - the following platforms do not currently implement the optional `noActionRequests`, `adAttributionRequests`, `ignoredByUserRequests`, or `ignoreRequests` truncatable parameters: `android-browser`, `ios-browser`, `macos-browser`, `safari-extension`, `windows-browser`
+  - see https://app.asana.com/0/0/1204271046995906/f for more information about truncation and implementation requirements
