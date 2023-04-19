@@ -22,7 +22,8 @@
                     {"name": "remoteConfigEtag", "value": "abd142"},
                     {"name": "remoteConfigVersion", "value": "1234"},
                     {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test"},
-                    {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"}
+                    {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"},
+                    {"name": "thisShouldFail", "value": "surrogate.domain.test,domain2.test"}
                 ],
                 "exceptPlatforms": []
             },
