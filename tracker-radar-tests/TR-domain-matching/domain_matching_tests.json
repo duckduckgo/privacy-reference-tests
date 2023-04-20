@@ -8,7 +8,7 @@
                 "siteURL": "https://bad.third-party.site/",
                 "requestURL": "https://bad.third-party.site/",
                 "requestType": "script",
-                "expectAction": "ignore",
+                "expectAction": "block",
                 "exceptPlatforms": []
             },
             {
