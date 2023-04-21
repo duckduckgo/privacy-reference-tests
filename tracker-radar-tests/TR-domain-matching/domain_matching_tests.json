@@ -433,7 +433,7 @@
                 "requestType": "script",
                 "expectAction": "ignore"
             },
-			{
+            {
                 "name": "options1 - block on matching options with surrogate",
                 "siteURL": "https://example.com",
                 "requestURL": "https://options1.test/script.js",
@@ -442,7 +442,7 @@
                 "expectRedirect": "data:application/javascript;base64,KGZ1bmN0aW9uKCkge3dpbmRvdy5zdXJyb2dhdGUxPXRydWV9KSgpOw==",
                 "expectExpression": "window.surrogate1 === true"
             },
-			{
+            {
                 "name": "options2 - block on matching options with surrogate",
                 "siteURL": "https://example.com",
                 "requestURL": "https://options2.test/script.js",
