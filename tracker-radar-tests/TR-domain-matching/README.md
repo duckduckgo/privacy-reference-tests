@@ -47,3 +47,4 @@ Test suite specific fields:
 ## Platform exceptions
 
 - android-browser: Blocks when CNAME is same-entity. https://app.asana.com/0/414730916066338/1203532296782616/f
+- ios-browser: Exceptions for options2 trackers caused by inability to construct rules from current tds as the last ignore rule invalidates all previous rules. https://app.asana.com/0/1203790657351911/1204149290597759/f; One exception for tracker.test is because Apple platforms are not going to receive any trackers with default action block and options - it is again due to inability to construct rules with the current algorithm. We will follow up in https://app.asana.com/0/1200443608678338/1204431436175798/f
