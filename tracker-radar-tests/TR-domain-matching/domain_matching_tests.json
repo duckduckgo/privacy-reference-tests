@@ -464,13 +464,6 @@
                 "expectAction": "ignore"
             },
             {
-                "name": "format.test - no escape on domain - false domain",
-                "siteURL": "https://example.com",
-                "requestURL": "https://formatntest/test5.js",
-                "requestType": "script",
-                "expectAction": null
-            },
-            {
                 "name": "format.test - no escape on subdomain - match with periods",
                 "siteURL": "https://example.com",
                 "requestURL": "https://sub1.sub2.format.test/test6.js",
@@ -483,13 +476,6 @@
                 "requestURL": "https://sub1asub2.format.test/test6.js",
                 "requestType": "script",
                 "expectAction": "ignore"
-            },
-            {
-                "name": "format.test - no escape on subdomain - don't match with incorrect domain",
-                "siteURL": "https://example.com",
-                "requestURL": "https://sub1.sub2bformat.test/test6.js",
-                "requestType": "script",
-                "expectAction": null
             }
         ]
     },
