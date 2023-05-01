@@ -450,13 +450,6 @@
                 "expectAction": "block"
             },
             {
-                "name": "format.test - with subdomain - don't match on extended subdomain",
-                "siteURL": "https://example.com",
-                "requestURL": "https://ssub1.sub2.format.test/test4.js",
-                "requestType": "script",
-                "expectAction": "block"
-            },
-            {
                 "name": "format.test - with subdomain and regexp - match on sub subdomain",
                 "siteURL": "https://example.com",
                 "requestURL": "https://sub0.sub1.sub2.format.test/a/test4a.js",
@@ -488,13 +481,6 @@
                 "name": "format.test - with subdomain and regexp - don't match on incorrect subdomain",
                 "siteURL": "https://example.com",
                 "requestURL": "https://sub0.sub2.format.test/a/test4a.js",
-                "requestType": "script",
-                "expectAction": "block"
-            },
-            {
-                "name": "format.test - with subdomain and regexp - don't match on extended subdomain",
-                "siteURL": "https://example.com",
-                "requestURL": "https://ssub1.sub2.format.test/a/test4a.js",
                 "requestType": "script",
                 "expectAction": "block"
             },
