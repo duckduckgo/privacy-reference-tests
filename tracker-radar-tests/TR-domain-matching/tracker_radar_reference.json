@@ -281,6 +281,50 @@
                 }
             ],
             "default": "block"
+        },
+        "format.test": {
+            "domain": "format.test",
+            "owner": {
+                "name": "Test for rule formatting",
+                "displayName": "format.test"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "block",
+            "rules": [
+                {
+                    "rule": "format\\.test/test1\\.js",
+                    "comment": "Unescaped slash should be allowed.",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "format\\.test/[0-9]+/test2\\.js",
+                    "comment": "Simple regexp",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "format\\.test/a{3,5}(b|c)[d-f]+g*h?./test3\\.js",
+                    "comment": "Complex regexp",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "sub1\\.sub2\\.format\\.test/test4\\.js",
+                    "comment": "With subdomain",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "format.test/test5\\.js",
+                    "comment": "No escape on the domain.",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "sub1.sub2.format.test/test6\\.js",
+                    "comment": "No escape on the domain with subdomain.",
+                    "action": "ignore"
+                }
+            ]
         }
     },
     "entities": {
