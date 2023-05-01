@@ -262,6 +262,62 @@
                 }
             ]
         },
+        "options-trailing-exception.test": {
+            "domain": "options-trailing-exception.test",
+            "owner": {
+                "name": "options-trailing-exception.test",
+                "displayName": "options-trailing-exception.test"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "block",
+            "rules": [
+                {
+                    "rule": "options-trailing-exception\\.test\\/script\\.js",
+                    "options": {
+                        "domains": [
+                            "example.com"
+                        ]
+                    }
+                },
+                {
+                    "rule": "options-trailing-exception\\.test\\/script\\.js",
+                    "exceptions": {
+                        "types": [
+                            "stylesheet"
+                        ]
+                    }
+                }
+            ]
+        },
+        "options-trailing-ignore.test": {
+            "domain": "options-trailing-ignore.test",
+            "owner": {
+                "name": "options-trailing-ignore.test",
+                "displayName": "options-trailing-ignore.test"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "block",
+            "rules": [
+                {
+                    "rule": "options-trailing-ignore\\.test\\/script\\.js",
+                    "options": {
+                        "domains": [
+                            "example.com"
+                        ]
+                    }
+                },
+                {
+                    "rule": "options-trailing-ignore\\.test\\/script\\.js",
+                    "action": "ignore"
+                }
+            ]
+        },
         "ignore.test": {
             "domain": "ignore.test",
             "owner": {

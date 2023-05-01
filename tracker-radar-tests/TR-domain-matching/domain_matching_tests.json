@@ -401,6 +401,34 @@
                 "expectAction": "block"
             },
             {
+                "name": "options-trailing-exception - block on options match",
+                "siteURL": "https://example.com",
+                "requestURL": "https://options-trailing-exception.test/script.js",
+                "requestType": "stylesheet",
+                "expectAction": "block"
+            },
+            {
+                "name": "options-trailing-exception - ignore on no options match",
+                "siteURL": "https://example2.com",
+                "requestURL": "https://options-trailing-exception.test/script.js",
+                "requestType": "stylesheet",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "options-trailing-ignore - block on options match",
+                "siteURL": "https://example.com",
+                "requestURL": "https://options-trailing-ignore.test/script.js",
+                "requestType": "stylesheet",
+                "expectAction": "block"
+            },
+            {
+                "name": "options-trailing-ignore - ignore on no options match",
+                "siteURL": "https://example2.com",
+                "requestURL": "https://options-trailing-ignore.test/script.js",
+                "requestType": "stylesheet",
+                "expectAction": "ignore"
+            },
+            {
                 "name": "format.test - supports unescaped slashes",
                 "siteURL": "https://example.com",
                 "requestURL": "https://format.test/test1.js",
