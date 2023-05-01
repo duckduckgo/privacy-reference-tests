@@ -513,6 +513,34 @@
                 "expectAction": "block"
             },
             {
+                "name": "format.test - with subdomain and explicit anchoring - don't match for incorrect subdomain",
+                "siteURL": "https://example.com",
+                "requestURL": "https://sub1nsub2.format.test/test4c.js",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "format.test - with subdomain and explicit anchoring - match on extra subdomain",
+                "siteURL": "https://example.com",
+                "requestURL": "https://sub0.sub1.sub2.format.test/test4c.js",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "format.test - with subdomain and explicit anchoring - don't match on incorrect subdomain",
+                "siteURL": "https://example.com",
+                "requestURL": "https://sub0.sub2.format.test/test4c.js",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "format.test - with subdomain and explicit anchoring - don't match on extended subdomain",
+                "siteURL": "https://example.com",
+                "requestURL": "https://ssub1.sub2.format.test/test4c.js",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
                 "name": "format.test - no escape on domain - matching request",
                 "siteURL": "https://example.com",
                 "requestURL": "https://format.test/test5.js",
