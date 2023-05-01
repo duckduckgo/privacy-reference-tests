@@ -499,6 +499,20 @@
                 "expectAction": "block"
             },
             {
+                "name": "format.test - domain in rule - match on full request",
+                "siteURL": "https://example.com",
+                "requestURL": "https://sub1.format.test/sub2.format.test/test4b.js",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "format.test - domain in rule - don't match the inner request",
+                "siteURL": "https://example.com",
+                "requestURL": "https://sub2.format.test/test4b.js",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
                 "name": "format.test - no escape on domain - matching request",
                 "siteURL": "https://example.com",
                 "requestURL": "https://format.test/test5.js",

@@ -320,6 +320,11 @@
                     "action": "ignore"
                 },
                 {
+                    "rule": "sub1\\.format\\.test/sub2\\.format\\.test/test4b\\.js",
+                    "comment": "Domain in rule",
+                    "action": "ignore"
+                },
+                {
                     "rule": "format.test/test5\\.js",
                     "comment": "No escape on the domain.",
                     "action": "ignore"
