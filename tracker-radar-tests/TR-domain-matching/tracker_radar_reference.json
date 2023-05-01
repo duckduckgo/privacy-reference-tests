@@ -315,6 +315,11 @@
                     "action": "ignore"
                 },
                 {
+                    "rule": "sub1\\.sub2\\.format\\.test/(a|[bc])/test4a\\.js",
+                    "comment": "With subdomain and regexp",
+                    "action": "ignore"
+                },
+                {
                     "rule": "format.test/test5\\.js",
                     "comment": "No escape on the domain.",
                     "action": "ignore"
