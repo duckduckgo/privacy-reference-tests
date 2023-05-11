@@ -265,8 +265,8 @@
         "options-trailing-exception.test": {
             "domain": "options-trailing-exception.test",
             "owner": {
-                "name": "options-trailing-exception.test",
-                "displayName": "options-trailing-exception.test"
+                "name": "Tests for options algorithms",
+                "displayName": "Tests for options algorithms"
             },
             "prevalence": 0.1,
             "fingerprinting": 3,
@@ -295,8 +295,8 @@
         "options-trailing-ignore.test": {
             "domain": "options-trailing-ignore.test",
             "owner": {
-                "name": "options-trailing-ignore.test",
-                "displayName": "options-trailing-ignore.test"
+                "name": "Tests for options algorithms",
+                "displayName": "Tests for options algorithms"
             },
             "prevalence": 0.1,
             "fingerprinting": 3,
@@ -464,7 +464,8 @@
                 "third-party.site",
                 "tracker.test",
                 "options1.test",
-                "options2.test"
+                "options2.test",
+                "options3.test"
             ],
             "prevalence": 0.1,
             "displayName": "Test Site for Tracker Blocking"
@@ -483,6 +484,14 @@
             ],
             "prevalence": 0.1,
             "displayName": "Ignore Site for Tracker Blocking"
+        },
+        "Tests for options algorithms": {
+            "domains": [
+                "options-trailing-exception.test",
+                "options-trailing-ignore.test"
+            ],
+            "prevalence": 0.1,
+            "displayName": "Tests for options algorithms"
         },
         "Test Site for Surrogates": {
             "domains": [
@@ -508,6 +517,9 @@
         "tracker.test": "Test Site for Tracker Blocking",
         "options1.test": "Test Site for Tracker Blocking",
         "options2.test": "Test Site for Tracker Blocking",
+        "options3.test": "Test Site for Tracker Blocking",
+        "options-trailing-exception.test": "Tests for options algorithms",
+        "options-trailing-ignore.test": "Tests for options algorithms",
         "ignore.test": "Ignore Site for Tracker Blocking",
         "sub.ignore.test": "Ignore Site for Tracker Blocking",
         "surrogates.test": "Test Site for Surrogates",
