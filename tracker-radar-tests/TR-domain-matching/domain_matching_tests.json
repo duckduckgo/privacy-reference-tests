@@ -242,7 +242,7 @@
                 "siteURL": "https://random.test/",
                 "requestURL": "https://tracker.test/unsupported-action",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "ignore"
             },
             {
                 "name": "unknown rule action ignored, default ignore",

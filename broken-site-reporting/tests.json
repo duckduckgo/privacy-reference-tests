@@ -106,7 +106,7 @@
                 "providedDescription": "This is+a&description./\nThat spans %20lines\"'. With \\emoji: 😀",
                 "expectReportURLPrefix": "https://improving.duckduckgo.com/t/epbf",
                 "expectReportURLParams": [
-                    {"name": "category", "value": "content"},
+                    {"name": "category", "value": "fail"},
                     {"name": "siteUrl", "value": "https%3A%2F%2Fexample.test%2F"},
                     {"name": "description", "value": "This+is%2Ba%26description.%2F%0AThat+spans+%2520lines%22%27.+With+%5Cemoji%3A+%F0%9F%98%80"},
                     {"name": "upgradedHttps", "value": "true"},
