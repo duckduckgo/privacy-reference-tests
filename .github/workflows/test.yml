@@ -1,0 +1,33 @@
+name: Test Implementations
+
+on: [push, pull_request]
+
+jobs:
+  extension:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: 'reference-tests'
+      - uses: actions/checkout@v3
+        with:
+          repository: 'duckduckgo/duckduckgo-privacy-extension'
+          path: 'extension'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: 'extension/package-lock.json'
+      - run: cd reference-tests && npm link
+      - name: Setup Extension
+        working-directory: ./extension
+        run: |
+          npm run install-ci
+          npm link @duckduckgo/privacy-reference-tests
+      - name: Test Extension
+        working-directory: ./extension
+        run: |
+          npm test
+      - name: Test ddg2dnr
+        working-directory: ./extension/packages/ddg2dnr
+        run: npm test -- --grep Reference
