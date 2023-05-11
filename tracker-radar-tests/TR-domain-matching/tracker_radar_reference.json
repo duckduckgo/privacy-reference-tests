@@ -285,8 +285,8 @@
         "format.test": {
             "domain": "format.test",
             "owner": {
-                "name": "Test for rule formatting",
-                "displayName": "format.test"
+                "name": "Tests for formatting",
+                "displayName": "Tests for formatting"
             },
             "prevalence": 0.1,
             "fingerprinting": 3,
@@ -356,6 +356,13 @@
             "prevalence": 0.1,
             "displayName": "Test Site for Tracker Blocking"
         },
+        "Tests for formatting": {
+            "domains": [
+                "format.test"
+            ],
+            "prevalence": 0.1,
+            "displayName": "Tests for formatting"
+        },
         "Ignore Site for Tracker Blocking": {
             "domains": [
                 "ignore.test",
@@ -383,6 +390,7 @@
         "bad.third-party.site": "Test Site for Tracker Blocking",
         "sometimes-bad.third-party.site": "Test Site for Tracker Blocking",
         "broken.third-party.site": "Test Site for Tracker Blocking",
+        "format.test": "Tests for formatting",
         "third-party.site": "Test Site for Tracker Blocking",
         "tracker.test": "Test Site for Tracker Blocking",
         "options1.test": "Test Site for Tracker Blocking",
