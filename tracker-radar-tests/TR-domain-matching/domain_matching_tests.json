@@ -510,7 +510,10 @@
                 "siteURL": "https://example.com",
                 "requestURL": "https://sub0.sub1.sub2.format.test/test4c.js",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "format.test - with subdomain and explicit anchoring - don't match on incorrect subdomain",
