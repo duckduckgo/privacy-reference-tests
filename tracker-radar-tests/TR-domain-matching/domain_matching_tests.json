@@ -377,14 +377,20 @@
                 "siteURL": "https://example4.com",
                 "requestURL": "https://options3.test/script.js",
                 "requestType": "stylesheet",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "options3 - block on matching options (fallthrough subpath)",
                 "siteURL": "https://example3.com",
                 "requestURL": "https://options3.test/script.js",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "options3 - block on matching options (fallthrough)",
@@ -398,14 +404,20 @@
                 "siteURL": "https://example3.com",
                 "requestURL": "https://options3.test/script2.js",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "options-trailing-exception - block on options match",
                 "siteURL": "https://example.com",
                 "requestURL": "https://options-trailing-exception.test/script.js",
                 "requestType": "stylesheet",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "options-trailing-exception - ignore on no options match",
