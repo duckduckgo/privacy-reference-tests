@@ -518,6 +518,20 @@
                 "expectAction": "ignore"
             },
             {
+                "name": "robustness1 - default:block, less general block after ignore obeys ignore",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/request-1",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness2 - default:ignore, less general block after ignore obeys ignore",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness2.test/request-1",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
                 "name": "options1 - ignore on catch ignore after options",
                 "siteURL": "https://example2.com",
                 "requestURL": "https://options1.test/script.js",

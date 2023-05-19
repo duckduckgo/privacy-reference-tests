@@ -110,6 +110,52 @@
                 }
             ]
         },
+        "robustness1.test": {
+            "domain": "robustness1.test",
+            "owner": {
+                "name": "Robustness Tests",
+                "displayName": "Checking robustness of interpretation",
+                "privacyPolicy": "",
+                "url": ""
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 2,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "block",
+            "rules": [
+                {
+                    "rule": "robustness1\\.test/request",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "robustness1\\.test/request-1"
+                }
+            ]
+        },
+        "robustness2.test": {
+            "domain": "robustness2.test",
+            "owner": {
+                "name": "Robustness Tests",
+                "displayName": "Checking robustness of interpretation",
+                "privacyPolicy": "",
+                "url": ""
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 2,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "ignore",
+            "rules": [
+                {
+                    "rule": "robustness2\\.test/request",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "robustness2\\.test/request-1"
+                }
+            ]
+        },
         "bad.third-party.site": {
             "domain": "bad.third-party.site",
             "owner": {
@@ -595,6 +641,14 @@
             "prevalence": 0.1,
             "displayName": "Ignore Site for Tracker Blocking"
         },
+        "Robustness Tests": {
+            "domains": [
+                "robustness1.test",
+                "robustness2.test"
+            ],
+            "prevalence": 0.1,
+            "displayName": "Checking robustness of interpretation"
+        },
         "Standard Test Tracker": {
             "domains": [
                 "standard1.test",
@@ -638,6 +692,8 @@
         "options-trailing-exception.test": "Tests for options algorithms",
         "options-trailing-ignore.test": "Tests for options algorithms",
         "ignore.test": "Ignore Site for Tracker Blocking",
+        "robustness1.test": "Robustness Tests",
+        "robustness2.test": "Robustness Tests",
         "standard1.test": "Standard Test Tracker",
         "standard2.test": "Standard Test Tracker",
         "sub.ignore.test": "Ignore Site for Tracker Blocking",
