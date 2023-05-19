@@ -413,6 +413,111 @@
                 "expectAction": "block"
             },
             {
+                "name": "standard2 - path matches block",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/block",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path matches ignore (sandwiched)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/request-1b",
+                "requestType": "font",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard2 - path matches, exception does not (wrong domain, correct type)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/request-1a",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path matches, exception does not (correct domain, wrong type)",
+                "siteURL": "https://example2.com",
+                "requestURL": "https://standard2.test/request-1a",
+                "requestType": "image",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path (2) matches, exception does not (wrong domain, correct type)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/request-1",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path (2) matches, exception does not (correct domain, wrong type)",
+                "siteURL": "https://example3.com",
+                "requestURL": "https://standard2.test/request-1",
+                "requestType": "stylesheet",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path matches, exception does not (should not confuse with following exception)",
+                "siteURL": "https://example3.com",
+                "requestURL": "https://standard2.test/request-1a",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path matches, exception matches",
+                "siteURL": "https://example2.com",
+                "requestURL": "https://standard2.test/request-1a",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard2 - path matches, exception matches (2)",
+                "siteURL": "https://example2a.com",
+                "requestURL": "https://standard2.test/request-1a",
+                "requestType": "stylesheet",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard2 - path (2) matches, exception matches",
+                "siteURL": "https://example3.com",
+                "requestURL": "https://standard2.test/request-1",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard2 - path (2) matches, exception matches (2)",
+                "siteURL": "https://example3a.com",
+                "requestURL": "https://standard2.test/request-1",
+                "requestType": "image",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard2 - following ignore matches",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/request",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard2 - following ignore matches (2)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/request-2",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard2 - block following ignore matches",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/reques",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - fall back to default",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/other",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
                 "name": "options1 - ignore on catch ignore after options",
                 "siteURL": "https://example2.com",
                 "requestURL": "https://options1.test/script.js",

@@ -54,6 +54,62 @@
                 }
             ]
         },
+        "standard2.test": {
+            "domain": "standard2.test",
+            "owner": {
+                "name": "Standard Test Tracker",
+                "displayName": "Standard Test Tracker",
+                "privacyPolicy": "",
+                "url": ""
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 2,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "ignore",
+            "rules": [
+                {
+                    "rule": "standard2\\.test/block"
+                },
+                {
+                    "rule": "standard2\\.test/request-1a",
+                    "exceptions": {
+                        "domains": [
+                            "example2.com",
+                            "example2a.com"
+                        ],
+                        "types": [
+                            "script",
+                            "stylesheet"
+                        ]
+                    }
+                },
+                {
+                    "rule": "standard2\\.test/request-1b",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "standard2\\.test/request-1",
+                    "exceptions": {
+                        "domains": [
+                            "example3.com",
+                            "example3a.com"
+                        ],
+                        "types": [
+                            "script",
+                            "image"
+                        ]
+                    }
+                },
+                {
+                    "rule": "standard2\\.test/request",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "standard2\\.test/reques"
+                }
+            ]
+        },
         "bad.third-party.site": {
             "domain": "bad.third-party.site",
             "owner": {
@@ -541,7 +597,8 @@
         },
         "Standard Test Tracker": {
             "domains": [
-                "standard1.test"
+                "standard1.test",
+                "standard2.test"
             ],
             "displayName": "Standard Test Tracker"
         },
@@ -582,6 +639,7 @@
         "options-trailing-ignore.test": "Tests for options algorithms",
         "ignore.test": "Ignore Site for Tracker Blocking",
         "standard1.test": "Standard Test Tracker",
+        "standard2.test": "Standard Test Tracker",
         "sub.ignore.test": "Ignore Site for Tracker Blocking",
         "surrogates.test": "Test Site for Surrogates",
         "other-surrogates.test": "Test Site for Surrogates",
