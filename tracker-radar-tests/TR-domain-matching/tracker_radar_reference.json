@@ -1,5 +1,59 @@
 {
     "trackers": {
+        "standard1.test": {
+            "domain": "standard1.test",
+            "owner": {
+                "name": "Standard Test Tracker",
+                "displayName": "Standard Test Tracker",
+                "privacyPolicy": "",
+                "url": ""
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 2,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "block",
+            "rules": [
+                {
+                    "rule": "standard1\\.test/ignore",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "standard1\\.test/request-1a",
+                    "exceptions": {
+                        "domains": [
+                            "example2.com",
+                            "example2a.com"
+                        ],
+                        "types": [
+                            "script",
+                            "stylesheet"
+                        ]
+                    }
+                },
+                {
+                    "rule": "standard1\\.test/request-1b",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "standard1\\.test/request-1",
+                    "exceptions": {
+                        "domains": [
+                            "example3.com",
+                            "example3a.com"
+                        ],
+                        "types": [
+                            "script",
+                            "image"
+                        ]
+                    }
+                },
+                {
+                    "rule": "standard1\\.test/request",
+                    "action": "ignore"
+                }
+            ]
+        },
         "bad.third-party.site": {
             "domain": "bad.third-party.site",
             "owner": {
@@ -485,6 +539,12 @@
             "prevalence": 0.1,
             "displayName": "Ignore Site for Tracker Blocking"
         },
+        "Standard Test Tracker": {
+            "domains": [
+                "standard1.test"
+            ],
+            "displayName": "Standard Test Tracker"
+        },
         "Tests for options algorithms": {
             "domains": [
                 "options-trailing-exception.test",
@@ -521,6 +581,7 @@
         "options-trailing-exception.test": "Tests for options algorithms",
         "options-trailing-ignore.test": "Tests for options algorithms",
         "ignore.test": "Ignore Site for Tracker Blocking",
+        "standard1.test": "Standard Test Tracker",
         "sub.ignore.test": "Ignore Site for Tracker Blocking",
         "surrogates.test": "Test Site for Surrogates",
         "other-surrogates.test": "Test Site for Surrogates",
