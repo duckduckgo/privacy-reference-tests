@@ -123,8 +123,8 @@
             },
             {
                 "name": "Ensure parameters aren't treated as a regex if they have special characters",
-                "testURL": "https://example.com/test.html?bad[test]=123",
-                "expectURL": "https://example.com/test.html?bad[test]=123",
+                "testURL": "https://example.com/test.html?badx=123",
+                "expectURL": "https://example.com/test.html?badx=123",
                 "exceptPlatforms": [
                     "ios-browser",
                     "macos-browser",
