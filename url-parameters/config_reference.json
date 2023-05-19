@@ -35,7 +35,8 @@
                     "mkt_tok",
                     "hmb_campaign",
                     "hmb_source",
-                    "hmb_medium"
+                    "hmb_medium",
+                    "bad[.*]"
                 ]
             }
         }

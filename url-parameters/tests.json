@@ -120,6 +120,18 @@
                 "testURL": "https://example.com/trk/v1?prof=5555&camp=55559&kct=blah&kchid=123456&criteriaid=blah:blah&campaignid=55556666888&locphy=1234&adgroupid=5555555555&cid=6765676&kdv=g&kext=&kpg=&kpid=&queryStr=blah%20blah&url=https://www.example2.com/landing?show=all&CMP_ID=123456=6666&k_clickid=_1234567_666&utm_id=very-long_string:with-many_symbols&msclkid=1234237546jsdhgkjshf&utm_source=blah&utm_medium=test&utm_campaign=p%3AB%20%7C%20s%3ABC%20%7C%20ct%3ANBPS%20%7C%20ct2%3Axx%20%7C%20g%3Axx%20%7C%20c1%3ABike%20%7C%20c2%3ATrainers%2BAccessories%20%7C%20b%3AWahoo%20Fitness%20%7C%20mt%3Axx&utm_term=blah%20blah&utm_content=blah%20blah%20%E2%80%94%20General%20Terms",
                 "expectURL": "https://example.com/trk/v1?prof=5555&camp=55559&kct=blah&kchid=123456&criteriaid=blah:blah&campaignid=55556666888&locphy=1234&adgroupid=5555555555&cid=6765676&kdv=g&kext=&kpg=&kpid=&queryStr=blah%20blah&url=https://www.example2.com/landing?show=all&CMP_ID=123456=6666&k_clickid=_1234567_666&utm_id=very-long_string:with-many_symbols&msclkid=1234237546jsdhgkjshf",
                 "exceptPlatforms": []
+            },
+            {
+                "name": "Ensure parameters aren't treated as a regex if they have special characters",
+                "testURL": "https://example.com/test.html?bad[test]=123",
+                "expectURL": "https://example.com/test.html?bad[test]=123",
+                "exceptPlatforms": [
+                    "ios-browser",
+                    "macos-browser",
+                    "safari-extension",
+                    "android-browser",
+                    "windows-browser"
+                ]
             }
         ]
     }
