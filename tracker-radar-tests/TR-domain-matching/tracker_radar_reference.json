@@ -418,6 +418,150 @@
                 }
             ]
         },
+        "options4.test": {
+            "domain": "options4.test",
+            "owner": {
+                "name": "Test Site for Tracker Blocking",
+                "displayName": "Bad Third Party Site",
+                "privacyPolicy": "",
+                "url": "http://tracker.test"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "block",
+            "rules": [
+                {
+                    "rule": "options4\\.test\\/script1\\.js",
+                    "options": {
+                        "domains": [
+                            "example1.com"
+                        ]
+                    },
+                    "exceptions": {
+                        "domains": [
+                            "example1.com"
+                        ]
+                    }
+                },
+                {
+                    "rule": "options4\\.test\\/script2\\.js",
+                    "options": {
+                        "domains": [
+                            "example1.com"
+                        ],
+                        "types": [
+                            "image"
+                        ]
+                    },
+                    "exceptions": {
+                        "domains": [
+                            "example1.com"
+                        ],
+                        "types": [
+                            "image"
+                        ]
+                    }
+                },
+                {
+                    "rule": "options4\\.test\\/script3\\.js",
+                    "options": {
+                        "domains": [
+                            "example1.com"
+                        ]
+                    },
+                    "exceptions": {
+                        "domains": [
+                            "example1.com"
+                        ],
+                        "types": [
+                            "image"
+                        ]
+                    }
+                },
+                {
+                    "rule": "options4\\.test\\/script4\\.js",
+                    "options": {
+                        "domains": [
+                            "example1.com"
+                        ],
+                        "types": [
+                            "image"
+                        ]
+                    },
+                    "exceptions": {
+                        "domains": [
+                            "example1.com"
+                        ]
+                    }
+                }
+            ]
+        },
+        "options5.test": {
+            "domain": "options5.test",
+            "owner": {
+                "name": "Test Site for Tracker Blocking",
+                "displayName": "Bad Third Party Site",
+                "privacyPolicy": "",
+                "url": "http://tracker.test"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "ignore",
+            "rules": [
+                {
+                    "rule": "options5\\.test\\/script1\\.js",
+                    "options": {
+                        "domains": [
+                            "example1.com"
+                        ]
+                    },
+                    "exceptions": {
+                        "domains": [
+                            "example1.com"
+                        ]
+                    }
+                },
+                {
+                    "rule": "options5\\.test\\/script2\\.js",
+                    "options": {
+                        "domains": [
+                            "example1.com"
+                        ],
+                        "types": [
+                            "image"
+                        ]
+                    },
+                    "exceptions": {
+                        "domains": [
+                            "example1.com"
+                        ],
+                        "types": [
+                            "image"
+                        ]
+                    }
+                },
+                {
+                    "rule": "options5\\.test\\/script3\\.js",
+                    "options": {
+                        "domains": [
+                            "example1.com"
+                        ]
+                    },
+                    "exceptions": {
+                        "domains": [
+                            "example1.com"
+                        ],
+                        "types": [
+                            "image"
+                        ]
+                    }
+                }
+            ]
+        },
         "options-trailing-exception.test": {
             "domain": "options-trailing-exception.test",
             "owner": {
@@ -621,7 +765,9 @@
                 "tracker.test",
                 "options1.test",
                 "options2.test",
-                "options3.test"
+                "options3.test",
+                "options4.test",
+                "options5.test"
             ],
             "prevalence": 0.1,
             "displayName": "Test Site for Tracker Blocking"
@@ -689,6 +835,8 @@
         "options1.test": "Test Site for Tracker Blocking",
         "options2.test": "Test Site for Tracker Blocking",
         "options3.test": "Test Site for Tracker Blocking",
+        "options4.test": "Test Site for Tracker Blocking",
+        "options5.test": "Test Site for Tracker Blocking",
         "options-trailing-exception.test": "Tests for options algorithms",
         "options-trailing-ignore.test": "Tests for options algorithms",
         "ignore.test": "Ignore Site for Tracker Blocking",

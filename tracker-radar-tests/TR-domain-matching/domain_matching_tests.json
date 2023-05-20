@@ -689,6 +689,55 @@
                 ]
             },
             {
+                "name": "options4 - default:block - both exceptions and options match (just domains) ignores",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://options4.test/script1.js",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "options4 - default:block - both exceptions and options match (domain + type) ignores",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://options4.test/script2.js",
+                "requestType": "image",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "options4 - default:block - options match, exceptions only partially match - block",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://options4.test/script3.js",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "options4 - default:block - options don't match, exceptions match - block",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://options4.test/script4.js",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "options5 - default:ignore - both exceptions and options match (just domains) ignores",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://options5.test/script1.js",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "options5 - default:ignore - both exceptions and options match (domain + type) ignores",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://options5.test/script2.js",
+                "requestType": "image",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "options5 - default:ignore - options match, exceptions only partially match - block",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://options5.test/script3.js",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
                 "name": "options-trailing-exception - block on options match",
                 "siteURL": "https://example.com",
                 "requestURL": "https://options-trailing-exception.test/script.js",
