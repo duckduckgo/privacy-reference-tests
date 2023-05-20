@@ -343,35 +343,50 @@
                 "siteURL": "https://example1.com",
                 "requestURL": "https://standard1.test/request-1a",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard1 - path matches, exception does not (correct domain, wrong type)",
                 "siteURL": "https://example2.com",
                 "requestURL": "https://standard1.test/request-1a",
                 "requestType": "image",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard1 - path (2) matches, exception does not (wrong domain, correct type)",
                 "siteURL": "https://example1.com",
                 "requestURL": "https://standard1.test/request-1",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard1 - path (2) matches, exception does not (correct domain, wrong type)",
                 "siteURL": "https://example3.com",
                 "requestURL": "https://standard1.test/request-1",
                 "requestType": "stylesheet",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard1 - path matches, exception does not (should not confuse with following exception)",
                 "siteURL": "https://example3.com",
                 "requestURL": "https://standard1.test/request-1a",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard1 - path matches, exception matches",
@@ -434,7 +449,10 @@
                 "siteURL": "https://example1.com",
                 "requestURL": "https://standard2.test/request-1b",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard2 - path matches ignore (sandwiched) (type=font)",
@@ -486,42 +504,60 @@
                 "siteURL": "https://example2.com",
                 "requestURL": "https://standard2.test/request-1a",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard2 - path matches, exception matches (2)",
                 "siteURL": "https://example2a.com",
                 "requestURL": "https://standard2.test/request-1a",
                 "requestType": "stylesheet",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard2 - path (2) matches, exception matches",
                 "siteURL": "https://example3.com",
                 "requestURL": "https://standard2.test/request-1",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard2 - path (2) matches, exception matches (2)",
                 "siteURL": "https://example3a.com",
                 "requestURL": "https://standard2.test/request-1",
                 "requestType": "image",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard2 - following ignore matches",
                 "siteURL": "https://example1.com",
                 "requestURL": "https://standard2.test/request",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard2 - following ignore matches (2)",
                 "siteURL": "https://example1.com",
                 "requestURL": "https://standard2.test/request-2",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard2 - block following ignore matches",
@@ -542,14 +578,20 @@
                 "siteURL": "https://example1.com",
                 "requestURL": "https://robustness1.test/request-1",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "robustness2 - default:ignore, less general block after ignore obeys ignore",
                 "siteURL": "https://example1.com",
                 "requestURL": "https://robustness2.test/request-1",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "options1 - ignore on catch ignore after options",
