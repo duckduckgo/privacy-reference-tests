@@ -704,7 +704,7 @@
                 ]
             },
             {
-                "name": "robustness1 - resource type exemption: xhr",
+                "name": "robustness1 - resource type exemption: xmlhttprequest",
                 "siteURL": "https://example1.com",
                 "requestURL": "https://robustness1.test/resourceTest",
                 "requestType": "xmlhttprequest",
@@ -750,6 +750,48 @@
                 "siteURL": "https://example1.com",
                 "requestURL": "https://robustness1.test/resourceTest",
                 "requestType": "manifest",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: main_frame",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "main_frame",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: sub_frame",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "sub_frame",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: object",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "object",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: csp_report",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "csp_report",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: webtransport",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "webtransport",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: webbundle",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "webbundle",
                 "expectAction": "ignore"
             },
             {

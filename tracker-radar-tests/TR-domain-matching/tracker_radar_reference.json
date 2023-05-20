@@ -154,7 +154,13 @@
                             "texttrack",
                             "sms-script",
                             "sm-stylesheet",
-                            "manifest"
+                            "manifest",
+                            "main_frame",
+                            "sub_frame",
+                            "object",
+                            "csp_report",
+                            "webtransport",
+                            "webbundle"
                         ]
                     }
                 }
