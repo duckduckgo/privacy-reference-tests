@@ -714,7 +714,10 @@
                 "siteURL": "https://example1.com",
                 "requestURL": "https://options4.test/script4.js",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "options5 - default:ignore - both exceptions and options match (just domains) ignores",
