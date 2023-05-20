@@ -584,6 +584,167 @@
                 ]
             },
             {
+                "name": "robustness1 - resource type exemption: document",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "document",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: image",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "image",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: style-sheet",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "style-sheet",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: stylesheet",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "stylesheet",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: script",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: font",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "font",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: raw",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "raw",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: svg-document",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "svg-document",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: svg",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "svg",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: media",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "media",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: popup",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "popup",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: ping",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "ping",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: fetch",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "fetch",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: websocket",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "websocket",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: other",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "other",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: xhr",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "xhr",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: xhr",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "xmlhttprequest",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: eventsource",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "eventsource",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: snippet",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "snippet",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: texttrack",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "texttrack",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: sms-script",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "sms-script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: sm-stylesheet",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "sm-stylesheet",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: manifest",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "manifest",
+                "expectAction": "ignore"
+            },
+            {
                 "name": "robustness2 - default:ignore, less general block after ignore obeys ignore",
                 "siteURL": "https://example1.com",
                 "requestURL": "https://robustness2.test/request-1",

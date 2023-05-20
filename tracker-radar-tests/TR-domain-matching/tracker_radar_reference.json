@@ -130,6 +130,33 @@
                 },
                 {
                     "rule": "robustness1\\.test/request-1"
+                },
+                {
+                    "rule": "robustness1\\.test/resourceTest",
+                    "exceptions": {
+                        "types": [
+                            "document",
+                            "image",
+                            "stylesheet",
+                            "script",
+                            "font",
+                            "raw",
+                            "svg",
+                            "media",
+                            "popup",
+                            "ping",
+                            "fetch",
+                            "websocket",
+                            "other",
+                            "xhr",
+                            "eventsource",
+                            "snippet",
+                            "texttrack",
+                            "sms-script",
+                            "sm-stylesheet",
+                            "manifest"
+                        ]
+                    }
                 }
             ]
         },
