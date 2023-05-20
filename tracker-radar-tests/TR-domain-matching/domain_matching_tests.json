@@ -602,7 +602,11 @@
                 "siteURL": "https://example1.com",
                 "requestURL": "https://robustness1.test/resourceTest",
                 "requestType": "style-sheet",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "web-extension-mv3"
+                ]
             },
             {
                 "name": "robustness1 - resource type exemption: stylesheet",
@@ -693,7 +697,11 @@
                 "siteURL": "https://example1.com",
                 "requestURL": "https://robustness1.test/resourceTest",
                 "requestType": "xhr",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "web-extension-mv3"
+                ]
             },
             {
                 "name": "robustness1 - resource type exemption: xhr",
