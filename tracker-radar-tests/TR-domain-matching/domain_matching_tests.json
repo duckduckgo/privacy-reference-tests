@@ -322,11 +322,21 @@
                 "expectAction": "ignore"
             },
             {
-                "name": "standard1 - path matches ignore (sandwiched)",
+                "name": "standard1 - path matches ignore (sandwiched) (type=script)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard1.test/request-1b",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard1 - path matches ignore (sandwiched) (type=font)",
                 "siteURL": "https://example1.com",
                 "requestURL": "https://standard1.test/request-1b",
                 "requestType": "font",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard1 - path matches, exception does not (wrong domain, correct type)",
@@ -420,11 +430,21 @@
                 "expectAction": "block"
             },
             {
-                "name": "standard2 - path matches ignore (sandwiched)",
+                "name": "standard2 - path matches ignore (sandwiched) (type=script)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/request-1b",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard2 - path matches ignore (sandwiched) (type=font)",
                 "siteURL": "https://example1.com",
                 "requestURL": "https://standard2.test/request-1b",
                 "requestType": "font",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "standard2 - path matches, exception does not (wrong domain, correct type)",
