@@ -1,5 +1,194 @@
 {
     "trackers": {
+        "standard1.test": {
+            "domain": "standard1.test",
+            "owner": {
+                "name": "Standard Test Tracker",
+                "displayName": "Standard Test Tracker",
+                "privacyPolicy": "",
+                "url": ""
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 2,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "block",
+            "rules": [
+                {
+                    "rule": "standard1\\.test/ignore",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "standard1\\.test/request-1a",
+                    "exceptions": {
+                        "domains": [
+                            "example2.com",
+                            "example2a.com"
+                        ],
+                        "types": [
+                            "script",
+                            "stylesheet"
+                        ]
+                    }
+                },
+                {
+                    "rule": "standard1\\.test/request-1b",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "standard1\\.test/request-1",
+                    "exceptions": {
+                        "domains": [
+                            "example3.com",
+                            "example3a.com"
+                        ],
+                        "types": [
+                            "script",
+                            "image"
+                        ]
+                    }
+                },
+                {
+                    "rule": "standard1\\.test/request",
+                    "action": "ignore"
+                }
+            ]
+        },
+        "standard2.test": {
+            "domain": "standard2.test",
+            "owner": {
+                "name": "Standard Test Tracker",
+                "displayName": "Standard Test Tracker",
+                "privacyPolicy": "",
+                "url": ""
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 2,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "ignore",
+            "rules": [
+                {
+                    "rule": "standard2\\.test/block"
+                },
+                {
+                    "rule": "standard2\\.test/request-1a",
+                    "exceptions": {
+                        "domains": [
+                            "example2.com",
+                            "example2a.com"
+                        ],
+                        "types": [
+                            "script",
+                            "stylesheet"
+                        ]
+                    }
+                },
+                {
+                    "rule": "standard2\\.test/request-1b",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "standard2\\.test/request-1",
+                    "exceptions": {
+                        "domains": [
+                            "example3.com",
+                            "example3a.com"
+                        ],
+                        "types": [
+                            "script",
+                            "image"
+                        ]
+                    }
+                },
+                {
+                    "rule": "standard2\\.test/request",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "standard2\\.test/reques"
+                }
+            ]
+        },
+        "robustness1.test": {
+            "domain": "robustness1.test",
+            "owner": {
+                "name": "Robustness Tests",
+                "displayName": "Checking robustness of interpretation",
+                "privacyPolicy": "",
+                "url": ""
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 2,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "block",
+            "rules": [
+                {
+                    "rule": "robustness1\\.test/request",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "robustness1\\.test/request-1"
+                },
+                {
+                    "rule": "robustness1\\.test/resourceTest",
+                    "exceptions": {
+                        "types": [
+                            "document",
+                            "image",
+                            "stylesheet",
+                            "script",
+                            "font",
+                            "raw",
+                            "svg",
+                            "media",
+                            "popup",
+                            "ping",
+                            "fetch",
+                            "websocket",
+                            "other",
+                            "xhr",
+                            "eventsource",
+                            "snippet",
+                            "texttrack",
+                            "sms-script",
+                            "sm-stylesheet",
+                            "manifest",
+                            "main_frame",
+                            "sub_frame",
+                            "object",
+                            "csp_report",
+                            "webtransport",
+                            "webbundle"
+                        ]
+                    }
+                }
+            ]
+        },
+        "robustness2.test": {
+            "domain": "robustness2.test",
+            "owner": {
+                "name": "Robustness Tests",
+                "displayName": "Checking robustness of interpretation",
+                "privacyPolicy": "",
+                "url": ""
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 2,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "ignore",
+            "rules": [
+                {
+                    "rule": "robustness2\\.test/request",
+                    "action": "ignore"
+                },
+                {
+                    "rule": "robustness2\\.test/request-1"
+                }
+            ]
+        },
         "bad.third-party.site": {
             "domain": "bad.third-party.site",
             "owner": {
@@ -485,6 +674,21 @@
             "prevalence": 0.1,
             "displayName": "Ignore Site for Tracker Blocking"
         },
+        "Robustness Tests": {
+            "domains": [
+                "robustness1.test",
+                "robustness2.test"
+            ],
+            "prevalence": 0.1,
+            "displayName": "Checking robustness of interpretation"
+        },
+        "Standard Test Tracker": {
+            "domains": [
+                "standard1.test",
+                "standard2.test"
+            ],
+            "displayName": "Standard Test Tracker"
+        },
         "Tests for options algorithms": {
             "domains": [
                 "options-trailing-exception.test",
@@ -521,6 +725,10 @@
         "options-trailing-exception.test": "Tests for options algorithms",
         "options-trailing-ignore.test": "Tests for options algorithms",
         "ignore.test": "Ignore Site for Tracker Blocking",
+        "robustness1.test": "Robustness Tests",
+        "robustness2.test": "Robustness Tests",
+        "standard1.test": "Standard Test Tracker",
+        "standard2.test": "Standard Test Tracker",
         "sub.ignore.test": "Ignore Site for Tracker Blocking",
         "surrogates.test": "Test Site for Surrogates",
         "other-surrogates.test": "Test Site for Surrogates",

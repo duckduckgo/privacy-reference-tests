@@ -315,6 +315,496 @@
                 ]
             },
             {
+                "name": "standard1 - path matches ignore",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard1.test/ignore1",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard1 - path matches ignore (sandwiched) (type=script)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard1.test/request-1b",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard1 - path matches ignore (sandwiched) (type=font)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard1.test/request-1b",
+                "requestType": "font",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard1 - path matches, exception does not (wrong domain, correct type)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard1.test/request-1a",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard1 - path matches, exception does not (correct domain, wrong type)",
+                "siteURL": "https://example2.com",
+                "requestURL": "https://standard1.test/request-1a",
+                "requestType": "image",
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard1 - path (2) matches, exception does not (wrong domain, correct type)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard1.test/request-1",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard1 - path (2) matches, exception does not (correct domain, wrong type)",
+                "siteURL": "https://example3.com",
+                "requestURL": "https://standard1.test/request-1",
+                "requestType": "stylesheet",
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard1 - path matches, exception does not (should not confuse with following exception)",
+                "siteURL": "https://example3.com",
+                "requestURL": "https://standard1.test/request-1a",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard1 - path matches, exception matches",
+                "siteURL": "https://example2.com",
+                "requestURL": "https://standard1.test/request-1a",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard1 - path matches, exception matches (2)",
+                "siteURL": "https://example2a.com",
+                "requestURL": "https://standard1.test/request-1a",
+                "requestType": "stylesheet",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard1 - path (2) matches, exception matches",
+                "siteURL": "https://example3.com",
+                "requestURL": "https://standard1.test/request-1",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard1 - path (2) matches, exception matches (2)",
+                "siteURL": "https://example3a.com",
+                "requestURL": "https://standard1.test/request-1",
+                "requestType": "image",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard1 - following ignore matches",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard1.test/request",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard1 - following ignore matches (2)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard1.test/request-2",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "standard1 - fall back to default",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard1.test/other",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path matches block",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/block",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path matches ignore (sandwiched) (type=script)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/request-1b",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard2 - path matches ignore (sandwiched) (type=font)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/request-1b",
+                "requestType": "font",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard2 - path matches, exception does not (wrong domain, correct type)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/request-1a",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path matches, exception does not (correct domain, wrong type)",
+                "siteURL": "https://example2.com",
+                "requestURL": "https://standard2.test/request-1a",
+                "requestType": "image",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path (2) matches, exception does not (wrong domain, correct type)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/request-1",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path (2) matches, exception does not (correct domain, wrong type)",
+                "siteURL": "https://example3.com",
+                "requestURL": "https://standard2.test/request-1",
+                "requestType": "stylesheet",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path matches, exception does not (should not confuse with following exception)",
+                "siteURL": "https://example3.com",
+                "requestURL": "https://standard2.test/request-1a",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - path matches, exception matches",
+                "siteURL": "https://example2.com",
+                "requestURL": "https://standard2.test/request-1a",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard2 - path matches, exception matches (2)",
+                "siteURL": "https://example2a.com",
+                "requestURL": "https://standard2.test/request-1a",
+                "requestType": "stylesheet",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard2 - path (2) matches, exception matches",
+                "siteURL": "https://example3.com",
+                "requestURL": "https://standard2.test/request-1",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard2 - path (2) matches, exception matches (2)",
+                "siteURL": "https://example3a.com",
+                "requestURL": "https://standard2.test/request-1",
+                "requestType": "image",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard2 - following ignore matches",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/request",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard2 - following ignore matches (2)",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/request-2",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "standard2 - block following ignore matches",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/reques",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "standard2 - fall back to default",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://standard2.test/other",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - default:block, less general block after ignore obeys ignore",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/request-1",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
+                "name": "robustness1 - resource type exemption: document",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "document",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: image",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "image",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: style-sheet",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "style-sheet",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "web-extension-mv3"
+                ]
+            },
+            {
+                "name": "robustness1 - resource type exemption: stylesheet",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "stylesheet",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: script",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: font",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "font",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: raw",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "raw",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: svg-document",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "svg-document",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: svg",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "svg",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: media",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "media",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: popup",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "popup",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: ping",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "ping",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: fetch",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "fetch",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: websocket",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "websocket",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: other",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "other",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: xhr",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "xhr",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "web-extension-mv3"
+                ]
+            },
+            {
+                "name": "robustness1 - resource type exemption: xmlhttprequest",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "xmlhttprequest",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: eventsource",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "eventsource",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: snippet",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "snippet",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: texttrack",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "texttrack",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: sms-script",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "sms-script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: sm-stylesheet",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "sm-stylesheet",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: manifest",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "manifest",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: main_frame",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "main_frame",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: sub_frame",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "sub_frame",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: object",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "object",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: csp_report",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "csp_report",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: webtransport",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "webtransport",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness1 - resource type exemption: webbundle",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness1.test/resourceTest",
+                "requestType": "webbundle",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "robustness2 - default:ignore, less general block after ignore obeys ignore",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://robustness2.test/request-1",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
+            },
+            {
                 "name": "options1 - ignore on catch ignore after options",
                 "siteURL": "https://example2.com",
                 "requestURL": "https://options1.test/script.js",
