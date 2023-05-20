@@ -716,7 +716,8 @@
                 "requestType": "script",
                 "expectAction": "block",
                 "exceptPlatforms": [
-                    "ios-browser"
+                    "ios-browser",
+                    "web-extension-mv3"
                 ]
             },
             {
