@@ -753,7 +753,10 @@
                 "siteURL": "https://example2.com",
                 "requestURL": "https://options6.test/script1.js",
                 "requestType": "script",
-                "expectAction": "block"
+                "expectAction": "block",
+                "exceptPlatforms": [
+                    "web-extension-mv3"
+                ]
             },
             {
                 "name": "options7 - default:ignore - options match with action:ignore",
@@ -767,7 +770,10 @@
                 "siteURL": "https://example2.com",
                 "requestURL": "https://options7.test/script1.js",
                 "requestType": "script",
-                "expectAction": "ignore"
+                "expectAction": "ignore",
+                "exceptPlatforms": [
+                    "ios-browser"
+                ]
             },
             {
                 "name": "options-trailing-exception - block on options match",
