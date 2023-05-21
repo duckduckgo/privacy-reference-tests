@@ -742,6 +742,34 @@
                 "expectAction": "block"
             },
             {
+                "name": "options6 - default:block - options match with action:ignore",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://options6.test/script1.js",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "options6 - default:block - rule matches, options don't, action:ignore",
+                "siteURL": "https://example2.com",
+                "requestURL": "https://options6.test/script1.js",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "options7 - default:ignore - options match with action:ignore",
+                "siteURL": "https://example1.com",
+                "requestURL": "https://options7.test/script1.js",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "options7 - default:ignore - rule matches, options don't, action:ignore",
+                "siteURL": "https://example2.com",
+                "requestURL": "https://options7.test/script1.js",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
                 "name": "options-trailing-exception - block on options match",
                 "siteURL": "https://example.com",
                 "requestURL": "https://options-trailing-exception.test/script.js",

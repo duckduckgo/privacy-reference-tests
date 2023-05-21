@@ -562,6 +562,56 @@
                 }
             ]
         },
+        "options6.test": {
+            "domain": "options6.test",
+            "owner": {
+                "name": "Test Site for Tracker Blocking",
+                "displayName": "Bad Third Party Site",
+                "privacyPolicy": "",
+                "url": "http://tracker.test"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "block",
+            "rules": [
+                {
+                    "rule": "options6\\.test\\/script1\\.js",
+                    "options": {
+                        "domains": [
+                            "example1.com"
+                        ]
+                    },
+                    "action": "ignore"
+                }
+            ]
+        },
+        "options7.test": {
+            "domain": "options7.test",
+            "owner": {
+                "name": "Test Site for Tracker Blocking",
+                "displayName": "Bad Third Party Site",
+                "privacyPolicy": "",
+                "url": "http://tracker.test"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "ignore",
+            "rules": [
+                {
+                    "rule": "options7\\.test\\/script1\\.js",
+                    "options": {
+                        "domains": [
+                            "example1.com"
+                        ]
+                    },
+                    "action": "ignore"
+                }
+            ]
+        },
         "options-trailing-exception.test": {
             "domain": "options-trailing-exception.test",
             "owner": {
@@ -767,7 +817,9 @@
                 "options2.test",
                 "options3.test",
                 "options4.test",
-                "options5.test"
+                "options5.test",
+                "options6.test",
+                "options7.test"
             ],
             "prevalence": 0.1,
             "displayName": "Test Site for Tracker Blocking"
@@ -837,6 +889,8 @@
         "options3.test": "Test Site for Tracker Blocking",
         "options4.test": "Test Site for Tracker Blocking",
         "options5.test": "Test Site for Tracker Blocking",
+        "options6.test": "Test Site for Tracker Blocking",
+        "options7.test": "Test Site for Tracker Blocking",
         "options-trailing-exception.test": "Tests for options algorithms",
         "options-trailing-ignore.test": "Tests for options algorithms",
         "ignore.test": "Ignore Site for Tracker Blocking",
