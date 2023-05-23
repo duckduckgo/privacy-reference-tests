@@ -32,7 +32,7 @@ jobs:
         working-directory: ./extension/packages/ddg2dnr
         run: npm test -- --grep Reference
   BrowserServicesKit:
-    name: Run unit tests
+    name: BSK unit tests
 
     runs-on: macos-13
     timeout-minutes: 30
