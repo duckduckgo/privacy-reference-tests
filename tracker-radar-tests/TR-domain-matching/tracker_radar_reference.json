@@ -773,7 +773,7 @@
                     "action": "ignore"
                 },
                 {
-                    "rule": "sub1\\.sub2\\.format\\.test/(a|[bc])/test4a\\.js",
+                    "rule": "sub1\\.sub2\\.format\\.test/[abc]/test4a\\.js",
                     "comment": "With subdomain and regexp",
                     "action": "ignore"
                 },
