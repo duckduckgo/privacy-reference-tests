@@ -773,18 +773,13 @@
                     "action": "ignore"
                 },
                 {
-                    "rule": "sub1\\.sub2\\.format\\.test/(a|[bc])/test4a\\.js",
+                    "rule": "sub1\\.sub2\\.format\\.test/[abc]/test4a\\.js",
                     "comment": "With subdomain and regexp",
                     "action": "ignore"
                 },
                 {
                     "rule": "sub1\\.format\\.test/sub2\\.format\\.test/test4b\\.js",
                     "comment": "Domain in rule",
-                    "action": "ignore"
-                },
-                {
-                    "rule": "^https?:\/\/([^./]+\\.)*sub1\\.sub2\\.format\\.test/test4c\\.js$",
-                    "comment": "With subdomain and explicit anchoring",
                     "action": "ignore"
                 },
                 {
