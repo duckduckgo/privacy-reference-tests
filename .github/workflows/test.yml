@@ -10,7 +10,7 @@ on:
       - '**.md'
 
 jobs:
-  extension:
+  extension-mv2:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -31,13 +31,36 @@ jobs:
         run: |
           npm run install-ci
           npm link @duckduckgo/privacy-reference-tests
-      - name: Test Extension
+      - name: Test Extension (MV2)
         working-directory: ./extension
         run: |
           npm test
-      - name: Test ddg2dnr
+
+  extension-mv3:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          path: 'reference-tests'
+      - uses: actions/checkout@v3
+        with:
+          repository: 'duckduckgo/duckduckgo-privacy-extension'
+          path: 'extension'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+          cache-dependency-path: 'extension/package-lock.json'
+      - run: cd reference-tests && npm link
+      - name: Setup Extension
+        working-directory: ./extension
+        run: |
+          npm run install-ci
+          npm link @duckduckgo/privacy-reference-tests
+      - name: Test ddg2dnr (MV3)
         working-directory: ./extension/packages/ddg2dnr
         run: npm test -- --grep Reference
+
   BrowserServicesKit:
     name: BSK unit tests
 
