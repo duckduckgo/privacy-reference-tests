@@ -60,19 +60,19 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "navigating to a tracking domain - referrer path, query and subdomain dropped",
+                "name": "navigating to a tracking domain - referrer path, query and subdomain not dropped",
                 "navigatingFromURL": "https://super.safe1.com/path/to/something.html?cool=123",
                 "navigatingToURL": "https://tracker.com/whatever",
                 "referrerValue": "https://super.safe1.com/path/to/something.html?cool=123",
-                "expectReferrerHeaderValue": "https://safe1.com/",
+                "expectReferrerHeaderValue": "https://super.safe1.com/",
                 "exceptPlatforms": []
             },
             {
-                "name": "navigating to a tracking domain with default action 'ignore' - referrer path, query and subdomain dropped",
+                "name": "navigating to a tracking domain with default action 'ignore' - referrer path, query and subdomain not dropped",
                 "navigatingFromURL": "https://super.safe1.com/path/to/something.html?cool=123",
                 "navigatingToURL": "https://unblockable-tracker.net/whatever",
                 "referrerValue": "https://super.safe1.com/path/to/something.html?cool=123",
-                "expectReferrerHeaderValue": "https://safe1.com/",
+                "expectReferrerHeaderValue": "https://super.safe1.com/",
                 "exceptPlatforms": []
             },
             {
@@ -161,21 +161,21 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "loading resource from a tracking domain - referrer path, query and subdomain dropped",
+                "name": "loading resource from a tracking domain - referrer path, query and subdomain not dropped",
                 "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
                 "requestURL": "https://tracker.com/script.js",
                 "requestType": "script",
                 "referrerValue": "https://super.safe1.com/path/to/something.html?cool=123",
-                "expectReferrerHeaderValue": "https://safe1.com/",
+                "expectReferrerHeaderValue": "https://super.safe1.com/",
                 "exceptPlatforms": []
             },
             {
-                "name": "loading resource from a tracking domain with default action 'ignore' - referrer path, query and subdomain should still be dropped",
+                "name": "loading resource from a tracking domain with default action 'ignore' - referrer path, query and subdomain not dropped",
                 "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
                 "requestURL": "https://unblockable-tracker.net/script.js",
                 "requestType": "script",
                 "referrerValue": "https://super.safe1.com/path/to/something.html?cool=123",
-                "expectReferrerHeaderValue": "https://safe1.com/",
+                "expectReferrerHeaderValue": "https://super.safe1.com/",
                 "exceptPlatforms": []
             },
             {
@@ -197,12 +197,12 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "loading resource from a CNAME'd tracker - referrer path, query and subdomain dropped",
+                "name": "loading resource from a CNAME'd tracker - referrer path, query and subdomain not dropped",
                 "siteURL": "https://cname.com/path/to/something.html?cool=123",
                 "requestURL": "https://tracker.cname.com/script.js",
                 "requestType": "script",
                 "referrerValue": "https://super.safe1.com/path/to/something.html?cool=123",
-                "expectReferrerHeaderValue": "https://safe1.com/",
+                "expectReferrerHeaderValue": "https://super.safe1.com/",
                 "exceptPlatforms": []
             }
         ]
@@ -247,10 +247,10 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "tracking domain - referrer path, query and subdomain dropped",
+                "name": "tracking domain - referrer path, query and subdomain not dropped",
                 "siteURL": "https://tracker.com/something.html?cool=123",
                 "referrerValue": "https://super.safe1.com/previous.html?old=thing",
-                "expectReferrerAPIValue": "https://safe1.com/",
+                "expectReferrerAPIValue": "https://super.safe1.com/",
                 "exceptPlatforms": []
             },
             {
@@ -268,15 +268,15 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "safe site, tracking frame - referrer path, query and subdomain dropped",
+                "name": "safe site, tracking frame - referrer path, query and subdomain not dropped",
                 "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
                 "frameURL": "https://tracker.com/bad-frame.html",
                 "referrerValue": "https://super.safe1.com/path/to/something.html?cool=123",
-                "expectReferrerAPIValue": "https://safe1.com/",
+                "expectReferrerAPIValue": "https://super.safe1.com/",
                 "exceptPlatforms": []
             },
             {
-                "name": "safe site, non-tracking but third party frame - referrer path, query and subdomain dropped",
+                "name": "safe site, non-tracking but third party frame - referrer path, query and subdomain not dropped",
                 "siteURL": "https://super.safe1.com/path/to/something.html?cool=123",
                 "frameURL": "https://safe2.com/ok-frame.html",
                 "referrerValue": "https://super.safe1.com/path/to/something.html?cool=123",
