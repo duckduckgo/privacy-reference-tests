@@ -36,7 +36,7 @@ jobs:
         run: |
           npm test
 
-  extension-mv3:
+  ddg2dnr:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
