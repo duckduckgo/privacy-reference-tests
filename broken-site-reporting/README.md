@@ -73,6 +73,10 @@ the reference tests is provided below:
     - `android-browser`, see https://app.asana.com/0/1163321984198618/1203936449485101/f
     - `ios-browser`, see https://app.asana.com/0/1163321984198618/1203944813756141
     - `safari-extension`, see https://app.asana.com/0/1201602070177732/1204307004967346
+- the following platforms don't yet encode etags in the expected manner
+  - `ios-browser`, see https://app.asana.com/0/0/1204852947979442/f
+- the following platforms don't yet send privacy configuration version information in reports:
+  - `ios-browser`, see https://app.asana.com/0/0/1204370595704517/f
 - truncation tests:
   - the following platforms do not currently implement the optional `noActionRequests`, `adAttributionRequests`, `ignoredByUserRequests`, or `ignoreRequests` truncatable parameters: `android-browser`, `ios-browser`, `macos-browser`, `safari-extension`, `windows-browser`
   - see https://app.asana.com/0/0/1204271046995906/f for more information about truncation and implementation requirements
