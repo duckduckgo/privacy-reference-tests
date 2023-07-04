@@ -6,7 +6,7 @@ function init(window) {
     Object.defineProperty(BatteryManager.prototype, 'charging', { get: () => false, configurable: true });
     Object.defineProperty(BatteryManager.prototype, 'chargingTime', { get: () => 12345, configurable: true });
     Object.defineProperty(BatteryManager.prototype, 'dischargingTime', { get: () => 12345, configurable: true });
-    
+
     window.BatteryManager = BatteryManager;
     window.navigator.getBattery = () => Promise.resolve(new BatteryManager());
 
@@ -25,6 +25,14 @@ function init(window) {
             callback(0, 9999999999)
         }
     };
+
+    window.DeviceOrientationEvent = window.Event; // we only need the constructor in tests
+    window.DeviceMotionEvent = window.Event; // we only need the constructor in tests
+    window.Permissions = class {
+        query() {
+            return Promise.resolve({ state: 'granted' });
+        }
+    }
 }
 
 if (typeof module !== 'undefined' && module.exports) {

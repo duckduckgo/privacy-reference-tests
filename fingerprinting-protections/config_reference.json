@@ -47,6 +47,120 @@
                 }
             ],
             "state": "enabled"
+        },
+        "harmfulApis": {
+            "state": "enabled",
+            "exceptions": [
+                {
+                    "domain": "harmful-apis-exception.test",
+                    "reason": "Disable harmful API protections"
+                }
+            ],
+            "settings": {
+                "domains": [
+                    {
+                        "domain": "patched-harmful-api-settings.test",
+                        "patchSettings": [
+                            { "op": "replace", "path": "StorageManager/allowedQuotaValues", "value": [ 1337 ] },
+                            { "op": "replace", "path": "WindowPlacement/screenIsExtended", "value": true },
+                            { "op": "replace", "path": "WebSerial/state", "value": "disabled" }
+                        ]
+                    }
+                ],
+                "deviceOrientation": {
+                    "state": "enabled",
+                    "filterEvents": [
+                        "deviceorientation",
+                        "devicemotion"
+                    ]
+                },
+                "GenericSensor": {
+                    "state": "enabled",
+                    "filterPermissions": [
+                        "accelerometer",
+                        "ambient-light-sensor",
+                        "gyroscope",
+                        "magnetometer"
+                    ],
+                    "blockSensorStart": true
+                },
+                "UaClientHints": {
+                    "state": "enabled",
+                    "highEntropyValues": {
+                        "trimBrands": true,
+                        "model": "",
+                        "trimPlatformVersion": 2,
+                        "trimUaFullVersion": 1,
+                        "trimFullVersionList": 1
+                    }
+                },
+                "NetworkInformation": {
+                    "state": "enabled"
+                },
+                "getInstalledRelatedApps": {
+                    "state": "enabled",
+                    "returnValue": []
+                },
+                "FileSystemAccess": {
+                    "state": "enabled",
+                    "disableOpenFilePicker": true,
+                    "disableSaveFilePicker": true,
+                    "disableDirectoryPicker": true,
+                    "disableGetAsFileSystemHandle": true
+                },
+                "WindowPlacement": {
+                    "state": "enabled",
+                    "filterPermissions": [
+                        "window-placement",
+                        "window-management"
+                    ],
+                    "screenIsExtended": false
+                },
+                "WebBluetooth": {
+                    "state": "enabled",
+                    "filterPermissions": [
+                        "bluetooth"
+                    ],
+                    "filterEvents": ["availabilitychanged"],
+                    "blockGetAvailability": true,
+                    "blockRequestDevice": true
+                },
+                "WebUsb": {
+                    "state": "enabled"
+                },
+                "WebSerial": {
+                    "state": "enabled"
+                },
+                "WebHid": {
+                    "state": "enabled"
+                },
+                "WebMidi": {
+                    "state": "enabled",
+                    "filterPermissions": [
+                        "midi"
+                    ]
+                },
+                "IdleDetection": {
+                    "state": "enabled",
+                    "filterPermissions": [
+                        "idle-detection"
+                    ]
+                },
+                "WebNfc": {
+                    "state": "enabled",
+                    "disableNdefReader": true,
+                    "disableNdefMessage": true,
+                    "disableNdefRecord": true
+                },
+                "StorageManager": {
+                    "state": "enabled",
+                    "allowedQuotaValues": [
+                        1073741824,
+                        4294967296,
+                        9999999999
+                    ]
+                }
+            }
         }
     },
     "version": 1635943904459,
