@@ -61,9 +61,10 @@
                     {
                         "domain": "patched-harmful-api-settings.test",
                         "patchSettings": [
-                            { "op": "replace", "path": "StorageManager/allowedQuotaValues", "value": [ 1337 ] },
-                            { "op": "replace", "path": "WindowPlacement/screenIsExtended", "value": true },
-                            { "op": "replace", "path": "WebSerial/state", "value": "disabled" }
+                            { "op": "replace", "path": "/deviceOrientation/filterEvents", "value": [ "deviceorientation" ] },
+                            { "op": "replace", "path": "/StorageManager/allowedQuotaValues", "value": [ 1337 ] },
+                            { "op": "replace", "path": "/WindowPlacement/screenIsExtended", "value": true },
+                            { "op": "replace", "path": "/WebSerial/state", "value": "disabled" }
                         ]
                     }
                 ],

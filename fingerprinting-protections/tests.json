@@ -262,5 +262,51 @@
                    ]
             }
         ]
+    },
+    "harmfulAPIs": {
+        "name": "Harmful APIs",
+        "desc": "Various web APIs should be modified or disabled to prevent leaking private data",
+        "tests": [
+            {
+                "name": "deviceorientation event",
+                "siteURL": "https://example.com/",
+                "property": "firedEvent='none',(t=()=>{window.addEventListener('deviceorientation', () => { firedEvent = 'deviceorientation' }); window.dispatchEvent(new DeviceOrientationEvent('deviceorientation')); return 333}),t(),firedEvent",
+                "expectPropertyValue": "none",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "deviceorientation event exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "firedEvent='none',(t=()=>{window.addEventListener('deviceorientation', () => { firedEvent = 'deviceorientation' }); window.dispatchEvent(new DeviceOrientationEvent('deviceorientation')); return 333}),t(),firedEvent",
+                "expectPropertyValue": "deviceorientation",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "devicemotion event",
+                "siteURL": "https://example.com/",
+                "property": "firedEvent='none',(t=()=>{window.addEventListener('devicemotion', () => { firedEvent = 'devicemotion' }); window.dispatchEvent(new DeviceMotionEvent('devicemotion')); return 333}),t(),firedEvent",
+                "expectPropertyValue": "none",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "devicemotion event exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "firedEvent='none',(t=()=>{window.addEventListener('devicemotion', () => { firedEvent = 'devicemotion' }); window.dispatchEvent(new DeviceMotionEvent('devicemotion')); return 333}),t(),firedEvent",
+                "expectPropertyValue": "devicemotion",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "devicemotion event patch mitigation",
+                "siteURL": "https://patched-harmful-api-settings.test/",
+                "property": "firedEvent='none',(t=()=>{window.addEventListener('devicemotion', () => { firedEvent = 'devicemotion' }); window.dispatchEvent(new DeviceMotionEvent('devicemotion')); return 333}),t(),firedEvent",
+                "expectPropertyValue": "devicemotion",
+                "exceptPlatforms": [
+                ]
+            }
+        ]
     }
 }
