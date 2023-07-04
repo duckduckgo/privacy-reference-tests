@@ -306,6 +306,104 @@
                 "expectPropertyValue": "devicemotion",
                 "exceptPlatforms": [
                 ]
+            },
+
+            {
+                "name": "AbsoluteOrientationSensor API",
+                "siteURL": "https://example.com/",
+                "property": "new Promise(resolve => { s = new AbsoluteOrientationSensor(); s.addEventListener('error', e => resolve('threw')); s.start(); })",
+                "expectPropertyValue": "threw",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "Accelerometer API",
+                "siteURL": "https://example.com/",
+                "property": "new Promise(resolve => { s = new AbsoluteOrientationSensor(); s.addEventListener('error', e => resolve('threw')); s.start(); })",
+                "expectPropertyValue": "threw",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "GravitySensor API",
+                "siteURL": "https://example.com/",
+                "property": "new Promise(resolve => { s = new AbsoluteOrientationSensor(); s.addEventListener('error', e => resolve('threw')); s.start(); })",
+                "expectPropertyValue": "threw",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "Gyroscope API",
+                "siteURL": "https://example.com/",
+                "property": "new Promise(resolve => { s = new AbsoluteOrientationSensor(); s.addEventListener('error', e => resolve('threw')); s.start(); })",
+                "expectPropertyValue": "threw",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "LinearAccelerationSensor API",
+                "siteURL": "https://example.com/",
+                "property": "new Promise(resolve => { s = new AbsoluteOrientationSensor(); s.addEventListener('error', e => resolve('threw')); s.start(); })",
+                "expectPropertyValue": "threw",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "RelativeOrientationSensor API",
+                "siteURL": "https://example.com/",
+                "property": "new Promise(resolve => { s = new AbsoluteOrientationSensor(); s.addEventListener('error', e => resolve('threw')); s.start(); })",
+                "expectPropertyValue": "threw",
+                "exceptPlatforms": [
+                ]
+            },
+
+            {
+                "name": "accelerometer permission",
+                "siteURL": "https://example.com/",
+                "property": "navigator.permissions.query({ name: 'accelerometer' }).then(result => result.state)",
+                "expectPropertyValue": "denied",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "gyroscope permission",
+                "siteURL": "https://example.com/",
+                "property": "navigator.permissions.query({ name: 'gyroscope' }).then(result => result.state)",
+                "expectPropertyValue": "denied",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "magnetometer permission",
+                "siteURL": "https://example.com/",
+                "property": "navigator.permissions.query({ name: 'magnetometer' }).then(result => result.state)",
+                "expectPropertyValue": "denied",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "accelerometer permission exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "navigator.permissions.query({ name: 'accelerometer' }).then(result => result.state)",
+                "expectPropertyValue": "granted",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "gyroscope permission exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "navigator.permissions.query({ name: 'gyroscope' }).then(result => result.state)",
+                "expectPropertyValue": "granted",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "magnetometer permission exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "navigator.permissions.query({ name: 'magnetometer' }).then(result => result.state)",
+                "expectPropertyValue": "granted",
+                "exceptPlatforms": [
+                ]
             }
         ]
     }

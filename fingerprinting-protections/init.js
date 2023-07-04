@@ -33,6 +33,19 @@ function init(window) {
             return Promise.resolve({ state: 'granted' });
         }
     }
+    window.navigator.permissions = new window.Permissions();
+
+    class SensorMock extends EventTarget {
+        start() {}
+    }
+    if (!window.Sensor) window.Sensor = SensorMock;
+    class ConcreteSensorMock extends window.Sensor {}
+    if (!window.AbsoluteOrientationSensor) window.AbsoluteOrientationSensor = ConcreteSensorMock;
+    if (!window.Accelerometer) window.Accelerometer = ConcreteSensorMock;
+    if (!window.GravitySensor) window.GravitySensor = ConcreteSensorMock;
+    if (!window.Gyroscope) window.Gyroscope = ConcreteSensorMock;
+    if (!window.LinearAccelerationSensor) window.LinearAccelerationSensor = ConcreteSensorMock;
+    if (!window.RelativeOrientationSensor) window.RelativeOrientationSensor = ConcreteSensorMock;
 }
 
 if (typeof module !== 'undefined' && module.exports) {
