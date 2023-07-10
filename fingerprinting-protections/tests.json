@@ -591,7 +591,49 @@
                 "expectPropertyValue": "function",
                 "exceptPlatforms": [
                 ]
+            },
+
+            {
+                "name": "Window Placement API - window-placement permission",
+                "siteURL": "https://example.com/",
+                "property": "navigator.permissions.query({ name: 'window-placement' }).then(result => result.state)",
+                "expectPropertyValue": "denied",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "Window Placement API - window-management permission",
+                "siteURL": "https://example.com/",
+                "property": "navigator.permissions.query({ name: 'window-management' }).then(result => result.state)",
+                "expectPropertyValue": "denied",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "Window Placement API - Screen.prototype.isExtended",
+                "siteURL": "https://example.com/",
+                "property": "window.screen.isExtended",
+                "expectPropertyValue": "false",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "Window Placement API - Screen.prototype.isExtended site exception",
+                "siteURL": "https://harmful-apis-exception.test",
+                "property": "window.screen.isExtended",
+                "expectPropertyValue": "true",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "Window Placement API - Screen.prototype.isExtended domain override",
+                "siteURL": "https://patched-harmful-api-settings.test/",
+                "property": "window.screen.isExtended",
+                "expectPropertyValue": "true",
+                "exceptPlatforms": [
+                ]
             }
+
         ]
     }
 }

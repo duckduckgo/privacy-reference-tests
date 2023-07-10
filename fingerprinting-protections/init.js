@@ -127,6 +127,10 @@ function init(window) {
             }
         }
     }
+
+    if (typeof window.screen.isExtended === 'undefined') {
+        Object.defineProperty(window.Screen.prototype, 'isExtended', { get: () => true, configurable: true });
+    }
 }
 
 if (typeof module !== 'undefined' && module.exports) {
