@@ -64,6 +64,7 @@
                             { "op": "replace", "path": "/deviceOrientation/filterEvents", "value": [ "deviceorientation" ] },
                             { "op": "replace", "path": "/StorageManager/allowedQuotaValues", "value": [ 1337 ] },
                             { "op": "replace", "path": "/WindowPlacement/screenIsExtended", "value": true },
+                            { "op": "replace", "path": "/UaClientHints/highEntropyValues/trimPlatformVersion", "value": 1 },
                             { "op": "replace", "path": "/WebSerial/state", "value": "disabled" }
                         ]
                     }
@@ -89,10 +90,14 @@
                     "state": "enabled",
                     "highEntropyValues": {
                         "trimBrands": true,
-                        "model": "",
+                        "model": "overridden-model",
                         "trimPlatformVersion": 2,
                         "trimUaFullVersion": 1,
-                        "trimFullVersionList": 1
+                        "trimFullVersionList": 1,
+                        "architecture": "overridden-architecture",
+                        "bitness": 16,
+                        "platform": "overridden-platform",
+                        "mobile": true
                     }
                 },
                 "NetworkInformation": {

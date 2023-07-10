@@ -404,6 +404,94 @@
                 "expectPropertyValue": "granted",
                 "exceptPlatforms": [
                 ]
+            },
+            {
+                "name": "UA hints model",
+                "siteURL": "https://example.com/",
+                "property": "navigator.userAgentData.getHighEntropyValues(['model']).then(result => result.model)",
+                "expectPropertyValue": "overridden-model",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "UA hints model exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "navigator.userAgentData.getHighEntropyValues(['model']).then(result => result.model)",
+                "expectPropertyValue": "some-real-model",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "UA hints platformVersion",
+                "siteURL": "https://example.com/",
+                "property": "navigator.userAgentData.getHighEntropyValues(['platformVersion']).then(result => result.platformVersion)",
+                "expectPropertyValue": "13.4.0",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "UA hints platformVersion exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "navigator.userAgentData.getHighEntropyValues(['platformVersion']).then(result => result.platformVersion)",
+                "expectPropertyValue": "13.4.1",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "UA hints platformVersion override",
+                "siteURL": "https://patched-harmful-api-settings.test/",
+                "property": "navigator.userAgentData.getHighEntropyValues(['platformVersion']).then(result => result.platformVersion)",
+                "expectPropertyValue": "13.0.0",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "UA hints uaFullVersion",
+                "siteURL": "https://example.com/",
+                "property": "navigator.userAgentData.getHighEntropyValues(['uaFullVersion']).then(result => result.uaFullVersion)",
+                "expectPropertyValue": "114.0.0.0",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "UA hints fullVersionList",
+                "siteURL": "https://example.com/",
+                "property": "navigator.userAgentData.getHighEntropyValues(['fullVersionList']).then(result => `${result.fullVersionList[1].version},${result.fullVersionList[2].version}`)",
+                "expectPropertyValue": "114.0.0.0,114.0.0.0",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "UA hints architecture",
+                "siteURL": "https://example.test/",
+                "property": "navigator.userAgentData.getHighEntropyValues(['architecture']).then(result => result.architecture)",
+                "expectPropertyValue": "overridden-architecture",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "UA hints bitness",
+                "siteURL": "https://example.com/",
+                "property": "navigator.userAgentData.getHighEntropyValues(['bitness']).then(result => result.bitness)",
+                "expectPropertyValue": "16",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "UA hints platform",
+                "siteURL": "https://example.com/",
+                "property": "navigator.userAgentData.getHighEntropyValues(['platform']).then(result => result.platform)",
+                "expectPropertyValue": "overridden-platform",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "UA hints mobile",
+                "siteURL": "https://example.com/",
+                "property": "navigator.userAgentData.getHighEntropyValues(['mobile']).then(result => result.mobile)",
+                "expectPropertyValue": "true",
+                "exceptPlatforms": [
+                ]
             }
         ]
     }

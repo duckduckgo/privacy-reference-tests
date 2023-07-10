@@ -46,6 +46,56 @@ function init(window) {
     if (!window.Gyroscope) window.Gyroscope = ConcreteSensorMock;
     if (!window.LinearAccelerationSensor) window.LinearAccelerationSensor = ConcreteSensorMock;
     if (!window.RelativeOrientationSensor) window.RelativeOrientationSensor = ConcreteSensorMock;
+
+    if (!window.NavigatorUAData) {
+        window.NavigatorUAData = class {
+            async getHighEntropyValues() {
+                return { platform: 'Win32' };
+            }
+        }
+        window.navigator.userAgentData = new window.NavigatorUAData();
+    }
+
+    // freeze the base return value for getHighEntropyValues to not depend on the actual browser
+    window.NavigatorUAData.prototype.getHighEntropyValues = function() {
+        return Promise.resolve({
+            "architecture": "arm",
+            "bitness": "64",
+            "brands": [
+                {
+                    "brand": "Not.A/Brand",
+                    "version": "8"
+                },
+                {
+                    "brand": "Chromium",
+                    "version": "114"
+                },
+                {
+                    "brand": "Google Chrome",
+                    "version": "114"
+                }
+            ],
+            "fullVersionList": [
+                {
+                    "brand": "Not.A/Brand",
+                    "version": "8.0.0.0"
+                },
+                {
+                    "brand": "Chromium",
+                    "version": "114.1.5735.198"
+                },
+                {
+                    "brand": "Google Chrome",
+                    "version": "114.1.5735.198"
+                }
+            ],
+            "mobile": false,
+            "model": "some-real-model",
+            "platform": "macOS",
+            "platformVersion": "13.4.1",
+            "uaFullVersion": "114.0.5735.198"
+        });
+    }
 }
 
 if (typeof module !== 'undefined' && module.exports) {
