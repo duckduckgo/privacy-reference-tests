@@ -192,6 +192,18 @@ function init(window) {
     if (!window.NDEFRecord) {
         window.NDEFRecord = class {}
     }
+
+    if (!window.navigator.storage) {
+        window.StorageManager = class {
+            async estimate() {
+                return {
+                    quota: 12345,
+                    usage: 111
+                };
+            }
+        }
+        Object.getPrototypeOf(window.navigator).storage = new window.StorageManager();
+    }
 }
 
 if (typeof module !== 'undefined' && module.exports) {

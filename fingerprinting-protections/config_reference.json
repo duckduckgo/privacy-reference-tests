@@ -161,9 +161,7 @@
                 "StorageManager": {
                     "state": "enabled",
                     "allowedQuotaValues": [
-                        1073741824,
-                        4294967296,
-                        9999999999
+                        1, 1337, 31337
                     ]
                 }
             }

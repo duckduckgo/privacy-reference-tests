@@ -823,6 +823,15 @@
                 "expectPropertyValue": "function",
                 "exceptPlatforms": [
                 ]
+            },
+
+            {
+                "name": "StarageManager quota estimation API",
+                "siteURL": "https://example.com/",
+                "property": "navigator.storage.estimate().then(r => r.quota).catch(e => e.message)",
+                "expectPropertyValue": "1337",
+                "exceptPlatforms": [
+                ]
             }
         ]
     }
