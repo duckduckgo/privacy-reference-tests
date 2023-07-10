@@ -174,6 +174,12 @@ function init(window) {
     if (!window.navigator.requestMIDIAccess) {
         Object.getPrototypeOf(window.navigator).requestMIDIAccess = () => Promise.resolve('mocked-requestMIDIAccess-result');
     }
+
+    if (!window.IdleDetector) {
+        window.IdleDetector = class {
+            start() {}
+        }
+    }
 }
 
 if (typeof module !== 'undefined' && module.exports) {

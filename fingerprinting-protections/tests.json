@@ -749,6 +749,31 @@
                 "expectPropertyValue": "denied",
                 "exceptPlatforms": [
                 ]
+            },
+
+            {
+                "name": "IdleDetection API IdleDetector",
+                "siteURL": "https://example.test",
+                "property": "typeof window.IdleDetector",
+                "expectPropertyValue": "undefined",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "IdleDetection API IdleDetector exception",
+                "siteURL": "https://harmful-apis-exception.test",
+                "property": "typeof window.IdleDetector",
+                "expectPropertyValue": "function",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "IdleDetection API idle-detection permission",
+                "siteURL": "https://example.com/",
+                "property": "navigator.permissions.query({ name: 'idle-detection' }).then(result => result.state)",
+                "expectPropertyValue": "denied",
+                "exceptPlatforms": [
+                ]
             }
         ]
     }
