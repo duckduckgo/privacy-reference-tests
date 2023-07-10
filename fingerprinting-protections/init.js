@@ -180,6 +180,18 @@ function init(window) {
             start() {}
         }
     }
+
+    if (!window.NDEFReader) {
+        window.NDEFReader = class {}
+    }
+
+    if (!window.NDEFMessage) {
+        window.NDEFMessage = class {}
+    }
+
+    if (!window.NDEFRecord) {
+        window.NDEFRecord = class {}
+    }
 }
 
 if (typeof module !== 'undefined' && module.exports) {

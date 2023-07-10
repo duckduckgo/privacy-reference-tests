@@ -774,6 +774,55 @@
                 "expectPropertyValue": "denied",
                 "exceptPlatforms": [
                 ]
+            },
+
+            {
+                "name": "WebNFC API NDEFReader",
+                "siteURL": "https://example.test",
+                "property": "typeof window.NDEFReader",
+                "expectPropertyValue": "undefined",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebNFC API NDEFReader exception",
+                "siteURL": "https://harmful-apis-exception.test",
+                "property": "typeof window.NDEFReader",
+                "expectPropertyValue": "function",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebNFC API NDEFMessage",
+                "siteURL": "https://example.test",
+                "property": "typeof window.NDEFMessage",
+                "expectPropertyValue": "undefined",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebNFC API NDEFMessage exception",
+                "siteURL": "https://harmful-apis-exception.test",
+                "property": "typeof window.NDEFMessage",
+                "expectPropertyValue": "function",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebNFC API NDEFRecord",
+                "siteURL": "https://example.test",
+                "property": "typeof window.NDEFRecord",
+                "expectPropertyValue": "undefined",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebNFC API NDEFRecord exception",
+                "siteURL": "https://harmful-apis-exception.test",
+                "property": "typeof window.NDEFRecord",
+                "expectPropertyValue": "function",
+                "exceptPlatforms": [
+                ]
             }
         ]
     }
