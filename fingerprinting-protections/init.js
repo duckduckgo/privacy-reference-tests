@@ -131,6 +131,18 @@ function init(window) {
     if (typeof window.screen.isExtended === 'undefined') {
         Object.defineProperty(window.Screen.prototype, 'isExtended', { get: () => true, configurable: true });
     }
+
+    if (!window.navigator.bluetooth) {
+        window.Bluetooth = class {
+            getAvailability() {
+                return Promise.resolve(true);
+            }
+            requestDevice() {
+                return Promise.resolve('mocked-Bluetooth-requestDevice-result');
+            }
+        }
+        window.navigator.bluetooth = new window.Bluetooth();
+    }
 }
 
 if (typeof module !== 'undefined' && module.exports) {

@@ -632,8 +632,40 @@
                 "expectPropertyValue": "true",
                 "exceptPlatforms": [
                 ]
-            }
+            },
 
+            {
+                "name": "WebBluetooth API getAvailability()",
+                "siteURL": "https://example.com/",
+                "property": "navigator.bluetooth.getAvailability()",
+                "expectPropertyValue": "false",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebBluetooth API getAvailability() exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "navigator.bluetooth.getAvailability()",
+                "expectPropertyValue": "true",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebBluetooth API requestDevice()",
+                "siteURL": "https://example.com/",
+                "property": "navigator.bluetooth.requestDevice().catch(e => e.message)",
+                "expectPropertyValue": "Bluetooth permission has been blocked.",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebBluetooth API requestDevice() exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "navigator.bluetooth.requestDevice()",
+                "expectPropertyValue": "mocked-Bluetooth-requestDevice-result",
+                "exceptPlatforms": [
+                ]
+            }
         ]
     }
 }
