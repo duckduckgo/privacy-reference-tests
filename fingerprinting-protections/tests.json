@@ -707,6 +707,48 @@
                 "expectPropertyValue": "mocked-Serial-requestPort-result",
                 "exceptPlatforms": [
                 ]
+            },
+
+            {
+                "name": "WebHID API requestDevice",
+                "siteURL": "https://example.com/",
+                "property": "navigator.hid.requestDevice({ filters: [] }).then(result => result.join(','))",
+                "expectPropertyValue": "",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebHID API requestDevice exception",
+                "siteURL": "https://harmful-apis-exception.test",
+                "property": "navigator.hid.requestDevice({ filters: [] }).then(result => result.join(','))",
+                "expectPropertyValue": "mocked-HID-requestDevice-result",
+                "exceptPlatforms": [
+                ]
+            },
+
+            {
+                "name": "WebMIDI API navigator.requestMIDIAccess()",
+                "siteURL": "https://example.test",
+                "property": "navigator.requestMIDIAccess().catch(err => err.message)",
+                "expectPropertyValue": "Permission is denied.",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebMIDI API navigator.requestMIDIAccess() exception",
+                "siteURL": "https://harmful-apis-exception.test",
+                "property": "navigator.requestMIDIAccess().catch(err => err.message)",
+                "expectPropertyValue": "mocked-requestMIDIAccess-result",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebMIDI API midi permission",
+                "siteURL": "https://example.com/",
+                "property": "navigator.permissions.query({ name: 'midi' }).then(result => result.state)",
+                "expectPropertyValue": "denied",
+                "exceptPlatforms": [
+                ]
             }
         ]
     }

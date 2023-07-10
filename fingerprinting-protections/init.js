@@ -156,10 +156,23 @@ function init(window) {
     if (!window.navigator.serial) {
         window.Serial = class {
             requestPort() {
-                return Promise.resolve('mocked-Serial-requestPort-result');
+                return Promise.resolve(['mocked-Serial-requestPort-result']);
             }
         }
         window.navigator.serial = new window.Serial();
+    }
+
+    if (!window.navigator.hid) {
+        window.HID = class {
+            requestDevice() {
+                return Promise.resolve(['mocked-HID-requestDevice-result']);
+            }
+        }
+        window.navigator.hid = new window.HID();
+    }
+
+    if (!window.navigator.requestMIDIAccess) {
+        Object.getPrototypeOf(window.navigator).requestMIDIAccess = () => Promise.resolve('mocked-requestMIDIAccess-result');
     }
 }
 
