@@ -492,6 +492,105 @@
                 "expectPropertyValue": "true",
                 "exceptPlatforms": [
                 ]
+            },
+
+            {
+                "name": "NetworkInformation API",
+                "siteURL": "https://example.com/",
+                "property": "typeof navigator.connection",
+                "expectPropertyValue": "undefined",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "NetworkInformation API exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "typeof navigator.connection",
+                "expectPropertyValue": "object",
+                "exceptPlatforms": [
+                ]
+            },
+
+            {
+                "name": "getInstalledRelatedApps API",
+                "siteURL": "https://example.com/",
+                "property": "navigator.getInstalledRelatedApps().then(apps => apps.join(','))",
+                "expectPropertyValue": "overridden-return-value",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "getInstalledRelatedApps API exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "navigator.getInstalledRelatedApps().then(apps => apps.join(','))",
+                "expectPropertyValue": "some-returned-app",
+                "exceptPlatforms": [
+                ]
+            },
+
+            {
+                "name": "FileSystemAccess API - showOpenFilePicker",
+                "siteURL": "https://example.com/",
+                "property": "typeof window.showOpenFilePicker",
+                "expectPropertyValue": "undefined",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "FileSystemAccess API - showSaveFilePicker",
+                "siteURL": "https://example.com/",
+                "property": "typeof window.showSaveFilePicker",
+                "expectPropertyValue": "undefined",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "FileSystemAccess API - showDirectoryPicker",
+                "siteURL": "https://example.com/",
+                "property": "typeof window.showDirectoryPicker",
+                "expectPropertyValue": "undefined",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "FileSystemAccess API - showOpenFilePicker exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "typeof window.showOpenFilePicker",
+                "expectPropertyValue": "function",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "FileSystemAccess API - showSaveFilePicker exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "typeof window.showSaveFilePicker",
+                "expectPropertyValue": "function",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "FileSystemAccess API - showDirectoryPicker exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "typeof window.showDirectoryPicker",
+                "expectPropertyValue": "function",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "FileSystemAccess API - DataTransferItem.getAsFileSystemHandle",
+                "siteURL": "https://example.com/",
+                "property": "typeof DataTransferItem.prototype.getAsFileSystemHandle",
+                "expectPropertyValue": "undefined",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "FileSystemAccess API - DataTransferItem.getAsFileSystemHandle exception",
+                "siteURL": "https://harmful-apis-exception.test/",
+                "property": "typeof DataTransferItem.prototype.getAsFileSystemHandle",
+                "expectPropertyValue": "function",
+                "exceptPlatforms": [
+                ]
             }
         ]
     }

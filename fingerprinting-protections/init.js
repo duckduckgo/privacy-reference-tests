@@ -96,6 +96,37 @@ function init(window) {
             "uaFullVersion": "114.0.5735.198"
         });
     }
+
+    if (!window.navigator.connection) {
+        Object.getPrototypeOf(window.navigator).connection = {
+            rtt: 12345,
+            downlink: 12345,
+            effectiveType: '4g'
+        };
+    }
+
+    if (!window.navigator.getInstalledRelatedApps) {
+        Object.getPrototypeOf(window.navigator).getInstalledRelatedApps = async function() {
+            return ['some-returned-app'];
+        }
+    }
+
+    if (!window.showOpenFilePicker) {
+        window.showOpenFilePicker = () => 'mocked-showOpenFilePicker-result';
+    }
+    if (!window.showSaveFilePicker) {
+        window.showSaveFilePicker = () => 'mocked-showSaveFilePicker-result';
+    }
+    if (!window.showDirectoryPicker) {
+        window.showDirectoryPicker = () => 'mocked-showDirectoryPicker-result';
+    }
+    if (!window.DataTransferItem) {
+        window.DataTransferItem = class {
+            getAsFileSystemHandle() {
+                return 'mocked-DataTransferItem-getAsFileSystemHandle-result';
+            }
+        }
+    }
 }
 
 if (typeof module !== 'undefined' && module.exports) {
