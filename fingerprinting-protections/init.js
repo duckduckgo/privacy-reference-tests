@@ -143,6 +143,15 @@ function init(window) {
         }
         window.navigator.bluetooth = new window.Bluetooth();
     }
+
+    if (!window.navigator.usb) {
+        window.USB = class {
+            requestDevice() {
+                return Promise.resolve('mocked-USB-requestDevice-result');
+            }
+        }
+        window.navigator.usb = new window.USB();
+    }
 }
 
 if (typeof module !== 'undefined' && module.exports) {

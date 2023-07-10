@@ -653,7 +653,7 @@
             {
                 "name": "WebBluetooth API requestDevice()",
                 "siteURL": "https://example.com/",
-                "property": "navigator.bluetooth.requestDevice().catch(e => e.message)",
+                "property": "navigator.bluetooth.requestDevice({acceptAllDevices: true}).catch(e => e.message)",
                 "expectPropertyValue": "Bluetooth permission has been blocked.",
                 "exceptPlatforms": [
                 ]
@@ -661,11 +661,30 @@
             {
                 "name": "WebBluetooth API requestDevice() exception",
                 "siteURL": "https://harmful-apis-exception.test/",
-                "property": "navigator.bluetooth.requestDevice()",
+                "property": "navigator.bluetooth.requestDevice({acceptAllDevices: true})",
                 "expectPropertyValue": "mocked-Bluetooth-requestDevice-result",
                 "exceptPlatforms": [
                 ]
+            },
+
+            {
+                "name": "WebUSB API",
+                "siteURL": "https://example.com/",
+                "property": "navigator.usb.requestDevice({filters: []}).catch(e => e.message)",
+                "expectPropertyValue": "No device selected.",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebUSB API exception",
+                "siteURL": "https://harmful-apis-exception.test",
+                "property": "navigator.usb.requestDevice({filters: []}).catch(e => e.message)",
+                "expectPropertyValue": "mocked-USB-requestDevice-result",
+                "exceptPlatforms": [
+                ]
             }
+
+
         ]
     }
 }
