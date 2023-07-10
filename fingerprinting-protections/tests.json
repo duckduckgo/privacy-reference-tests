@@ -668,7 +668,7 @@
             },
 
             {
-                "name": "WebUSB API",
+                "name": "WebUSB API requestDevice",
                 "siteURL": "https://example.com/",
                 "property": "navigator.usb.requestDevice({filters: []}).catch(e => e.message)",
                 "expectPropertyValue": "No device selected.",
@@ -676,15 +676,38 @@
                 ]
             },
             {
-                "name": "WebUSB API exception",
+                "name": "WebUSB API requestDevice exception",
                 "siteURL": "https://harmful-apis-exception.test",
                 "property": "navigator.usb.requestDevice({filters: []}).catch(e => e.message)",
                 "expectPropertyValue": "mocked-USB-requestDevice-result",
                 "exceptPlatforms": [
                 ]
+            },
+
+            {
+                "name": "WebSerial API requestPort",
+                "siteURL": "https://example.com/",
+                "property": "navigator.serial.requestPort().catch(e => e.message)",
+                "expectPropertyValue": "No port selected.",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebSerial API requestPort exception",
+                "siteURL": "https://harmful-apis-exception.test",
+                "property": "navigator.serial.requestPort().catch(e => e.message)",
+                "expectPropertyValue": "mocked-Serial-requestPort-result",
+                "exceptPlatforms": [
+                ]
+            },
+            {
+                "name": "WebSerial API requestPort domain override",
+                "siteURL": "https://patched-harmful-api-settings.test/",
+                "property": "navigator.serial.requestPort().catch(e => e.message)",
+                "expectPropertyValue": "mocked-Serial-requestPort-result",
+                "exceptPlatforms": [
+                ]
             }
-
-
         ]
     }
 }

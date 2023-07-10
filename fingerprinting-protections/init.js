@@ -152,6 +152,15 @@ function init(window) {
         }
         window.navigator.usb = new window.USB();
     }
+
+    if (!window.navigator.serial) {
+        window.Serial = class {
+            requestPort() {
+                return Promise.resolve('mocked-Serial-requestPort-result');
+            }
+        }
+        window.navigator.serial = new window.Serial();
+    }
 }
 
 if (typeof module !== 'undefined' && module.exports) {
