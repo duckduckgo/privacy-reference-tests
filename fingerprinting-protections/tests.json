@@ -273,7 +273,12 @@
                 "property": "firedEvent='none',(t=()=>{window.addEventListener('deviceorientation', () => { firedEvent = 'deviceorientation' }); window.dispatchEvent(new DeviceOrientationEvent('deviceorientation')); return 333}),t(),firedEvent",
                 "expectPropertyValue": "none",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -282,7 +287,12 @@
                 "property": "firedEvent='none',(t=()=>{window.addEventListener('deviceorientation', () => { firedEvent = 'deviceorientation' }); window.dispatchEvent(new DeviceOrientationEvent('deviceorientation')); return 333}),t(),firedEvent",
                 "expectPropertyValue": "deviceorientation",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -291,7 +301,12 @@
                 "property": "firedEvent='none',(t=()=>{window.addEventListener('devicemotion', () => { firedEvent = 'devicemotion' }); window.dispatchEvent(new DeviceMotionEvent('devicemotion')); return 333}),t(),firedEvent",
                 "expectPropertyValue": "none",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -300,7 +315,12 @@
                 "property": "firedEvent='none',(t=()=>{window.addEventListener('devicemotion', () => { firedEvent = 'devicemotion' }); window.dispatchEvent(new DeviceMotionEvent('devicemotion')); return 333}),t(),firedEvent",
                 "expectPropertyValue": "devicemotion",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -309,7 +329,12 @@
                 "property": "firedEvent='none',(t=()=>{window.addEventListener('devicemotion', () => { firedEvent = 'devicemotion' }); window.dispatchEvent(new DeviceMotionEvent('devicemotion')); return 333}),t(),firedEvent",
                 "expectPropertyValue": "devicemotion",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -319,7 +344,12 @@
                 "property": "new Promise(resolve => { s = new AbsoluteOrientationSensor(); s.addEventListener('error', e => resolve('threw')); s.start(); })",
                 "expectPropertyValue": "threw",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -328,7 +358,12 @@
                 "property": "new Promise(resolve => { s = new AbsoluteOrientationSensor(); s.addEventListener('error', e => resolve('threw')); s.start(); })",
                 "expectPropertyValue": "threw",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -337,7 +372,12 @@
                 "property": "new Promise(resolve => { s = new AbsoluteOrientationSensor(); s.addEventListener('error', e => resolve('threw')); s.start(); })",
                 "expectPropertyValue": "threw",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -346,7 +386,12 @@
                 "property": "new Promise(resolve => { s = new AbsoluteOrientationSensor(); s.addEventListener('error', e => resolve('threw')); s.start(); })",
                 "expectPropertyValue": "threw",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -355,7 +400,12 @@
                 "property": "new Promise(resolve => { s = new AbsoluteOrientationSensor(); s.addEventListener('error', e => resolve('threw')); s.start(); })",
                 "expectPropertyValue": "threw",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -364,7 +414,12 @@
                 "property": "new Promise(resolve => { s = new AbsoluteOrientationSensor(); s.addEventListener('error', e => resolve('threw')); s.start(); })",
                 "expectPropertyValue": "threw",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -374,7 +429,12 @@
                 "property": "navigator.permissions.query({ name: 'accelerometer' }).then(result => result.state)",
                 "expectPropertyValue": "denied",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -383,7 +443,12 @@
                 "property": "navigator.permissions.query({ name: 'gyroscope' }).then(result => result.state)",
                 "expectPropertyValue": "denied",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -392,7 +457,12 @@
                 "property": "navigator.permissions.query({ name: 'magnetometer' }).then(result => result.state)",
                 "expectPropertyValue": "denied",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -401,7 +471,12 @@
                 "property": "navigator.permissions.query({ name: 'accelerometer' }).then(result => result.state)",
                 "expectPropertyValue": "granted",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -410,7 +485,12 @@
                 "property": "navigator.permissions.query({ name: 'gyroscope' }).then(result => result.state)",
                 "expectPropertyValue": "granted",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -419,7 +499,12 @@
                 "property": "navigator.permissions.query({ name: 'magnetometer' }).then(result => result.state)",
                 "expectPropertyValue": "granted",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -428,7 +513,12 @@
                 "property": "navigator.userAgentData.getHighEntropyValues(['model']).then(result => result.model)",
                 "expectPropertyValue": "overridden-model",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -437,7 +527,12 @@
                 "property": "navigator.userAgentData.getHighEntropyValues(['model']).then(result => result.model)",
                 "expectPropertyValue": "some-real-model",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -446,7 +541,12 @@
                 "property": "navigator.userAgentData.getHighEntropyValues(['platformVersion']).then(result => result.platformVersion)",
                 "expectPropertyValue": "13.4.0",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -455,7 +555,12 @@
                 "property": "navigator.userAgentData.getHighEntropyValues(['platformVersion']).then(result => result.platformVersion)",
                 "expectPropertyValue": "13.4.1",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -464,7 +569,12 @@
                 "property": "navigator.userAgentData.getHighEntropyValues(['platformVersion']).then(result => result.platformVersion)",
                 "expectPropertyValue": "13.0.0",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -473,7 +583,12 @@
                 "property": "navigator.userAgentData.getHighEntropyValues(['uaFullVersion']).then(result => result.uaFullVersion)",
                 "expectPropertyValue": "114.0.0.0",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -482,7 +597,12 @@
                 "property": "navigator.userAgentData.getHighEntropyValues(['fullVersionList']).then(result => `${result.fullVersionList[1].version},${result.fullVersionList[2].version}`)",
                 "expectPropertyValue": "114.0.0.0,114.0.0.0",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -491,7 +611,12 @@
                 "property": "navigator.userAgentData.getHighEntropyValues(['architecture']).then(result => result.architecture)",
                 "expectPropertyValue": "overridden-architecture",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -500,7 +625,12 @@
                 "property": "navigator.userAgentData.getHighEntropyValues(['bitness']).then(result => result.bitness)",
                 "expectPropertyValue": "16",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -509,7 +639,12 @@
                 "property": "navigator.userAgentData.getHighEntropyValues(['platform']).then(result => result.platform)",
                 "expectPropertyValue": "overridden-platform",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -518,7 +653,12 @@
                 "property": "navigator.userAgentData.getHighEntropyValues(['mobile']).then(result => result.mobile)",
                 "expectPropertyValue": "true",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -528,7 +668,12 @@
                 "property": "typeof navigator.connection",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -537,7 +682,12 @@
                 "property": "typeof navigator.connection",
                 "expectPropertyValue": "object",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -547,7 +697,12 @@
                 "property": "navigator.getInstalledRelatedApps().then(apps => apps.join(','))",
                 "expectPropertyValue": "overridden-return-value",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -556,7 +711,12 @@
                 "property": "navigator.getInstalledRelatedApps().then(apps => apps.join(','))",
                 "expectPropertyValue": "some-returned-app",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -566,7 +726,12 @@
                 "property": "typeof window.showOpenFilePicker",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -575,7 +740,12 @@
                 "property": "typeof window.showSaveFilePicker",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -584,7 +754,12 @@
                 "property": "typeof window.showDirectoryPicker",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -593,7 +768,12 @@
                 "property": "typeof window.showOpenFilePicker",
                 "expectPropertyValue": "function",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -602,7 +782,12 @@
                 "property": "typeof window.showSaveFilePicker",
                 "expectPropertyValue": "function",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -611,7 +796,12 @@
                 "property": "typeof window.showDirectoryPicker",
                 "expectPropertyValue": "function",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -620,7 +810,12 @@
                 "property": "typeof DataTransferItem.prototype.getAsFileSystemHandle",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -629,7 +824,12 @@
                 "property": "typeof DataTransferItem.prototype.getAsFileSystemHandle",
                 "expectPropertyValue": "function",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -639,7 +839,12 @@
                 "property": "navigator.permissions.query({ name: 'window-placement' }).then(result => result.state)",
                 "expectPropertyValue": "denied",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -648,7 +853,12 @@
                 "property": "navigator.permissions.query({ name: 'window-management' }).then(result => result.state)",
                 "expectPropertyValue": "denied",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -657,7 +867,12 @@
                 "property": "window.screen.isExtended",
                 "expectPropertyValue": "false",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -666,7 +881,12 @@
                 "property": "window.screen.isExtended",
                 "expectPropertyValue": "true",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -675,7 +895,12 @@
                 "property": "window.screen.isExtended",
                 "expectPropertyValue": "true",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -685,7 +910,12 @@
                 "property": "navigator.bluetooth.getAvailability()",
                 "expectPropertyValue": "false",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -694,7 +924,12 @@
                 "property": "navigator.bluetooth.getAvailability()",
                 "expectPropertyValue": "true",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -703,7 +938,12 @@
                 "property": "navigator.bluetooth.requestDevice({acceptAllDevices: true}).catch(e => e.message)",
                 "expectPropertyValue": "Bluetooth permission has been blocked.",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -712,7 +952,12 @@
                 "property": "navigator.bluetooth.requestDevice({acceptAllDevices: true})",
                 "expectPropertyValue": "mocked-Bluetooth-requestDevice-result",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -722,7 +967,12 @@
                 "property": "navigator.usb.requestDevice({filters: []}).catch(e => e.message)",
                 "expectPropertyValue": "No device selected.",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -731,7 +981,12 @@
                 "property": "navigator.usb.requestDevice({filters: []}).catch(e => e.message)",
                 "expectPropertyValue": "mocked-USB-requestDevice-result",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -741,7 +996,12 @@
                 "property": "navigator.serial.requestPort().catch(e => e.message)",
                 "expectPropertyValue": "No port selected.",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -750,7 +1010,12 @@
                 "property": "navigator.serial.requestPort().catch(e => e.message)",
                 "expectPropertyValue": "mocked-Serial-requestPort-result",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -759,7 +1024,12 @@
                 "property": "navigator.serial.requestPort().catch(e => e.message)",
                 "expectPropertyValue": "mocked-Serial-requestPort-result",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -769,7 +1039,12 @@
                 "property": "navigator.hid.requestDevice({ filters: [] }).then(result => result.join(','))",
                 "expectPropertyValue": "",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -778,7 +1053,12 @@
                 "property": "navigator.hid.requestDevice({ filters: [] }).then(result => result.join(','))",
                 "expectPropertyValue": "mocked-HID-requestDevice-result",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -788,7 +1068,12 @@
                 "property": "navigator.requestMIDIAccess().catch(err => err.message)",
                 "expectPropertyValue": "Permission is denied.",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -797,7 +1082,12 @@
                 "property": "navigator.requestMIDIAccess().catch(err => err.message)",
                 "expectPropertyValue": "mocked-requestMIDIAccess-result",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -806,7 +1096,12 @@
                 "property": "navigator.permissions.query({ name: 'midi' }).then(result => result.state)",
                 "expectPropertyValue": "denied",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -816,7 +1111,12 @@
                 "property": "typeof window.IdleDetector",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -825,7 +1125,12 @@
                 "property": "typeof window.IdleDetector",
                 "expectPropertyValue": "function",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -834,7 +1139,12 @@
                 "property": "navigator.permissions.query({ name: 'idle-detection' }).then(result => result.state)",
                 "expectPropertyValue": "denied",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -844,7 +1154,12 @@
                 "property": "typeof window.NDEFReader",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -853,7 +1168,12 @@
                 "property": "typeof window.NDEFReader",
                 "expectPropertyValue": "function",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -862,7 +1182,12 @@
                 "property": "typeof window.NDEFMessage",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -871,7 +1196,12 @@
                 "property": "typeof window.NDEFMessage",
                 "expectPropertyValue": "function",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -880,7 +1210,12 @@
                 "property": "typeof window.NDEFRecord",
                 "expectPropertyValue": "undefined",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
             {
@@ -889,7 +1224,12 @@
                 "property": "typeof window.NDEFRecord",
                 "expectPropertyValue": "function",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             },
 
@@ -899,7 +1239,12 @@
                 "property": "navigator.storage.estimate().then(r => r.quota).catch(e => e.message)",
                 "expectPropertyValue": "1337",
                 "exceptPlatforms": [
-                    "web-extension"
+                    "web-extension",
+                    "safari-extension",
+                    "ios-browser",
+                    "android-browser",
+                    "macos-browser",
+                    "windows-browser"
                 ]
             }
         ]
