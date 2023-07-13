@@ -27,7 +27,7 @@ Test suite specific fields:
 for $testSet in test.json
   loadReferenceConfig('config_reference.json')
 
-    for $test in $testSet
+    for $test in $testSet.tests
         if $test.exceptPlatforms includes 'current-platform'
             skip
 
@@ -39,7 +39,10 @@ for $testSet in test.json
 
         $value = $page.eval($test.property)
 
-        expect($value.toSting()).toBe($test.expectPropertyValue)
+        if ($value instanceof Promise)
+            $value = await $value
+
+        expect($value.toString()).toBe($test.expectPropertyValue)
 ```
 
 ## Platform exceptions
