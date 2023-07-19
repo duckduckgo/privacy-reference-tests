@@ -1,0 +1,55 @@
+{
+    "readme": "This configuration has only the nonTracking3pCookies feature",
+    "features": {
+        "nonTracking3pCookies": {
+            "settings": {
+                "excludedCookieDomains": [
+                    {
+                        "domain": "excluded-cookie-domain.com",
+                        "reason": "Site breakage"
+                    }
+                ]
+            },
+            "exceptions": [
+                {
+                    "domain": "exception.local.site",
+                    "reason": "Site breakage"
+                }
+            ],
+            "state": "enabled"
+        },
+        "trackingCookies3p": {
+            "state": "disabled",
+            "settings": {
+                "excludedCookieDomains": [ ]
+            },
+            "exceptions": [ ]
+        },
+        "cookie": {
+            "state": "enabled",
+            "settings": {
+                "excludedCookieDomains": [
+                    {
+                        "domain": "excluded-cookie-domain.com",
+                        "reason": "Site breakage"
+                    }
+                ],
+                "trackerCookie": "disabled",
+                "nonTrackerCookie": "enabled"
+            },
+            "exceptions": [
+                {
+                    "domain": "exception.local.site",
+                    "reason": "Site breakage"
+                }
+            ]
+        }
+    },
+    "version": 1635943904459,
+    "unprotectedTemporary": [
+        {
+            "domain": "exception.global.site",
+            "reason": "Site breakage"
+        }
+    ]
+}
