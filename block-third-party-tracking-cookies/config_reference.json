@@ -35,7 +35,15 @@
                     }
                 ],
                 "trackerCookie": "enabled",
-                "nonTrackerCookie": "disabled"
+                "nonTrackerCookie": "disabled",
+                "firstPartyTrackerCookiePolicy": {
+                    "threshold": 86400,
+                    "maxAge": 86400
+                },
+                "firstPartyCookiePolicy": {
+                    "threshold": 604800,
+                    "maxAge": 604800
+                }
             },
             "exceptions": [
                 {
