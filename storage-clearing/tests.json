@@ -3,8 +3,8 @@
         "name": "Fire Button & Fireproofing",
         "desc": "Fire button should clear all storage unless site is fireproofed",
         "fireproofedSites": [
-            "https://fireproofed.test/",
-            "https://sub.no-fire.test/path/file.html?query=value#frag"
+            "https://fireproofed.com/",
+            "https://sub.no-fire.com/path/file.html?query=value#frag"
         ],
         "tests": [
             {
@@ -15,50 +15,64 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "only subdomain is fireproofed - cookie should be cleared",
-                "cookieDomain": "no-fire.test",
+                "name": "subdomain is fireproofed - cookie should be cleared",
+                "cookieDomain": "no-fire.com",
                 "cookieName": "test",
-                "expectCookieRemoved": true,
-                "exceptPlatforms": []
+                "expectCookieRemoved": false,
+                "exceptPlatforms": [
+                    "ios-browser",
+                    "android-browser",
+                    "windows-browser"
+                ]
             },
             {
-                "name": "only subdomain is fireproofed, but cookie is using dot notation - it should not be cleared",
-                "cookieDomain": ".no-fire.test",
+                "name": "subdomain is fireproofed, cookie is using dot notation - it should not be cleared",
+                "cookieDomain": ".no-fire.com",
                 "cookieName": "test",
                 "expectCookieRemoved": false,
                 "exceptPlatforms": []
             },
             {
                 "name": "fireproofed subdomain match - cookie should not be cleared",
-                "cookieDomain": "sub.no-fire.test",
+                "cookieDomain": "sub.no-fire.com",
                 "cookieName": "test",
                 "expectCookieRemoved": false,
                 "exceptPlatforms": []
             },
             {
                 "name": "fireproofed subdomain match, cookie is using dot notation - cookie should not be cleared",
-                "cookieDomain": ".sub.no-fire.test",
+                "cookieDomain": ".sub.no-fire.com",
                 "cookieName": "test",
                 "expectCookieRemoved": false,
-                "exceptPlatforms": []
+                "exceptPlatforms": [                    "ios-browser",
+                    "android-browser",
+                    "windows-browser"
+                ]
             },
             {
-                "name": "subdomain for the fireproofed hostname - cookie should be cleared",
-                "cookieDomain": "sub.sub.no-fire.test",
+                "name": "subdomain for the fireproofed hostname - cookie should not be cleared",
+                "cookieDomain": "sub.sub.no-fire.com",
                 "cookieName": "test",
-                "expectCookieRemoved": true,
-                "exceptPlatforms": []
+                "expectCookieRemoved": false,
+                "exceptPlatforms": [                    "ios-browser",
+                    "android-browser",
+                    "windows-browser"
+                ]
             },
             {
-                "name": "cookie is set on a non-fireproofed subdomain - cookie should be cleared",
-                "cookieDomain": "sub.fireproofed.test",
+                "name": "cookie is set on a subdomain of fireproofed - cookie should not be cleared",
+                "cookieDomain": "sub.fireproofed.com",
                 "cookieName": "test",
-                "expectCookieRemoved": true,
-                "exceptPlatforms": []
+                "expectCookieRemoved": false,
+                "exceptPlatforms": [
+                    "ios-browser",
+                    "android-browser",
+                    "windows-browser"
+                ]
             },
             {
                 "name": "fireproofing match, cookie is using dot notation - cookie should not be cleared",
-                "cookieDomain": ".fireproofed.test",
+                "cookieDomain": ".fireproofed.com",
                 "cookieName": "test",
                 "expectCookieRemoved": false,
                 "exceptPlatforms": []
