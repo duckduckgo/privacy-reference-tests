@@ -47,7 +47,8 @@
                     {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"}
                 ],
                 "exceptPlatforms": [
-                    "ios-browser"
+                    "ios-browser",
+                    "macos-browser"
                 ]
             },
             {
@@ -73,7 +74,8 @@
                     {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"}
                 ],
                 "exceptPlatforms": [
-                    "ios-browser"
+                    "ios-browser",
+                    "macos-browser"
                 ]
             },
             {
@@ -99,7 +101,8 @@
                     {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"}
                 ],
                 "exceptPlatforms": [
-                    "ios-browser"
+                    "ios-browser",
+                    "macos-browser"
                 ]
             },
             {
@@ -144,6 +147,7 @@
                 ],
                 "exceptPlatforms": [
                     "ios-browser",
+                    "macos-browser",
                     "safari-extension"
                 ]
             },
