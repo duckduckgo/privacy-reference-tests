@@ -5,7 +5,8 @@
         "fireproofedSites": [
             "https://fireproofed.com/",
             "https://sub.no-fire.com/path/file.html?query=value#frag",
-            "fireproofed.co.uk"
+            "fireproofed.co.uk",
+            "a.github.io"
         ],
         "tests": [
             {
@@ -23,8 +24,22 @@
                 "exceptPlatforms": []
             },
             {
+                "name": "unfireproofed domain - cookie should be cleared",
+                "cookieDomain": "b.github.io",
+                "cookieName": "test",
+                "expectCookieRemoved": true,
+                "exceptPlatforms": []
+            },
+            {
                 "name": "fireproofed domain - cookie should not be cleared",
                 "cookieDomain": "fireproofed.co.uk",
+                "cookieName": "test",
+                "expectCookieRemoved": false,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "fireproofed domain - cookie should not be cleared",
+                "cookieDomain": "a.github.io",
                 "cookieName": "test",
                 "expectCookieRemoved": false,
                 "exceptPlatforms": []
