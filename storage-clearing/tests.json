@@ -4,7 +4,8 @@
         "desc": "Fire button should clear all storage unless site is fireproofed",
         "fireproofedSites": [
             "https://fireproofed.com/",
-            "https://sub.no-fire.com/path/file.html?query=value#frag"
+            "https://sub.no-fire.com/path/file.html?query=value#frag",
+            "fireproofed.co.uk"
         ],
         "tests": [
             {
@@ -12,6 +13,20 @@
                 "cookieDomain": ".example.com",
                 "cookieName": "test",
                 "expectCookieRemoved": true,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "unfireproofed domain - cookie should be cleared",
+                "cookieDomain": "example.co.uk",
+                "cookieName": "test",
+                "expectCookieRemoved": true,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "fireproofed domain - cookie should not be cleared",
+                "cookieDomain": "fireproofed.co.uk",
+                "cookieName": "test",
+                "expectCookieRemoved": false,
                 "exceptPlatforms": []
             },
             {
