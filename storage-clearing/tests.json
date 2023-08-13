@@ -15,7 +15,7 @@
                 "exceptPlatforms": []
             },
             {
-                "name": "subdomain is fireproofed - cookie should be cleared",
+                "name": "subdomain is fireproofed - cookie should not be cleared",
                 "cookieDomain": "no-fire.com",
                 "cookieName": "test",
                 "expectCookieRemoved": false,
