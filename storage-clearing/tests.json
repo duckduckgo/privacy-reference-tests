@@ -62,7 +62,7 @@
                 ]
             },
             {
-                "name": "cookie is set on a subdomain of fireproofed - cookie should not be cleared",
+                "name": "cookie is set on a subdomain of a fireproofed domain - cookie should not be cleared",
                 "cookieDomain": "sub.fireproofed.com",
                 "cookieName": "test",
                 "expectCookieRemoved": false,
