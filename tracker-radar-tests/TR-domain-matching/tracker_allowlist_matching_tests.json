@@ -54,6 +54,72 @@
         "isAllowlisted": true
     },
     {
+        "description": "should match specified subdomain",
+        "site": "https://host1.testsite.com",
+        "request": "https://allowlist-tracker-1.com/hosttest.js",
+        "isAllowlisted": true
+    },
+    {
+        "description": "should not match base domain",
+        "site": "https://testsite.com",
+        "request": "https://allowlist-tracker-1.com/hosttest.js",
+        "isAllowlisted": false
+    },
+    {
+        "description": "should not match other subdomain",
+        "site": "https://host2.testsite.com",
+        "request": "https://allowlist-tracker-1.com/hosttest.js",
+        "isAllowlisted": false
+    },
+    {
+        "description": "should not confuse dot with match all",
+        "site": "https://host1atestsite.com",
+        "request": "https://allowlist-tracker-1.com/hosttest.js",
+        "isAllowlisted": false
+    },
+    {
+        "description": "should match nested subdomain",
+        "site": "https://a.c.testsite.com",
+        "request": "https://allowlist-tracker-1.com/hosttest.js",
+        "isAllowlisted": true
+    },
+    {
+        "description": "should match subdomains of nested subdomain",
+        "site": "https://b.a.c.testsite.com",
+        "request": "https://allowlist-tracker-1.com/hosttest.js",
+        "isAllowlisted": true
+    },
+    {
+        "description": "should not match other nested subdomain",
+        "site": "https://b.c.testsite.com",
+        "request": "https://allowlist-tracker-1.com/hosttest.js",
+        "isAllowlisted": false
+    },
+    {
+        "description": "should not match other inner nested subdomain",
+        "site": "https://a.b.testsite.com",
+        "request": "https://allowlist-tracker-1.com/hosttest.js",
+        "isAllowlisted": false
+    },
+    {
+        "description": "should not match inner subdomain",
+        "site": "https://c.testsite.com",
+        "request": "https://allowlist-tracker-1.com/hosttest.js",
+        "isAllowlisted": false
+    },
+    {
+        "description": "should not confuse dot with match all (2)",
+        "site": "https://abc.testsite.com",
+        "request": "https://allowlist-tracker-1.com/hosttest.js",
+        "isAllowlisted": false
+    },
+    {
+        "description": "should not left-extend subdomain",
+        "site": "https://ba.c.testsite.com",
+        "request": "https://allowlist-tracker-1.com/hosttest.js",
+        "isAllowlisted": false
+    },
+    {
         "description": "should match random paths",
         "site": "https://someothersite.com",
         "request": "https://allowlist-tracker-2.com/comments/1234asdf/comment.js",
