@@ -73,6 +73,7 @@ jobs:
         with:
           repository: 'duckduckgo/BrowserServicesKit'
           path: 'BrowserServicesKit'
+          submodules: recursive
       - name: Check out the tests
         uses: actions/checkout@v3
         with:
