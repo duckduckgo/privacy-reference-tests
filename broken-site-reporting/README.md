@@ -27,9 +27,15 @@ Test suite specific fields:
 - `gpcEnabled` - boolean - if GPC is enabled or not (native apps only) - GPC can be disabled by user or by remote config
 - `expectReportURLPrefix` - string - resulting report URL should be prefixed with this string
 - `expectReportURLParams` - Array of `{name: '', value: ''}` objects - resulting report URL should have the following set of URL parameters with matching values
+    - `value` is an optional check for an exact value match.
+    - `match` is an optional check for a regex match.
+    - `present` is an optional check for the presence of a parameter.
+    - `matchesCurrentDay` is an optional check that the provided value is the current day when the test is ran (e.g., `2023-11-01`).
 - `remoteConfigEtag` - string - string representation of remote configuration etag
 - `remoteConfigVersion` - string - string representation of remote configuration version (note, this is the numeric version found in the remote config (e.g, `1680178584671`, not `v1` or `v2`))
 - `providedDescription` - string - user-provided breakage description
+
+All of these custom fields are supported by the `reports` array objects within the multiple_report_tests.json file.
 
 ## Pseudo-code implementation
 
@@ -59,7 +65,57 @@ for $testSet in test.json
 
     if $test.expectReportURLParams
         for $param in $test.expectReportURLParams
-            expect($url.matchesRegex(/[?&] + $param.name + '=' + $param.value + [&$]/))
+            if $param.value
+                expect($url.matchesRegex(/[?&] + $param.name + '=' + $param.value + [&$]/))
+            if $param.match
+                $value = findParamValue($url, $param.name)
+                expect($value.matchesRegex($param.match))
+            if $param.present
+                expect($url.matchesRegex(/[?&] + $param.name + '=[^&]*[&$]/))
+            if $param.matchesCurrentDay
+                $value = findParamValue($url, $param.name)
+                expect($value = getCurrentDay())
+```
+
+For multiple_report_tests.json:
+
+```
+for $testSet in test.json
+
+  for $test in $testSet
+      if $test.exceptPlatforms includes 'current-platform'
+          skip
+
+      for $report in $testSet.reports
+        $url = getReportURL(
+            siteURL=$report.siteURL,
+            wasUpgraded=$report.wasUpgraded,
+            reportCategory=$report.category,
+            blockedTrackers=$report.blockedTrackers,
+            surrogates=$report.surrogates,
+            atb=$report.atb,
+            blocklistVersion=$report.blocklistVersion,
+            manufacturer=$report.manufacturer,
+            model=$report.model,
+            os=$report.os,
+            gpcEnabled=$report.gpcEnabled
+        )
+
+        if $report.expectReportURLPrefix
+            expect($url.startsWith($report.expectReportURLPrefix))
+
+        if $report.expectReportURLParams
+            for $param in $report.expectReportURLParams
+                if $param.value
+                    expect($url.matchesRegex(/[?&] + $param.name + '=' + $param.value + [&$]/))
+                if $param.match
+                    $value = findParamValue($url, $param.name)
+                    expect($value.matchesRegex($param.match))
+                if $param.present
+                    expect($url.matchesRegex(/[?&] + $param.name + '=[^&]*[&$]/))
+                if $param.matchesCurrentDay
+                    $value = findParamValue($url, $param.name)
+                    expect($value = getCurrentDay())
 ```
 
 ## Platform exceptions
