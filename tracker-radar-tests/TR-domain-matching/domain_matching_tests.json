@@ -1077,6 +1077,62 @@
                 "expectAction": "redirect",
                 "expectRedirect": "data:application/javascript;base64,KGZ1bmN0aW9uKCkge3dpbmRvdy5zdXJyb2dhdGUxPXRydWV9KSgpOw==",
                 "expectExpression": "window.surrogate1 === true"
+            },
+            {
+                "name": "Encountering unknown surrogate with default:block should ignore",
+                "siteURL": "https://example.com",
+                "requestURL": "https://unknownsurrogates1.test/request1",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "Encountering unknown surrogate with default:ignore should ignore",
+                "siteURL": "https://example.com",
+                "requestURL": "https://unknownsurrogates2.test/request1",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "Encountering unknown surrogate with default:block and failing options check, should block",
+                "siteURL": "https://example.com",
+                "requestURL": "https://unknownsurrogates1.test/request2",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "Encountering unknown surrogate with default:block and successful options check, should ignore",
+                "siteURL": "https://selectedsite1.com",
+                "requestURL": "https://unknownsurrogates1.test/request2",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "Encountering unknown surrogate with default:ignore and failing options check, should ignore",
+                "siteURL": "https://example.com",
+                "requestURL": "https://unknownsurrogates2.test/request2",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "Encountering unknown surrogate with default:ignore and successful options check, should ignore",
+                "siteURL": "https://selectedsite1.com",
+                "requestURL": "https://unknownsurrogates2.test/request2",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "Encountering unknown surrogate with exemption (default:block) should ignore",
+                "siteURL": "https://exemptedsite1.com",
+                "requestURL": "https://unknownsurrogates1.test/request1",
+                "requestType": "script",
+                "expectAction": "ignore"
+            },
+            {
+                "name": "Encountering unknown surrogate with exemption (default:ignore) should ignore",
+                "siteURL": "https://exemptedsite1.com",
+                "requestURL": "https://unknownsurrogates2.test/request1",
+                "requestType": "script",
+                "expectAction": "ignore"
             }
         ]
     }
