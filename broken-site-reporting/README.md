@@ -34,6 +34,7 @@ Test suite specific fields:
 - `remoteConfigEtag` - string - string representation of remote configuration etag
 - `remoteConfigVersion` - string - string representation of remote configuration version (note, this is the numeric version found in the remote config (e.g, `1680178584671`, not `v1` or `v2`))
 - `providedDescription` - string - user-provided breakage description
+- `protectionsEnabled` - boolean - if protections are enabled (true) or disabled (false) as visible to the user on the dashboard.
 
 All of these custom fields are supported by the `reports` array objects within the multiple_report_tests.json file.
 
@@ -136,3 +137,6 @@ the reference tests is provided below:
 - truncation tests:
   - the following platforms do not currently implement the optional `noActionRequests`, `adAttributionRequests`, `ignoredByUserRequests`, or `ignoreRequests` truncatable parameters: `android-browser`, `ios-browser`, `macos-browser`, `safari-extension`, `windows-browser`
   - see https://app.asana.com/0/0/1204271046995906/f for more information about truncation and implementation requirements
+- param `protectionsState`
+  - The Extension is the only platform that supports a 'denylist' - this allows a user to override remote configurations and forcibly enable protections even when we've tried to disable them.
+    - For this case, an extension-only case was added in `broken-site-reporting/tests.json` 
