@@ -343,7 +343,7 @@
                     {"name": "tds", "value": "abc123"},
                     {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test"},
                     {"name": "surrogates", "value": "surrogate.domain.test,domain2.com,nested.sub.domain3.com"},
-                    {"name": "truncated", "value": "1"},
+                    {"name": "truncated", "value": "true"},
                     {"name": "protectionsState", "value": "true"}
                 ],
                 "exceptPlatforms": [
@@ -378,7 +378,7 @@
                     {"name": "tds", "value": "abc123"},
                     {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test"},
                     {"name": "surrogates", "value": "surrogate.domain.test,domain2.com,nested.sub.domain3.com"},
-                    {"name": "truncated", "value": "1"},
+                    {"name": "truncated", "value": "true"},
                     {"name": "protectionsState", "value": "true"}
                 ],
                 "exceptPlatforms": [
@@ -411,7 +411,7 @@
                     {"name": "tds", "value": "abc123"},
                     {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test"},
                     {"name": "surrogates", "value": "surrogate.domain.test,domain2.com,nested.sub.domain3.com"},
-                    {"name": "truncated", "value": "1"},
+                    {"name": "truncated", "value": "true"},
                     {"name": "protectionsState", "value": "true"}
                 ],
                 "exceptPlatforms": [
