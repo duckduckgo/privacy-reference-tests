@@ -421,6 +421,31 @@
                     "safari-extension",
                     "windows-browser"
                 ]
+            },
+            {
+                "name": "Default sending of consent* parameters",
+                "siteURL": "http://example.com/",
+                "expectReportURLParams": [
+                    {"name": "consentManaged", "value": "false"},
+                    {"name": "consentOptoutFailed", "value": "false"},
+                    {"name": "consentSelftestFailed", "value": "false"}
+                ],
+                "exceptPlatforms": [
+                    "ios-browser",
+                    "safari-extension",
+                    "web-extension"
+                ]
+            },
+            {
+                "name": "Default sending of urlParametersRemoved",
+                "siteURL": "http://example.com/",
+                "expectReportURLParams": [
+                    {"name": "urlParametersRemoved", "value": "false"}
+                ],
+                "exceptPlatforms": [
+                    "safari-extension",
+                    "windows-browser"
+                ]
             }
         ]
     }
