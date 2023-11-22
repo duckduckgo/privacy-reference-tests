@@ -34,6 +34,12 @@ For tests with `expectAction == redirect` to be valid you need to assert either 
 
 ### Privacy config allowlist
 
+These tests are intended to check correct behaviour of the Tracker Allowlist,
+which is part of the remote configuration, and can be found in the
+[privacy-configuration](https://github.com/duckduckgo/privacy-configuration/blob/main/features/tracker-allowlist.json).
+The Tracker Allowlist is intended as a means of quickly mitigating breakage by
+disabling blocking of particular request patterns, on one or more sites.
+
 Files in the folder:
 - `tracker_allowlist_matching_tests.json` - test for tracker allowlist feature - ⚠️ those tests don't follow the format used by other tests ⚠️
 - `tracker_allowlist_tds_references.json` - reference blocklist file that should be used with `tracker_allowlist_matching_tests.json` tests
