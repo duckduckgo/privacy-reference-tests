@@ -7,6 +7,10 @@ This folder contains tests for the following features:
 - Tracker allowlist feature in the  Privacy Configuration - https://app.asana.com/0/1198207348643509/1199981227466169
 - Surrogates - https://app.asana.com/0/1198207348643509/1199093921854088/f
 
+⚠️ Please note! There are some similarly-named files in this directory. Please
+refer to the following sections to identify whether the file belongs to the
+blocklist tests, or tracker allowlist tests.
+
 ## Structure
 
 ### Tracker blocking, CNAME cloaking and surrogates
