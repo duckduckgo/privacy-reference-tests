@@ -211,6 +211,7 @@
                 ],
                 "exceptPlatforms": [
                     "ios-browser",
+                    "macos-browser",
                     "safari-extension"
                 ]
             },
