@@ -445,7 +445,7 @@
                     {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test"},
                     {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"},
                     {"name": "protectionsState", "value": "true"},
-                    {"name": "errorDescriptions", "value": "Certificate error"},
+                    {"name": "errorDescriptions", "value": "1 - Certificate error"},
                     {"name": "httpErrorCodes", "value": "500"}
                 ],
                 "exceptPlatforms": [
