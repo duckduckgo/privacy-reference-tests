@@ -106,7 +106,8 @@
                     {"name": "protectionsState", "value": "true"}
                 ],
                 "exceptPlatforms": [
-                    "ios-browser"
+                    "ios-browser",
+                    "macos-browser"
                 ]
             },
             {
@@ -134,7 +135,8 @@
                     {"name": "protectionsState", "value": "true"}
                 ],
                 "exceptPlatforms": [
-                    "ios-browser"
+                    "ios-browser",
+                    "macos-browser"
                 ]
             },
             {
