@@ -448,7 +448,11 @@
                     {"name": "errorDescriptions", "value": "Certificate error"},
                     {"name": "httpErrorCodes", "value": 500}
                 ],
-                "exceptPlatforms": []
+                "exceptPlatforms": [
+                    "android-browser",
+                    "safari-extension",
+                    "windows-browser"
+                ]
             }
         ]
     }
