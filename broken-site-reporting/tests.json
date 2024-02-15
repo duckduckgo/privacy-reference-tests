@@ -446,7 +446,7 @@
                     {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"},
                     {"name": "protectionsState", "value": "true"},
                     {"name": "errorDescriptions", "value": "Certificate error"},
-                    {"name": "httpErrorCodes", "value": 500}
+                    {"name": "httpErrorCodes", "value": "500"}
                 ],
                 "exceptPlatforms": [
                     "android-browser",
