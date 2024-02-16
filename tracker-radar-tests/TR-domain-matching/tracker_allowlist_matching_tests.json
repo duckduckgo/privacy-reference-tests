@@ -152,21 +152,21 @@
         "isAllowlisted": true
     },
     {
-        "description": "should match a wildcard rule with *",
+        "description": "* alone does not match wildcard",
         "site": "https://testsite.com",
         "request": "https://allowlist-tracker-2.com/anything/wildcard.js",
-        "isAllowlisted": true
-    },
-    {
-        "description": "wildcard is not regex",
-        "site": "https://testsite.com",
-        "request": "https://allowlist-tracker-2.com/anything/wildcard2.js",
         "isAllowlisted": false
     },
     {
-        "description": ". is treated as a literal",
+        "description": "* works as a regex operator",
         "site": "https://testsite.com",
-        "request": "https://allowlist-tracker-2.com/.23rdsvs/wildcard2.js",
+        "request": "https://allowlist-tracker-2.com/////wildcard.js",
+        "isAllowlisted": true
+    },
+    {
+        "description": "Regex .* is treated as a wildcard",
+        "site": "https://testsite.com",
+        "request": "https://allowlist-tracker-2.com/anything/wildcard2.js",
         "isAllowlisted": true
     }
 ]
