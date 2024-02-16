@@ -150,5 +150,23 @@
         "site": "https://testsite.com",
         "request": "http://a.b.c.videos.allowlist-tracker-2.com/a.js",
         "isAllowlisted": true
+    },
+    {
+        "description": "should match a wildcard rule with *",
+        "site": "https://testsite.com",
+        "request": "https://allowlist-tracker-2.com/anything/wildcard.js",
+        "isAllowlisted": true
+    },
+    {
+        "description": "wildcard is not regex",
+        "site": "https://testsite.com",
+        "request": "https://allowlist-tracker-2.com/anything/wildcard2.js",
+        "isAllowlisted": false
+    },
+    {
+        "description": ". is treated as a literal",
+        "site": "https://testsite.com",
+        "request": "https://allowlist-tracker-2.com/.23rdsvs/wildcard2.js",
+        "isAllowlisted": false
     }
 ]
