@@ -90,7 +90,7 @@ jobs:
           fi
 
       - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_15.0.app/Contents/Developer
+        run: sudo xcode-select -s /Applications/Xcode_$(<.xcode-version).app/Contents/Developer
 
       - name: Install xcbeautify
         continue-on-error: true
