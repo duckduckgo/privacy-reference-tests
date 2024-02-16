@@ -167,6 +167,6 @@
         "description": ". is treated as a literal",
         "site": "https://testsite.com",
         "request": "https://allowlist-tracker-2.com/.23rdsvs/wildcard2.js",
-        "isAllowlisted": false
+        "isAllowlisted": true
     }
 ]
