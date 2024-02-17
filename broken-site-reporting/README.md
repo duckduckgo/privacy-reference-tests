@@ -35,6 +35,10 @@ Test suite specific fields:
 - `remoteConfigVersion` - string - string representation of remote configuration version (note, this is the numeric version found in the remote config (e.g, `1680178584671`, not `v1` or `v2`))
 - `providedDescription` - string - user-provided breakage description
 - `protectionsEnabled` - boolean - if protections are enabled (true) or disabled (false) as visible to the user on the dashboard.
+- `consentManaged` - bool - if the browser handled a cookie pop-up on the site
+- `consentOptoutFailed` - bool - if the opt-out process returned failed
+- `consentSelftestFailed` - bool - if the rule's self-test failed
+- `urlParametersRemoved` - bool - if URL parameters were removed
 
 All of these custom fields are supported by the `reports` array objects within the multiple_report_tests.json file.
 
@@ -139,4 +143,4 @@ the reference tests is provided below:
   - see https://app.asana.com/0/0/1204271046995906/f for more information about truncation and implementation requirements
 - param `protectionsState`
   - The Extension is the only platform that supports a 'denylist' - this allows a user to override remote configurations and forcibly enable protections even when we've tried to disable them.
-    - For this case, an extension-only case was added in `broken-site-reporting/tests.json` 
+    - For this case, an extension-only case was added in `broken-site-reporting/tests.json`
