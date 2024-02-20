@@ -439,8 +439,8 @@
                 "remoteConfigVersion": "1234",
                 "protectionsEnabled": true,
                 "expectReportURLPrefix": "https://improving.duckduckgo.com/t/epbf",
-                "errorDescription": "Certificate error",
-                "httpStatusCode": 500,
+                "errorDescription": ["net::ERR_NAME_NOT_RESOLVED","net::ERR_ABORTED"],
+                "httpErrorCodes": [304, 200],
                 "expectReportURLParams": [
                     {"name": "category", "value": "content"},
                     {"name": "siteUrl", "value": "https%3A%2F%2Fexample.test%2F"},
@@ -449,8 +449,8 @@
                     {"name": "blockedTrackers", "value": "bad.tracker.test,tracking.test"},
                     {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"},
                     {"name": "protectionsState", "value": "true"},
-                    {"name": "errorDescriptions", "value": "Certificate error"},
-                    {"name": "httpErrorCodes", "value": "500"}
+                    {"name": "errorDescriptions", "value": "%5B%22net%3A%3AERR_NAME_NOT_RESOLVED%22%2C%22net%3A%3AERR_ABORTED%22%5D"},
+                    {"name": "httpErrorCodes", "value": "304%2C200"}
                 ],
                 "exceptPlatforms": [
                     "android-browser",
