@@ -439,7 +439,7 @@
                 "remoteConfigVersion": "1234",
                 "protectionsEnabled": true,
                 "expectReportURLPrefix": "https://improving.duckduckgo.com/t/epbf",
-                "errorDescription": ["net::ERR_NAME_NOT_RESOLVED","net::ERR_ABORTED"],
+                "errorDescriptions": ["net::ERR_NAME_NOT_RESOLVED","net::ERR_ABORTED"],
                 "httpErrorCodes": [304, 200],
                 "expectReportURLParams": [
                     {"name": "category", "value": "content"},
