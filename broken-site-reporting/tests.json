@@ -450,7 +450,7 @@
                     {"name": "surrogates", "value": "surrogate.domain.test,domain2.test"},
                     {"name": "protectionsState", "value": "true"},
                     {"name": "errorDescriptions", "value": "%5B%22net%3A%3AERR_NAME_NOT_RESOLVED%22%2C%22net%3A%3AERR_ABORTED%22%5D"},
-                    {"name": "httpErrorCodes", "value": "304%2C200"}
+                    {"name": "httpErrorCodes", "value": "304,200"}
                 ],
                 "exceptPlatforms": [
                     "android-browser",
