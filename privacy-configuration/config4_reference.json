@@ -1,0 +1,12 @@
+{
+    "readme": "This configuration's features have a minSupportedVersion",
+    "features": {
+        "contentBlocking": {
+            "state": "enabled",
+            "minSupportedVersion": "2022.6.1",
+            "exceptions": []
+        }
+    },
+    "version": 1635943904459,
+    "unprotectedTemporary": []
+}
