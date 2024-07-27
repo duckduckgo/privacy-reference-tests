@@ -745,6 +745,74 @@
             ],
             "default": "block"
         },
+        "unknownsurrogates1.test": {
+            "domain": "unknownsurrogates1.test",
+            "owner": {
+                "name": "Test Site for Surrogates",
+                "displayName": "Surrogates Site",
+                "privacyPolicy": "",
+                "url": "http://blockedsurrogates.test"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "rules": [
+                {
+                    "rule": "unknownsurrogates1\\.test/request1",
+                    "surrogate": "unknownsurrogate1",
+                    "exceptions": {
+                        "domains": [
+                            "exemptedsite1.com"
+                        ]
+                    }
+                },
+                {
+                    "rule": "unknownsurrogates1\\.test/request2",
+                    "surrogate": "unknownsurrogate1",
+                    "options": {
+                        "domains": [
+                            "selectedsite1.com"
+                        ]
+                    }
+                }
+            ],
+            "default": "block"
+        },
+        "unknownsurrogates2.test": {
+            "domain": "unknownsurrogates2.test",
+            "owner": {
+                "name": "Test Site for Surrogates",
+                "displayName": "Surrogates Site",
+                "privacyPolicy": "",
+                "url": "http://blockedsurrogates.test"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "rules": [
+                {
+                    "rule": "unknownsurrogates2\\.test/request1",
+                    "surrogate": "unknownsurrogate2",
+                    "exceptions": {
+                        "domains": [
+                            "exemptedsite1.com"
+                        ]
+                    }
+                },
+                {
+                    "rule": "unknownsurrogates2\\.test/request2",
+                    "surrogate": "unknownsurrogate2",
+                    "options": {
+                        "domains": [
+                            "selectedsite1.com"
+                        ]
+                    }
+                }
+            ],
+            "default": "ignore"
+        },
         "format.test": {
             "domain": "format.test",
             "owner": {
@@ -861,7 +929,9 @@
             "domains": [
                 "other-surrogates.test",
                 "surrogates.test",
-                "blockedsurrogates.test"
+                "blockedsurrogates.test",
+                "unknownsurrogates1.test",
+                "unknownsurrogates2.test"
             ],
             "prevalence": 0.1,
             "displayName": "Test Site for Surrogates"
@@ -896,6 +966,8 @@
         "sub.ignore.test": "Ignore Site for Tracker Blocking",
         "surrogates.test": "Test Site for Surrogates",
         "other-surrogates.test": "Test Site for Surrogates",
-        "blockedsurrogates.test": "Test Site for Surrogates"
+        "blockedsurrogates.test": "Test Site for Surrogates",
+        "unknownsurrogates1.test": "Test Site for Surrogates",
+        "unknownsurrogates2.test": "Test Site for Surrogates"
     }
 }
