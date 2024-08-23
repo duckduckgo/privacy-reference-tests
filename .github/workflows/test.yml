@@ -13,14 +13,14 @@ jobs:
   extension-mv2:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: 'reference-tests'
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: 'duckduckgo/duckduckgo-privacy-extension'
           path: 'extension'
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'npm'
@@ -39,14 +39,14 @@ jobs:
   ddg2dnr:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: 'reference-tests'
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           repository: 'duckduckgo/duckduckgo-privacy-extension'
           path: 'extension'
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: 'npm'
@@ -64,18 +64,18 @@ jobs:
   BrowserServicesKit:
     name: BSK unit tests
 
-    runs-on: macos-13
+    runs-on: macos-14-xlarge
     timeout-minutes: 30
 
     steps:
       - name: Check out the code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: 'duckduckgo/BrowserServicesKit'
           path: 'BrowserServicesKit'
           submodules: recursive
       - name: Check out the tests
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: 'BrowserServicesKit/Tests/BrowserServicesKitTests/Resources/privacy-reference-tests'
 
@@ -91,7 +91,7 @@ jobs:
 
       - name: Cache SPM
         if: env.cache_key_hash
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./BrowserServicesKit/build
           key: ${{ runner.os }}-spm-${{ env.cache_key_hash }}
@@ -110,7 +110,7 @@ jobs:
         run: set -o pipefail && swift test | tee build-log.txt | xcbeautify --report junit --report-path . --junit-report-filename tests.xml
 
       - name: Publish Unit Tests Report
-        uses: mikepenz/action-junit-report@v3
+        uses: mikepenz/action-junit-report@v4
         if: always()
         with:
           check_name: BSK Test Report
@@ -118,7 +118,7 @@ jobs:
           require_tests: true
 
       - name: Upload logs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: build-log.txt

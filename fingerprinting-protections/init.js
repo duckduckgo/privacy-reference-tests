@@ -20,10 +20,12 @@ function init(window) {
     Object.defineProperty(window.Screen.prototype, 'colorDepth', { get: () => 12345, configurable: true });
     Object.defineProperty(window.Screen.prototype, 'pixelDepth', { get: () => 12345, configurable: true });
 
-    window.navigator.webkitTemporaryStorage = {
-        queryUsageAndQuota: callback => {
-            callback(0, 9999999999)
-        }
+    if (!window.navigator.webkitTemporaryStorage) {
+        window.navigator.webkitTemporaryStorage = {};
+    }
+
+    window.navigator.webkitTemporaryStorage.queryUsageAndQuota = function queryUsageAndQuota(callback, _) {
+        callback(0, 9999999999);
     };
 
     window.DeviceOrientationEvent = window.Event; // we only need the constructor in tests
