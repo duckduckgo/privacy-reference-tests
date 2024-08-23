@@ -103,11 +103,8 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_$(<BrowserServicesKit/.xcode-version).app/Contents/Developer
 
-      - name: Install xcbeautify
-        continue-on-error: true
-        run: brew install xcbeautify
-
       - name: Build BSK
+        working-directory: ./BrowserServicesKit
         run: set -o pipefail && swift build | tee build-log.txt | xcbeautify
 
       - name: Run tests
