@@ -24,6 +24,9 @@ Test suite specific fields:
 ## Pseudo-code implementation
 
 ```
+$page.injectOnLoad('init.js')
+$page.injectOnLoad('C-S-S')
+
 for $testSet in test.json
   loadReferenceConfig('config_reference.json')
 
@@ -34,8 +37,6 @@ for $testSet in test.json
         $page = createPage(
             siteURL = $test.siteURL,
         )
-
-        $page.load('init.js')
 
         $value = $page.eval($test.property)
 
