@@ -1,4 +1,6 @@
 name: Test Implementations
+# If this job is failing, check if there were any updates to
+# https://github.com/duckduckgo/BrowserServicesKit/blob/main/.github/workflows/pr.yml
 
 on:
   push:
@@ -64,7 +66,7 @@ jobs:
   BrowserServicesKit:
     name: BSK unit tests
 
-    runs-on: macos-14-xlarge
+    runs-on: macos-14
     timeout-minutes: 30
 
     steps:
@@ -105,9 +107,12 @@ jobs:
         continue-on-error: true
         run: brew install xcbeautify
 
+      - name: Build BSK
+        run: set -o pipefail && swift build | tee build-log.txt | xcbeautify
+
       - name: Run tests
         working-directory: ./BrowserServicesKit
-        run: set -o pipefail && swift test | tee build-log.txt | xcbeautify --report junit --report-path . --junit-report-filename tests.xml
+        run: set -o pipefail && swift test | tee -a build-log.txt | xcbeautify --report junit --report-path . --junit-report-filename tests.xml
 
       - name: Publish Unit Tests Report
         uses: mikepenz/action-junit-report@v4
