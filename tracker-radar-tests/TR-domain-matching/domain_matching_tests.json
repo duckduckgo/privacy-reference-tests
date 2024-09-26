@@ -975,6 +975,20 @@
                 "requestURL": "https://sub1asub2.format.test/test6.js",
                 "requestType": "script",
                 "expectAction": "ignore"
+            },
+            {
+                "name": "private eTLD tracker - default block match",
+                "siteURL": "https://example.com",
+                "requestURL": "https://privateetld.appspot.com/script.js",
+                "requestType": "script",
+                "expectAction": "block"
+            },
+            {
+                "name": "private eTLD other domain - no match",
+                "siteURL": "https://example.com",
+                "requestURL": "https://other.appspot.com/script.js",
+                "requestType": "script",
+                "expectAction": "ignore"
             }
         ]
     },
