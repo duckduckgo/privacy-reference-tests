@@ -807,6 +807,15 @@
             "cookies": 0.1,
             "categories": [],
             "default": "block"
+        },
+        "withgoogle.com": {
+            "domain": "withgoogle.com",
+            "owner": {},
+            "prevalence": 0.1,
+            "fingerprinting": 2,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "block"
         }
     },
     "entities": {
