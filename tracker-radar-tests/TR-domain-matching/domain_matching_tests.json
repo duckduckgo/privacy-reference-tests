@@ -33,7 +33,7 @@
                 "requestURL": "https://ignore.test/",
                 "requestType": "script",
                 "expectAction": "ignore"
-            },            
+            },
             {
                 "name": "same party ignore with deeper subdomain",
                 "siteURL": "https://bad.etld-plus-two.site/",
@@ -1084,7 +1084,7 @@
                 "expectAction": "redirect",
                 "expectRedirect": "data:application/javascript;base64,KGZ1bmN0aW9uKCkge3dpbmRvdy5zdXJyb2dhdGUxPXRydWV9KSgpOw==",
                 "expectExpression": "window.surrogate1 === true"
-            }            
+            }
         ]
     }
 }
