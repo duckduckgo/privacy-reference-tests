@@ -29,6 +29,11 @@
                 "rule": "allowlist-tracker-2.com/login.js",
                 "domains": ["<all>"],
                 "reason": "match single resource on all sites"
+            },
+            {
+                "rule": "allowlist-tracker-2.com/login.js",
+                "domains": ["<all>"],
+                "reason": "match single resource on all sites"
             }
         ]
     },
@@ -38,6 +43,55 @@
                 "rule": "allowlist-tracker-3.com",
                 "domains": ["<all>"],
                 "reason": "match all requests"
+            }
+        ]
+    },
+    "format.test": {
+        "rules": [
+            {
+                "rule": "format\\.test/test1\\.js",
+                "reason": "Unescaped slash should be allowed.",
+                "domains": ["<all>"]
+            },
+            {
+                "rule": "format\\.test/[0-9]+/test2\\.js",
+                "reason": "Simple regexp",
+                "domains": ["<all>"]
+            },
+            {
+                "rule": "format\\.test/.*/test3\\.js",
+                "reason": "Simple regexp wildcard",
+                "domains": ["<all>"]
+            },
+            {
+                "rule": "format\\.test/a.*.\\.[c]([de]+)f*g?/test2b\\.js",
+                "reason": "Simple regexp (full CBR), see https://developer.apple.com/documentation/safariservices/creating_a_content_blocker#3030754",
+                "domains": ["<all>"]
+            },
+            {
+                "rule": "sub1\\.sub2\\.format\\.test/test4\\.js",
+                "reason": "With subdomain",
+                "domains": ["<all>"]
+            },
+            {
+                "rule": "sub1\\.sub2\\.format\\.test/[abc]/test4a\\.js",
+                "reason": "With subdomain and regexp",
+                "domains": ["<all>"]
+            },
+            {
+                "rule": "sub1\\.format\\.test/sub2\\.format\\.test/test4b\\.js",
+                "reason": "Domain in rule",
+                "domains": ["<all>"]
+            },
+            {
+                "rule": "format.test/test5\\.js",
+                "reason": "No escape on the domain.",
+                "domains": ["<all>"]
+            },
+            {
+                "rule": "sub1.sub2.format.test/test6\\.js",
+                "reason": "No escape on the domain with subdomain.",
+                "domains": ["<all>"]
             }
         ]
     }
