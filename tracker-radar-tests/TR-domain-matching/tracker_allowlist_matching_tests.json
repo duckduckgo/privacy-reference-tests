@@ -150,5 +150,23 @@
         "site": "https://testsite.com",
         "request": "http://a.b.c.videos.allowlist-tracker-2.com/a.js",
         "isAllowlisted": true
+    },
+    {
+        "description": "* alone does not match wildcard",
+        "site": "https://testsite.com",
+        "request": "https://allowlist-tracker-2.com/anything/wildcard.js",
+        "isAllowlisted": false
+    },
+    {
+        "description": "* works as a regex operator",
+        "site": "https://testsite.com",
+        "request": "https://allowlist-tracker-2.com/////wildcard.js",
+        "isAllowlisted": true
+    },
+    {
+        "description": "Regex .* is treated as a wildcard",
+        "site": "https://testsite.com",
+        "request": "https://allowlist-tracker-2.com/anything/wildcard2.js",
+        "isAllowlisted": true
     }
 ]
