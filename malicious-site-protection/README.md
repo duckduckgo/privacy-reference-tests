@@ -16,7 +16,7 @@ Test suite specific fields:
 
 - `featureName` - string - name of the privacy feature as defined in the config
 - `siteURL` - string - the URL of the site we are testing protections for
-- `expectedAction` - string - `"block"` or `"allow"`
+- `expectBlock` - bool - true if expected to be blocked, false otherwise
 
 ## Pseudo-code implementation
 
@@ -30,11 +30,11 @@ for $testSet in test.json
     if $test.exceptPlatforms includes 'current-platform'
         skip
 
-    $action = loadSiteInWebView(
+    $blocked = MaliciousSiteDetector.evaluate(
         url=$test.siteURL,
     )
 
-    expect($action === $test.expectedAction)
+    expect($blocked === $test.expectBlock)
 ```
 
 ## Platform exceptions
