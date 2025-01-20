@@ -136,5 +136,83 @@
                 ]
             }
         ]
+    },
+    "urlTests": {
+        "name": "Should normalize URLs",
+        "desc": "All browser platforms should sufficiently canonicalize URLs consitently.",
+        "tests": [
+            {
+                "name": "malware wildcard regex test",
+                "siteURL": "https://broken.third-party.site/path/to/resource#fragment",
+                "canonicalURL": "https://broken.third-party.site/path/to/resource",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "safari-extension"
+                ]
+            },
+            {
+                "name": "double slashes in path",
+                "siteURL": "https://broken.third-party.site//path//to//resource",
+                "canonicalURL": "https://broken.third-party.site/path/to/resource",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "safari-extension"
+                ]
+            },
+            {
+                "name": "spaces in path",
+                "siteURL": "https://broken.third-party.site/path/to/resource%20with%20spaces%20%20%20%20",
+                "canonicalURL": "https://broken.third-party.site/path/to/resource%20with%20spaces%20%20%20%20",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "safari-extension"
+                ]
+            },
+            {
+                "name": "encoded fragment",
+                "siteURL": "https://broken.third-party.site/path/to/resource%23encodedfragment",
+                "canonicalURL": "https://broken.third-party.site/path/to/resource%23encodedfragment",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "safari-extension"
+                ]
+            },
+            {
+                "name": "dot segments in path",
+                "siteURL": "https://broken.third-party.site/path/./to/./resource",
+                "canonicalURL": "https://broken.third-party.site/path/to/resource",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "safari-extension"
+                ]
+            },
+            {
+                "name": "spaces in path without trailing spaces",
+                "siteURL": "https://broken.third-party.site/path/to/resource%20with%20spaces",
+                "canonicalURL": "https://broken.third-party.site/path/to/resource%20with%20spaces",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "safari-extension"
+                ]
+            },
+            {
+                "name": "encoded dot segments in path",
+                "siteURL": "https://broken.third-party.site/path/to/%2E%2E/%2E%2E/resource",
+                "canonicalURL": "https://broken.third-party.site/resource",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "safari-extension"
+                ]
+            },
+            {
+                "name": "multiple encoded slashes in path",
+                "siteURL": "https://broken.third-party.site/path/to/%2F%2F%2F%2F%2F%2F%2F%2F%2F",
+                "canonicalURL": "https://broken.third-party.site/path/to",
+                "exceptPlatforms": [
+                    "web-extension",
+                    "safari-extension"
+                ]
+            }
+
     }
 }
