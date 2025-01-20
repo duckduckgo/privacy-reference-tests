@@ -16,13 +16,14 @@ Test suite specific fields:
 
 - `featureName` - string - name of the privacy feature as defined in the config
 - `siteURL` - string - the URL of the site we are testing protections for
+- `canonicalURL` - string - the expected canonicalized URL
 - `expectBlock` - bool - true if expected to be blocked, false otherwise
 
 ## Pseudo-code implementation
 
 ### Block Test
 ```
-for $testSet in test.json
+for $testSet in block_tests.json
   loadReferenceHashPrefixes('hashPrefixes_reference.json')
   loadReferenceFilterSet('filterSet_reference.json')
 
@@ -36,6 +37,18 @@ for $testSet in test.json
 
     expect($blocked === $test.expectBlock)
 ```
+
+### Canonicalization Test
+for $testSet in canonicalization_tests.json
+  for $test in $testSet
+    if $test.exceptPlatforms includes 'current-platform'
+        skip
+
+    $canonicalURL = URL.canonicalize(
+        url=$test.siteURL,
+    )
+
+    expect($canonicalURL === $test.canonicalURL)
 
 ## Platform exceptions
 
