@@ -150,5 +150,149 @@
         "site": "https://testsite.com",
         "request": "http://a.b.c.videos.allowlist-tracker-2.com/a.js",
         "isAllowlisted": true
+    },
+    {
+        "name": "format.test - supports unescaped slashes",
+        "site": "https://example.com",
+        "request": "https://format.test/test1.js",
+        "isAllowlisted": true
+    },
+    {
+        "name": "format.test - supports simple regexp - matching request",
+        "site": "https://example.com",
+        "request": "https://format.test/1/test2.js",
+        "isAllowlisted": true
+    },
+    {
+        "name": "format.test - supports simple regexp - nonmatching request",
+        "site": "https://example.com",
+        "request": "https://format.test/a/test2.js",
+        "isAllowlisted": false
+    },
+    {
+        "name": "format.test - supports simple wildcard regexp - matching request",
+        "site": "https://example.com",
+        "request": "https://format.test/abc/test3.js",
+        "isAllowlisted": true
+    },
+    {
+        "name": "format.test - supports simple wildcard regexp - nonmatching request",
+        "site": "https://example.com",
+        "request": "https://format.test/abc/test3a.js",
+        "isAllowlisted": false
+    },
+    {
+        "name": "format.test - supports CBR regexp - matching request (1)",
+        "site": "https://example.com",
+        "request": "https://format.test/aa123b.cdeffffg/test2b.js",
+        "isAllowlisted": true
+    },
+    {
+        "name": "format.test - supports CBR regexp - matching request (2)",
+        "site": "https://example.com",
+        "request": "https://format.test/ab.cd/test2b.js",
+        "isAllowlisted": true
+    },
+    {
+        "name": "format.test - supports CBR regexp - nonmatching request (1)",
+        "site": "https://example.com",
+        "request": "https://format.test/aa123b.cffffg/test2b.js",
+        "isAllowlisted": false
+    },
+    {
+        "name": "format.test - supports CBR regexp - nonmatching request (2)",
+        "site": "https://example.com",
+        "request": "https://format.test/ab1cd/test2b.js",
+        "isAllowlisted": false
+    },
+    {
+        "name": "format.test - with subdomain - match on sub subdomain",
+        "site": "https://example.com",
+        "request": "https://sub0.sub1.sub2.format.test/test4.js",
+        "isAllowlisted": true
+    },
+    {
+        "name": "format.test - with subdomain - don't match on just lower subdomain",
+        "site": "https://example.com",
+        "request": "https://sub1.format.test/test4.js",
+        "isAllowlisted": false
+    },
+    {
+        "name": "format.test - with subdomain - match on full subdomain",
+        "site": "https://example.com",
+        "request": "https://sub1.sub2.format.test/test4.js",
+        "isAllowlisted": true
+    },
+    {
+        "name": "format.test - with subdomain - don't match for incorrect subdomain",
+        "site": "https://example.com",
+        "request": "https://sub1nsub2.format.test/test4.js",
+        "isAllowlisted": false
+    },
+    {
+        "name": "format.test - with subdomain - don't match on incorrect subdomain",
+        "site": "https://example.com",
+        "request": "https://sub0.sub2.format.test/test4.js",
+        "isAllowlisted": false
+    },
+    {
+        "name": "format.test - with subdomain and regexp - match on sub subdomain",
+        "site": "https://example.com",
+        "request": "https://sub0.sub1.sub2.format.test/a/test4a.js",
+        "isAllowlisted": true
+    },
+    {
+        "name": "format.test - with subdomain and regexp - don't match on just lower subdomain",
+        "site": "https://example.com",
+        "request": "https://sub1.format.test/a/test4a.js",
+        "isAllowlisted": false
+    },
+    {
+        "name": "format.test - with subdomain and regexp - match on full subdomain",
+        "site": "https://example.com",
+        "request": "https://sub1.sub2.format.test/a/test4a.js",
+        "isAllowlisted": true
+    },
+    {
+        "name": "format.test - with subdomain and regexp - don't match for incorrect subdomain",
+        "site": "https://example.com",
+        "request": "https://sub1nsub2.format.test/a/test4a.js",
+        "isAllowlisted": false
+    },
+    {
+        "name": "format.test - with subdomain and regexp - don't match on incorrect subdomain",
+        "site": "https://example.com",
+        "request": "https://sub0.sub2.format.test/a/test4a.js",
+        "isAllowlisted": false
+    },
+    {
+        "name": "format.test - domain in rule - match on full request",
+        "site": "https://example.com",
+        "request": "https://sub1.format.test/sub2.format.test/test4b.js",
+        "isAllowlisted": true
+    },
+    {
+        "name": "format.test - domain in rule - don't match the inner request",
+        "site": "https://example.com",
+        "request": "https://sub2.format.test/test4b.js",
+        "isAllowlisted": false
+    },
+    {
+        "name": "format.test - no escape on domain - matching request",
+        "site": "https://example.com",
+        "request": "https://format.test/test5.js",
+        "isAllowlisted": true
+    },
+    {
+        "name": "format.test - no escape on subdomain - match with periods",
+        "site": "https://example.com",
+        "request": "https://sub1.sub2.format.test/test6.js",
+        "isAllowlisted": true
+    },
+    {
+        "name": "format.test - no escape on subdomain - match with replacements",
+        "site": "https://example.com",
+        "request": "https://sub1asub2.format.test/test6.js",
+        "isAllowlisted": true
     }
 ]
