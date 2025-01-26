@@ -1,6 +1,6 @@
 [
     {
-        "description": "should allow single resource on single site",
+        "description": "should allow single resource on single site.",
         "site": "https://testsite.com",
         "request": "https://allowlist-tracker-1.com/videos.js",
         "isAllowlisted": true
