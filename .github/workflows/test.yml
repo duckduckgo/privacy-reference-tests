@@ -1,6 +1,6 @@
 name: Test Implementations
 # If this job is failing, check if there were any updates to
-# https://github.com/duckduckgo/BrowserServicesKit/blob/main/.github/workflows/pr.yml
+# https://github.com/duckduckgo/apple-browsers/blob/main/.github/workflows/bsk_pr_checksyml
 
 on:
   push:
@@ -73,20 +73,20 @@ jobs:
       - name: Check out the code
         uses: actions/checkout@v4
         with:
-          repository: 'duckduckgo/BrowserServicesKit'
-          path: 'BrowserServicesKit'
+          repository: 'duckduckgo/apple-browsers'
+          path: 'apple-monorepo'
           submodules: recursive
       - name: Check out the tests
         uses: actions/checkout@v4
         with:
-          path: 'BrowserServicesKit/Tests/BrowserServicesKitTests/Resources/privacy-reference-tests'
+          path: 'apple-monorepo/BrowserServicesKit/Tests/BrowserServicesKitTests/Resources/privacy-reference-tests'
 
       - name: Set cache key hash
-        working-directory: ./BrowserServicesKit
+        working-directory: ./apple-monorepo/BrowserServicesKit
         run: |
           has_only_tags=$(jq '[ .pins[].state | has("version") ] | all' Package.resolved)
           if [[ "$has_only_tags" == "true" ]]; then
-            echo "cache_key_hash=${{ hashFiles('Package.resolved') }}" >> $GITHUB_ENV
+            echo "cache_key_hash=${{ hashFiles('apple-monorepo/BrowserServicesKit/Package.resolved') }}" >> $GITHUB_ENV
           else
             echo "Package.resolved contains dependencies specified by branch or commit, skipping cache."
           fi
@@ -95,7 +95,7 @@ jobs:
         if: env.cache_key_hash
         uses: actions/cache@v4
         with:
-          path: ./BrowserServicesKit/build
+          path: ./apple-monorepo/BrowserServicesKit/build
           key: ${{ runner.os }}-spm-${{ env.cache_key_hash }}
           restore-keys: |
             ${{ runner.os }}-spm-
