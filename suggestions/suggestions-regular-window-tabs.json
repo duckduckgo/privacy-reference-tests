@@ -1,0 +1,77 @@
+{
+  "description": "Test standard open tab provider returns open tabs without current and burner tabs",
+  "input": {
+    "query": "tab",
+    "bookmarks": [], "//": "Assuming no bookmarks are needed for this test",
+    "history": [],   "//": "Assuming no history entries are needed for this test",
+    "pinnedTabs": [
+      { "title": "Pinned tab 1", "url": "https://pinned-example.com" },
+      { "title": "Pinned tab 2", "url": "https://pinned-example-2.com" }
+    ],
+    "windows": [
+      {
+        "type": "normal",
+        "selected": true,
+        "selectedTab": {
+          "type": "regular",
+          "index": 1
+        },
+        "tabs": [
+          { "title": "Example", "url": "https://example.com" },
+          { "title": "Selected Tab", "url": "https://another-example.com" },
+          { "title": "New Tab", "url": "newtab" },
+          { "title": "Bookmarks", "url": "bookmarks" },
+          { "title": "Settings", "url": "settings" },
+          { "title": "Last Tab", "url": "https://last.com" }
+        ]
+      },
+      {
+        "type": "normal",
+        "selected": false,
+        "selectedTab": {
+          "type": "regular",
+          "index": 0
+        },
+        "tabs": [
+          { "title": "Yet Another Example", "url": "https://yet-another-example.com" },
+          { "title": "Yet Another Example", "url": "https://yet-another-example.com" },
+          { "title": "Duplicate to Selected Tab", "url": "https://another-example.com" }
+        ]
+      },
+      {
+        "type": "fire",
+        "selected": false,
+        "selectedTab": {
+          "type": "regular",
+          "index": 0
+        },
+        "tabs": [
+          { "title": "Burner example", "url": "https://burner-example.com" },
+          { "title": "Burner example 2", "url": "https://burner-example-1.com" }
+        ]
+      },
+      {
+        "type": "fire",
+        "selected": false,
+        "selectedTab": {
+          "type": "regular",
+          "index": 0
+        },
+        "tabs": [
+          { "title": "Burner example 3", "url": "https://burner-example-2.com" }
+        ]
+      }
+    ],
+    "apiSuggestions": [],  "//": "Assuming no API suggestions are needed for this test"
+  },
+  "expectation": {
+    "topHits": [],
+    "duckduckgoSuggestions": [],
+    "localSuggestions": [
+      { "type": "openTab", "title": "Example Tab", "url": "https://example.com" },
+      { "type": "openTab", "title": "Last Tab", "url": "https://last.com" },
+      { "type": "openTab", "title": "Pinned tab 1", "url": "https://pinned-example.com" },
+      { "type": "openTab", "title": "Pinned tab 2", "url": "https://pinned-example-2.com" }
+    ]
+  }
+}
