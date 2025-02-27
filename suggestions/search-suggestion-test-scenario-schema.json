@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Search Suggestion Test Scenario",
+  "description": "All the data necessary to do full end-to-end testing of the search suggestion scoring and sorting algorithms.",
+  "type": "object",
+  "properties": {
+    "description": {
+      "description": "Describes the test.",
+      "type": "string"
+    },
+    "input": {
+      "description": "Test input data.",
+      "type": "object",
+      "properties": {
+        "query": {
+          "description": "The search query that the user entered into the address bar.",
+          "type": "string"
+        },
+        "tabIdInitiatingSearch": {
+          "description": "The TabId that the user is entering the search query into.",
+          "type": "string",
+          "format": "uuid"
+        },
+        "apiSuggestions": {
+          "description": "An array of suggestions from the DDG search results API.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/apiSuggestion"
+          }
+        },
+        "bookmarks": {
+          "description": "An array of bookmarks that are set in the user's browser.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/bookmark"
+          }
+        },
+        "history": {
+          "description": "An array of history entries that are set in the user's browser.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/history"
+          }
+        },
+        "ignoredUris": {
+          "description": "An array of uri's that are ignored by the user.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pinnedTabs": {
+          "description": "An array of tabs that are pinned in the user's browser.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/tab"
+          }
+        },
+        "windows": {
+          "description": "An array of windows that are open in the user's browser.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/window"
+          }
+        }
+      },
+      "required": [ "query", "tabIdInitiatingSearch", "bookmarks", "history", "windows", "apiSuggestions" ]
+    },
+    "expectations": {
+      "description": "Test expectation data",
+      "type": "object",
+      "properties": {
+        "topHits": {
+          "description": "The suggestions generated in the top hits section.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/expectedSuggestion"
+          }
+        },
+        "searchSuggestions": {
+          "description": "The suggestions generated in the middle search section.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/expectedSuggestion"
+          }
+        },
+        "localSuggestions": {
+          "description": "The suggestions generated in the bottom section.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/expectedSuggestion"
+          }
+        }
+      },
+      "required": [ "topHits", "searchSuggestions", "localSuggestions" ]
+    }
+  },
+  "required": [ "description", "input", "expectations" ],
+  "$defs": {
+    "apiSuggestion": {
+      "type": "object",
+      "description": "An object representing DDG search results API data relavent to search suggestion test scenarios.",
+      "properties": {
+        "phrase": {
+          "description": "Search phrase suggestion",
+          "type": "string"
+        }
+      },
+      "required": [ "phrase" ]
+    },
+    "bookmark": {
+      "type": "object",
+      "description": "An object representing bookmark data relavent to search suggestion test scenarios.",
+      "properties": {
+        "uri": {
+          "description": "Bookmark URI",
+          "type": "string",
+          "format": "uri"
+        },
+        "title": {
+          "description": "Bookmark title",
+          "type": "string"
+        },
+        "isFavorite": {
+          "description": "True if this bookmark is also a favorite.",
+          "type": "boolean",
+          "default": "false"
+        }
+      },
+      "required": [ "uri", "title" ]
+    },
+    "expectedSuggestion": {
+      "type": "object",
+      "description": "An object representing a generated search suggestion.",
+      "properties": {
+        "type": {
+          "description": "The suggestion type",
+          "enum": [ "phrase", "website", "bookmark", "favorite", "historyEntry", "openTab" ]
+        },
+        "title": {
+          "description": "Suggestion title",
+          "type": "string"
+        },
+        "uri": {
+          "description": "Suggestion URI",
+          "type": "string",
+          "format": "uri"
+        },
+        "tabId": {
+          "description": "The TabId this suggestion points to if type == OpenTab.",
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "if": {
+        "properties": {
+          "type": {
+            "const": "openTab"
+          }
+        }
+      },
+      "then": {
+        "required": [ "type", "title", "tabId" ]
+      },
+      "else": {
+        "required": [ "type" ]
+      }
+    },
+    "history": {
+      "type": "object",
+      "description": "An object representing history data relavent to search suggestion test scenarios.",
+      "properties": {
+        "uri": {
+          "description": "History URI",
+          "type": "string",
+          "format": "uri"
+        },
+        "title": {
+          "description": "Page title",
+          "type": "string"
+        },
+        "visitCount": {
+          "description": "Number of times the user has visited this page.",
+          "type": "integer"
+        }
+      },
+      "required": [ "uri", "title", "visitCount" ]
+    },
+    "tab": {
+      "type": "object",
+      "description": "An object representing tab data relavent to search suggestion test scenarios.",
+      "properties": {
+        "tabId": {
+          "description": "A UUID uniquely identifying the tab.",
+          "type": "string",
+          "format": "uuid"
+        },
+        "uri": {
+          "description": "Tab URI",
+          "type": "string",
+          "format": "uri"
+        },
+        "title": {
+          "description": "Tab page title",
+          "type": "string"
+        }
+      },
+      "required": [ "tabId", "uri", "title" ]
+    },
+    "window": {
+      "type": "object",
+      "description": "An object representing window data relavent to search suggestion test scenarios.",
+      "properties": {
+        "type": {
+          "description": "The window type",
+          "enum": [ "fullyFeatured", "fireWindow", "popup" ]
+        },
+        "tabs": {
+          "description": "An array of tabs in the window",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/tab"
+          }
+        }
+      },
+      "required": [ "windowId", "type", "tabs" ]
+    }
+  }
+}
