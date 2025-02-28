@@ -1,5 +1,4 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Search Suggestion Test Scenario",
   "description": "All the data necessary to do full end-to-end testing of the search suggestion scoring and sorting algorithms.",
   "type": "object",
