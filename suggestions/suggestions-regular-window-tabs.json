@@ -50,10 +50,10 @@
     "topHits": [],
     "searchSuggestions": [],
     "localSuggestions": [
-      { "type": "openTab", "title": "Example Tab", "uri": "https://example.com", "tabId": "ebbd25e2-7b32-4cc4-8e7e-ea16e829bbc8" },
-      { "type": "openTab", "title": "Last Tab", "uri": "https://last.com", "tabId": "a0b0354b-223f-4a0b-81a7-3d7d4e5b72ff" },
-      { "type": "openTab", "title": "Pinned tab 1", "uri": "https://pinned-example.com", "tabId": "438165a0-b444-4165-8b28-5b01ada66b05" },
-      { "type": "openTab", "title": "Pinned tab 2", "uri": "https://pinned-example-2.com", "tabId": "c6ef14c6-3e34-40e9-b230-1d07ea05dd7a" }
+      { "type": "openTab", "title": "Example", "subtitle": "example.com", "score": 100000, "uri": "https://example.com", "tabId": "ebbd25e2-7b32-4cc4-8e7e-ea16e829bbc8" },
+      { "type": "openTab", "title": "Last Tab", "subtitle": "last.com", "score": 100000, "uri": "https://last.com", "tabId": "a0b0354b-223f-4a0b-81a7-3d7d4e5b72ff" },
+      { "type": "openTab", "title": "Pinned tab 1", "subtitle": "pinned-example.com", "score": 100000, "uri": "https://pinned-example.com", "tabId": "438165a0-b444-4165-8b28-5b01ada66b05" },
+      { "type": "openTab", "title": "Pinned tab 2", "subtitle": "pinned-example-2.com", "score": 100000, "uri": "https://pinned-example-2.com", "tabId": "c6ef14c6-3e34-40e9-b230-1d07ea05dd7a" }
     ]
   }
 }

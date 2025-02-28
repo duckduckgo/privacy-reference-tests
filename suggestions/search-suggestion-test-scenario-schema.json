@@ -1,4 +1,5 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Search Suggestion Test Scenario",
   "description": "All the data necessary to do full end-to-end testing of the search suggestion scoring and sorting algorithms.",
   "type": "object",
@@ -140,10 +141,18 @@
           "description": "Suggestion title",
           "type": "string"
         },
+        "subtitle": {
+          "description": "Suggestion subtitle",
+          "type": "string"
+        },
         "uri": {
           "description": "Suggestion URI",
           "type": "string",
           "format": "uri"
+        },
+        "score": {
+          "description": "Suggestion score",
+          "type": "integer"
         },
         "tabId": {
           "description": "The TabId this suggestion points to if type == OpenTab.",
@@ -159,10 +168,27 @@
         }
       },
       "then": {
-        "required": [ "type", "title", "tabId" ]
+        "required": [ "type", "title", "subtitle", "score", "tabId", "uri" ]
       },
       "else": {
-        "required": [ "type" ]
+        "if": {
+          "properties": {
+            "type": {
+              "const": "phrase"
+            }
+          }
+        },
+        "then": {
+          "required": [ "type", "title", "subtitle", "score" ]
+        },
+        "else": {
+          "properties": {
+            "uri": {
+              "format": "uri"
+            }
+          },
+          "required": [ "type", "title", "subtitle", "score", "uri" ]
+        }
       }
     },
     "history": {
@@ -222,7 +248,7 @@
           }
         }
       },
-      "required": [ "windowId", "type", "tabs" ]
+      "required": [ "type", "tabs" ]
     }
   }
 }

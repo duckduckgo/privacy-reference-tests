@@ -3,7 +3,9 @@ const fs = require('fs');
 const path = require('path');
 const { exit } = require('process');
 const Ajv = require('ajv').default;
+const addFormats = require('ajv-formats');
 const ajv = new Ajv();
+addFormats(ajv);
 const checkTrackerRadar = require('./helpers/tracker-radar-checks');
 
 const FOLDER_FORMAT = /^([a-z]+\-)*[a-z]+$/;
@@ -81,7 +83,11 @@ dirs.forEach(dir => {
             exit(1);
         }
 
-        Object.keys(testFileObject).forEach(set => testsCount += testFileObject[set].tests.length);
+        if (featureFolderName === 'suggestions') {
+            testsCount += 1; // Suggestion tests have 1 test per file
+        } else {
+            Object.keys(testFileObject).forEach(set => testsCount += testFileObject[set].tests.length);
+        }
     });
 
     const trackerRadarFiles = glob.sync("/**/tracker_radar*.json", { root: path.resolve(root, featureFolderName) });;
