@@ -1,0 +1,325 @@
+{
+  "description": "Favorite open tab in the first slot duped to show favorite and open tab suggestions.",
+  "input": {
+    "query": "mac",
+    "tabIdInitiatingSearch": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+    "apiSuggestions": [
+      {
+        "phrase": "macy\u0027s"
+      },
+      {
+        "phrase": "macys.com"
+      },
+      {
+        "phrase": "macy\u0027s credit card login"
+      },
+      {
+        "phrase": "macy\u0027s insite"
+      },
+      {
+        "phrase": "mac tools"
+      },
+      {
+        "phrase": "macbook"
+      },
+      {
+        "phrase": "macro"
+      },
+      {
+        "phrase": "macaulay culkin"
+      },
+      {
+        "phrase": "machu picchu"
+      },
+      {
+        "phrase": "mac miller"
+      },
+      {
+        "phrase": "mackenzie dern"
+      }
+    ],
+    "bookmarkSuggestions": [
+      {
+        "uri": "https://www.apple.com/mac/",
+        "title": "Mac - Apple",
+        "isFavorite": true
+      }
+    ],
+    "historySuggestions": [
+      {
+        "uri": "https://duckduckgo.com/",
+        "title": "DuckDuckGo - Your protection, our priority.",
+        "visitCount": 45
+      },
+      {
+        "uri": "https://duckduckgo.com/?q=mac\u002Bapple",
+        "title": "mac apple at DuckDuckGo",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://www.apple.com/shop/buy-mac?afid=p238|w2k2sVRq-dc_mtid_1870765e38482_pcrid_78340418192565_pgrid_1253443503734298_pntwk_o_pchan__pexid__ptid_kwd-78340369854646%3Aloc-190_\u0026cid=aos-us-kwbi-mac--slid---product-",
+        "title": "Buy Mac - Apple",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://www.apple.com/mac/",
+        "title": "Mac - Apple",
+        "visitCount": 11
+      },
+      {
+        "uri": "https://us.azureauth.duosecurity.com/authorization",
+        "title": "us.azureauth.duosecurity.com/authorization",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://login.microsoftonline.com/common/federation/OAuth2ClaimsProvider",
+        "title": "Sign in to your account",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://login.microsoftonline.com/kmsi",
+        "title": "Working...",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://use-login.duckduckgo.com/patestsucceeded",
+        "title": "Duo Security",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://duckduckgo.com/?q=du",
+        "title": "du at DuckDuckGo",
+        "visitCount": 2
+      },
+      {
+        "uri": "https://duckduckgo.com/?q=du\u0026ia=web",
+        "title": "du at DuckDuckGo",
+        "visitCount": 2
+      },
+      {
+        "uri": "https://www.cnn.com/",
+        "title": "Breaking News, Latest News and Videos | CNN",
+        "visitCount": 9
+      },
+      {
+        "uri": "https://jsfiddle.net/",
+        "title": "JSFiddle - Code Playground",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://duckduckgo.com/?q=test",
+        "title": "test at DuckDuckGo",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://www.speedtest.net/",
+        "title": "Speedtest by Ookla - The Global Broadband Speed Test",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://www.aljazeera.com/",
+        "title": "Breaking News, World News and Video from Al Jazeera",
+        "visitCount": 3
+      },
+      {
+        "uri": "https://www.cnn.com/2025/02/22/us/video/luigi-mangione-courtroom-sketch-artist-lcl-digvid",
+        "title": "Sketch artist describes Mangione\u2019s demeanor in court | CNN",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://app.asana.com/-/login?u=%2Fhome%2F%40takfung",
+        "title": "Log in - Asana",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://app.asana.com/home/@takfung?rr=977137",
+        "title": "Asana",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://app.asana.com/0/home/1206786699935999",
+        "title": "Home - Asana",
+        "visitCount": 6
+      },
+      {
+        "uri": "https://app.asana.com/",
+        "title": "Asana",
+        "visitCount": 5
+      },
+      {
+        "uri": "https://app.asana.com/0/inbox/1206786699935999",
+        "title": "DuckDuckGo inbox - Asana",
+        "visitCount": 2
+      },
+      {
+        "uri": "https://app.asana.com/0/1201325515665955/1205115771830157",
+        "title": "User Insights Projects \u0026 Allocation - Asana",
+        "visitCount": 2
+      },
+      {
+        "uri": "https://money.com/",
+        "title": "Money Official Site \u2013 Finance News \u0026 Advice Since 1972 | Money",
+        "visitCount": 3
+      },
+      {
+        "uri": "https://duckduckgo.com/app?origin=funnel_app_windows",
+        "title": "Download the DuckDuckGo browser app",
+        "visitCount": 4
+      }
+    ],
+    "pinnedTabs": [
+    ],
+    "windows": [
+      {
+        "windowId": "c6d47aa2-8c1a-4c50-8877-3745bd1865fb",
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "2d1fffb0-6bec-4263-adad-22016d6f2275",
+            "uri": "https://app.asana.com/0/home/1206786699935999",
+            "title": "Home - Asana"
+          },
+          {
+            "tabId": "9dda832f-d6d4-490a-9837-c6a9d026d74b",
+            "uri": "https://app.asana.com/0/inbox/1206786699935999",
+            "title": "DuckDuckGo inbox - Asana"
+          },
+          {
+            "tabId": "d9df0408-d655-4ab8-a9ac-457e42de164e",
+            "uri": "https://app.asana.com/0/1201325515665955/1205115771830157",
+            "title": "User Insights Projects \u0026 Allocation - Asana"
+          },
+          {
+            "tabId": "09fdb181-5ff6-47a6-a24d-6451ee12e209",
+            "uri": "https://app.asana.com/0/home/1206786699935999",
+            "title": "Home - Asana"
+          },
+          {
+            "tabId": "18c0d7e1-b9f9-4dbc-9795-99f97fc674ad",
+            "uri": "https://money.com/",
+            "title": "Money Official Site \u2013 Finance News \u0026 Advice Since 1972 | Money"
+          },
+          {
+            "tabId": "7fd05bb0-10a2-4c38-bb0f-57ffe76bef3a",
+            "uri": "duck://settings/",
+            "title": "Settings"
+          },
+          {
+            "tabId": "eaf6e9de-5376-4f9c-9b4d-79a6b1135bb5",
+            "uri": "https://duckduckgo.com/app?origin=funnel_app_windows",
+            "title": "Download the DuckDuckGo browser app"
+          },
+          {
+            "tabId": "6d5af67d-a2f4-4acb-9f39-6bd7baa378eb",
+            "uri": "https://www.apple.com/mac/",
+            "title": "Mac - Apple"
+          },
+          {
+            "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+            "uri": "duck://ntp/",
+            "title": "New Tab"
+          }
+        ]
+      }
+    ],
+    "ignoredUris": [
+      "apple.com/shop/buy-mac?afid=p238|w2k2sVRq-dc_mtid_1870765e38482_pcrid_78340418192565_pgrid_1253443503734298_pntwk_o_pchan__pexid__ptid_kwd-78340369854646%3Aloc-190_\u0026cid=aos-us-kwbi-mac--slid---product-",
+      "app.asana.com"
+    ]
+  },
+  "expectations": {
+    "topHits": [
+      {
+        "type": "favorite",
+        "title": "Mac - Apple",
+        "subtitle": "apple.com/mac",
+        "uri": "https://www.apple.com/mac/",
+        "score": 204811,
+        "tabId": "6d5af67d-a2f4-4acb-9f39-6bd7baa378eb"
+      },
+      {
+        "type": "openTab",
+        "title": "Mac - Apple",
+        "subtitle": "apple.com/mac",
+        "uri": "https://www.apple.com/mac/",
+        "score": 204811,
+        "tabId": "6d5af67d-a2f4-4acb-9f39-6bd7baa378eb"
+      }
+    ],
+    "searchSuggestions": [
+      {
+        "type": "phrase",
+        "title": "macy\u0027s",
+        "uri": "https://duckduckgo.com/?q=macy%27s",
+        "score": 0,
+        "tabId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "type": "phrase",
+        "title": "macys.com",
+        "uri": "https://duckduckgo.com/?q=macys.com",
+        "score": 0,
+        "tabId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "type": "phrase",
+        "title": "macy\u0027s credit card login",
+        "uri": "https://duckduckgo.com/?q=macy%27s\u002Bcredit\u002Bcard\u002Blogin",
+        "score": 0,
+        "tabId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "type": "phrase",
+        "title": "macy\u0027s insite",
+        "uri": "https://duckduckgo.com/?q=macy%27s\u002Binsite",
+        "score": 0,
+        "tabId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "type": "phrase",
+        "title": "mac tools",
+        "uri": "https://duckduckgo.com/?q=mac\u002Btools",
+        "score": 0,
+        "tabId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "type": "phrase",
+        "title": "macbook",
+        "uri": "https://duckduckgo.com/?q=macbook",
+        "score": 0,
+        "tabId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "type": "phrase",
+        "title": "macro",
+        "uri": "https://duckduckgo.com/?q=macro",
+        "score": 0,
+        "tabId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "type": "phrase",
+        "title": "macaulay culkin",
+        "uri": "https://duckduckgo.com/?q=macaulay\u002Bculkin",
+        "score": 0,
+        "tabId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "type": "phrase",
+        "title": "machu picchu",
+        "uri": "https://duckduckgo.com/?q=machu\u002Bpicchu",
+        "score": 0,
+        "tabId": "00000000-0000-0000-0000-000000000000"
+      }
+    ],
+    "localSuggestions": [
+      {
+        "type": "historyEntry",
+        "title": "mac apple at DuckDuckGo",
+        "subtitle": "duckduckgo.com/?q=mac\u002Bapple",
+        "uri": "https://duckduckgo.com/?q=mac\u002Bapple",
+        "score": 204801,
+        "tabId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
+}

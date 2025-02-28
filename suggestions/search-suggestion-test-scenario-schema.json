@@ -179,7 +179,7 @@
           }
         },
         "then": {
-          "required": [ "type", "title", "subtitle", "score" ]
+          "required": [ "type", "title", "score" ]
         },
         "else": {
           "properties": {
