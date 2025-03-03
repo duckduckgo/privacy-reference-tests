@@ -35,14 +35,14 @@
         "phrase": "appdata"
       }
     ],
-    "bookmarkSuggestions": [
+    "bookmarks": [
       {
         "uri": "https://www.apple.com/mac/",
         "title": "Mac - Apple",
         "isFavorite": true
       }
     ],
-    "historySuggestions": [
+    "history": [
       {
         "uri": "https://duckduckgo.com/",
         "title": "DuckDuckGo - Your protection, our priority.",
@@ -248,57 +248,49 @@
         "type": "phrase",
         "title": "apple music",
         "uri": "https://duckduckgo.com/?q=apple\u002Bmusic",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "apple.com/uk/music",
         "uri": "https://duckduckgo.com/?q=apple.com%2fuk%2fmusic",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "appanail",
         "uri": "https://duckduckgo.com/?q=appanail",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "apple",
         "uri": "https://duckduckgo.com/?q=apple",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "apple tv",
         "uri": "https://duckduckgo.com/?q=apple\u002Btv",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "app store",
         "uri": "https://duckduckgo.com/?q=app\u002Bstore",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "apple stock",
         "uri": "https://duckduckgo.com/?q=apple\u002Bstock",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "appfolio",
         "uri": "https://duckduckgo.com/?q=appfolio",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       }
     ],
     "localSuggestions": [

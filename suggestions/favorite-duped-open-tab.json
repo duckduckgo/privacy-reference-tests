@@ -38,14 +38,14 @@
         "phrase": "mackenzie dern"
       }
     ],
-    "bookmarkSuggestions": [
+    "bookmarks": [
       {
         "uri": "https://www.apple.com/mac/",
         "title": "Mac - Apple",
         "isFavorite": true
       }
     ],
-    "historySuggestions": [
+    "history": [
       {
         "uri": "https://duckduckgo.com/",
         "title": "DuckDuckGo - Your protection, our priority.",
@@ -251,64 +251,55 @@
         "type": "phrase",
         "title": "macy\u0027s",
         "uri": "https://duckduckgo.com/?q=macy%27s",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "macys.com",
         "uri": "https://duckduckgo.com/?q=macys.com",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "macy\u0027s credit card login",
         "uri": "https://duckduckgo.com/?q=macy%27s\u002Bcredit\u002Bcard\u002Blogin",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "macy\u0027s insite",
         "uri": "https://duckduckgo.com/?q=macy%27s\u002Binsite",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "mac tools",
         "uri": "https://duckduckgo.com/?q=mac\u002Btools",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "macbook",
         "uri": "https://duckduckgo.com/?q=macbook",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "macro",
         "uri": "https://duckduckgo.com/?q=macro",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "macaulay culkin",
         "uri": "https://duckduckgo.com/?q=macaulay\u002Bculkin",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "machu picchu",
         "uri": "https://duckduckgo.com/?q=machu\u002Bpicchu",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       }
     ],
     "localSuggestions": [
@@ -317,8 +308,7 @@
         "title": "mac apple at DuckDuckGo",
         "subtitle": "duckduckgo.com/?q=mac\u002Bapple",
         "uri": "https://duckduckgo.com/?q=mac\u002Bapple",
-        "score": 204801,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 204801
       }
     ]
   }

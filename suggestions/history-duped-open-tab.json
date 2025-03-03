@@ -32,14 +32,14 @@
         "phrase": "mongodb"
       }
     ],
-    "bookmarkSuggestions": [
+    "bookmarks": [
       {
         "uri": "https://www.apple.com/mac/",
         "title": "Mac - Apple",
         "isFavorite": true
       }
     ],
-    "historySuggestions": [
+    "history": [
       {
         "uri": "https://duckduckgo.com/",
         "title": "DuckDuckGo - Your protection, our priority.",
@@ -245,64 +245,55 @@
         "type": "phrase",
         "title": "monkeytype",
         "uri": "https://duckduckgo.com/?q=monkeytype",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "monica lewinsky",
         "uri": "https://duckduckgo.com/?q=monica\u002Blewinsky",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "monster hunter wilds",
         "uri": "https://duckduckgo.com/?q=monster\u002Bhunter\u002Bwilds",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "monkey app",
         "uri": "https://duckduckgo.com/?q=monkey\u002Bapp",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "money",
         "uri": "https://duckduckgo.com/?q=money",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "money.pl",
         "uri": "https://duckduckgo.com/?q=money.pl",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "monday",
         "uri": "https://duckduckgo.com/?q=monday",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "money network edd",
         "uri": "https://duckduckgo.com/?q=money\u002Bnetwork\u002Bedd",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       },
       {
         "type": "phrase",
         "title": "mongodb",
         "uri": "https://duckduckgo.com/?q=mongodb",
-        "score": 0,
-        "tabId": "00000000-0000-0000-0000-000000000000"
+        "score": 0
       }
     ],
     "localSuggestions": [
