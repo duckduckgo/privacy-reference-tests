@@ -1,4 +1,5 @@
 {
+  "$schema": "./search-suggestion-test-scenario-schema.json",
   "description": "Basic fully populated test data from Windows.",
   "input": {
     "query": "app",
@@ -54,7 +55,7 @@
         "visitCount": 1
       },
       {
-        "uri": "https://www.apple.com/shop/buy-mac?afid=p238|w2k2sVRq-dc_mtid_1870765e38482_pcrid_78340418192565_pgrid_1253443503734298_pntwk_o_pchan__pexid__ptid_kwd-78340369854646%3Aloc-190_\u0026cid=aos-us-kwbi-mac--slid---product-",
+        "uri": "https://www.apple.com/shop/buy-mac?cid=aos-us-kwbi-mac--slid---product-",
         "title": "Buy Mac - Apple",
         "visitCount": 1
       },
@@ -221,7 +222,7 @@
     ],
     "ignoredUris": [
       "app.asana.com",
-      "apple.com/shop/buy-mac?afid=p238|w2k2sVRq-dc_mtid_1870765e38482_pcrid_78340418192565_pgrid_1253443503734298_pntwk_o_pchan__pexid__ptid_kwd-78340369854646%3Aloc-190_\u0026cid=aos-us-kwbi-mac--slid---product-"
+      "apple.com/shop/buy-mac?cid=aos-us-kwbi-mac--slid---product-"
     ]
   },
   "expectations": {

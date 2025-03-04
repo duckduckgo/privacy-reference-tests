@@ -184,6 +184,7 @@
         "else": {
           "properties": {
             "uri": {
+              "type": "string",
               "format": "uri"
             }
           },
