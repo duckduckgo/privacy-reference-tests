@@ -6,16 +6,16 @@
     "tabIdInitiatingSearch": "f63c4963-de07-411b-897c-a40bb05fa7e2",
     "apiSuggestions": [
       {
-        "phrase": "macy\u0027s"
+        "phrase": "macy's"
       },
       {
         "phrase": "macys.com"
       },
       {
-        "phrase": "macy\u0027s credit card login"
+        "phrase": "macy's credit card login"
       },
       {
-        "phrase": "macy\u0027s insite"
+        "phrase": "macy's insite"
       },
       {
         "phrase": "mac tools"
@@ -53,7 +53,7 @@
         "visitCount": 45
       },
       {
-        "uri": "https://duckduckgo.com/?q=mac\u002Bapple",
+        "uri": "https://duckduckgo.com/?q=mac+apple",
         "title": "mac apple at DuckDuckGo",
         "visitCount": 1
       },
@@ -93,7 +93,7 @@
         "visitCount": 2
       },
       {
-        "uri": "https://duckduckgo.com/?q=du\u0026ia=web",
+        "uri": "https://duckduckgo.com/?q=du&ia=web",
         "title": "du at DuckDuckGo",
         "visitCount": 2
       },
@@ -124,7 +124,7 @@
       },
       {
         "uri": "https://www.cnn.com/2025/02/22/us/video/luigi-mangione-courtroom-sketch-artist-lcl-digvid",
-        "title": "Sketch artist describes Mangione\u2019s demeanor in court | CNN",
+        "title": "Sketch artist describes Mangione’s demeanor in court | CNN",
         "visitCount": 1
       },
       {
@@ -154,12 +154,12 @@
       },
       {
         "uri": "https://app.asana.com/0/1201325515665955/1205115771830157",
-        "title": "User Insights Projects \u0026 Allocation - Asana",
+        "title": "User Insights Projects & Allocation - Asana",
         "visitCount": 2
       },
       {
         "uri": "https://money.com/",
-        "title": "Money Official Site \u2013 Finance News \u0026 Advice Since 1972 | Money",
+        "title": "Money Official Site – Finance News & Advice Since 1972 | Money",
         "visitCount": 3
       },
       {
@@ -168,8 +168,7 @@
         "visitCount": 4
       }
     ],
-    "pinnedTabs": [
-    ],
+    "pinnedTabs": [],
     "windows": [
       {
         "windowId": "c6d47aa2-8c1a-4c50-8877-3745bd1865fb",
@@ -188,7 +187,7 @@
           {
             "tabId": "d9df0408-d655-4ab8-a9ac-457e42de164e",
             "uri": "https://app.asana.com/0/1201325515665955/1205115771830157",
-            "title": "User Insights Projects \u0026 Allocation - Asana"
+            "title": "User Insights Projects & Allocation - Asana"
           },
           {
             "tabId": "09fdb181-5ff6-47a6-a24d-6451ee12e209",
@@ -198,7 +197,7 @@
           {
             "tabId": "18c0d7e1-b9f9-4dbc-9795-99f97fc674ad",
             "uri": "https://money.com/",
-            "title": "Money Official Site \u2013 Finance News \u0026 Advice Since 1972 | Money"
+            "title": "Money Official Site – Finance News & Advice Since 1972 | Money"
           },
           {
             "tabId": "7fd05bb0-10a2-4c38-bb0f-57ffe76bef3a",
@@ -249,7 +248,7 @@
     "searchSuggestions": [
       {
         "type": "phrase",
-        "title": "macy\u0027s",
+        "title": "macy's",
         "uri": "https://duckduckgo.com/?q=macy%27s",
         "score": 0
       },
@@ -261,20 +260,20 @@
       },
       {
         "type": "phrase",
-        "title": "macy\u0027s credit card login",
-        "uri": "https://duckduckgo.com/?q=macy%27s\u002Bcredit\u002Bcard\u002Blogin",
+        "title": "macy's credit card login",
+        "uri": "https://duckduckgo.com/?q=macy%27s+credit+card+login",
         "score": 0
       },
       {
         "type": "phrase",
-        "title": "macy\u0027s insite",
-        "uri": "https://duckduckgo.com/?q=macy%27s\u002Binsite",
+        "title": "macy's insite",
+        "uri": "https://duckduckgo.com/?q=macy%27s+insite",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "mac tools",
-        "uri": "https://duckduckgo.com/?q=mac\u002Btools",
+        "uri": "https://duckduckgo.com/?q=mac+tools",
         "score": 0
       },
       {
@@ -292,13 +291,13 @@
       {
         "type": "phrase",
         "title": "macaulay culkin",
-        "uri": "https://duckduckgo.com/?q=macaulay\u002Bculkin",
+        "uri": "https://duckduckgo.com/?q=macaulay+culkin",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "machu picchu",
-        "uri": "https://duckduckgo.com/?q=machu\u002Bpicchu",
+        "uri": "https://duckduckgo.com/?q=machu+picchu",
         "score": 0
       }
     ],
@@ -307,9 +306,10 @@
         "type": "historyEntry",
         "title": "mac apple at DuckDuckGo",
         "subtitle": "Search DuckDuckGo",
-        "uri": "https://duckduckgo.com/?q=mac\u002Bapple",
+        "uri": "https://duckduckgo.com/?q=mac+apple",
         "score": 204801
       }
     ]
-  }
+  },
+  "platform": "desktop"
 }

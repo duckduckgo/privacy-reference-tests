@@ -55,5 +55,6 @@
       { "type": "openTab", "title": "Duplicate to Selected Tab", "subtitle": "another-example.com", "score": 102400, "uri": "https://another-example.com", "tabId": "1daf539e-7b40-4757-a8f3-06d48016058c" },
       { "type": "openTab", "title": "Last Tab", "subtitle": "last.com", "score": 102400, "uri": "https://last.com", "tabId": "a0b0354b-223f-4a0b-81a7-3d7d4e5b72ff" }
     ]
-  }
+  },
+  "platform": "desktop"
 }

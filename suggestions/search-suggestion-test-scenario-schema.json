@@ -4,6 +4,10 @@
   "description": "All the data necessary to do full end-to-end testing of the search suggestion scoring and sorting algorithms.",
   "type": "object",
   "properties": {
+    "platform": {
+      "description": "The platform this test is for.",
+      "enum": ["mobile", "desktop"]
+    },
     "description": {
       "description": "Describes the test.",
       "type": "string"

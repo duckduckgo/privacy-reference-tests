@@ -50,5 +50,6 @@
         { "type": "openTab", "title": "Burner example 4", "subtitle": "burner-example-4.com", "score": 153600, "uri": "https://burner-example-4.com", "tabId": "186eb128-767f-4053-a6e1-8a9532ae1ad3" },
         { "type": "openTab", "title": "Burner example 5", "subtitle": "burner-example-5.com", "score": 153600, "uri": "https://burner-example-5.com", "tabId": "fbd713a1-a7a5-4843-8b50-3775f2ce1299" }
     ]
-  }
+  },
+  "platform": "desktop"
 }
