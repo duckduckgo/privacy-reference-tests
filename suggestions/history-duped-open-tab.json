@@ -195,7 +195,7 @@
           },
           {
             "tabId": "7fd05bb0-10a2-4c38-bb0f-57ffe76bef3a",
-            "uri": "duck://settings/",
+            "uri": "duck://settings",
             "title": "Settings"
           },
           {
@@ -210,7 +210,7 @@
           },
           {
             "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
-            "uri": "duck://ntp/",
+            "uri": "duck://newtab",
             "title": "New Tab"
           }
         ]

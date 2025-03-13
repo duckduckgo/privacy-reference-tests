@@ -198,7 +198,7 @@
           },
           {
             "tabId": "7fd05bb0-10a2-4c38-bb0f-57ffe76bef3a",
-            "uri": "duck://settings/",
+            "uri": "duck://settings",
             "title": "Settings"
           },
           {
@@ -213,7 +213,7 @@
           },
           {
             "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
-            "uri": "duck://ntp/",
+            "uri": "duck://newtab",
             "title": "New Tab"
           }
         ]
@@ -229,14 +229,14 @@
       {
         "type": "favorite",
         "title": "Mac - Apple",
-        "subtitle": "apple.com/mac",
+        "subtitle": "",
         "uri": "https://www.apple.com/mac/",
         "score": 307211
       },
       {
         "type": "openTab",
         "title": "Mac - Apple",
-        "subtitle": "apple.com/mac",
+        "subtitle": "",
         "uri": "https://www.apple.com/mac/",
         "score": 307211,
         "tabId": "6d5af67d-a2f4-4acb-9f39-6bd7baa378eb"
@@ -296,7 +296,7 @@
       {
         "type": "openTab",
         "title": "Home - Asana",
-        "subtitle": "app.asana.com/0/home/1206786699935999",
+        "subtitle": "",
         "uri": "https://app.asana.com/0/home/1206786699935999",
         "score": 307206,
         "tabId": "2d1fffb0-6bec-4263-adad-22016d6f2275"
@@ -304,7 +304,7 @@
       {
         "type": "openTab",
         "title": "DuckDuckGo inbox - Asana",
-        "subtitle": "app.asana.com/0/inbox/1206786699935999",
+        "subtitle": "",
         "uri": "https://app.asana.com/0/inbox/1206786699935999",
         "score": 307202,
         "tabId": "9dda832f-d6d4-490a-9837-c6a9d026d74b"

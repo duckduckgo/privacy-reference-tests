@@ -85,13 +85,8 @@
             "title": "Download the DuckDuckGo app"
           },
           {
-            "tabId": "18c0d7e1-b9f9-4dbc-9795-99f97fc674ad",
-            "uri": "https://duck-duck-go.en.softonic.com/",
-            "title": "Duck Duck Go - Free download"
-          },
-          {
             "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
-            "uri": "duck://ntp/",
+            "uri": "duck://newtab",
             "title": "New Tab"
           }
         ]
@@ -106,14 +101,14 @@
       {
         "type": "historyEntry",
         "title": "DuckDuckGo — Privacy, simplified.",
-        "subtitle": "duckduckgo.com",
+        "subtitle": "",
         "uri": "https://duckduckgo.com/",
         "score": 2355245
       },
       {
         "type": "historyEntry",
         "title": "DuckDuckGo — Privacy, simplified.",
-        "subtitle": "duck.com",
+        "subtitle": "",
         "uri": "https://duck.com/",
         "score": 2355203
       }
@@ -166,7 +161,7 @@
       {
         "type": "openTab",
         "title": "DuckDuckGo Settings",
-        "subtitle": "duckduckgo.com/settings",
+        "subtitle": "",
         "uri": "https://duckduckgo.com/settings",
         "score": 307205,
         "tabId": "7fd05bb0-10a2-4c38-bb0f-57ffe76bef3a"
@@ -174,14 +169,14 @@
       {
         "type": "historyEntry",
         "title": "Privacy Policy – DuckDuckGo",
-        "subtitle": "duckduckgo.com/privacy",
+        "subtitle": "",
         "uri": "https://duckduckgo.com/privacy",
         "score": 307202
       },
       {
         "type": "historyEntry",
         "title": "About DuckDuckGo",
-        "subtitle": "duckduckgo.com/about",
+        "subtitle": "",
         "uri": "https://duckduckgo.com/about",
         "score": 307201
       }

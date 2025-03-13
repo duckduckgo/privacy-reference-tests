@@ -73,7 +73,7 @@
           },
           {
             "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
-            "uri": "duck://ntp/",
+            "uri": "duck://newtab",
             "title": "New Tab"
           }
         ]
@@ -86,14 +86,14 @@
       {
         "type": "historyEntry",
         "title": "Café - Official Site",
-        "subtitle": "cafe.com",
+        "subtitle": "",
         "uri": "https://cafe.com/",
         "score": 2252805
       },
       {
         "type": "historyEntry",
         "title": "Cafédirect | Fairtrade Coffee, Tea & Hot Chocolate",
-        "subtitle": "cafedirect.co.uk",
+        "subtitle": "",
         "uri": "https://www.cafedirect.co.uk/",
         "score": 2252802
       }
@@ -138,23 +138,23 @@
     ],
     "localSuggestions": [
       {
-        "type": "favorite",
-        "title": "Caféteria New York",
-        "subtitle": "cafeterianewyork.com",
-        "uri": "https://www.cafeterianewyork.com/",
-        "score": 2252800
-      },
-      {
         "type": "bookmark",
         "title": "CAFÉ de MADRID",
-        "subtitle": "cafedemadrid.es",
+        "subtitle": "",
         "uri": "https://www.cafedemadrid.es/",
         "score": 2252800
       },
       {
+          "type": "favorite",
+          "title": "Caféteria New York",
+          "subtitle": "",
+          "uri": "https://www.cafeterianewyork.com/",
+          "score": 2252800
+      },
+      {
         "type": "openTab",
         "title": "Café - Wikipedia",
-        "subtitle": "en.wikipedia.org/wiki/Caf%C3%A9",
+        "subtitle": "",
         "uri": "https://en.wikipedia.org/wiki/Caf%C3%A9",
         "score": 204800,
         "tabId": "eaf6e9de-5376-4f9c-9b4d-79a6b1135bb5"

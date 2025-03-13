@@ -100,7 +100,7 @@
           },
           {
             "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
-            "uri": "duck://ntp/",
+            "uri": "duck://newtab",
             "title": "New Tab"
           }
         ]
@@ -113,14 +113,14 @@
       {
         "type": "favorite",
         "title": "GitHub: Let's build from here",
-        "subtitle": "github.com",
+        "subtitle": "",
         "uri": "https://github.com/",
         "score": 2355250
       },
       {
         "type": "historyEntry",
         "title": "Git",
-        "subtitle": "git-scm.com",
+        "subtitle": "",
         "uri": "https://git-scm.com/",
         "score": 2355210
       }
@@ -179,14 +179,14 @@
       {
         "type": "bookmark",
         "title": "GitLab: DevSecOps Platform",
-        "subtitle": "gitlab.com",
+        "subtitle": "",
         "uri": "https://gitlab.com/",
         "score": 2355205
       },
       {
         "type": "historyEntry",
         "title": "GitKraken: Git GUI Client & Git Tools",
-        "subtitle": "gitkraken.com",
+        "subtitle": "",
         "uri": "https://gitkraken.com/",
         "score": 2355203
       }
