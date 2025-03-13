@@ -1,0 +1,315 @@
+{
+  "$schema": "./search-suggestion-test-scenario-schema.json",
+  "description": "Basic fully populated test data for mobile.",
+  "input": {
+    "query": "app",
+    "tabIdInitiatingSearch": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+    "apiSuggestions": [
+      {
+        "phrase": "apple music"
+      },
+      {
+        "phrase": "apple.com/uk/music"
+      },
+      {
+        "phrase": "appanail"
+      },
+      {
+        "phrase": "apple"
+      },
+      {
+        "phrase": "apple tv"
+      },
+      {
+        "phrase": "app store"
+      },
+      {
+        "phrase": "apple stock"
+      },
+      {
+        "phrase": "appfolio"
+      },
+      {
+        "phrase": "applebee's"
+      },
+      {
+        "phrase": "appdata"
+      }
+    ],
+    "bookmarks": [
+      {
+        "uri": "https://www.apple.com/mac/",
+        "title": "Mac - Apple",
+        "isFavorite": true
+      }
+    ],
+    "history": [
+      {
+        "uri": "https://duckduckgo.com/",
+        "title": "DuckDuckGo - Your protection, our priority.",
+        "visitCount": 45
+      },
+      {
+        "uri": "https://duckduckgo.com/?q=mac+apple",
+        "title": "mac apple at DuckDuckGo",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://www.apple.com/shop/buy-mac?cid=aos-us-kwbi-mac--slid---product-",
+        "title": "Buy Mac - Apple",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://www.apple.com/mac/",
+        "title": "Mac - Apple",
+        "visitCount": 11
+      },
+      {
+        "uri": "https://us.azureauth.duosecurity.com/authorization",
+        "title": "us.azureauth.duosecurity.com/authorization",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://login.microsoftonline.com/common/federation/OAuth2ClaimsProvider",
+        "title": "Sign in to your account",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://login.microsoftonline.com/kmsi",
+        "title": "Working...",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://use-login.duckduckgo.com/patestsucceeded",
+        "title": "Duo Security",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://duckduckgo.com/?q=du",
+        "title": "du at DuckDuckGo",
+        "visitCount": 2
+      },
+      {
+        "uri": "https://duckduckgo.com/?q=du&ia=web",
+        "title": "du at DuckDuckGo",
+        "visitCount": 2
+      },
+      {
+        "uri": "https://www.cnn.com/",
+        "title": "Breaking News, Latest News and Videos | CNN",
+        "visitCount": 9
+      },
+      {
+        "uri": "https://jsfiddle.net/",
+        "title": "JSFiddle - Code Playground",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://duckduckgo.com/?q=test",
+        "title": "test at DuckDuckGo",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://www.speedtest.net/",
+        "title": "Speedtest by Ookla - The Global Broadband Speed Test",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://www.aljazeera.com/",
+        "title": "Breaking News, World News and Video from Al Jazeera",
+        "visitCount": 3
+      },
+      {
+        "uri": "https://www.cnn.com/2025/02/22/us/video/luigi-mangione-courtroom-sketch-artist-lcl-digvid",
+        "title": "Sketch artist describes Mangione's demeanor in court | CNN",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://app.asana.com/-/login?u=%2Fhome%2F%40takfung",
+        "title": "Log in - Asana",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://app.asana.com/home/@takfung?rr=977137",
+        "title": "Asana",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://app.asana.com/0/home/1206786699935999",
+        "title": "Home - Asana",
+        "visitCount": 6
+      },
+      {
+        "uri": "https://app.asana.com/",
+        "title": "Asana",
+        "visitCount": 5
+      },
+      {
+        "uri": "https://app.asana.com/0/inbox/1206786699935999",
+        "title": "DuckDuckGo inbox - Asana",
+        "visitCount": 2
+      },
+      {
+        "uri": "https://app.asana.com/0/1201325515665955/1205115771830157",
+        "title": "User Insights Projects & Allocation - Asana",
+        "visitCount": 2
+      },
+      {
+        "uri": "https://money.com/",
+        "title": "Money Official Site – Finance News & Advice Since 1972 | Money",
+        "visitCount": 3
+      },
+      {
+        "uri": "https://duckduckgo.com/app?origin=funnel_app_windows",
+        "title": "Download the DuckDuckGo browser app",
+        "visitCount": 4
+      }
+    ],
+    "pinnedTabs": [],
+    "windows": [
+      {
+        "windowId": "c6d47aa2-8c1a-4c50-8877-3745bd1865fb",
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "2d1fffb0-6bec-4263-adad-22016d6f2275",
+            "uri": "https://app.asana.com/0/home/1206786699935999",
+            "title": "Home - Asana"
+          },
+          {
+            "tabId": "9dda832f-d6d4-490a-9837-c6a9d026d74b",
+            "uri": "https://app.asana.com/0/inbox/1206786699935999",
+            "title": "DuckDuckGo inbox - Asana"
+          },
+          {
+            "tabId": "d9df0408-d655-4ab8-a9ac-457e42de164e",
+            "uri": "https://app.asana.com/0/1201325515665955/1205115771830157",
+            "title": "User Insights Projects & Allocation - Asana"
+          },
+          {
+            "tabId": "09fdb181-5ff6-47a6-a24d-6451ee12e209",
+            "uri": "https://app.asana.com/0/home/1206786699935999",
+            "title": "Home - Asana"
+          },
+          {
+            "tabId": "18c0d7e1-b9f9-4dbc-9795-99f97fc674ad",
+            "uri": "https://money.com/",
+            "title": "Money Official Site – Finance News & Advice Since 1972 | Money"
+          },
+          {
+            "tabId": "7fd05bb0-10a2-4c38-bb0f-57ffe76bef3a",
+            "uri": "duck://settings/",
+            "title": "Settings"
+          },
+          {
+            "tabId": "eaf6e9de-5376-4f9c-9b4d-79a6b1135bb5",
+            "uri": "https://duckduckgo.com/app?origin=funnel_app_windows",
+            "title": "Download the DuckDuckGo browser app"
+          },
+          {
+            "tabId": "6d5af67d-a2f4-4acb-9f39-6bd7baa378eb",
+            "uri": "https://www.apple.com/mac/",
+            "title": "Mac - Apple"
+          },
+          {
+            "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+            "uri": "duck://ntp/",
+            "title": "New Tab"
+          }
+        ]
+      }
+    ],
+    "ignoredUris": [
+      "app.asana.com",
+      "apple.com/shop/buy-mac?cid=aos-us-kwbi-mac--slid---product-"
+    ]
+  },
+  "expectations": {
+    "topHits": [
+      {
+        "type": "favorite",
+        "title": "Mac - Apple",
+        "subtitle": "apple.com/mac",
+        "uri": "https://www.apple.com/mac/",
+        "score": 307211
+      },
+      {
+        "type": "openTab",
+        "title": "Mac - Apple",
+        "subtitle": "apple.com/mac",
+        "uri": "https://www.apple.com/mac/",
+        "score": 307211,
+        "tabId": "6d5af67d-a2f4-4acb-9f39-6bd7baa378eb"
+      }
+    ],
+    "searchSuggestions": [
+      {
+        "type": "phrase",
+        "title": "apple music",
+        "uri": "https://duckduckgo.com/?q=apple+music&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "apple.com/uk/music",
+        "uri": "https://duckduckgo.com/?q=apple.com%2fuk%2fmusic&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "appanail",
+        "uri": "https://duckduckgo.com/?q=appanail&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "apple",
+        "uri": "https://duckduckgo.com/?q=apple&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "apple tv",
+        "uri": "https://duckduckgo.com/?q=apple+tv&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "app store",
+        "uri": "https://duckduckgo.com/?q=app+store&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "apple stock",
+        "uri": "https://duckduckgo.com/?q=apple+stock&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "appfolio",
+        "uri": "https://duckduckgo.com/?q=appfolio&t=ddg_ios",
+        "score": 0
+      }
+    ],
+    "localSuggestions": [
+      {
+        "type": "openTab",
+        "title": "Home - Asana",
+        "subtitle": "app.asana.com/0/home/1206786699935999",
+        "uri": "https://app.asana.com/0/home/1206786699935999",
+        "score": 307206,
+        "tabId": "2d1fffb0-6bec-4263-adad-22016d6f2275"
+      },
+      {
+        "type": "openTab",
+        "title": "DuckDuckGo inbox - Asana",
+        "subtitle": "app.asana.com/0/inbox/1206786699935999",
+        "uri": "https://app.asana.com/0/inbox/1206786699935999",
+        "score": 307202,
+        "tabId": "9dda832f-d6d4-490a-9837-c6a9d026d74b"
+      }
+    ]
+  },
+  "platform": "mobile"
+}

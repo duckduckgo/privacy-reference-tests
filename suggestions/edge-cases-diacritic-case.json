@@ -1,0 +1,175 @@
+{
+  "$schema": "./search-suggestion-test-scenario-schema.json",
+  "description": "Tests edge cases including diacritics, case sensitivity, and partial url matches",
+  "input": {
+    "query": "café",
+    "tabIdInitiatingSearch": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+    "apiSuggestions": [
+      { "phrase": "café near me" },
+      { "phrase": "café du monde" },
+      { "phrase": "café au lait" },
+      { "phrase": "café bustelo" },
+      { "phrase": "café con leche" },
+      { "phrase": "café astrology" }
+    ],
+    "bookmarks": [
+      {
+        "uri": "https://www.cafeterianewyork.com/",
+        "title": "Caféteria New York",
+        "isFavorite": true
+      },
+      {
+        "uri": "https://www.cafehabana.com/",
+        "title": "Cafe Habana",
+        "isFavorite": false
+      },
+      {
+        "uri": "https://www.cafedemadrid.es/",
+        "title": "CAFÉ de MADRID",
+        "isFavorite": false
+      }
+    ],
+    "history": [
+      {
+        "uri": "https://cafe.com/",
+        "title": "Café - Official Site",
+        "visitCount": 5
+      },
+      {
+        "uri": "https://www.starbucks.com/",
+        "title": "Starbucks Coffee Company",
+        "visitCount": 10
+      },
+      {
+        "uri": "https://www.cafedirect.co.uk/",
+        "title": "Cafédirect | Fairtrade Coffee, Tea & Hot Chocolate",
+        "visitCount": 2
+      },
+      {
+        "uri": "https://www.bluebottlecoffee.com/",
+        "title": "Blue Bottle Coffee | Specialty Coffee, Beans & Café",
+        "visitCount": 3
+      },
+      {
+        "uri": "https://cafepress.com/",
+        "title": "CafePress: Custom T-Shirts, Gifts & More",
+        "visitCount": 1
+      }
+    ],
+    "pinnedTabs": [],
+    "windows": [
+      {
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+            "uri": "duck://ntp/",
+            "title": "New Tab"
+          }
+        ]
+      },
+      {
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "7fd05bb0-10a2-4c38-bb0f-57ffe76bef3a",
+            "uri": "https://www.cafedelites.com/",
+            "title": "Cafe Delites | Easy Healthy Recipes"
+          }
+        ]
+      },
+      {
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "eaf6e9de-5376-4f9c-9b4d-79a6b1135bb5",
+            "uri": "https://en.wikipedia.org/wiki/Caf%C3%A9",
+            "title": "Café - Wikipedia"
+          }
+        ]
+      }
+    ],
+    "ignoredUris": []
+  },
+  "expectations": {
+    "topHits": [
+      {
+        "type": "historyEntry",
+        "title": "Café - Official Site",
+        "subtitle": "cafe.com",
+        "uri": "https://cafe.com/",
+        "score": 2252805
+      },
+      {
+        "type": "historyEntry",
+        "title": "Cafédirect | Fairtrade Coffee, Tea & Hot Chocolate",
+        "subtitle": "cafedirect.co.uk",
+        "uri": "https://www.cafedirect.co.uk/",
+        "score": 2252802
+      }
+    ],
+    "searchSuggestions": [
+      {
+        "type": "phrase",
+        "title": "café near me",
+        "uri": "https://duckduckgo.com/?q=caf%C3%A9+near+me",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "café du monde",
+        "uri": "https://duckduckgo.com/?q=caf%C3%A9+du+monde",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "café au lait",
+        "uri": "https://duckduckgo.com/?q=caf%C3%A9+au+lait",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "café bustelo",
+        "uri": "https://duckduckgo.com/?q=caf%C3%A9+bustelo",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "café con leche",
+        "uri": "https://duckduckgo.com/?q=caf%C3%A9+con+leche",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "café astrology",
+        "uri": "https://duckduckgo.com/?q=caf%C3%A9+astrology",
+        "score": 0
+      }
+    ],
+    "localSuggestions": [
+      {
+        "type": "favorite",
+        "title": "Caféteria New York",
+        "subtitle": "cafeterianewyork.com",
+        "uri": "https://www.cafeterianewyork.com/",
+        "score": 2252800
+      },
+      {
+        "type": "bookmark",
+        "title": "CAFÉ de MADRID",
+        "subtitle": "cafedemadrid.es",
+        "uri": "https://www.cafedemadrid.es/",
+        "score": 2252800
+      },
+      {
+        "type": "openTab",
+        "title": "Café - Wikipedia",
+        "subtitle": "en.wikipedia.org/wiki/Caf%C3%A9",
+        "uri": "https://en.wikipedia.org/wiki/Caf%C3%A9",
+        "score": 204800,
+        "tabId": "eaf6e9de-5376-4f9c-9b4d-79a6b1135bb5"
+      }
+    ]
+  },
+  "platform": "desktop"
+}
