@@ -1,0 +1,40 @@
+{
+  "$schema": "./search-suggestion-test-scenario-schema.json",
+  "description": "Test standard open tab provider returns open tabs without current and burner tabs",
+  "input": {
+    "query": "tab",
+    "tabIdInitiatingSearch": "fbd713a1-a7a5-4843-8b50-3775f2ce1299",
+    "bookmarks": [], "//": "Assuming no bookmarks are needed for this test",
+    "history": [],   "//": "Assuming no history entries are needed for this test",
+    "pinnedTabs": [],
+    "windows": [
+      {
+        "type": "fullyFeatured",
+        "tabs": [
+          { "tabId": "438165a0-b444-4165-8b28-5b01ada66b05", "title": "Pinned tab 1", "uri": "https://pinned-example.com" },
+          { "tabId": "c6ef14c6-3e34-40e9-b230-1d07ea05dd7a", "title": "Pinned tab 2", "uri": "https://pinned-example-2.com" },
+          { "tabId": "ebbd25e2-7b32-4cc4-8e7e-ea16e829bbc8", "title": "Example", "uri": "https://example.com" },
+          { "tabId": "fbd713a1-a7a5-4843-8b50-3775f2ce1299", "title": "Selected Tab", "uri": "https://another-example.com" },
+          { "tabId": "f4386ef1-675d-43f0-b0d3-868488ab9c56", "title": "New", "uri": "duck://newtab" },
+          { "tabId": "8f64b4b9-2aac-4d34-bbf6-4641de875d14", "title": "Bookmarks", "uri": "duck://bookmarks" },
+          { "tabId": "6c4c6dfd-f8a7-421d-9b8c-a5d3ec94bea4", "title": "Settings", "uri": "duck://settings" },
+          { "tabId": "9e5218ca-a187-4481-a193-4284c5657ea1", "title": "Yet Another Example", "uri": "https://yet-another-example.com" },
+          { "tabId": "ccd16104-1655-41da-a250-04d41daa0d4f", "title": "Yet Another Example", "uri": "https://yet-another-example.com" },
+          { "tabId": "1daf539e-7b40-4757-a8f3-06d48016058c", "title": "Duplicate to Selected Tab", "uri": "https://another-example.com" },
+          { "tabId": "a0b0354b-223f-4a0b-81a7-3d7d4e5b72ff", "title": "Last Tab", "uri": "https://last.com" }
+        ]
+      }
+    ],
+    "apiSuggestions": [],  "//": "Assuming no API suggestions are needed for this test"
+  },
+  "expectations": {
+    "topHits": [],
+    "searchSuggestions": [],
+    "localSuggestions": [
+      { "type": "openTab", "title": "Pinned tab 1", "subtitle": "", "score": 102400, "uri": "https://pinned-example.com", "tabId": "438165a0-b444-4165-8b28-5b01ada66b05" },
+      { "type": "openTab", "title": "Pinned tab 2", "subtitle": "", "score": 102400, "uri": "https://pinned-example-2.com", "tabId": "c6ef14c6-3e34-40e9-b230-1d07ea05dd7a" },
+      { "type": "openTab", "title": "Last Tab", "subtitle": "", "score": 102400, "uri": "https://last.com", "tabId": "a0b0354b-223f-4a0b-81a7-3d7d4e5b72ff" }
+    ]
+  },
+  "platform": "mobile"
+}
