@@ -139,7 +139,7 @@
       "properties": {
         "type": {
           "description": "The suggestion type",
-          "enum": [ "phrase", "website", "bookmark", "favorite", "historyEntry", "openTab" ]
+          "enum": [ "phrase", "website", "bookmark", "favorite", "historyEntry", "openTab", "internalPage" ]
         },
         "title": {
           "description": "Suggestion title",

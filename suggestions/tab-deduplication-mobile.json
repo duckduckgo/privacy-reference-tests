@@ -1,0 +1,177 @@
+{
+  "$schema": "./search-suggestion-test-scenario-schema.json",
+  "description": "Tab deduplication test (mobile): when 2 tabs have app.asana.com URLs and the selected tab is one of them, entering 'app.asa' doesn't suggest switching to another app.asana.com tab as it's deduplicated, but a history record for it should be shown",
+  "input": {
+    "query": "app.asa",
+    "tabIdInitiatingSearch": "2d1fffb0-6bec-4263-adad-22016d6f2275",
+    "apiSuggestions": [
+      {
+        "phrase": "app.asana.com"
+      },
+      {
+        "phrase": "app.asana login"
+      },
+      {
+        "phrase": "app.asana.com login"
+      },
+      {
+        "phrase": "app.asada"
+      },
+      {
+        "phrase": "app.asam"
+      },
+      {
+        "phrase": "app.asanastatus.com"
+      }
+    ],
+    "bookmarks": [],
+    "history": [
+      {
+        "uri": "https://duckduckgo.com/",
+        "title": "DuckDuckGo - Your protection, our priority.",
+        "visitCount": 45
+      },
+      {
+        "uri": "https://app.asana.com/-/login?u=%2Fhome%2F%40takfung",
+        "title": "Log in - Asana",
+        "visitCount": 3
+      },
+      {
+        "uri": "https://app.asana.com/home/@takfung?rr=977137",
+        "title": "Asana",
+        "visitCount": 2
+      },
+      {
+        "uri": "https://app.asana.com/0/inbox/1206786699935999",
+        "title": "Home - Asana",
+        "visitCount": 8
+      },
+      {
+        "uri": "https://app.asana.com/",
+        "title": "Asana",
+        "visitCount": 10
+      },
+      {
+        "uri": "https://app.asana.com/0/inbox/1206786699935999",
+        "title": "DuckDuckGo inbox - Asana",
+        "visitCount": 5
+      }
+    ],
+    "pinnedTabs": [],
+    "windows": [
+      {
+        "windowId": "c6d47aa2-8c1a-4c50-8877-3745bd1865fb",
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "2d1fffb0-6bec-4263-adad-22016d6f2275",
+            "uri": "https://app.asana.com/0/inbox/1206786699935999",
+            "title": "Home - Asana"
+          },
+          {
+            "tabId": "9dda832f-d6d4-490a-9837-c6a9d026d74b",
+            "uri": "https://app.asana.com/0/inbox/1206786699935999",
+            "title": "Inbox - Asana"
+          },
+          {
+            "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+            "uri": "duck://newtab",
+            "title": "New Tab"
+          },
+          {
+              "tabId": "9fda832f-d6d4-490a-9837-c6a9d026d74a",
+              "uri": "https://app.asana.com/0/inbox/1206786699935999",
+              "title": "DuckDuckGo inbox - Asana"
+          },
+          {
+              "tabId": "9ada832f-d6d4-490a-9837-c6a9d026d74c",
+              "uri": "https://app.asana.com/0/inbox/1206786699935900",
+              "title": "00 – Asana"
+          }
+        ]
+      }
+    ],
+    "ignoredUris": []
+  },
+  "expectations": {
+    "topHits": [
+      {
+        "type": "historyEntry",
+        "title": "Asana",
+        "subtitle": "",
+        "uri": "https://app.asana.com/",
+        "score": 2355210
+      },
+      {
+        "type": "historyEntry",
+        "title": "Home - Asana",
+        "subtitle": "",
+        "uri": "https://app.asana.com/0/inbox/1206786699935999",
+        "score": 307208
+      }
+    ],
+    "searchSuggestions": [
+      {
+        "type": "phrase",
+        "title": "app.asana.com",
+        "uri": "https://duckduckgo.com/?q=app.asana.com&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "app.asana login",
+        "uri": "https://duckduckgo.com/?q=app.asana+login&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "app.asana.com login",
+        "uri": "https://duckduckgo.com/?q=app.asana.com+login&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "app.asada",
+        "uri": "https://duckduckgo.com/?q=app.asada&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "app.asam",
+        "uri": "https://duckduckgo.com/?q=app.asam&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "app.asanastatus.com",
+        "uri": "https://duckduckgo.com/?q=app.asanastatus.com&t=ddg_ios",
+        "score": 0
+      }
+    ],
+    "localSuggestions": [
+      {
+        "type": "historyEntry",
+        "title": "Log in - Asana",
+        "subtitle": "",
+        "uri": "https://app.asana.com/-/login?u=%2Fhome%2F%40takfung",
+        "score": 307203
+      },
+      {
+        "type": "historyEntry",
+        "title": "Asana",
+        "subtitle": "",
+        "uri": "https://app.asana.com/home/@takfung?rr=977137",
+        "score": 307202
+      },
+      {
+        "score" : 307200,
+        "subtitle" : "",
+        "tabId" : "9ADA832F-D6D4-490A-9837-C6A9D026D74C",
+        "title" : "00 – Asana",
+        "type" : "openTab",
+        "uri" : "https:\/\/app.asana.com\/0\/inbox\/1206786699935900"
+      }
+    ]
+  },
+  "platform": "mobile"
+}

@@ -1,0 +1,163 @@
+{
+  "$schema": "./search-suggestion-test-scenario-schema.json",
+  "description": "Special pages test (mobile): duck://bookmarks should be suggested as a local suggestion when entering 'boo' even when no tab is open for it",
+  "input": {
+    "query": "boo",
+    "tabIdInitiatingSearch": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+    "apiSuggestions": [
+      {
+        "phrase": "booktopia"
+      },
+      {
+        "phrase": "booking.com"
+      },
+      {
+        "phrase": "boohoo"
+      },
+      {
+        "phrase": "books"
+      },
+      {
+        "phrase": "bookmyshow"
+      },
+      {
+        "phrase": "boohooman"
+      },
+      {
+        "phrase": "bookings"
+      },
+      {
+        "phrase": "bootstrap"
+      }
+    ],
+    "bookmarks": [
+      {
+        "uri": "https://www.bookdepository.com/",
+        "title": "Book Depository - Free Delivery Worldwide",
+        "isFavorite": true
+      }
+    ],
+    "history": [
+      {
+        "uri": "https://duckduckgo.com/",
+        "title": "DuckDuckGo - Your protection, our priority.",
+        "visitCount": 45
+      },
+      {
+        "uri": "https://www.booking.com/",
+        "title": "Booking.com | Official site | The best hotels, flights & car rentals",
+        "visitCount": 7
+      },
+      {
+        "uri": "https://app.asana.com/0/home/1206786699935999",
+        "title": "Home - Asana",
+        "visitCount": 6
+      },
+      {
+        "uri": "https://app.asana.com/",
+        "title": "Asana",
+        "visitCount": 5
+      }
+    ],
+    "pinnedTabs": [],
+    "windows": [
+      {
+        "windowId": "c6d47aa2-8c1a-4c50-8877-3745bd1865fb",
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "2d1fffb0-6bec-4263-adad-22016d6f2275",
+            "uri": "https://app.asana.com/0/home/1206786699935999",
+            "title": "Home - Asana"
+          },
+          {
+            "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+            "uri": "duck://newtab",
+            "title": "New Tab"
+          }
+        ]
+      }
+    ],
+    "ignoredUris": [
+      "app.asana.com"
+    ]
+  },
+  "expectations": {
+    "topHits": [
+      {
+        "type": "historyEntry",
+        "title": "Booking.com | Official site | The best hotels, flights & car rentals",
+        "subtitle": "",
+        "uri": "https://www.booking.com/",
+        "score": 2355207
+      },
+      {
+        "type": "favorite",
+        "title": "Book Depository - Free Delivery Worldwide",
+        "subtitle": "",
+        "uri": "https://www.bookdepository.com/",
+        "score": 2355200
+      }
+    ],
+    "searchSuggestions": [
+      {
+        "type": "phrase",
+        "title": "booktopia",
+        "uri": "https://duckduckgo.com/?q=booktopia&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "booking.com",
+        "uri": "https://duckduckgo.com/?q=booking.com&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "boohoo",
+        "uri": "https://duckduckgo.com/?q=boohoo&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "books",
+        "uri": "https://duckduckgo.com/?q=books&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "bookmyshow",
+        "uri": "https://duckduckgo.com/?q=bookmyshow&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "boohooman",
+        "uri": "https://duckduckgo.com/?q=boohooman&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "bookings",
+        "uri": "https://duckduckgo.com/?q=bookings&t=ddg_ios",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "bootstrap",
+        "uri": "https://duckduckgo.com/?q=bootstrap&t=ddg_ios",
+        "score": 0
+      }
+    ],
+    "localSuggestions": [
+      {
+        "type": "internalPage",
+        "title": "Bookmarks",
+        "subtitle": "",
+        "uri": "duck://bookmarks",
+        "score": 2355200
+      }
+    ]
+  },
+  "platform": "mobile"
+}
