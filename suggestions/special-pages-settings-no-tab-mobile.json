@@ -143,27 +143,7 @@
       }
     ],
     "localSuggestions": [
-      {
-        "type": "internalPage",
-        "title": "Settings",
-        "subtitle": "",
-        "uri": "duck://settings",
-        "score": 2355200
-      },
-      {
-        "type": "internalPage",
-        "title": "Settings → Default Browser",
-        "subtitle": "",
-        "uri": "duck://settings/defaultBrowser",
-        "score": 307200
-      },
-      {
-        "type": "internalPage",
-        "title": "Settings → Private Search",
-        "subtitle": "",
-        "uri": "duck://settings/privateSearch",
-        "score": 307200
-      }
+      
     ]
   },
   "platform": "mobile"

@@ -44,17 +44,12 @@
       {
         "uri": "https://app.asana.com/0/inbox/1206786699935999",
         "title": "Home - Asana",
-        "visitCount": 8
+        "visitCount": 13
       },
       {
         "uri": "https://app.asana.com/",
         "title": "Asana",
         "visitCount": 10
-      },
-      {
-        "uri": "https://app.asana.com/0/inbox/1206786699935999",
-        "title": "DuckDuckGo inbox - Asana",
-        "visitCount": 5
       }
     ],
     "pinnedTabs": [],
@@ -103,11 +98,12 @@
         "score": 2355210
       },
       {
-        "type": "historyEntry",
-        "title": "Home - Asana",
-        "subtitle": "",
-        "uri": "https://app.asana.com/0/inbox/1206786699935999",
-        "score": 307208
+        "subtitle" : "",
+        "tabId" : "2D1FFFB0-6BEC-4263-ADAD-22016D6F2275",
+        "title" : "Home - Asana",
+        "type" : "openTab",
+        "uri" : "https:\/\/app.asana.com\/0\/inbox\/1206786699935999",
+        "score": 307213
       }
     ],
     "searchSuggestions": [
@@ -162,14 +158,6 @@
         "subtitle": "",
         "uri": "https://app.asana.com/home/@takfung?rr=977137",
         "score": 307202
-      },
-      {
-        "score" : 307200,
-        "subtitle" : "",
-        "tabId" : "9ADA832F-D6D4-490A-9837-C6A9D026D74C",
-        "title" : "00 – Asana",
-        "type" : "openTab",
-        "uri" : "https:\/\/app.asana.com\/0\/inbox\/1206786699935900"
       }
     ]
   },

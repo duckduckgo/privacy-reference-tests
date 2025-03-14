@@ -100,20 +100,6 @@
         "subtitle": "",
         "uri": "https://duck.com/",
         "score": 2355212
-      },
-      {
-        "type": "internalPage",
-        "title": "Settings → Duck Player",
-        "subtitle": "",
-        "uri": "duck://settings/duckplayer",
-        "score": 102400
-      },
-      {
-        "type": "internalPage",
-        "title": "Settings → DuckDuckGo on Other Platforms",
-        "subtitle": "",
-        "uri": "duck://settings/https://duckduckgo.com/app%3Forigin=funnel_app_macos",
-        "score": 102400
       }
     ]
   },

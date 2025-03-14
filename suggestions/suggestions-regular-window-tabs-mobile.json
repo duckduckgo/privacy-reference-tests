@@ -31,9 +31,10 @@
     "topHits": [],
     "searchSuggestions": [],
     "localSuggestions": [
+      { "type": "openTab", "title": "New", "subtitle": "", "score": 153600, "uri": "duck://newtab", "tabId": "f4386ef1-675d-43f0-b0d3-868488ab9c56" },
       { "type": "openTab", "title": "Pinned tab 1", "subtitle": "", "score": 102400, "uri": "https://pinned-example.com", "tabId": "438165a0-b444-4165-8b28-5b01ada66b05" },
       { "type": "openTab", "title": "Pinned tab 2", "subtitle": "", "score": 102400, "uri": "https://pinned-example-2.com", "tabId": "c6ef14c6-3e34-40e9-b230-1d07ea05dd7a" },
-      { "type": "openTab", "title": "Last Tab", "subtitle": "", "score": 102400, "uri": "https://last.com", "tabId": "a0b0354b-223f-4a0b-81a7-3d7d4e5b72ff" }
+      { "type": "openTab", "title": "Selected Tab", "subtitle": "", "score": 102400, "uri": "https://another-example.com", "tabId": "fbd713a1-a7a5-4843-8b50-3775f2ce1299" }
     ]
   },
   "platform": "mobile"

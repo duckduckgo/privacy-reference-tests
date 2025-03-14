@@ -150,13 +150,7 @@
       }
     ],
     "localSuggestions": [
-      {
-        "type": "internalPage",
-        "title": "Bookmarks",
-        "subtitle": "",
-        "uri": "duck://bookmarks",
-        "score": 2355200
-      }
+      
     ]
   },
   "platform": "mobile"
