@@ -1,0 +1,170 @@
+{
+  "$schema": "./search-suggestion-test-scenario-schema.json",
+  "description": "Special pages test: duck://settings should be suggested as a local suggestion when entering 'set' even when no tab is open for it",
+  "input": {
+    "query": "set",
+    "tabIdInitiatingSearch": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+    "apiSuggestions": [
+      {
+        "phrase": "setlist fm"
+      },
+      {
+        "phrase": "settings"
+      },
+      {
+        "phrase": "settings app"
+      },
+      {
+        "phrase": "setup"
+      },
+      {
+        "phrase": "set theory"
+      },
+      {
+        "phrase": "setup wizard"
+      },
+      {
+        "phrase": "seton hall university"
+      },
+      {
+        "phrase": "seth green"
+      }
+    ],
+    "bookmarks": [
+      {
+        "uri": "https://www.apple.com/mac/",
+        "title": "Mac - Apple",
+        "isFavorite": true
+      }
+    ],
+    "history": [
+      {
+        "uri": "https://duckduckgo.com/",
+        "title": "DuckDuckGo - Your protection, our priority.",
+        "visitCount": 45
+      },
+      {
+        "uri": "https://www.setwiz.com/",
+        "title": "Setup Wizard - Configuration Tool",
+        "visitCount": 3
+      },
+      {
+        "uri": "https://app.asana.com/0/home/1206786699935999",
+        "title": "Home - Asana",
+        "visitCount": 6
+      },
+      {
+        "uri": "https://app.asana.com/",
+        "title": "Asana",
+        "visitCount": 5
+      }
+    ],
+    "pinnedTabs": [],
+    "windows": [
+      {
+        "windowId": "c6d47aa2-8c1a-4c50-8877-3745bd1865fb",
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "2d1fffb0-6bec-4263-adad-22016d6f2275",
+            "uri": "https://app.asana.com/0/home/1206786699935999",
+            "title": "Home - Asana"
+          },
+          {
+            "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+            "uri": "duck://newtab",
+            "title": "New Tab"
+          }
+        ]
+      }
+    ],
+    "ignoredUris": [
+      "app.asana.com"
+    ]
+  },
+  "expectations": {
+    "topHits": [
+      {
+        "type": "historyEntry",
+        "title": "Setup Wizard - Configuration Tool",
+        "subtitle": "setwiz.com",
+        "uri": "https://www.setwiz.com/",
+        "score": 2355203
+      }
+    ],
+    "searchSuggestions": [
+      {
+        "type": "phrase",
+        "title": "setlist fm",
+        "uri": "https://duckduckgo.com/?q=setlist+fm",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "settings",
+        "uri": "https://duckduckgo.com/?q=settings",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "settings app",
+        "uri": "https://duckduckgo.com/?q=settings+app",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "setup",
+        "uri": "https://duckduckgo.com/?q=setup",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "set theory",
+        "uri": "https://duckduckgo.com/?q=set+theory",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "setup wizard",
+        "uri": "https://duckduckgo.com/?q=setup+wizard",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "seton hall university",
+        "uri": "https://duckduckgo.com/?q=seton+hall+university",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "seth green",
+        "uri": "https://duckduckgo.com/?q=seth+green",
+        "score": 0
+      }
+    ],
+    "localSuggestions": [
+      {
+        "type": "internalPage",
+        "title": "Settings",
+        "subtitle": "DuckDuckGo",
+        "uri": "duck://settings",
+        "score": 2355200
+      },
+      {
+        "type": "internalPage",
+        "title": "Settings → Default Browser",
+        "subtitle": "DuckDuckGo",
+        "uri": "duck://settings/defaultBrowser",
+        "score": 307200
+      },
+      {
+        "type": "internalPage",
+        "title": "Settings → Private Search",
+        "subtitle": "DuckDuckGo",
+        "uri": "duck://settings/privateSearch",
+        "score": 307200
+      }
+    ]
+  },
+  "platform": "desktop"
+}

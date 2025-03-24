@@ -1,0 +1,214 @@
+{
+  "$schema": "./search-suggestion-test-scenario-schema.json",
+  "description": "Tests desktop-specific ranking between tabs from multiple windows with focus on active window priority",
+  "input": {
+    "query": "code",
+    "tabIdInitiatingSearch": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+    "apiSuggestions": [
+      { "phrase": "codecademy" },
+      { "phrase": "code converter" },
+      { "phrase": "code geass" },
+      { "phrase": "codepen" },
+      { "phrase": "code org" },
+      { "phrase": "codewars" },
+      { "phrase": "code with mosh" },
+      { "phrase": "codesignal" }
+    ],
+    "bookmarks": [
+      {
+        "uri": "https://code.visualstudio.com/",
+        "title": "Visual Studio Code - Code editing. Redefined.",
+        "isFavorite": true
+      },
+      {
+        "uri": "https://github.com/microsoft/vscode",
+        "title": "GitHub - microsoft/vscode: Visual Studio Code",
+        "isFavorite": false
+      },
+      {
+        "uri": "https://codemirror.net/",
+        "title": "CodeMirror",
+        "isFavorite": false
+      }
+    ],
+    "history": [
+      {
+        "uri": "https://code.visualstudio.com/",
+        "title": "Visual Studio Code - Code editing. Redefined.",
+        "visitCount": 30
+      },
+      {
+        "uri": "https://code.visualstudio.com/docs",
+        "title": "Documentation for Visual Studio Code",
+        "visitCount": 15
+      },
+      {
+        "uri": "https://code.visualstudio.com/download",
+        "title": "Download Visual Studio Code",
+        "visitCount": 5
+      },
+      {
+        "uri": "https://www.codecademy.com/",
+        "title": "Codecademy - Learn to Code",
+        "visitCount": 8
+      },
+      {
+        "uri": "https://codepen.io/",
+        "title": "CodePen: Online Code Editor and Front End Web Developer Community",
+        "visitCount": 12
+      },
+      {
+        "uri": "https://code.org/",
+        "title": "Code.org - Learn Computer Science",
+        "visitCount": 2
+      }
+    ],
+    "pinnedTabs": [
+      { 
+        "tabId": "c23dec90-2ca7-4324-8e7e-ea16e829bbc8", 
+        "title": "Visual Studio Code", 
+        "uri": "https://code.visualstudio.com/" 
+      }
+    ],
+    "windows": [
+      {
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+            "uri": "duck://newtab",
+            "title": "New Tab"
+          },
+          {
+            "tabId": "7fd05bb0-10a2-4c38-bb0f-57ffe76bef3a",
+            "uri": "https://code.visualstudio.com/docs/languages/javascript",
+            "title": "JavaScript in Visual Studio Code"
+          },
+          {
+            "tabId": "eaf6e9de-5376-4f9c-9b4d-79a6b1135bb5",
+            "uri": "https://code.visualstudio.com/docs/editor/extension-marketplace",
+            "title": "Extension Marketplace | Visual Studio Code"
+          }
+        ]
+      },
+      {
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "22e7b3a1-849b-4d3b-a50e-bef5a698e0c8",
+            "uri": "https://codepen.io/pen/",
+            "title": "CodePen - New Pen"
+          },
+          {
+            "tabId": "9b67e4f5-28c3-4a1a-b3e9-d9d5f8a3c1e2",
+            "uri": "https://codemirror.net/examples/",
+            "title": "CodeMirror Examples"
+          }
+        ]
+      },
+      {
+        "type": "fireWindow",
+        "tabs": [
+          {
+            "tabId": "18c0d7e1-b9f9-4dbc-9795-99f97fc674ad",
+            "uri": "https://github.com/features/copilot",
+            "title": "GitHub Copilot · Your AI pair programmer"
+          },
+          {
+            "tabId": "d395f782-6cbd-48f1-a998-3e4c3c1b7f8d",
+            "uri": "https://codecombat.com/",
+            "title": "CodeCombat - Coding games to learn Python and JavaScript"
+          }
+        ]
+      }
+    ],
+    "ignoredUris": []
+  },
+  "expectations": {
+    "topHits": [
+      {
+        "type": "favorite",
+        "title": "Visual Studio Code - Code editing. Redefined.",
+        "subtitle": "code.visualstudio.com",
+        "uri": "https://code.visualstudio.com/",
+        "score": 2355230
+      },
+      {
+        "type": "openTab",
+        "title": "Visual Studio Code - Code editing. Redefined.",
+        "subtitle": "code.visualstudio.com",
+        "uri": "https://code.visualstudio.com/",
+        "tabId": "C23DEC90-2CA7-4324-8E7E-EA16E829BBC8",
+        "score": 2355230
+      }
+    ],
+    "searchSuggestions": [
+      {
+        "type": "phrase",
+        "title": "codecademy",
+        "uri": "https://duckduckgo.com/?q=codecademy",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "code converter",
+        "uri": "https://duckduckgo.com/?q=code+converter",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "code geass",
+        "uri": "https://duckduckgo.com/?q=code+geass",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "codepen",
+        "uri": "https://duckduckgo.com/?q=codepen",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "code org",
+        "uri": "https://duckduckgo.com/?q=code+org",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "codewars",
+        "uri": "https://duckduckgo.com/?q=codewars",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "code with mosh",
+        "uri": "https://duckduckgo.com/?q=code+with+mosh",
+        "score": 0
+      }
+    ],
+    "localSuggestions": [
+      {
+        "type": "historyEntry",
+        "title": "CodePen: Online Code Editor and Front End Web Developer Community",
+        "subtitle": "codepen.io",
+        "uri": "https://codepen.io/",
+        "score": 2355212
+      },
+      {
+        "type": "historyEntry",
+        "title": "Codecademy - Learn to Code",
+        "subtitle": "codecademy.com",
+        "uri": "https://www.codecademy.com/",
+        "score": 2355208
+      },
+      {
+        "type": "historyEntry",
+        "title": "Code.org - Learn Computer Science",
+        "subtitle": "code.org",
+        "uri": "https://code.org/",
+        "score": 2355202
+      }
+    ]
+  },
+  "platform": "desktop"
+}
