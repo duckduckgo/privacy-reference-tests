@@ -74,7 +74,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'duckduckgo/apple-browsers'
-          ref: 'sam/create-sharedpackages-directory' # TODO: For testing purposes, needs to be removed before merging
           path: 'apple-monorepo'
           submodules: recursive
       - name: Check out the tests
