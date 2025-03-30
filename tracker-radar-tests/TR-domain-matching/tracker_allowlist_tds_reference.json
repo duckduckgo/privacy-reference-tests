@@ -41,6 +41,18 @@
             "cookies": 0.1,
             "categories": [],
             "default": "block"
+        },
+        "format.test": {
+            "domain": "format.test",
+            "owner": {
+                "name": "Tests for formatting",
+                "displayName": "Tests for formatting"
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "block"
         }
     },
     "entities": {
@@ -52,6 +64,13 @@
             ],
             "prevalence": 0.1,
             "displayName": "Test Site for Tracker Blocking"
+        },
+        "Tests for formatting": {
+            "domains": [
+                "format.test"
+            ],
+            "prevalence": 0.1,
+            "displayName": "Tests for formatting"
         }
     },
     "cnames": {
@@ -60,6 +79,7 @@
     "domains": {
         "allowlist-tracker-1.com": "Test Site for Tracker Blocking",
         "allowlist-tracker-2.com": "Test Site for Tracker Blocking",
-        "allowlist-tracker-3.com": "Test Site for Tracker Blocking"
+        "allowlist-tracker-3.com": "Test Site for Tracker Blocking",
+        "format.test": "Tests for formatting"
     }
 }
