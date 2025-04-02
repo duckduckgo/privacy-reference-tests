@@ -66,7 +66,7 @@ jobs:
   BrowserServicesKit:
     name: BSK unit tests
 
-    runs-on: macos-14
+    runs-on: macos-15
     timeout-minutes: 30
 
     steps:
@@ -79,14 +79,14 @@ jobs:
       - name: Check out the tests
         uses: actions/checkout@v4
         with:
-          path: 'apple-monorepo/BrowserServicesKit/Tests/BrowserServicesKitTests/Resources/privacy-reference-tests'
+          path: 'apple-monorepo/SharedPackages/BrowserServicesKit/Tests/BrowserServicesKitTests/Resources/privacy-reference-tests'
 
       - name: Set cache key hash
-        working-directory: ./apple-monorepo/BrowserServicesKit
+        working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
         run: |
           has_only_tags=$(jq '[ .pins[].state | has("version") ] | all' Package.resolved)
           if [[ "$has_only_tags" == "true" ]]; then
-            echo "cache_key_hash=${{ hashFiles('apple-monorepo/BrowserServicesKit/Package.resolved') }}" >> $GITHUB_ENV
+            echo "cache_key_hash=${{ hashFiles('apple-monorepo/SharedPackages/BrowserServicesKit/Package.resolved') }}" >> $GITHUB_ENV
           else
             echo "Package.resolved contains dependencies specified by branch or commit, skipping cache."
           fi
@@ -95,7 +95,7 @@ jobs:
         if: env.cache_key_hash
         uses: actions/cache@v4
         with:
-          path: ./apple-monorepo/BrowserServicesKit/build
+          path: ./apple-monorepo/SharedPackages/BrowserServicesKit/build
           key: ${{ runner.os }}-spm-${{ env.cache_key_hash }}
           restore-keys: |
             ${{ runner.os }}-spm-
@@ -104,11 +104,11 @@ jobs:
         run: sudo xcode-select -s /Applications/Xcode_$(<apple-monorepo/.xcode-version).app/Contents/Developer
 
       - name: Build BSK
-        working-directory: ./apple-monorepo/BrowserServicesKit
+        working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
         run: set -o pipefail && swift build | tee build-log.txt | xcbeautify
 
       - name: Run tests
-        working-directory: ./apple-monorepo/BrowserServicesKit
+        working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
         run: set -o pipefail && swift test | tee -a build-log.txt | xcbeautify --report junit --report-path . --junit-report-filename tests.xml
 
       - name: Publish Unit Tests Report
@@ -116,7 +116,7 @@ jobs:
         if: always()
         with:
           check_name: BSK Test Report
-          report_paths: ./apple-monorepo/BrowserServicesKit/tests.xml
+          report_paths: ./apple-monorepo/SharedPackages/BrowserServicesKit/tests.xml
           require_tests: true
 
       - name: Upload logs
@@ -124,4 +124,4 @@ jobs:
         if: always()
         with:
           name: build-log.txt
-          path: ./apple-monorepo/BrowserServicesKit/build-log.txt
+          path: ./apple-monorepo/SharedPackages/BrowserServicesKit/build-log.txt
