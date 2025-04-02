@@ -9,7 +9,8 @@
         "phrase": "macy's"
       },
       {
-        "phrase": "macys.com"
+        "phrase": "macys.com",
+        "isNav": true
       },
       {
         "phrase": "macy's credit card login"
@@ -253,9 +254,10 @@
         "score": 0
       },
       {
-        "type": "phrase",
+        "type": "website",
         "title": "macys.com",
-        "uri": "https://duckduckgo.com/?q=macys.com",
+        "subtitle": "",
+        "uri": "https://macys.com",
         "score": 0
       },
       {

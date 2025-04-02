@@ -6,7 +6,8 @@
     "tabIdInitiatingSearch": "2d1fffb0-6bec-4263-adad-22016d6f2275",
     "apiSuggestions": [
       {
-        "phrase": "app.asana.com"
+        "phrase": "app.asana.com",
+        "isNav": true
       },
       {
         "phrase": "app.asana login"
@@ -21,7 +22,8 @@
         "phrase": "app.asam"
       },
       {
-        "phrase": "app.asanastatus.com"
+        "phrase": "app.asanastatus.com",
+        "isNav": true
       }
     ],
     "bookmarks": [],
@@ -112,9 +114,10 @@
     ],
     "searchSuggestions": [
       {
-        "type": "phrase",
+        "type": "website",
         "title": "app.asana.com",
-        "uri": "https://duckduckgo.com/?q=app.asana.com",
+        "subtitle": "",
+        "uri": "https://app.asana.com",
         "score": 0
       },
       {
@@ -142,9 +145,10 @@
         "score": 0
       },
       {
-        "type": "phrase",
+        "type": "website",
         "title": "app.asanastatus.com",
-        "uri": "https://duckduckgo.com/?q=app.asanastatus.com",
+        "subtitle": "",
+        "uri": "https://app.asanastatus.com",
         "score": 0
       }
     ],

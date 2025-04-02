@@ -21,7 +21,8 @@
         "phrase": "money"
       },
       {
-        "phrase": "money.pl"
+        "phrase": "money.pl",
+        "isNav": true
       },
       {
         "phrase": "monday"
@@ -271,9 +272,10 @@
         "score": 0
       },
       {
-        "type": "phrase",
+        "type": "website",
         "title": "money.pl",
-        "uri": "https://duckduckgo.com/?q=money.pl",
+        "subtitle": "",
+        "uri": "https://money.pl",
         "score": 0
       },
       {

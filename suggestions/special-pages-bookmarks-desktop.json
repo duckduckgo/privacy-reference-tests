@@ -9,7 +9,8 @@
         "phrase": "booktopia"
       },
       {
-        "phrase": "booking.com"
+        "phrase": "booking.com",
+        "isNav": true
       },
       {
         "phrase": "boohoo"
@@ -112,9 +113,10 @@
         "score": 0
       },
       {
-        "type": "phrase",
+        "type": "website",
         "title": "booking.com",
-        "uri": "https://duckduckgo.com/?q=booking.com",
+        "subtitle": "",
+        "uri": "https://booking.com",
         "score": 0
       },
       {
