@@ -1,0 +1,160 @@
+{
+  "platform": "mobile",
+  "description": "History url matches nav link, should not dedupe nav link",
+  "input": {
+    "query": "alj",
+    "tabIdInitiatingSearch": "f49f851c-4627-4154-b26d-3d544b2658e2",
+    "apiSuggestions": [
+      {
+        "phrase": "aljerraza english"
+      },
+      {
+        "phrase": "www.aljazeera.com",
+        "isNav": true
+      },
+      {
+        "phrase": "aljamain sterling"
+      },
+      {
+        "phrase": "aljerraza.english.com",
+        "isNav": true
+      },
+      {
+        "phrase": "aljazeera net english live"
+      },
+      {
+        "phrase": "aljazeera net arabic"
+      },
+      {
+        "phrase": "aljerraza english live"
+      },
+      {
+        "phrase": "aljerezza news"
+      },
+      {
+        "phrase": "aljona savchenko"
+      },
+      {
+        "phrase": "alj discussion forum"
+      }
+    ],
+    "bookmarks": [],
+    "history": [
+      {
+        "uri": "https://duckduckgo.com/",
+        "title": "DuckDuckGo - Protection. Privacy. Peace of mind.",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://www.aljazeera.com/",
+        "title": "Breaking News, World News and Video from Al Jazeera",
+        "visitCount": 3
+      },
+      {
+        "uri": "https://www.aljazeera.com/news/2025/3/19/two-thirds-of-people-israel-killed-in-strikes-were-women-and-children",
+        "title": "Two-thirds of people Israel killed in Gaza strikes were women and children | Israel-Palestine conflict News | Al Jazeera",
+        "visitCount": 1
+      }
+    ],
+    "pinnedTabs": [],
+    "windows": [
+      {
+        "windowId": "a3be9d7e-f27c-4e59-8d04-cba6805f8fcf",
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "f49f851c-4627-4154-b26d-3d544b2658e2",
+            "uri": "duck://newtab",
+            "title": "New Tab"
+          }
+        ]
+      }
+    ],
+    "ignoredUris": []
+  },
+    "expectations": {
+        "topHits": [
+            {
+                "type": "historyEntry",
+                "title": "Breaking News, World News and Video from Al Jazeera",
+                "subtitle": "aljazeera.com",
+                "uri": "https://www.aljazeera.com/",
+                "score": 2355203
+            },
+            {
+                "score": 0,
+                "subtitle": "",
+                "title": "aljazeera.com",
+                "type": "website",
+                "uri": "https://www.aljazeera.com"
+            }
+        ],
+        "searchSuggestions": [
+            {
+                "type": "phrase",
+                "title": "aljerraza english",
+                "uri": "https://duckduckgo.com/?q=aljerraza\u002Benglish",
+                "score": 0
+            },
+            {
+                "type": "phrase",
+                "title": "aljamain sterling",
+                "uri": "https://duckduckgo.com/?q=aljamain\u002Bsterling",
+                "score": 0
+            },
+            {
+                "score": 0,
+                "subtitle": "",
+                "title": "aljerraza.english.com",
+                "type": "website",
+                "uri": "https://aljerraza.english.com"
+            },
+            {
+                "type": "phrase",
+                "title": "aljazeera net english live",
+                "uri": "https://duckduckgo.com/?q=aljazeera\u002Bnet\u002Benglish\u002Blive",
+                "score": 0
+            },
+            {
+                "type": "phrase",
+                "title": "aljazeera net arabic",
+                "uri": "https://duckduckgo.com/?q=aljazeera\u002Bnet\u002Barabic",
+                "score": 0
+            },
+            {
+                "type": "phrase",
+                "title": "aljerraza english live",
+                "uri": "https://duckduckgo.com/?q=aljerraza\u002Benglish\u002Blive",
+                "score": 0
+            },
+            {
+                "type": "phrase",
+                "title": "aljerezza news",
+                "uri": "https://duckduckgo.com/?q=aljerezza\u002Bnews",
+                "score": 0
+            },
+            {
+                "type": "phrase",
+                "title": "aljona savchenko",
+                "uri": "https://duckduckgo.com/?q=aljona\u002Bsavchenko",
+                "score": 0
+            },
+            {
+                "type": "phrase",
+                "title": "alj discussion forum",
+                "uri": "https://duckduckgo.com/?q=alj\u002Bdiscussion\u002Bforum",
+                "score": 0
+            }
+        ],
+        "localSuggestions": [
+            {
+                "type": "historyEntry",
+                "title": "Two-thirds of people Israel killed in Gaza strikes were women and children | Israel-Palestine conflict News | Al Jazeera",
+                "subtitle": "aljazeera.com/news/2025/3/19/two-thirds-of-people-israel-killed-in-strikes-were-women-and-children",
+                "uri": "https://www.aljazeera.com/news/2025/3/19/two-thirds-of-people-israel-killed-in-strikes-were-women-and-children",
+                "score": 307201
+            }
+        ]
+    },
+  "$schema": "./search-suggestion-test-scenario-schema.json"
+}

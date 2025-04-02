@@ -9,15 +9,7 @@
         "phrase": "aljerraza english"
       },
       {
-        "phrase": "www.aljazeera.com",
-        "isNav": true
-      },
-      {
         "phrase": "aljamain sterling"
-      },
-      {
-        "phrase": "aljerraza.english.com",
-        "isNav": true
       },
       {
         "phrase": "aljazeera net english live"
@@ -85,13 +77,6 @@
         "subtitle": "aljazeera.com",
         "uri": "https://www.aljazeera.com/",
         "score": 2355203
-      },
-      {
-        "score" : 0,
-        "subtitle" : "",
-        "title" : "http:\/\/www.aljazeera.com",
-        "type" : "website",
-        "uri" : "http:\/\/www.aljazeera.com"
       }
     ],
     "searchSuggestions": [
@@ -106,13 +91,6 @@
         "title": "aljamain sterling",
         "uri": "https://duckduckgo.com/?q=aljamain\u002Bsterling",
         "score": 0
-      },
-      {
-          "score" : 0,
-          "subtitle" : "",
-          "title" : "http:\/\/aljerraza.english.com",
-          "type" : "website",
-          "uri" : "http:\/\/aljerraza.english.com"
       },
       {
         "type": "phrase",
