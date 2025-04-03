@@ -77,19 +77,19 @@
       {
         "type": "phrase",
         "title": "duckduckgo",
-        "uri": "https://duckduckgo.com/?q=duckduckgo&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=duckduckgo",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "duck sauce",
-        "uri": "https://duckduckgo.com/?q=duck+sauce&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=duck+sauce",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "duck hunt",
-        "uri": "https://duckduckgo.com/?q=duck+hunt&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=duck+hunt",
         "score": 0
       }
     ],

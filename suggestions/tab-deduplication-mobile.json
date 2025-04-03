@@ -110,37 +110,37 @@
       {
         "type": "phrase",
         "title": "app.asana.com",
-        "uri": "https://duckduckgo.com/?q=app.asana.com&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=app.asana.com",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "app.asana login",
-        "uri": "https://duckduckgo.com/?q=app.asana+login&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=app.asana+login",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "app.asana.com login",
-        "uri": "https://duckduckgo.com/?q=app.asana.com+login&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=app.asana.com+login",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "app.asada",
-        "uri": "https://duckduckgo.com/?q=app.asada&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=app.asada",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "app.asam",
-        "uri": "https://duckduckgo.com/?q=app.asam&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=app.asam",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "app.asanastatus.com",
-        "uri": "https://duckduckgo.com/?q=app.asanastatus.com&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=app.asanastatus.com",
         "score": 0
       }
     ],

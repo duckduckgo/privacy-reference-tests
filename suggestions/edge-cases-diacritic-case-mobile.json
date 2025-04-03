@@ -102,37 +102,37 @@
       {
         "type": "phrase",
         "title": "café near me",
-        "uri": "https://duckduckgo.com/?q=caf%C3%A9+near+me&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=caf%C3%A9+near+me",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "café du monde",
-        "uri": "https://duckduckgo.com/?q=caf%C3%A9+du+monde&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=caf%C3%A9+du+monde",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "café au lait",
-        "uri": "https://duckduckgo.com/?q=caf%C3%A9+au+lait&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=caf%C3%A9+au+lait",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "café bustelo",
-        "uri": "https://duckduckgo.com/?q=caf%C3%A9+bustelo&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=caf%C3%A9+bustelo",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "café con leche",
-        "uri": "https://duckduckgo.com/?q=caf%C3%A9+con+leche&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=caf%C3%A9+con+leche",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "café astrology",
-        "uri": "https://duckduckgo.com/?q=caf%C3%A9+astrology&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=caf%C3%A9+astrology",
         "score": 0
       }
     ],

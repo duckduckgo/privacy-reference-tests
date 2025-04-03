@@ -188,7 +188,7 @@
       {
         "type": "bookmark",
         "title": "Mac - Apple",
-        "subtitle": "apple.com/mac",
+        "subtitle": "",
         "uri": "https://www.apple.com/mac/",
         "score": 204800
       },
@@ -260,7 +260,7 @@
       {
         "type": "historyEntry",
         "title": "mac apple at DuckDuckGo",
-        "subtitle": "Search DuckDuckGo",
+        "subtitle": "",
         "uri": "https://duckduckgo.com/?q=mac+apple",
         "score": 204801
       }

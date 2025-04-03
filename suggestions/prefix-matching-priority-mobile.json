@@ -129,49 +129,49 @@
       {
         "type": "phrase",
         "title": "github",
-        "uri": "https://duckduckgo.com/?q=github&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=github",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "gitlab",
-        "uri": "https://duckduckgo.com/?q=gitlab&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=gitlab",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "git commands",
-        "uri": "https://duckduckgo.com/?q=git+commands&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=git+commands",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "git tutorial",
-        "uri": "https://duckduckgo.com/?q=git+tutorial&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=git+tutorial",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "git reset",
-        "uri": "https://duckduckgo.com/?q=git+reset&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=git+reset",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "git clone",
-        "uri": "https://duckduckgo.com/?q=git+clone&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=git+clone",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "git commit",
-        "uri": "https://duckduckgo.com/?q=git+commit&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=git+commit",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "git push",
-        "uri": "https://duckduckgo.com/?q=git+push&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=git+push",
         "score": 0
       }
     ],

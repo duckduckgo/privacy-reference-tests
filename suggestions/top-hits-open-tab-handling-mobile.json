@@ -73,13 +73,13 @@
       {
         "type": "phrase",
         "title": "github",
-        "uri": "https://duckduckgo.com/?q=github&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=github",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "gitlab",
-        "uri": "https://duckduckgo.com/?q=gitlab&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=gitlab",
         "score": 0
       }
     ],

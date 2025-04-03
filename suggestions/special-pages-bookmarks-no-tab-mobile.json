@@ -103,49 +103,49 @@
       {
         "type": "phrase",
         "title": "booktopia",
-        "uri": "https://duckduckgo.com/?q=booktopia&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=booktopia",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "booking.com",
-        "uri": "https://duckduckgo.com/?q=booking.com&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=booking.com",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "boohoo",
-        "uri": "https://duckduckgo.com/?q=boohoo&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=boohoo",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "books",
-        "uri": "https://duckduckgo.com/?q=books&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=books",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "bookmyshow",
-        "uri": "https://duckduckgo.com/?q=bookmyshow&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=bookmyshow",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "boohooman",
-        "uri": "https://duckduckgo.com/?q=boohooman&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=boohooman",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "bookings",
-        "uri": "https://duckduckgo.com/?q=bookings&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=bookings",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "bootstrap",
-        "uri": "https://duckduckgo.com/?q=bootstrap&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=bootstrap",
         "score": 0
       }
     ],

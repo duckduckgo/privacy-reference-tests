@@ -117,43 +117,43 @@
       {
         "type": "phrase",
         "title": "duckduckgo",
-        "uri": "https://duckduckgo.com/?q=duckduckgo&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=duckduckgo",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "duck dynasty",
-        "uri": "https://duckduckgo.com/?q=duck+dynasty&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=duck+dynasty",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "duck tape",
-        "uri": "https://duckduckgo.com/?q=duck+tape&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=duck+tape",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "duck soup",
-        "uri": "https://duckduckgo.com/?q=duck+soup&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=duck+soup",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "duck tales",
-        "uri": "https://duckduckgo.com/?q=duck+tales&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=duck+tales",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "duck hunting season",
-        "uri": "https://duckduckgo.com/?q=duck+hunting+season&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=duck+hunting+season",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "duck typing",
-        "uri": "https://duckduckgo.com/?q=duck+typing&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=duck+typing",
         "score": 0
       }
     ],

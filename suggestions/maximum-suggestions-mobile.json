@@ -137,61 +137,61 @@
       {
         "type": "phrase",
         "title": "amazon",
-        "uri": "https://duckduckgo.com/?q=amazon&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=amazon",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "apple",
-        "uri": "https://duckduckgo.com/?q=apple&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=apple",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "asos",
-        "uri": "https://duckduckgo.com/?q=asos&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=asos",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "aol",
-        "uri": "https://duckduckgo.com/?q=aol&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=aol",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "airbnb",
-        "uri": "https://duckduckgo.com/?q=airbnb&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=airbnb",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "att",
-        "uri": "https://duckduckgo.com/?q=att&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=att",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "autozone",
-        "uri": "https://duckduckgo.com/?q=autozone&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=autozone",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "american airlines",
-        "uri": "https://duckduckgo.com/?q=american+airlines&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=american+airlines",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "amazon prime",
-        "uri": "https://duckduckgo.com/?q=amazon+prime&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=amazon+prime",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "apple store",
-        "uri": "https://duckduckgo.com/?q=apple+store&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=apple+store",
         "score": 0
       }
     ],

@@ -246,49 +246,49 @@
       {
         "type": "phrase",
         "title": "apple music",
-        "uri": "https://duckduckgo.com/?q=apple+music&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=apple+music",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "apple.com/uk/music",
-        "uri": "https://duckduckgo.com/?q=apple.com%2fuk%2fmusic&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=apple.com%2fuk%2fmusic",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "appanail",
-        "uri": "https://duckduckgo.com/?q=appanail&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=appanail",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "apple",
-        "uri": "https://duckduckgo.com/?q=apple&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=apple",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "apple tv",
-        "uri": "https://duckduckgo.com/?q=apple+tv&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=apple+tv",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "app store",
-        "uri": "https://duckduckgo.com/?q=app+store&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=app+store",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "apple stock",
-        "uri": "https://duckduckgo.com/?q=apple+stock&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=apple+stock",
         "score": 0
       },
       {
         "type": "phrase",
         "title": "appfolio",
-        "uri": "https://duckduckgo.com/?q=appfolio&t=ddg_ios",
+        "uri": "https://duckduckgo.com/?q=appfolio",
         "score": 0
       }
     ],

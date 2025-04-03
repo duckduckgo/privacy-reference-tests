@@ -77,16 +77,16 @@
             {
                 "type": "historyEntry",
                 "title": "Breaking News, World News and Video from Al Jazeera",
-                "subtitle": "aljazeera.com",
+                "subtitle": "",
                 "uri": "https://www.aljazeera.com/",
                 "score": 2355203
             },
             {
                 "score": 0,
                 "subtitle": "",
-                "title": "aljazeera.com",
+                "title": "www.aljazeera.com",
                 "type": "website",
-                "uri": "https://www.aljazeera.com"
+                "uri": "http://www.aljazeera.com"
             }
         ],
         "searchSuggestions": [
@@ -150,7 +150,7 @@
             {
                 "type": "historyEntry",
                 "title": "Two-thirds of people Israel killed in Gaza strikes were women and children | Israel-Palestine conflict News | Al Jazeera",
-                "subtitle": "aljazeera.com/news/2025/3/19/two-thirds-of-people-israel-killed-in-strikes-were-women-and-children",
+                "subtitle": "",
                 "uri": "https://www.aljazeera.com/news/2025/3/19/two-thirds-of-people-israel-killed-in-strikes-were-women-and-children",
                 "score": 307201
             }
