@@ -86,7 +86,7 @@
                 "subtitle": "",
                 "title": "aljazeera.com",
                 "type": "website",
-                "uri": "https://www.aljazeera.com"
+                "uri": "http://www.aljazeera.com"
             }
         ],
         "searchSuggestions": [
@@ -107,7 +107,7 @@
                 "subtitle": "",
                 "title": "aljerraza.english.com",
                 "type": "website",
-                "uri": "https://aljerraza.english.com"
+                "uri": "http://aljerraza.english.com"
             },
             {
                 "type": "phrase",

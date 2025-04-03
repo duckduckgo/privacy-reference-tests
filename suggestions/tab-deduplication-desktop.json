@@ -117,7 +117,7 @@
         "type": "website",
         "title": "app.asana.com",
         "subtitle": "",
-        "uri": "https://app.asana.com",
+        "uri": "http://app.asana.com",
         "score": 0
       },
       {
@@ -148,7 +148,7 @@
         "type": "website",
         "title": "app.asanastatus.com",
         "subtitle": "",
-        "uri": "https://app.asanastatus.com",
+        "uri": "http://app.asanastatus.com",
         "score": 0
       }
     ],
