@@ -79,6 +79,13 @@
     ],
     "localSuggestions": [
       {
+        "type" : "internalPage",
+        "title" : "History",
+        "subtitle" : "DuckDuckGo",
+        "uri" : "duck:\/\/history",
+        "score" : 2355200
+      },
+      {
         "type": "historyEntry",
         "title": "Historic Tours Subpage",
         "subtitle": "historictours.com/subpage.html",

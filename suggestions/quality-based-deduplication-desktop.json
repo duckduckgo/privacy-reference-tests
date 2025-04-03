@@ -112,7 +112,7 @@
         "type": "internalPage",
         "title": "Settings → DuckDuckGo on Other Platforms",
         "subtitle": "DuckDuckGo",
-        "uri": "duck://settings/https://duckduckgo.com/app%3Forigin=funnel_app_macos",
+        "uri": "duck://settings/https://duckduckgo.com/app/devices%3Forigin=funnel_app_macos",
         "score": 102400
       }
     ]
