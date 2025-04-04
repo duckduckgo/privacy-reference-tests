@@ -1,0 +1,107 @@
+{
+  "$schema": "./search-suggestion-test-scenario-schema.json",
+  "description": "Quality-based deduplication test for mobile: when there are duplicates with the same URL but different types, the one with the highest quality should be chosen (favorite > bookmark > history > tab)",
+  "input": {
+    "query": "duck",
+    "tabIdInitiatingSearch": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+    "apiSuggestions": [
+      {
+        "phrase": "duckduckgo"
+      },
+      {
+        "phrase": "duck sauce"
+      },
+      {
+        "phrase": "duck hunt"
+      }
+    ],
+    "bookmarks": [
+      {
+        "uri": "https://www.duckduckgo.com/",
+        "title": "DuckDuckGo — Privacy, simplified.",
+        "isFavorite": true
+      }
+    ],
+    "history": [
+      {
+        "uri": "https://www.duckduckgo.com/",
+        "title": "DuckDuckGo — Privacy, simplified.",
+        "visitCount": 25
+      },
+      {
+        "uri": "https://duck.com/",
+        "title": "DuckDuckGo",
+        "visitCount": 12
+      }
+    ],
+    "pinnedTabs": [],
+    "windows": [
+      {
+        "windowId": "c6d47aa2-8c1a-4c50-8877-3745bd1865fb",
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "1d1fffb0-6bec-4263-adad-22016d6f2275",
+            "uri": "https://www.duckduckgo.com/",
+            "title": "DuckDuckGo — Privacy, simplified."
+          },
+          {
+            "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+            "uri": "duck://newtab",
+            "title": "New Tab"
+          }
+        ]
+      }
+    ],
+    "ignoredUris": []
+  },
+  "expectations": {
+    "topHits": [
+      {
+        "type": "favorite",
+        "title": "DuckDuckGo — Privacy, simplified.",
+        "subtitle": "",
+        "uri": "https://www.duckduckgo.com/",
+        "score": 2355225
+      },
+      {
+        "type": "openTab",
+        "title": "DuckDuckGo — Privacy, simplified.",
+        "subtitle": "",
+        "uri": "https://www.duckduckgo.com/",
+        "score": 2355225,
+        "tabId": "1d1fffb0-6bec-4263-adad-22016d6f2275"
+      }
+    ],
+    "searchSuggestions": [
+      {
+        "type": "phrase",
+        "title": "duckduckgo",
+        "uri": "https://duckduckgo.com/?q=duckduckgo",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "duck sauce",
+        "uri": "https://duckduckgo.com/?q=duck+sauce",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "duck hunt",
+        "uri": "https://duckduckgo.com/?q=duck+hunt",
+        "score": 0
+      }
+    ],
+    "localSuggestions": [
+      {
+        "type": "historyEntry",
+        "title": "DuckDuckGo",
+        "subtitle": "",
+        "uri": "https://duck.com/",
+        "score": 2355212
+      }
+    ]
+  },
+  "platform": "mobile"
+}

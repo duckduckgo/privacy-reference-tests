@@ -1,0 +1,186 @@
+{
+  "$schema": "./search-suggestion-test-scenario-schema.json",
+  "description": "Comprehensive test with multiple data sources including bookmarks, favorites, history, tabs, and API suggestions",
+  "input": {
+    "query": "duck",
+    "tabIdInitiatingSearch": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+    "apiSuggestions": [
+      { "phrase": "duckduckgo" },
+      { "phrase": "duck dynasty" },
+      { "phrase": "duck tape" },
+      { "phrase": "duck soup" },
+      { "phrase": "duck tales" },
+      { "phrase": "duck hunting season" },
+      { "phrase": "duck typing" },
+      { "phrase": "duck duck goose game" }
+    ],
+    "bookmarks": [
+      {
+        "uri": "https://duckduckgo.com/app",
+        "title": "Download DuckDuckGo App",
+        "isFavorite": false
+      },
+      {
+        "uri": "https://duck.com/help",
+        "title": "DuckDuckGo Help Center",
+        "isFavorite": false
+      },
+      {
+        "uri": "https://duckduckgo.com/spread",
+        "title": "Spread DuckDuckGo",
+        "isFavorite": true
+      }
+    ],
+    "history": [
+      {
+        "uri": "https://duckduckgo.com/",
+        "title": "DuckDuckGo — Privacy, simplified.",
+        "visitCount": 45
+      },
+      {
+        "uri": "https://duckduckgo.com/settings",
+        "title": "DuckDuckGo Settings",
+        "visitCount": 5
+      },
+      {
+        "uri": "https://duckduckgo.com/privacy",
+        "title": "Privacy Policy – DuckDuckGo",
+        "visitCount": 2
+      },
+      {
+        "uri": "https://duckduckgo.com/about",
+        "title": "About DuckDuckGo",
+        "visitCount": 1
+      },
+      {
+        "uri": "https://duck.com/",
+        "title": "DuckDuckGo — Privacy, simplified.",
+        "visitCount": 3
+      },
+      {
+        "uri": "https://duckduckg.com/",
+        "title": "DuckDuckGo (typo)",
+        "visitCount": 1,
+        "failedToLoad": true
+      },
+      {
+        "uri": "https://theduckwebsite.com/",
+        "title": "The Duck Website - All About Ducks",
+        "visitCount": 1
+      }
+    ],
+    "pinnedTabs": [],
+    "windows": [
+      {
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "7fd05bb0-10a2-4c38-bb0f-57ffe76bef3a",
+            "uri": "https://duckduckgo.com/settings",
+            "title": "DuckDuckGo Settings"
+          },
+          {
+            "tabId": "eaf6e9de-5376-4f9c-9b4d-79a6b1135bb5",
+            "uri": "https://duckduckgo.com/app?origin=funnel_app_ios",
+            "title": "Download the DuckDuckGo app"
+          },
+          {
+            "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+            "uri": "duck://newtab",
+            "title": "New Tab"
+          }
+        ]
+      }
+    ],
+    "ignoredUris": [
+      "duckduckg.com"
+    ]
+  },
+  "expectations": {
+    "topHits": [
+      {
+        "type": "historyEntry",
+        "title": "DuckDuckGo — Privacy, simplified.",
+        "subtitle": "",
+        "uri": "https://duckduckgo.com/",
+        "score": 2355245
+      },
+      {
+        "type": "historyEntry",
+        "title": "DuckDuckGo — Privacy, simplified.",
+        "subtitle": "",
+        "uri": "https://duck.com/",
+        "score": 2355203
+      }
+    ],
+    "searchSuggestions": [
+      {
+        "type": "phrase",
+        "title": "duckduckgo",
+        "uri": "https://duckduckgo.com/?q=duckduckgo",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "duck dynasty",
+        "uri": "https://duckduckgo.com/?q=duck+dynasty",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "duck tape",
+        "uri": "https://duckduckgo.com/?q=duck+tape",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "duck soup",
+        "uri": "https://duckduckgo.com/?q=duck+soup",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "duck tales",
+        "uri": "https://duckduckgo.com/?q=duck+tales",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "duck hunting season",
+        "uri": "https://duckduckgo.com/?q=duck+hunting+season",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "duck typing",
+        "uri": "https://duckduckgo.com/?q=duck+typing",
+        "score": 0
+      }
+    ],
+    "localSuggestions": [
+      {
+        "type": "openTab",
+        "title": "DuckDuckGo Settings",
+        "subtitle": "",
+        "uri": "https://duckduckgo.com/settings",
+        "score": 307205,
+        "tabId": "7fd05bb0-10a2-4c38-bb0f-57ffe76bef3a"
+      },
+      {
+        "type": "historyEntry",
+        "title": "Privacy Policy – DuckDuckGo",
+        "subtitle": "",
+        "uri": "https://duckduckgo.com/privacy",
+        "score": 307202
+      },
+      {
+        "type": "historyEntry",
+        "title": "About DuckDuckGo",
+        "subtitle": "",
+        "uri": "https://duckduckgo.com/about",
+        "score": 307201
+      }
+    ]
+  },
+  "platform": "mobile"
+}

@@ -1,0 +1,98 @@
+{
+  "$schema": "./search-suggestion-test-scenario-schema.json",
+  "description": "Top Hits History Rules test: history entries are only included in top hits if they have > 3 visits or are root domains",
+  "input": {
+    "query": "his",
+    "tabIdInitiatingSearch": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+    "apiSuggestions": [
+      {
+        "phrase": "history channel"
+      },
+      {
+        "phrase": "history com"
+      }
+    ],
+    "bookmarks": [],
+    "history": [
+      {
+        "uri": "https://www.history.com/",
+        "title": "HISTORY | Watch Full Episodes of Your Favorite Shows",
+        "visitCount": 2
+      },
+      {
+        "uri": "https://www.historictours.com/subpage.html",
+        "title": "Historic Tours Subpage",
+        "visitCount": 6
+      },
+      {
+        "uri": "https://historian.org/",
+        "title": "Historian.org - Root domain with low visits",
+        "visitCount": 1
+      }
+    ],
+    "pinnedTabs": [],
+    "windows": [
+      {
+        "windowId": "c6d47aa2-8c1a-4c50-8877-3745bd1865fb",
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+            "uri": "duck://newtab",
+            "title": "New Tab"
+          }
+        ]
+      }
+    ],
+    "ignoredUris": []
+  },
+  "expectations": {
+    "topHits": [
+      {
+        "type": "historyEntry",
+        "title": "HISTORY | Watch Full Episodes of Your Favorite Shows",
+        "subtitle": "history.com",
+        "uri": "https://www.history.com/",
+        "score": 2355202
+      },
+      {
+        "type": "historyEntry",
+        "title": "Historian.org - Root domain with low visits",
+        "subtitle": "historian.org",
+        "uri": "https://historian.org/",
+        "score": 2355201
+      }
+    ],
+    "searchSuggestions": [
+      {
+        "type": "phrase",
+        "title": "history channel",
+        "uri": "https://duckduckgo.com/?q=history+channel",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "history com",
+        "uri": "https://duckduckgo.com/?q=history+com",
+        "score": 0
+      }
+    ],
+    "localSuggestions": [
+      {
+        "type" : "internalPage",
+        "title" : "History",
+        "subtitle" : "DuckDuckGo",
+        "uri" : "duck:\/\/history",
+        "score" : 2355200
+      },
+      {
+        "type": "historyEntry",
+        "title": "Historic Tours Subpage",
+        "subtitle": "historictours.com/subpage.html",
+        "uri": "https://www.historictours.com/subpage.html",
+        "score": 307206
+      }
+    ]
+  },
+  "platform": "desktop"
+}

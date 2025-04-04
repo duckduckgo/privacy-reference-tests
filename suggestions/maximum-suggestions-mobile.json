@@ -1,0 +1,201 @@
+{
+  "$schema": "./search-suggestion-test-scenario-schema.json",
+  "description": "Maximum Suggestions Enforcement test for mobile: the algorithm should adhere to the maximum suggestion counts (topHits = 2, total = 12)",
+  "input": {
+    "query": "a",
+    "tabIdInitiatingSearch": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+    "apiSuggestions": [
+      {
+        "phrase": "amazon"
+      },
+      {
+        "phrase": "apple"
+      },
+      {
+        "phrase": "asos"
+      },
+      {
+        "phrase": "aol"
+      },
+      {
+        "phrase": "airbnb"
+      },
+      {
+        "phrase": "att"
+      },
+      {
+        "phrase": "autozone"
+      },
+      {
+        "phrase": "american airlines"
+      },
+      {
+        "phrase": "amazon prime"
+      },
+      {
+        "phrase": "apple store"
+      },
+      {
+        "phrase": "apartments.com"
+      },
+      {
+        "phrase": "alaska airlines"
+      },
+      {
+        "phrase": "american express"
+      },
+      {
+        "phrase": "adidas"
+      },
+      {
+        "phrase": "app store"
+      }
+    ],
+    "bookmarks": [
+      {
+        "uri": "https://www.amazon.com/",
+        "title": "Amazon.com: Online Shopping",
+        "isFavorite": true
+      },
+      {
+        "uri": "https://www.apple.com/",
+        "title": "Apple",
+        "isFavorite": false
+      }
+    ],
+    "history": [
+      {
+        "uri": "https://www.asos.com/",
+        "title": "ASOS | Online Shopping for the Latest Clothes & Fashion",
+        "visitCount": 15
+      },
+      {
+        "uri": "https://www.airbnb.com/",
+        "title": "Airbnb: Vacation Rentals, Cabins, Beach Houses & More",
+        "visitCount": 10
+      },
+      {
+        "uri": "https://www.att.com/",
+        "title": "AT&T Official Site",
+        "visitCount": 8
+      },
+      {
+        "uri": "https://www.autozone.com/",
+        "title": "AutoZone - Auto Parts, Accessories, and Advice",
+        "visitCount": 7
+      },
+      {
+        "uri": "https://www.adidas.com/",
+        "title": "adidas Official Website",
+        "visitCount": 6
+      }
+    ],
+    "pinnedTabs": [],
+    "windows": [
+      {
+        "windowId": "c6d47aa2-8c1a-4c50-8877-3745bd1865fb",
+        "type": "fullyFeatured",
+        "tabs": [
+          {
+            "tabId": "1d1fffb0-6bec-4263-adad-22016d6f2275",
+            "uri": "https://www.aol.com/",
+            "title": "AOL - News, Email and Search"
+          },
+          {
+            "tabId": "2d1fffb0-6bec-4263-adad-22016d6f2275",
+            "uri": "https://www.aa.com/",
+            "title": "American Airlines - Airline Tickets and Cheap Flights"
+          },
+          {
+            "tabId": "f63c4963-de07-411b-897c-a40bb05fa7e2",
+            "uri": "duck://newtab",
+            "title": "New Tab"
+          }
+        ]
+      }
+    ],
+    "ignoredUris": []
+  },
+  "expectations": {
+    "topHits": [
+      {
+        "type": "historyEntry",
+        "title": "ASOS | Online Shopping for the Latest Clothes & Fashion",
+        "subtitle": "",
+        "uri": "https://www.asos.com/",
+        "score": 2355215
+      },
+      {
+        "type": "historyEntry",
+        "title": "Airbnb: Vacation Rentals, Cabins, Beach Houses & More",
+        "subtitle": "",
+        "uri": "https://www.airbnb.com/",
+        "score": 2355210
+      }
+    ],
+    "searchSuggestions": [
+      {
+        "type": "phrase",
+        "title": "amazon",
+        "uri": "https://duckduckgo.com/?q=amazon",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "apple",
+        "uri": "https://duckduckgo.com/?q=apple",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "asos",
+        "uri": "https://duckduckgo.com/?q=asos",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "aol",
+        "uri": "https://duckduckgo.com/?q=aol",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "airbnb",
+        "uri": "https://duckduckgo.com/?q=airbnb",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "att",
+        "uri": "https://duckduckgo.com/?q=att",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "autozone",
+        "uri": "https://duckduckgo.com/?q=autozone",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "american airlines",
+        "uri": "https://duckduckgo.com/?q=american+airlines",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "amazon prime",
+        "uri": "https://duckduckgo.com/?q=amazon+prime",
+        "score": 0
+      },
+      {
+        "type": "phrase",
+        "title": "apple store",
+        "uri": "https://duckduckgo.com/?q=apple+store",
+        "score": 0
+      }
+    ],
+    "localSuggestions": []
+  },
+  "platform": "mobile"
+}

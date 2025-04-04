@@ -3,7 +3,9 @@ const fs = require('fs');
 const path = require('path');
 const { exit } = require('process');
 const Ajv = require('ajv').default;
+const addFormats = require('ajv-formats');
 const ajv = new Ajv();
+addFormats(ajv);
 const checkTrackerRadar = require('./helpers/tracker-radar-checks');
 
 const FOLDER_FORMAT = /^([a-z]+\-)*[a-z]+$/;
@@ -34,7 +36,14 @@ dirs.forEach(dir => {
 
     featuresCount++;
 
-    const testFiles = glob.sync("/**/?(*_)tests.json", { root: path.resolve(root, featureFolderName) });
+    const testFiles = featureFolderName === 'suggestions'
+        ? glob.sync("/**/*.json", {
+            root: path.resolve(root, featureFolderName),
+            ignore: "/**/*schema.json"
+          })
+        : glob.sync("/**/?(*_)tests.json", {
+            root: path.resolve(root, featureFolderName)
+          });
 
     if (testFiles.length === 0) {
         console.error(`❌ tests file missing in the feature folder ${featureFolderName}`);
@@ -53,13 +62,32 @@ dirs.forEach(dir => {
 
         const testFileObject = JSON.parse(fs.readFileSync(testFile));
 
-        if (!testValidate(testFileObject)) {
+        if (testFileObject['$schema']) {
+            const schemaPath = path.resolve(path.dirname(testFile), testFileObject['$schema']);
+            try {
+                const customSchema = JSON.parse(fs.readFileSync(schemaPath));
+                const customValidate = ajv.compile(customSchema);
+
+                if (!customValidate(testFileObject)) {
+                    console.error(` ❌ ${testFile} doesn't follow the custom schema format:`);
+                    console.error(customValidate.errors.map(item => `  - ${item.instancePath}: ${item.message}`).join('\n'));
+                    exit(1);
+                }
+            } catch (error) {
+                console.error(` ❌ Failed to load or parse custom schema ${schemaPath}:`, error.message);
+                exit(1);
+            }
+        } else if (!testValidate(testFileObject)) {
             console.error(` ❌ ${testFile} doesn't follow the expected format:`);
             console.error(testValidate.errors.map(item => `  - ${item.instancePath}: ${item.message}`).join('\n'));
             exit(1);
         }
 
-        Object.keys(testFileObject).forEach(set => testsCount += testFileObject[set].tests.length);
+        if (featureFolderName === 'suggestions') {
+            testsCount += 1; // Suggestion tests have 1 test per file
+        } else {
+            Object.keys(testFileObject).forEach(set => testsCount += testFileObject[set].tests.length);
+        }
     });
 
     const trackerRadarFiles = glob.sync("/**/tracker_radar*.json", { root: path.resolve(root, featureFolderName) });;

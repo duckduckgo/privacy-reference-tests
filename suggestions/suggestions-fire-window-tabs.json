@@ -1,0 +1,55 @@
+{
+  "$schema": "./search-suggestion-test-scenario-schema.json",
+  "description": "Test standard burner tab provider returns current session burner tabs",
+  "input": {
+    "query": "exam",
+    "tabIdInitiatingSearch": "44cb49ec-eaae-451c-a353-2009124d247b",
+    "bookmarks": [], "//": "Assuming no bookmarks are needed for this test",
+    "history": [],   "//": "Assuming no history entries are needed for this test",
+    "pinnedTabs": [
+      { "tabId": "c23dec90-2ca7-4324-8e81-e7278a09c58f", "title": "Pinned tab 1", "uri": "https://pinned-example.com" },
+      { "tabId": "07a81f08-c5da-4f1c-ba8c-0e50e2b05505", "title": "Pinned tab 2", "uri": "https://pinned-example-2.com" }
+    ],
+    "windows": [ 
+      {
+        "type": "fullyFeatured",
+        "tabs": [
+          { "tabId": "fcc23dee-c9db-4325-a92a-89611bdf73b6", "title": "Example", "uri": "https://example.com" },
+          { "tabId": "b2efe57d-4f4c-48a9-8204-4b101610107c", "title": "Selected Tab", "uri": "https://another-example.com" }
+        ]
+      },
+      {
+        "type": "fullyFeatured",
+        "tabs": [
+          { "tabId": "f53818a0-96bd-4a8b-8c8a-8a4fd72e005f", "title": "Yet Another Example", "uri": "https://yet-another-example.com" },
+          { "tabId": "12d7d048-1987-4488-823b-d61de0853fc1", "title": "Duplicate Example", "uri": "https://yet-another-example.com" }
+        ]
+      },
+      {
+        "type": "fireWindow",
+        "tabs": [
+          { "tabId": "a18d044d-1a5c-46c9-88b5-875634f58ec1", "title": "Burner example", "uri": "https://burner-example.com" },
+          { "tabId": "3f762d30-83ed-49fb-b588-8239d6a5a5fa", "title": "Burner example 2", "uri": "https://burner-example-2.com" }
+        ]
+      },
+      {
+        "type": "fireWindow",
+        "tabs": [
+          { "tabId": "44cb49ec-eaae-451c-a353-2009124d247b", "title": "Burner exa 3", "uri": "https://burner-exa-3.com" },
+          { "tabId": "186eb128-767f-4053-a6e1-8a9532ae1ad3", "title": "Burner example 4", "uri": "https://burner-example-4.com" },
+          { "tabId": "fbd713a1-a7a5-4843-8b50-3775f2ce1299", "title": "Burner example 5", "uri": "https://burner-example-5.com" }
+        ]
+      }
+    ],
+    "apiSuggestions": [],  "//": "Assuming no API suggestions are needed for this test"
+  },
+  "expectations": {
+    "topHits": [],
+    "searchSuggestions": [],
+    "localSuggestions": [
+        { "type": "openTab", "title": "Burner example 4", "subtitle": "burner-example-4.com", "score": 153600, "uri": "https://burner-example-4.com", "tabId": "186eb128-767f-4053-a6e1-8a9532ae1ad3" },
+        { "type": "openTab", "title": "Burner example 5", "subtitle": "burner-example-5.com", "score": 153600, "uri": "https://burner-example-5.com", "tabId": "fbd713a1-a7a5-4843-8b50-3775f2ce1299" }
+    ]
+  },
+  "platform": "desktop"
+}
