@@ -9,7 +9,7 @@
         "phrase": "aljerraza english"
       },
       {
-        "phrase": "www.aljazeera.com",
+        "phrase": "aljazeera.com",
         "isNav": true
       },
       {
@@ -84,9 +84,9 @@
             {
                 "score": 0,
                 "subtitle": "",
-                "title": "www.aljazeera.com",
+                "title": "aljazeera.com",
                 "type": "website",
-                "uri": "http://www.aljazeera.com"
+                "uri": "http://aljazeera.com"
             }
         ],
         "searchSuggestions": [
