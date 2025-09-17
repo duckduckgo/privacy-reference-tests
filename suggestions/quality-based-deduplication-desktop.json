@@ -103,16 +103,16 @@
       },
       {
         "type": "internalPage",
-        "title": "Settings → Duck Player",
+        "title": "Settings → Subscribe to DuckDuckGo",
         "subtitle": "DuckDuckGo",
-        "uri": "duck://settings/duckplayer",
+        "uri": "duck://settings/privacyPro",
         "score": 102400
       },
       {
         "type": "internalPage",
-        "title": "Settings → DuckDuckGo on Other Platforms",
+        "title": "Settings → Duck.ai",
         "subtitle": "DuckDuckGo",
-        "uri": "duck://settings/https://duckduckgo.com/app/devices%3Forigin=funnel_app_macos",
+        "uri": "duck://settings/paidAIChat",
         "score": 102400
       }
     ]
