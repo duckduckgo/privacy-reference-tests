@@ -7,6 +7,10 @@ This folder contains tests for the following features:
 - Tracker allowlist feature in the  Privacy Configuration - https://app.asana.com/0/1198207348643509/1199981227466169
 - Surrogates - https://app.asana.com/0/1198207348643509/1199093921854088/f
 
+⚠️ Please note! There are some similarly-named files in this directory. Please
+refer to the following sections to identify whether the file belongs to the
+blocklist tests, or tracker allowlist tests.
+
 ## Structure
 
 ### Tracker blocking, CNAME cloaking and surrogates
@@ -28,11 +32,13 @@ Test suite specific fields:
 
 For tests with `expectAction == redirect` to be valid you need to assert either `expectRedirect` and/or `expectExpression` (at least one). The reason we have two different fields is because some platforms (like macOS/iOS) cannot assert against `expectRedirect`.
 
-#### Platform exceptions
-
-- "ports are ignored when matching rules" disabled for Apple platform ([bug report](https://app.asana.com/0/1163321984198618/1201849181617632/f))
-
 ### Privacy config allowlist
+
+These tests are intended to check correct behaviour of the Tracker Allowlist,
+which is part of the remote configuration, and can be found in the
+[privacy-configuration](https://github.com/duckduckgo/privacy-configuration/blob/main/features/tracker-allowlist.json).
+The Tracker Allowlist is intended as a means of quickly mitigating breakage by
+disabling blocking of particular request patterns, on one or more sites.
 
 Files in the folder:
 - `tracker_allowlist_matching_tests.json` - test for tracker allowlist feature - ⚠️ those tests don't follow the format used by other tests ⚠️
@@ -48,3 +54,4 @@ Test suite specific fields:
 
 - android-browser: Blocks when CNAME is same-entity. https://app.asana.com/0/414730916066338/1203532296782616/f
 - ios-browser: Exceptions for options2 trackers caused by inability to construct rules from current tds as the last ignore rule invalidates all previous rules. https://app.asana.com/0/1203790657351911/1204149290597759/f; One exception for tracker.test is because Apple platforms are not going to receive any trackers with default action block and options - it is again due to inability to construct rules with the current algorithm. We will follow up in https://app.asana.com/0/1200443608678338/1204431436175798/f; Some exceptions for tests that use request types other than image or stylesheet. Scoped to be fixed: https://app.asana.com/0/0/1204643428963159/f
+- "ports are ignored when matching rules" disabled for Apple platform ([bug report](https://app.asana.com/0/1163321984198618/1201849181617632/f))
