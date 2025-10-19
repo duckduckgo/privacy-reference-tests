@@ -1,6 +1,15 @@
 {
     "readme": "This configuration has fingerprinting protections only with some exceptions",
     "features": {
+        "apiManipulation": {
+            "exceptions": [
+                {
+                    "domain": "hardware-exception.test",
+                    "reason": "Disable hardware APIs protection"
+                }
+            ],
+            "state": "enabled"
+        },
         "fingerprintingBattery": {
             "exceptions": [
                 {
