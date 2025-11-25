@@ -136,12 +136,6 @@
         "title": "app.asam",
         "uri": "https://duckduckgo.com/?q=app.asam",
         "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "app.asanastatus.com",
-        "uri": "https://duckduckgo.com/?q=app.asanastatus.com",
-        "score": 0
       }
     ],
     "localSuggestions": [

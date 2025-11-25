@@ -235,30 +235,6 @@
         "title": "macbook",
         "uri": "https://duckduckgo.com/?q=macbook",
         "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "macro",
-        "uri": "https://duckduckgo.com/?q=macro",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "macaulay culkin",
-        "uri": "https://duckduckgo.com/?q=macaulay+culkin",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "machu picchu",
-        "uri": "https://duckduckgo.com/?q=machu+picchu",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "mac miller",
-        "uri": "https://duckduckgo.com/?q=mac+miller",
-        "score": 0
       }
     ],
     "localSuggestions": [

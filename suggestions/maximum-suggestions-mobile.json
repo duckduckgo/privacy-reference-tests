@@ -163,36 +163,6 @@
         "title": "airbnb",
         "uri": "https://duckduckgo.com/?q=airbnb",
         "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "att",
-        "uri": "https://duckduckgo.com/?q=att",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "autozone",
-        "uri": "https://duckduckgo.com/?q=autozone",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "american airlines",
-        "uri": "https://duckduckgo.com/?q=american+airlines",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "amazon prime",
-        "uri": "https://duckduckgo.com/?q=amazon+prime",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "apple store",
-        "uri": "https://duckduckgo.com/?q=apple+store",
-        "score": 0
       }
     ],
     "localSuggestions": []

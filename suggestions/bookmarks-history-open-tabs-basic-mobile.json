@@ -272,24 +272,6 @@
         "title": "apple tv",
         "uri": "https://duckduckgo.com/?q=apple+tv",
         "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "app store",
-        "uri": "https://duckduckgo.com/?q=app+store",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "apple stock",
-        "uri": "https://duckduckgo.com/?q=apple+stock",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "appfolio",
-        "uri": "https://duckduckgo.com/?q=appfolio",
-        "score": 0
       }
     ],
     "localSuggestions": [

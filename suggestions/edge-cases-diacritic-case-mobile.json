@@ -128,12 +128,6 @@
         "title": "café con leche",
         "uri": "https://duckduckgo.com/?q=caf%C3%A9+con+leche",
         "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "café astrology",
-        "uri": "https://duckduckgo.com/?q=caf%C3%A9+astrology",
-        "score": 0
       }
     ],
     "localSuggestions": [

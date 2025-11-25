@@ -155,24 +155,6 @@
         "title": "git reset",
         "uri": "https://duckduckgo.com/?q=git+reset",
         "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "git clone",
-        "uri": "https://duckduckgo.com/?q=git+clone",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "git commit",
-        "uri": "https://duckduckgo.com/?q=git+commit",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "git push",
-        "uri": "https://duckduckgo.com/?q=git+push",
-        "score": 0
       }
     ],
     "localSuggestions": [
