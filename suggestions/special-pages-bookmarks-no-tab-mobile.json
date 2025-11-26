@@ -129,24 +129,6 @@
         "title": "bookmyshow",
         "uri": "https://duckduckgo.com/?q=bookmyshow",
         "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "boohooman",
-        "uri": "https://duckduckgo.com/?q=boohooman",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "bookings",
-        "uri": "https://duckduckgo.com/?q=bookings",
-        "score": 0
-      },
-      {
-        "type": "phrase",
-        "title": "bootstrap",
-        "uri": "https://duckduckgo.com/?q=bootstrap",
-        "score": 0
       }
     ],
     "localSuggestions": [
