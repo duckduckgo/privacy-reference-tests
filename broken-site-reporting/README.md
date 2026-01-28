@@ -31,6 +31,7 @@ Test suite specific fields:
 - `jsPerformance` - string - optional field containing the js performance value measured on the page
 - `locale` - string - optional field containing the locale of the application (e.g. 'en')
 - `userRefreshCount` - string - optional field containing the number of times the user refreshed the current page
+- `breakageData` - string - optional field containing pre-encoded breakage data from content scripts (already encoded, platforms MUST NOT re-encode and MUST pass this value AS-IS to the report URL)
 - `expectReportURLPrefix` - string - resulting report URL should be prefixed with this string
 - `expectReportURLParams` - Array of `{name: '', value: ''}` objects - resulting report URL should have the following set of URL parameters with matching values
     - `value` is an optional check for an exact value match.
@@ -64,7 +65,8 @@ for $testSet in test.json
         manufacturer=$test.manufacturer,
         model=$test.model,
         os=$test.os,
-        gpcEnabled=$test.gpcEnabled
+        gpcEnabled=$test.gpcEnabled,
+        breakageData=$test.breakageData
     )
 
     if $test.expectReportURLPrefix
@@ -105,7 +107,8 @@ for $testSet in test.json
             manufacturer=$report.manufacturer,
             model=$report.model,
             os=$report.os,
-            gpcEnabled=$report.gpcEnabled
+            gpcEnabled=$report.gpcEnabled,
+            breakageData=$report.breakageData
         )
 
         if $report.expectReportURLPrefix

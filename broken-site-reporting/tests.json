@@ -495,6 +495,54 @@
                     "safari-extension",
                     "windows-browser"
                 ]
+            },
+            {
+                "name": "Test breakageData is passed as-is without double-encoding (simple)",
+                "siteURL": "https://example.test/",
+                "wasUpgraded": false,
+                "category": "content",
+                "blockedTrackers": [],
+                "surrogates": [],
+                "atb": "v123-456g",
+                "blocklistVersion": "abc123",
+                "protectionsEnabled": true,
+                "breakageData": "%7B%22test%22%3A%22value%22%7D",
+                "expectReportURLPrefix": "https://improving.duckduckgo.com/t/epbf",
+                "expectReportURLParams": [
+                    {"name": "category", "value": "content"},
+                    {"name": "siteUrl", "value": "https%3A%2F%2Fexample.test%2F"},
+                    {"name": "upgradedHttps", "value": "false"},
+                    {"name": "tds", "value": "abc123"},
+                    {"name": "blockedTrackers", "value": ""},
+                    {"name": "surrogates", "value": ""},
+                    {"name": "protectionsState", "value": "true"},
+                    {"name": "breakageData", "value": "%7B%22test%22%3A%22value%22%7D"}
+                ],
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Test breakageData is passed as-is without double-encoding (complex with special chars and URL-like value)",
+                "siteURL": "https://example.test/",
+                "wasUpgraded": false,
+                "category": "content",
+                "blockedTrackers": [],
+                "surrogates": [],
+                "atb": "v123-456g",
+                "blocklistVersion": "abc123",
+                "protectionsEnabled": true,
+                "breakageData": "%7B%22data%22%3A%7B%22nested%22%3A%7B%22value1-hyphens%22%3Atrue%2C%22value2Array%7B%7D%22%3A%5B%22.a-value%22%5D%7D%7D%2C%20%22urlLike%22%3A%20%22https%3A%2F%2Fexample.com%2Fpath%3Fquery%3Dvalue%26other%3D123%22%7D",
+                "expectReportURLPrefix": "https://improving.duckduckgo.com/t/epbf",
+                "expectReportURLParams": [
+                    {"name": "category", "value": "content"},
+                    {"name": "siteUrl", "value": "https%3A%2F%2Fexample.test%2F"},
+                    {"name": "upgradedHttps", "value": "false"},
+                    {"name": "tds", "value": "abc123"},
+                    {"name": "blockedTrackers", "value": ""},
+                    {"name": "surrogates", "value": ""},
+                    {"name": "protectionsState", "value": "true"},
+                    {"name": "breakageData", "value": "%7B%22data%22%3A%7B%22nested%22%3A%7B%22value1-hyphens%22%3Atrue%2C%22value2Array%7B%7D%22%3A%5B%22.a-value%22%5D%7D%7D%2C%20%22urlLike%22%3A%20%22https%3A%2F%2Fexample.com%2Fpath%3Fquery%3Dvalue%26other%3D123%22%7D"}
+                ],
+                "exceptPlatforms": []
             }
         ]
     }
