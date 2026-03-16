@@ -150,5 +150,11 @@
         "site": "https://testsite.com",
         "request": "http://a.b.c.videos.allowlist-tracker-2.com/a.js",
         "isAllowlisted": true
+    },
+    {
+        "description": "simple wildcard should match",
+        "site": "https://testsite.com",
+        "request": "http://allowlist-tracker-2.com/abc/def/wildcard.js",
+        "isAllowlisted": true
     }
 ]

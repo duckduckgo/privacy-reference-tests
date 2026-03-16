@@ -29,6 +29,11 @@
                 "rule": "allowlist-tracker-2.com/login.js",
                 "domains": ["<all>"],
                 "reason": "match single resource on all sites"
+            },
+            {
+                "rule": "allowlist-tracker-2.com/.*/wildcard.js",
+                "domains": ["<all>"],
+                "reason": "match with simple wildcard"
             }
         ]
     },
