@@ -23,6 +23,7 @@ Test suite specific fields:
 - frameURL - string - URL of an iframe in which the feature is operating (optional - if not set assume main frame context)
 - scriptURL - string - URL of script that is trying to use a protected feature (optional - if not set assume no script URL)
 - expectFeatureEnabled - bool - if feature is expected to be disabled or not
+- platformVersion - string - (optional) string to be considered as the testing platform's app version for use with `minSupportedVerison` tests
 
 ## Pseudo-code implementation
 
@@ -35,7 +36,8 @@ for $testSet in test.json
         feature=$test.featureName,
         url=$test.siteURL,
         frame=$test.frameURL,
-        script=$test.scriptURL
+        script=$test.scriptURL,
+        platformVersion=$test.platformVersion?
     )
 
     expect($enabled === $test.expectFeatureEnabled)

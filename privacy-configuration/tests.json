@@ -656,5 +656,28 @@
                 "exceptPlatforms": []
             }
         ]
+    },
+    "minSupportedVersion": {
+        "name": "Features are expected to be disabled if the platform version is too low",
+        "desc": "Those tests use config14reference.json where features contain a minSupportedVresion",
+        "referenceConfig": "config4_reference.json",
+        "tests": [
+            {
+                "name": "Feature should be disabled if the platform version is too low",
+                "featureName": "contentBlocking",
+                "siteURL": "https://example.org",
+                "expectFeatureEnabled": false,
+                "platformVersion": "2022.5.30",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Feature should be enabled if the platform version is higher than the minSupportedVersion",
+                "featureName": "contentBlocking",
+                "siteURL": "https://example.org",
+                "expectFeatureEnabled": true,
+                "platformVersion": "2022.6.15",
+                "exceptPlatforms": []
+            }
+        ]
     }
 }
