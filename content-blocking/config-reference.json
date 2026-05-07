@@ -1,0 +1,59 @@
+{
+    "version": 1,
+    "features": {
+        "contentBlocking": {
+            "state": "enabled",
+            "exceptions": [
+                {
+                    "domain": "content-blocking-exception.example",
+                    "reason": "Example content blocking exception"
+                }
+            ]
+        },
+        "trackerAllowlist": {
+            "state": "enabled",
+            "settings": {
+                "allowlistedTrackers": {
+                    "tracker.example": {
+                        "rules": [
+                            {
+                                "rule": "tracker.example/allowed.js",
+                                "domains": ["allowlisted-website.example"],
+                                "reason": "Example tracker allowlist entry on a single site"
+                            },
+                            {
+                                "rule": "tracker.example/host-allowed.js",
+                                "domains": ["host.allowlisted-host.example"],
+                                "reason": "Example tracker allowlist entry on a specific subdomain"
+                            }
+                        ]
+                    }
+                }
+            },
+            "exceptions": []
+        },
+        "requestBlocklist": {
+            "state": "enabled",
+            "settings": {
+                "blockedRequests": {
+                    "request-blocklist.example": {
+                        "rules": [
+                            {
+                                "rule": "request-blocklist.example/block",
+                                "domains": ["<all>"],
+                                "reason": "Example request blocklist rule"
+                            }
+                        ]
+                    }
+                }
+            },
+            "exceptions": []
+        }
+    },
+    "unprotectedTemporary": [
+        {
+            "domain": "global-exception.example",
+            "reason": "This exception should disable all features"
+        }
+    ]
+}

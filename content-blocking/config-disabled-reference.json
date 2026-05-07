@@ -1,0 +1,34 @@
+{
+    "version": 1,
+    "features": {
+        "contentBlocking": {
+            "state": "disabled",
+            "exceptions": []
+        },
+        "trackerAllowlist": {
+            "state": "enabled",
+            "settings": {
+                "allowlistedTrackers": {}
+            },
+            "exceptions": []
+        },
+        "requestBlocklist": {
+            "state": "enabled",
+            "settings": {
+                "blockedRequests": {
+                    "request-blocklist.example": {
+                        "rules": [
+                            {
+                                "rule": "request-blocklist.example/block",
+                                "domains": ["<all>"],
+                                "reason": "Example request blocklist rule"
+                            }
+                        ]
+                    }
+                }
+            },
+            "exceptions": []
+        }
+    },
+    "unprotectedTemporary": []
+}

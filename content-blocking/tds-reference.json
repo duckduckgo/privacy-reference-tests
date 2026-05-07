@@ -1,0 +1,60 @@
+{
+    "trackers": {
+        "tracker.example": {
+            "domain": "tracker.example",
+            "owner": {
+                "name": "Tracker Entity",
+                "displayName": "Tracker Entity",
+                "privacyPolicy": "",
+                "url": ""
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "block"
+        },
+        "ignore-tracker.example": {
+            "domain": "ignore-tracker.example",
+            "owner": {
+                "name": "Ignore Entity",
+                "displayName": "Ignore Entity",
+                "privacyPolicy": "",
+                "url": ""
+            },
+            "prevalence": 0.1,
+            "fingerprinting": 3,
+            "cookies": 0.1,
+            "categories": [],
+            "default": "ignore",
+            "rules": [
+                {
+                    "rule": "ignore-tracker\\.example/block-this"
+                }
+            ]
+        }
+    },
+    "entities": {
+        "Tracker Entity": {
+            "domains": [
+                "tracker.example"
+            ],
+            "prevalence": 0.1,
+            "displayName": "Tracker Entity"
+        },
+        "Ignore Entity": {
+            "domains": [
+                "ignore-tracker.example"
+            ],
+            "prevalence": 0.1,
+            "displayName": "Ignore Entity"
+        }
+    },
+    "cnames": {
+        "alias.cname.example": "tracker.example"
+    },
+    "domains": {
+        "tracker.example": "Tracker Entity",
+        "ignore-tracker.example": "Ignore Entity"
+    }
+}

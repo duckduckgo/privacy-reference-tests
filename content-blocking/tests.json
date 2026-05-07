@@ -1,0 +1,341 @@
+{
+    "enabled": {
+        "name": "Content blocking enabled",
+        "desc": "Trackers on the blocklist are blocked when contentBlocking is enabled and no exception applies",
+        "referenceConfig": "config-reference.json",
+        "tests": [
+            {
+                "name": "tracker on blocklist is blocked",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "subdomain of tracker on blocklist is blocked",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://sub.tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "default-ignore tracker is not blocked when no rule matches",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://ignore-tracker.example/safe.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "default-ignore tracker is blocked when an explicit rule matches",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://ignore-tracker.example/block-this",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "request not on blocklist is not blocked",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://not-a-tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": null,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "first-party request to tracker is not blocked",
+                "siteURL": "https://tracker.example/",
+                "requestURL": "https://tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "first-party request from subdomain to tracker is not blocked",
+                "siteURL": "https://sub.tracker.example/",
+                "requestURL": "https://tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "CNAME-aliased tracker is blocked",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://alias.cname.example/script.js",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": []
+            }
+        ]
+    },
+    "exceptions": {
+        "name": "Content blocking exceptions",
+        "desc": "Trackers are not blocked on sites listed in contentBlocking.exceptions, unprotectedTemporary, or the user allowlist",
+        "referenceConfig": "config-reference.json",
+        "tests": [
+            {
+                "name": "site in contentBlocking exceptions does not block tracker",
+                "siteURL": "https://content-blocking-exception.example/",
+                "requestURL": "https://tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "subdomain of contentBlocking exception does not block tracker",
+                "siteURL": "https://sub.content-blocking-exception.example/",
+                "requestURL": "https://tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "site in contentBlocking exceptions does not block default-ignore tracker rule",
+                "siteURL": "https://content-blocking-exception.example/",
+                "requestURL": "https://ignore-tracker.example/block-this",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "site in unprotectedTemporary does not block tracker",
+                "siteURL": "https://global-exception.example/",
+                "requestURL": "https://tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "subdomain of unprotectedTemporary does not block tracker",
+                "siteURL": "https://sub.global-exception.example/",
+                "requestURL": "https://tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "user-allowlisted site does not block tracker",
+                "siteURL": "https://user-allowlisted.example/",
+                "requestURL": "https://tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "subdomain of user-allowlisted site does not block tracker",
+                "siteURL": "https://sub.user-allowlisted.example/",
+                "requestURL": "https://tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "non-allowlisted site still blocks tracker",
+                "siteURL": "https://other-website.example/",
+                "requestURL": "https://tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": []
+            }
+        ]
+    },
+    "trackerAllowlist": {
+        "name": "Tracker allowlist interactions",
+        "desc": "The trackerAllowlist exempts specific resources on specific sites without affecting other requests to the same tracker",
+        "referenceConfig": "config-reference.json",
+        "tests": [
+            {
+                "name": "allowlisted resource on matching site is not blocked",
+                "siteURL": "https://allowlisted-website.example/",
+                "requestURL": "https://tracker.example/allowed.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "allowlisted resource on subdomain of matching site is not blocked",
+                "siteURL": "https://sub.allowlisted-website.example/",
+                "requestURL": "https://tracker.example/allowed.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "non-allowlisted resource on matching site is still blocked",
+                "siteURL": "https://allowlisted-website.example/",
+                "requestURL": "https://tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "allowlisted resource on different site is still blocked",
+                "siteURL": "https://other-website.example/",
+                "requestURL": "https://tracker.example/allowed.js",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "allowlist entry scoped to subdomain matches that subdomain",
+                "siteURL": "https://host.allowlisted-host.example/",
+                "requestURL": "https://tracker.example/host-allowed.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "allowlist entry scoped to subdomain does not match base domain",
+                "siteURL": "https://allowlisted-host.example/",
+                "requestURL": "https://tracker.example/host-allowed.js",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": []
+            }
+        ]
+    },
+    "requestBlocklist": {
+        "name": "Request blocklist interactions",
+        "desc": "The requestBlocklist depends on contentBlocking being active. When contentBlocking is enabled and no exception applies, requestBlocklist matches block. When contentBlocking is exempt for the site, requestBlocklist matches do not block. The 'disabled' set covers globally disabling contentBlocking.",
+        "referenceConfig": "config-reference.json",
+        "tests": [
+            {
+                "name": "request matching request blocklist is blocked when contentBlocking is enabled",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://request-blocklist.example/block",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "subdomain request matching request blocklist is blocked when contentBlocking is enabled",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://sub.request-blocklist.example/block",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "request not matching any request blocklist rule is not blocked",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://request-blocklist.example/safe",
+                "requestType": "script",
+                "expectAction": null,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "first-party request matching request blocklist is still blocked",
+                "siteURL": "https://request-blocklist.example/",
+                "requestURL": "https://request-blocklist.example/block",
+                "requestType": "script",
+                "expectAction": "block",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "site in contentBlocking exceptions does not block request blocklist match",
+                "siteURL": "https://content-blocking-exception.example/",
+                "requestURL": "https://request-blocklist.example/block",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "subdomain of contentBlocking exception does not block request blocklist match",
+                "siteURL": "https://sub.content-blocking-exception.example/",
+                "requestURL": "https://request-blocklist.example/block",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "site in unprotectedTemporary does not block request blocklist match",
+                "siteURL": "https://global-exception.example/",
+                "requestURL": "https://request-blocklist.example/block",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "subdomain of unprotectedTemporary does not block request blocklist match",
+                "siteURL": "https://sub.global-exception.example/",
+                "requestURL": "https://request-blocklist.example/block",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "user-allowlisted site does not block request blocklist match",
+                "siteURL": "https://user-allowlisted.example/",
+                "requestURL": "https://request-blocklist.example/block",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "subdomain of user-allowlisted site does not block request blocklist match",
+                "siteURL": "https://sub.user-allowlisted.example/",
+                "requestURL": "https://request-blocklist.example/block",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            }
+        ]
+    },
+    "disabled": {
+        "name": "Content blocking disabled",
+        "desc": "When contentBlocking is globally disabled, neither the tracker blocklist nor the request blocklist block requests",
+        "referenceConfig": "config-disabled-reference.json",
+        "tests": [
+            {
+                "name": "tracker on blocklist is not blocked when feature is disabled",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "subdomain of tracker is not blocked when feature is disabled",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://sub.tracker.example/script.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "default-ignore tracker explicit block rule is not blocked when feature is disabled",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://ignore-tracker.example/block-this",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "CNAME-aliased tracker is not blocked when feature is disabled",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://alias.cname.example/script.js",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "request matching request blocklist is not blocked when feature is disabled",
+                "siteURL": "https://website.example/",
+                "requestURL": "https://request-blocklist.example/block",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "first-party request matching request blocklist is not blocked when feature is disabled",
+                "siteURL": "https://request-blocklist.example/",
+                "requestURL": "https://request-blocklist.example/block",
+                "requestType": "script",
+                "expectAction": "ignore",
+                "exceptPlatforms": []
+            }
+        ]
+    }
+}
