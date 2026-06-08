@@ -1,0 +1,262 @@
+{
+    "bucketAssignment": {
+        "name": "EventHub counter bucket assignment",
+        "desc": "Maps a counter value onto a configured, insertion-ordered set of named buckets. A bucket matches when count >= gte and (lt is absent OR count < lt); the upper bound is exclusive. The first matching bucket (in insertion order) wins. If no bucket matches, the result is null.",
+        "tests": [
+            {
+                "name": "Count 0 matches the first bucket",
+                "count": 0,
+                "buckets": {
+                    "0": { "gte": 0, "lt": 1 },
+                    "1-2": { "gte": 1, "lt": 3 },
+                    "3-5": { "gte": 3, "lt": 6 },
+                    "6-10": { "gte": 6, "lt": 11 },
+                    "11-20": { "gte": 11, "lt": 21 },
+                    "21-39": { "gte": 21, "lt": 40 },
+                    "40+": { "gte": 40 }
+                },
+                "expectBucket": "0",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Count within a range matches that range",
+                "count": 2,
+                "buckets": {
+                    "0": { "gte": 0, "lt": 1 },
+                    "1-2": { "gte": 1, "lt": 3 },
+                    "3-5": { "gte": 3, "lt": 6 },
+                    "6-10": { "gte": 6, "lt": 11 },
+                    "11-20": { "gte": 11, "lt": 21 },
+                    "21-39": { "gte": 21, "lt": 40 },
+                    "40+": { "gte": 40 }
+                },
+                "expectBucket": "1-2",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Upper bound is exclusive (count equal to lt falls in the lower bucket)",
+                "count": 10,
+                "buckets": {
+                    "0": { "gte": 0, "lt": 1 },
+                    "1-2": { "gte": 1, "lt": 3 },
+                    "3-5": { "gte": 3, "lt": 6 },
+                    "6-10": { "gte": 6, "lt": 11 },
+                    "11-20": { "gte": 11, "lt": 21 },
+                    "21-39": { "gte": 21, "lt": 40 },
+                    "40+": { "gte": 40 }
+                },
+                "expectBucket": "6-10",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Lower bound is inclusive (count equal to gte falls in the upper bucket)",
+                "count": 11,
+                "buckets": {
+                    "0": { "gte": 0, "lt": 1 },
+                    "1-2": { "gte": 1, "lt": 3 },
+                    "3-5": { "gte": 3, "lt": 6 },
+                    "6-10": { "gte": 6, "lt": 11 },
+                    "11-20": { "gte": 11, "lt": 21 },
+                    "21-39": { "gte": 21, "lt": 40 },
+                    "40+": { "gte": 40 }
+                },
+                "expectBucket": "11-20",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Count at the open-ended bucket lower bound matches it",
+                "count": 40,
+                "buckets": {
+                    "0": { "gte": 0, "lt": 1 },
+                    "1-2": { "gte": 1, "lt": 3 },
+                    "3-5": { "gte": 3, "lt": 6 },
+                    "6-10": { "gte": 6, "lt": 11 },
+                    "11-20": { "gte": 11, "lt": 21 },
+                    "21-39": { "gte": 21, "lt": 40 },
+                    "40+": { "gte": 40 }
+                },
+                "expectBucket": "40+",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Large count matches the open-ended bucket",
+                "count": 100,
+                "buckets": {
+                    "0": { "gte": 0, "lt": 1 },
+                    "1-2": { "gte": 1, "lt": 3 },
+                    "3-5": { "gte": 3, "lt": 6 },
+                    "6-10": { "gte": 6, "lt": 11 },
+                    "11-20": { "gte": 11, "lt": 21 },
+                    "21-39": { "gte": 21, "lt": 40 },
+                    "40+": { "gte": 40 }
+                },
+                "expectBucket": "40+",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "No matching bucket yields null",
+                "count": 3,
+                "buckets": {
+                    "5-9": { "gte": 5, "lt": 10 }
+                },
+                "expectBucket": null,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Empty bucket set yields null",
+                "count": 5,
+                "buckets": {},
+                "expectBucket": null,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "First matching bucket wins for overlapping ranges (insertion order)",
+                "count": 7,
+                "buckets": {
+                    "broad": { "gte": 0, "lt": 100 },
+                    "narrow": { "gte": 5, "lt": 10 }
+                },
+                "expectBucket": "broad",
+                "exceptPlatforms": []
+            }
+        ]
+    },
+    "stopCounting": {
+        "name": "EventHub counter stop-counting",
+        "desc": "Decides when further counting can no longer change which bucket a value falls into, i.e. the value is in the highest (open-ended) bucket. True when no bucket has a lower bound (gte) greater than the current count. An empty bucket set also stops counting.",
+        "tests": [
+            {
+                "name": "Below the highest bucket keeps counting",
+                "count": 0,
+                "buckets": {
+                    "0": { "gte": 0, "lt": 1 },
+                    "1-2": { "gte": 1, "lt": 3 },
+                    "40+": { "gte": 40 }
+                },
+                "expectShouldStopCounting": false,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Just below the highest bucket keeps counting",
+                "count": 39,
+                "buckets": {
+                    "21-39": { "gte": 21, "lt": 40 },
+                    "40+": { "gte": 40 }
+                },
+                "expectShouldStopCounting": false,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "At the open-ended bucket lower bound stops counting",
+                "count": 40,
+                "buckets": {
+                    "21-39": { "gte": 21, "lt": 40 },
+                    "40+": { "gte": 40 }
+                },
+                "expectShouldStopCounting": true,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Above the open-ended bucket lower bound stops counting",
+                "count": 100,
+                "buckets": {
+                    "40+": { "gte": 40 }
+                },
+                "expectShouldStopCounting": true,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Empty bucket set stops counting",
+                "count": 5,
+                "buckets": {},
+                "expectShouldStopCounting": true,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "A higher bucket still reachable keeps counting",
+                "count": 3,
+                "buckets": {
+                    "5-9": { "gte": 5, "lt": 10 }
+                },
+                "expectShouldStopCounting": false,
+                "exceptPlatforms": []
+            }
+        ]
+    },
+    "attributionPeriod": {
+        "name": "EventHub attribution period calculation",
+        "desc": "Rounds a period-start timestamp (UTC epoch milliseconds) down to the start of the interval of length periodSeconds, expressed as UTC epoch seconds: floor((periodStartMillis / 1000) / periodSeconds) * periodSeconds. This is sent as the pixel's attributionPeriod parameter.",
+        "tests": [
+            {
+                "name": "Daily period rounds down to the start of the UTC day",
+                "periodStartMillis": 1767312060000,
+                "periodSeconds": 86400,
+                "expectAttributionPeriod": 1767312000,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Hourly period rounds down to the start of the UTC hour",
+                "periodStartMillis": 1767374100000,
+                "periodSeconds": 3600,
+                "expectAttributionPeriod": 1767373200,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Sub-minute remainder rounds down to the start of the minute",
+                "periodStartMillis": 1767312030000,
+                "periodSeconds": 60,
+                "expectAttributionPeriod": 1767312000,
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Timestamp already on an interval boundary is unchanged",
+                "periodStartMillis": 1767312000000,
+                "periodSeconds": 86400,
+                "expectAttributionPeriod": 1767312000,
+                "exceptPlatforms": []
+            }
+        ]
+    },
+    "dataParameterEncoding": {
+        "name": "EventHub data parameter encoding",
+        "desc": "Encodes a value forwarded from webEvent.data into a pixel parameter: serialize the value to compact JSON (no insignificant whitespace), then percent-encode that JSON string. The test values are chosen so the result is identical across standard component encoders (e.g. encodeURIComponent / Uri.EscapeDataString).",
+        "tests": [
+            {
+                "name": "Null is encoded as the literal null",
+                "dataValue": null,
+                "expectEncodedParameter": "null",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "A string is JSON-quoted then percent-encoded",
+                "dataValue": "logged-in",
+                "expectEncodedParameter": "%22logged-in%22",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "An object is compact-serialized then percent-encoded",
+                "dataValue": { "data": true },
+                "expectEncodedParameter": "%7B%22data%22%3Atrue%7D",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "A boolean is encoded as its JSON literal",
+                "dataValue": true,
+                "expectEncodedParameter": "true",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "A number is encoded as its JSON literal",
+                "dataValue": 42,
+                "expectEncodedParameter": "42",
+                "exceptPlatforms": []
+            },
+            {
+                "name": "Whitespace inside a string value is percent-encoded",
+                "dataValue": "a b",
+                "expectEncodedParameter": "%22a%20b%22",
+                "exceptPlatforms": []
+            }
+        ]
+    }
+}
