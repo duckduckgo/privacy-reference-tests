@@ -86,7 +86,7 @@ dirs.forEach(dir => {
         if (featureFolderName === 'suggestions') {
             testsCount += 1; // Suggestion tests have 1 test per file
         } else {
-            Object.keys(testFileObject).forEach(set => testsCount += testFileObject[set].tests.length);
+            Object.keys(testFileObject).filter(key => key !== '$schema').forEach(set => testsCount += testFileObject[set].tests.length);
         }
     });
 
