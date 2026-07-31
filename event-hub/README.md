@@ -9,11 +9,12 @@ resolved period state: given a pixel `config` and the normalized per-parameter s
 they assert **whether the pixel fires** and the **exact output parameters** it carries.
 
 The tests are scoped to the **pure pixel-building contract** across all parameter templates
-(`counter`, `data`, `experiments`). They do **not** cover event counting/dedup, enrolment
-resolution, or the stateful lifecycle (period-start snapshot, config-persist re-resolve,
-best-effort leave detection, fire scheduling) — those depend on each platform's frameworks, clock
-and scheduler and are validated by per-platform integration tests. `immediate`-trigger pixels are
-also out of scope (aggregate/period pixels only).
+(`counter`, `data`, `experiments`). Experiment information is derived **statelessly at the end of
+the period** from a single resolution of the enrolments active when the pixel is built — no
+per-period experiment state is snapshotted or tracked. These tests do **not** cover event
+counting/dedup, enrolment resolution, or fire scheduling — those depend on each platform's
+frameworks, clock and scheduler and are validated by per-platform integration tests.
+`immediate`-trigger pixels are also out of scope (aggregate/period pixels only).
 
 ## Structure
 
@@ -30,16 +31,18 @@ Test suite specific fields:
     - counter: `{ "count": int }` (the accumulated count for the period)
     - data: `{ "value": <JSON value> }` (the captured value; any JSON type)
     - a parameter absent from `parameterState` is treated as not populated.
-- `enrolledExperiments` - array (optional) - the experiments the user was enrolled in at any point
-  during the period (the candidate set for `experiments` params, before `matchExperiments`
-  filtering). Each entry is exactly one of two shapes (never mixed):
-    - stable: `{ "name": string, "cohort": string, "enrollmentUnixSeconds": int }`
-    - partial: `{ "name": string, "enrollmentChanged": true }`
-  The discriminator is the presence of `enrollmentChanged: true` (partial); otherwise the entry is
-  stable. A stable entry must have `enrollmentUnixSeconds <= periodStartUnixSeconds` (an enrolment
-  after `periodStart` is a mid-period join, i.e. partial). It follows that a stable enrolment's
-  tenure at `periodEnd` is always at least the period duration, so bucket boundaries below the
-  period length are unreachable by stable enrolments.
+- `enrolledExperiments` - array (optional) - the experiments the user is enrolled in as resolved at
+  build time (period end); the candidate set for `experiments` params, before `matchExperiments`
+  filtering. Each entry is `{ "name": string, "cohort": string, "enrollmentUnixSeconds": int }`. The
+  builder classifies each matching experiment purely from `enrollmentUnixSeconds` relative to the
+  period bounds — there is no separate "partial" input shape:
+    - `enrollmentUnixSeconds <= periodStartUnixSeconds` -> **stable** -> `{"cohort": ...}` (plus
+      `enrollmentBucket` when configured).
+    - `periodStartUnixSeconds < enrollmentUnixSeconds <= periodEndUnixSeconds` -> **partial**
+      (a mid-period join or cohort-change) -> `{"enrollmentChanged": true}` (no cohort, no bucket).
+    - `enrollmentUnixSeconds > periodEndUnixSeconds` -> **omitted** (not attributed to this period).
+  It follows that a stable enrolment's tenure at `periodEnd` is always at least the period duration,
+  so bucket boundaries below the period length are unreachable by stable enrolments.
 - `periodStartUnixSeconds` - int - the period's start. `periodEnd = periodStart + trigger.period`
   (mirrors the client). Drives enrolment-duration buckets (anchored to `periodEnd`) and
   `attributionPeriod` (derived from `periodStart`).
@@ -95,9 +98,9 @@ for $testSet in pixel_building_tests.json
 
 Where the builder follows the design contract: `counter` -> bucket name for the count; `data` ->
 the captured value; `experiments` -> `{ "<name>": {"cohort": ...} | {"enrollmentChanged": true} }`
-per matching experiment (with `enrollmentBucket` when configured), or `{}` when none match;
-`attributionPeriod` added when firing; fires iff a measurement (counter/data) parameter is
-populated.
+per matching experiment (stable vs partial derived from the enrolment timestamp as above, with
+`enrollmentBucket` when configured), or `{}` when none match; `attributionPeriod` added when firing;
+fires iff a measurement (counter/data) parameter is populated.
 
 ## Platform exceptions
 

@@ -56,25 +56,13 @@
         },
         "enrolledExperiment": {
             "type": "object",
-            "oneOf": [
-                {
-                    "properties": {
-                        "name": { "type": "string" },
-                        "enrollmentChanged": { "const": true }
-                    },
-                    "required": ["name", "enrollmentChanged"],
-                    "additionalProperties": false
-                },
-                {
-                    "properties": {
-                        "name": { "type": "string" },
-                        "cohort": { "type": "string" },
-                        "enrollmentUnixSeconds": { "type": "integer" }
-                    },
-                    "required": ["name", "cohort", "enrollmentUnixSeconds"],
-                    "additionalProperties": false
-                }
-            ]
+            "properties": {
+                "name": { "type": "string" },
+                "cohort": { "type": "string" },
+                "enrollmentUnixSeconds": { "type": "integer" }
+            },
+            "required": ["name", "cohort", "enrollmentUnixSeconds"],
+            "additionalProperties": false
         }
     }
 }

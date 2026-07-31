@@ -310,7 +310,8 @@
                 "exceptPlatforms": ["ios-browser", "macos-browser", "windows-browser", "web-extension", "web-extension-mv3", "safari-extension"]
             },
             {
-                "name": "partial enrolment reports enrollmentChanged only",
+                "name": "mid-period join reports enrollmentChanged only",
+                "desc": "Enrolment after periodStart (a mid-period join / cohort-change) is partial: cohort and enrollmentBucket are suppressed even though buckets are configured.",
                 "config": {
                     "state": "enabled",
                     "trigger": { "period": { "days": 1 } },
@@ -325,13 +326,61 @@
                 },
                 "parameterState": { "count": { "count": 0 } },
                 "enrolledExperiments": [
-                    { "name": "tdsNextExperiment008", "enrollmentChanged": true }
+                    { "name": "tdsNextExperiment008", "cohort": "treatment", "enrollmentUnixSeconds": 1000050000 }
                 ],
                 "periodStartUnixSeconds": 1000000000,
                 "expectFires": true,
                 "expectParameters": {
                     "count": "0",
                     "experiments": { "tdsNextExperiment008": { "enrollmentChanged": true } },
+                    "attributionPeriod": "999993600"
+                },
+                "exceptPlatforms": ["ios-browser", "macos-browser", "windows-browser", "web-extension", "web-extension-mv3", "safari-extension"]
+            },
+            {
+                "name": "enrolment exactly at period end is partial",
+                "desc": "Boundary: an enrolment timestamp equal to periodEnd is after periodStart, so it is a partial enrolment.",
+                "config": {
+                    "state": "enabled",
+                    "trigger": { "period": { "days": 1 } },
+                    "parameters": {
+                        "count": { "template": "counter", "source": "test", "buckets": { "0": { "gte": 0, "lt": 1 }, "1+": { "gte": 1 } } },
+                        "experiments": { "template": "experiments", "matchExperiments": "^tdsNextExperiment" }
+                    }
+                },
+                "parameterState": { "count": { "count": 0 } },
+                "enrolledExperiments": [
+                    { "name": "tdsNextExperiment008", "cohort": "treatment", "enrollmentUnixSeconds": 1000086400 }
+                ],
+                "periodStartUnixSeconds": 1000000000,
+                "expectFires": true,
+                "expectParameters": {
+                    "count": "0",
+                    "experiments": { "tdsNextExperiment008": { "enrollmentChanged": true } },
+                    "attributionPeriod": "999993600"
+                },
+                "exceptPlatforms": ["ios-browser", "macos-browser", "windows-browser", "web-extension", "web-extension-mv3", "safari-extension"]
+            },
+            {
+                "name": "enrolment after period end is omitted",
+                "desc": "An enrolment that only started after the period closed is not attributed to this period.",
+                "config": {
+                    "state": "enabled",
+                    "trigger": { "period": { "days": 1 } },
+                    "parameters": {
+                        "count": { "template": "counter", "source": "test", "buckets": { "0": { "gte": 0, "lt": 1 }, "1+": { "gte": 1 } } },
+                        "experiments": { "template": "experiments", "matchExperiments": "^tdsNextExperiment" }
+                    }
+                },
+                "parameterState": { "count": { "count": 0 } },
+                "enrolledExperiments": [
+                    { "name": "tdsNextExperiment008", "cohort": "treatment", "enrollmentUnixSeconds": 1000090000 }
+                ],
+                "periodStartUnixSeconds": 1000000000,
+                "expectFires": true,
+                "expectParameters": {
+                    "count": "0",
+                    "experiments": {},
                     "attributionPeriod": "999993600"
                 },
                 "exceptPlatforms": ["ios-browser", "macos-browser", "windows-browser", "web-extension", "web-extension-mv3", "safari-extension"]
@@ -451,7 +500,7 @@
                 "parameterState": { "count": { "count": 0 } },
                 "enrolledExperiments": [
                     { "name": "tdsNextExperiment008", "cohort": "treatment", "enrollmentUnixSeconds": 999913600 },
-                    { "name": "contentScopeExperiment01", "enrollmentChanged": true }
+                    { "name": "contentScopeExperiment01", "cohort": "control", "enrollmentUnixSeconds": 1000050000 }
                 ],
                 "periodStartUnixSeconds": 1000000000,
                 "expectFires": true,
