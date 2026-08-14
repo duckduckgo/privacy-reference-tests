@@ -1,0 +1,156 @@
+{
+    "readme": "Reference configuration for remotely-configured event-driven metrics. Defines a metrics map on the eventHub feature plus the experiments those metrics select. Experiment cohort weights are irrelevant here: tests declare enrolled experiments directly via activeExperiments, because cohort assignment and enrollment are owned by each experiment type and are out of scope for these tests. Note that captchaFirst and captchaThird deliberately share the metric name captchaSeen with different value thresholds, which is how a cumulative histogram is expressed.",
+    "features": {
+        "webEvents": {
+            "state": "enabled",
+            "exceptions": []
+        },
+        "eventHub": {
+            "state": "enabled",
+            "exceptions": [],
+            "settings": {
+                "metrics": {
+                    "reloadLoopFirst": {
+                        "state": "enabled",
+                        "name": "reloadLoop",
+                        "source": "reloadLoopDetected",
+                        "windows": [
+                            [0, 0],
+                            [0, 7]
+                        ],
+                        "value": 1,
+                        "experiments": ["contentScopeExperiment3"]
+                    },
+                    "captchaFirst": {
+                        "state": "enabled",
+                        "name": "captchaSeen",
+                        "source": "captchaDetected",
+                        "windows": [
+                            [0, 7]
+                        ],
+                        "value": 1,
+                        "experiments": ["contentScopeExperiment.*"]
+                    },
+                    "captchaThird": {
+                        "state": "enabled",
+                        "name": "captchaSeen",
+                        "source": "captchaDetected",
+                        "windows": [
+                            [0, 7]
+                        ],
+                        "value": 3,
+                        "experiments": ["contentScopeExperiment.*"]
+                    },
+                    "exactNameOnly": {
+                        "state": "enabled",
+                        "name": "exactMatch",
+                        "source": "exactMatchEvent",
+                        "windows": [
+                            [0, 7]
+                        ],
+                        "value": 1,
+                        "experiments": ["contentScopeExperiment1"]
+                    },
+                    "blocklistFailure": {
+                        "state": "enabled",
+                        "name": "blocklistFailure",
+                        "source": "tdsDownloadFailed",
+                        "windows": [
+                            [0, 7]
+                        ],
+                        "value": 1,
+                        "experiments": ["tdsNextExperiment.*"]
+                    },
+                    "everyExperimentPageLoad": {
+                        "state": "enabled",
+                        "name": "pageLoad",
+                        "source": "pageLoaded",
+                        "windows": [
+                            [0, 5]
+                        ],
+                        "value": 1,
+                        "experiments": [".*"]
+                    },
+                    "nativeAppLaunch": {
+                        "state": "enabled",
+                        "name": "appLaunched",
+                        "source": "appLaunch",
+                        "windows": [
+                            [0, 7]
+                        ],
+                        "value": 1,
+                        "experiments": [".*"]
+                    },
+                    "unenrolledTarget": {
+                        "state": "enabled",
+                        "name": "unenrolled",
+                        "source": "reloadLoopDetected",
+                        "windows": [
+                            [0, 7]
+                        ],
+                        "value": 1,
+                        "experiments": ["contentScopeExperiment19"]
+                    },
+                    "retiredMetric": {
+                        "state": "disabled",
+                        "name": "retired",
+                        "source": "retiredEvent",
+                        "windows": [
+                            [0, 7]
+                        ],
+                        "value": 1,
+                        "experiments": [".*"]
+                    }
+                }
+            }
+        },
+        "contentScopeExperiments": {
+            "state": "enabled",
+            "exceptions": [],
+            "features": {
+                "contentScopeExperiment1": {
+                    "state": "enabled",
+                    "cohorts": [
+                        { "name": "control", "weight": 1 },
+                        { "name": "treatment", "weight": 1 }
+                    ]
+                },
+                "contentScopeExperiment3": {
+                    "state": "enabled",
+                    "cohorts": [
+                        { "name": "control", "weight": 1 },
+                        { "name": "treatment", "weight": 1 }
+                    ]
+                },
+                "contentScopeExperiment10": {
+                    "state": "enabled",
+                    "cohorts": [
+                        { "name": "control", "weight": 1 },
+                        { "name": "treatment", "weight": 1 }
+                    ]
+                },
+                "contentScopeExperiment19": {
+                    "state": "enabled",
+                    "cohorts": [
+                        { "name": "control", "weight": 1 },
+                        { "name": "treatment", "weight": 1 }
+                    ]
+                }
+            }
+        },
+        "contentBlocking": {
+            "state": "enabled",
+            "exceptions": [],
+            "features": {
+                "tdsNextExperiment007": {
+                    "state": "enabled",
+                    "cohorts": [
+                        { "name": "control", "weight": 1 },
+                        { "name": "treatment", "weight": 1 }
+                    ]
+                }
+            }
+        }
+    },
+    "unprotectedTemporary": []
+}
