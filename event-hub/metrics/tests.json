@@ -1,7 +1,7 @@
 {
     "selection": {
         "name": "Selecting target experiments for a metric",
-        "desc": "A metric converts against every experiment the user is already enrolled in whose name is a full match for one of the metric's patterns. Selection ignores the parent feature: a pattern may match content scope experiments, TDS experiments or anything else. Enrollment itself is owned by each experiment type and is not exercised here.",
+        "desc": "A metric converts against every experiment the user is already enrolled in whose name is a full match for one of the entry's patterns. Selection ignores the parent feature: a pattern may match content scope experiments, TDS experiments or anything else. A user enrolled in no matching experiment produces nothing, which is the primary reason a metric cannot convert outside its experiments. Enrollment itself is owned by each experiment type and is not exercised here.",
         "configReference": "config_reference.json",
         "tests": [
             {
@@ -62,7 +62,7 @@
             },
             {
                 "name": "A metric selecting an experiment the user is not enrolled in does not convert",
-                "desc": "unenrolledTarget selects contentScopeExperiment19 and shares the reloadLoopDetected source with reloadLoopFirst. Only the enrolled experiment converts.",
+                "desc": "The unenrolled metric selects contentScopeExperiment19 and shares the reloadLoopDetected source with reloadLoop. Only the enrolled experiment converts.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
@@ -76,15 +76,18 @@
                 ]
             },
             {
-                "name": "A disabled metric never converts",
+                "name": "An entry omitting thresholds converts on the first occurrence",
+                "desc": "thresholds defaults to [1].",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
                 ],
                 "events": [
-                    { "type": "retiredEvent", "tabId": "tab-1", "url": "https://example.com/" }
+                    { "type": "defaultThresholdEvent", "tabId": "tab-1", "url": "https://example.com/" }
                 ],
-                "expectConversions": []
+                "expectConversions": [
+                    { "metric": "defaultThreshold", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
+                ]
             },
             {
                 "name": "An event matching no metric source is ignored",
@@ -188,10 +191,44 @@
         ]
     },
     "thresholds": {
-        "name": "Value thresholds and cumulative histograms",
-        "desc": "A metric with value N converts when its source event is seen for the Nth time inside the window. Two metric entries sharing a name with different values form a cumulative histogram: each threshold crossed reports its own conversion, once.",
+        "name": "Thresholds, cumulative histograms and the windows-by-thresholds product",
+        "desc": "An entry's windows and thresholds form a product, so one entry with two thresholds converts once per threshold crossed, giving a cumulative histogram. Several entries under one metric name express a partial product, which is the shape production retention metrics use.",
         "configReference": "config_reference.json",
         "tests": [
+            {
+                "name": "Windows and thresholds form a product within an entry",
+                "desc": "searchLike entry two has one window and thresholds [2, 3]; entry one has windows [0,0] and [1,1] with threshold [1]. On day 0 with three occurrences, entry one contributes only its day 0 window and entry two contributes both thresholds.",
+                "exceptPlatforms": [],
+                "activeExperiments": [
+                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
+                ],
+                "events": [
+                    { "type": "searchPerformed", "tabId": "tab-1", "url": "https://a.example/" },
+                    { "type": "searchPerformed", "tabId": "tab-2", "url": "https://b.example/" },
+                    { "type": "searchPerformed", "tabId": "tab-3", "url": "https://c.example/" }
+                ],
+                "expectConversions": [
+                    { "metric": "searchLike", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0", "value": "1" },
+                    { "metric": "searchLike", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "2" },
+                    { "metric": "searchLike", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "3" }
+                ]
+            },
+            {
+                "name": "Entries under one metric name are independent, giving a partial product",
+                "desc": "On day 1 the day-1 window of entry one applies and the day-0 window does not, while entry two's wider window still applies. The per-day windows are never combined with the higher thresholds, which is the point of using two entries.",
+                "exceptPlatforms": [],
+                "activeExperiments": [
+                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
+                ],
+                "events": [
+                    { "type": "searchPerformed", "tabId": "tab-1", "url": "https://a.example/" },
+                    { "type": "searchPerformed", "tabId": "tab-2", "url": "https://b.example/" }
+                ],
+                "expectConversions": [
+                    { "metric": "searchLike", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "1", "value": "1" },
+                    { "metric": "searchLike", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "2" }
+                ]
+            },
             {
                 "name": "One occurrence crosses the value 1 threshold only",
                 "exceptPlatforms": [],

@@ -14,13 +14,13 @@ Cohort assignment and experiment enrollment are also out of scope. Each experime
 
 | File | Contents |
 |---|---|
-| `config_reference.json` | Primary configuration: nine metrics using full-match regular expression selectors, plus the experiments they select across two parent features |
+| `config_reference.json` | Primary configuration: metric names mapping to lists of entries, using full-match regular expression selectors, plus the experiments they select across two parent features |
 | `tests.json` | `selection`, `conversionWindows`, `thresholds`, `eventStream` |
 | `lifecycle_tests.json` | Metrics and experiments appearing in and disappearing from the configuration |
 | `config_explicit_reference.json` | Alternative configuration using explicit names and prefixes instead of regular expressions |
 | `alternatives_tests.json` | `explicitSelector` and `tabDeduplicatedStream` — the two alternatives still open in the design |
 
-`alternatives_tests.json` specifies options that are **not** the recommendation. It exists so the trade-offs are testable rather than merely described, and so that whichever option is chosen already has coverage. Only one selector form and one de-duplication semantic should ultimately be adopted.
+`alternatives_tests.json` specifies options that are **not** the recommendation. It exists so the trade-offs are testable rather than merely described, and so whichever option is chosen already has coverage. Only one selector form and one de-duplication semantic should ultimately be adopted.
 
 ## Test format
 
@@ -34,24 +34,27 @@ Each test provides:
 | `events` | Ordered events. `type` is the only required field; `tabId` and `url` are present for web events and absent for native ones. A `navigation` event signals a tab moving to a new URL. |
 | `expectConversions` | Every expected conversion, and only those. Compared as an unordered set. |
 
-Lifecycle tests replace `events` with ordered `phases`. A phase may set `activeExperiments`, `enabledMetrics` and `disabledMetrics` — carrying forward the previous phase's values where omitted — and then delivers its `events`, each carrying a `day` offset from enrollment. Conversions accumulate across all phases.
+Lifecycle tests replace `events` with ordered `phases`. A phase may set `activeExperiments` and `enabledMetrics` — carrying forward the previous phase's values where omitted — and then delivers its `events`, each carrying a `day` offset from enrollment. `enabledMetrics` names keys under `metrics`. Conversions accumulate across all phases.
 
-A conversion is `{ metric, experiment, cohort, conversionWindowDays, value }`, using the same wire shapes the framework already uses: `conversionWindowDays` is `"N"` for a single-day window and `"low-high"` otherwise, and `value` is a string. `enrollmentDate` appears in expectations only where a test spans more than one enrollment.
+A conversion is `{ metric, experiment, cohort, conversionWindowDays, value }`, using the wire shapes the framework already uses: `conversionWindowDays` is `"N"` for a single-day window and `"low-high"` otherwise, and `value` is a string carrying the configured threshold. `enrollmentDate` appears in expectations only where a test spans more than one enrollment.
 
 ## Two things these tests cannot assert
 
 **Day boundaries.** Platforms count a day differently — calendar days in Eastern time on Android, calendar days in the device's local timezone on Apple, elapsed 24-hour periods from the enrollment instant on Windows, and 24-hour buckets from EST midnight on the extension. This is pre-existing framework behaviour. Tests therefore use whole-day offsets well away from midnight and never assert on what happens at a boundary.
 
-**Whether a pixel leaves the device.** Sampling, pixel deduplication and network behaviour sit beyond the reported conversion.
+**Whether a pixel leaves the device.** Sampling, pixel de-duplication and network behaviour sit beyond the reported conversion.
 
 ## Notable expectations
 
 - A selector without metacharacters is a **full-string** match. `contentScopeExperiment1` does not select `contentScopeExperiment10`; `contentScopeExperiment1.*` does. Java's `Pattern.matches` is full-match by default while `NSRegularExpression`, .NET `Regex.IsMatch` and JavaScript `RegExp.test` are not, so this needs asserting.
 - Selectors ignore the parent feature. One pattern may select both a content scope experiment and a TDS experiment.
-- Windows are inclusive at both ends, day 0 is the enrollment day, and a metric with several windows converts once per window independently.
-- Two metric entries sharing a `name` with different `value`s form a cumulative histogram: three occurrences cross both the value 1 and value 3 thresholds, each reporting once.
+- A user enrolled in no matching experiment produces nothing. This is the main reason a metric cannot convert outside its experiments.
+- Windows are inclusive at both ends, day 0 is the enrollment day, and an entry with several windows converts once per window independently.
+- **`windows` and `thresholds` form a product within an entry.** Thresholds `[1, 3]` over one window give a cumulative histogram: three occurrences cross both, each converting once.
+- **Several entries under one metric name are independent**, which is how the partial product used by production retention metrics is expressed — per-day windows at threshold 1 in one entry, range windows at higher thresholds in another.
+- An entry omitting `thresholds` defaults to `[1]`.
 - Occurrences outside the window do not count towards a threshold.
-- Metrics observe the raw event stream with no de-duplication, matching immediate-trigger telemetry rather than aggregate counters. This only affects metrics with a value above 1.
-- Removing a metric stops conversions immediately rather than at the end of the experiment, and `state: disabled` is identical to absence.
+- Metrics observe the raw event stream with no de-duplication, matching immediate-trigger telemetry rather than aggregate counters. This only affects thresholds above 1.
+- Removing a metric stops conversions immediately. There is no `state` field, so absence is the only off switch.
 - Re-adding a metric does not let a converted user convert again, but a new experiment enrollment does.
-- Enabling an experiment and its metrics in a single configuration change works. The extension is excepted from the tests that depend on post-enrollment metric changes, because it snapshots the metric list at enrollment.
+- A metric defined before its experiment is inert rather than an error, and starts converting when the experiment enrolls. Enabling both in a single configuration change also works; the extension is excepted from the tests that depend on post-enrollment metric changes because it snapshots the metric list at enrollment.

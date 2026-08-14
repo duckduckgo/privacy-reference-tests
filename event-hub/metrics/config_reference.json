@@ -1,5 +1,5 @@
 {
-    "readme": "Reference configuration for remotely-configured event-driven metrics. Defines a metrics map on the eventHub feature plus the experiments those metrics select. Experiment cohort weights are irrelevant here: tests declare enrolled experiments directly via activeExperiments, because cohort assignment and enrollment are owned by each experiment type and are out of scope for these tests. Note that captchaFirst and captchaThird deliberately share the metric name captchaSeen with different value thresholds, which is how a cumulative histogram is expressed.",
+    "readme": "Reference configuration for remotely-configured event-driven metrics. Each key under metrics is a metric name; each value is a list of entries. Windows and thresholds form a product within an entry, so searchLike demonstrates the partial product that production retention metrics use: threshold 1 over per-day windows in one entry, higher thresholds over range windows in another. There is no state field: presence means the metric converts. Experiment cohort weights are irrelevant here, because tests declare enrolled experiments directly via activeExperiments; cohort assignment and enrollment are owned by each experiment type and are out of scope.",
     "features": {
         "webEvents": {
             "state": "enabled",
@@ -10,97 +10,105 @@
             "exceptions": [],
             "settings": {
                 "metrics": {
-                    "reloadLoopFirst": {
-                        "state": "enabled",
-                        "name": "reloadLoop",
-                        "source": "reloadLoopDetected",
-                        "windows": [
-                            [0, 0],
-                            [0, 7]
-                        ],
-                        "value": 1,
-                        "experiments": ["contentScopeExperiment3"]
-                    },
-                    "captchaFirst": {
-                        "state": "enabled",
-                        "name": "captchaSeen",
-                        "source": "captchaDetected",
-                        "windows": [
-                            [0, 7]
-                        ],
-                        "value": 1,
-                        "experiments": ["contentScopeExperiment.*"]
-                    },
-                    "captchaThird": {
-                        "state": "enabled",
-                        "name": "captchaSeen",
-                        "source": "captchaDetected",
-                        "windows": [
-                            [0, 7]
-                        ],
-                        "value": 3,
-                        "experiments": ["contentScopeExperiment.*"]
-                    },
-                    "exactNameOnly": {
-                        "state": "enabled",
-                        "name": "exactMatch",
-                        "source": "exactMatchEvent",
-                        "windows": [
-                            [0, 7]
-                        ],
-                        "value": 1,
-                        "experiments": ["contentScopeExperiment1"]
-                    },
-                    "blocklistFailure": {
-                        "state": "enabled",
-                        "name": "blocklistFailure",
-                        "source": "tdsDownloadFailed",
-                        "windows": [
-                            [0, 7]
-                        ],
-                        "value": 1,
-                        "experiments": ["tdsNextExperiment.*"]
-                    },
-                    "everyExperimentPageLoad": {
-                        "state": "enabled",
-                        "name": "pageLoad",
-                        "source": "pageLoaded",
-                        "windows": [
-                            [0, 5]
-                        ],
-                        "value": 1,
-                        "experiments": [".*"]
-                    },
-                    "nativeAppLaunch": {
-                        "state": "enabled",
-                        "name": "appLaunched",
-                        "source": "appLaunch",
-                        "windows": [
-                            [0, 7]
-                        ],
-                        "value": 1,
-                        "experiments": [".*"]
-                    },
-                    "unenrolledTarget": {
-                        "state": "enabled",
-                        "name": "unenrolled",
-                        "source": "reloadLoopDetected",
-                        "windows": [
-                            [0, 7]
-                        ],
-                        "value": 1,
-                        "experiments": ["contentScopeExperiment19"]
-                    },
-                    "retiredMetric": {
-                        "state": "disabled",
-                        "name": "retired",
-                        "source": "retiredEvent",
-                        "windows": [
-                            [0, 7]
-                        ],
-                        "value": 1,
-                        "experiments": [".*"]
-                    }
+                    "reloadLoop": [
+                        {
+                            "source": "reloadLoopDetected",
+                            "windows": [
+                                [0, 0],
+                                [0, 7]
+                            ],
+                            "thresholds": [1],
+                            "experiments": ["contentScopeExperiment3"]
+                        }
+                    ],
+                    "captchaSeen": [
+                        {
+                            "source": "captchaDetected",
+                            "windows": [
+                                [0, 7]
+                            ],
+                            "thresholds": [1, 3],
+                            "experiments": ["contentScopeExperiment.*"]
+                        }
+                    ],
+                    "searchLike": [
+                        {
+                            "source": "searchPerformed",
+                            "windows": [
+                                [0, 0],
+                                [1, 1]
+                            ],
+                            "thresholds": [1],
+                            "experiments": ["contentScopeExperiment1"]
+                        },
+                        {
+                            "source": "searchPerformed",
+                            "windows": [
+                                [0, 7]
+                            ],
+                            "thresholds": [2, 3],
+                            "experiments": ["contentScopeExperiment1"]
+                        }
+                    ],
+                    "exactMatch": [
+                        {
+                            "source": "exactMatchEvent",
+                            "windows": [
+                                [0, 7]
+                            ],
+                            "thresholds": [1],
+                            "experiments": ["contentScopeExperiment1"]
+                        }
+                    ],
+                    "blocklistFailure": [
+                        {
+                            "source": "tdsDownloadFailed",
+                            "windows": [
+                                [0, 7]
+                            ],
+                            "thresholds": [1],
+                            "experiments": ["tdsNextExperiment.*"]
+                        }
+                    ],
+                    "pageLoad": [
+                        {
+                            "source": "pageLoaded",
+                            "windows": [
+                                [0, 5]
+                            ],
+                            "thresholds": [1],
+                            "experiments": [".*"]
+                        }
+                    ],
+                    "appLaunched": [
+                        {
+                            "source": "appLaunch",
+                            "windows": [
+                                [0, 7]
+                            ],
+                            "thresholds": [1],
+                            "experiments": [".*"]
+                        }
+                    ],
+                    "unenrolled": [
+                        {
+                            "source": "reloadLoopDetected",
+                            "windows": [
+                                [0, 7]
+                            ],
+                            "thresholds": [1],
+                            "experiments": ["contentScopeExperiment19"]
+                        }
+                    ],
+                    "defaultThreshold": [
+                        {
+                            "source": "defaultThresholdEvent",
+                            "windows": [
+                                [0, 7]
+                            ],
+                            "experiments": ["contentScopeExperiment1"]
+                        }
+                    ]
                 }
             }
         },

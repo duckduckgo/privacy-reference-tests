@@ -1,7 +1,7 @@
 {
     "lifecycle": {
         "name": "Metric configuration lifecycle",
-        "desc": "Covers metrics and experiments appearing in and disappearing from the configuration. Each test runs ordered phases; a phase replaces the set of enabled metric keys, optionally replaces the enrolled experiments, and then delivers its events. Conversions accumulate across all phases. Metric keys refer to entries in the reference configuration, not to metric names.",
+        "desc": "Covers metrics and experiments appearing in and disappearing from the configuration. Each test runs ordered phases; a phase replaces the set of enabled metric keys, optionally replaces the enrolled experiments, and then delivers its events. Conversions accumulate across all phases. Metric names refer to keys under metrics in the reference configuration.",
         "configReference": "config_reference.json",
         "tests": [
             {
@@ -18,7 +18,7 @@
                         "activeExperiments": [
                             { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
                         ],
-                        "enabledMetrics": ["reloadLoopFirst"],
+                        "enabledMetrics": ["reloadLoop"],
                         "events": [
                             { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
                         ]
@@ -38,7 +38,7 @@
                         "activeExperiments": [
                             { "experiment": "contentScopeExperiment1", "cohort": "control", "enrollmentDate": "2026-01-10" }
                         ],
-                        "enabledMetrics": ["captchaThird"],
+                        "enabledMetrics": ["captchaSeen"],
                         "events": [
                             { "type": "captchaDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 },
                             { "type": "captchaDetected", "tabId": "tabB", "url": "https://example.com/", "day": 0 }
@@ -54,21 +54,30 @@
                 "expectConversions": []
             },
             {
-                "name": "A disabled metric behaves identically to an absent one",
+                "name": "A metric defined before its experiment is enabled converts once the experiment enrolls",
+                "desc": "The safest ordering, and the one the process guidance recommends. While no matching experiment is enrolled the metric is inert rather than an error.",
                 "exceptPlatforms": [],
                 "phases": [
+                    {
+                        "activeExperiments": [],
+                        "enabledMetrics": ["reloadLoop"],
+                        "events": [
+                            { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
+                        ]
+                    },
                     {
                         "activeExperiments": [
                             { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
                         ],
-                        "enabledMetrics": [],
-                        "disabledMetrics": ["reloadLoopFirst"],
                         "events": [
-                            { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
+                            { "type": "reloadLoopDetected", "tabId": "tabB", "url": "https://example.com/", "day": 0 }
                         ]
                     }
                 ],
-                "expectConversions": []
+                "expectConversions": [
+                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0", "value": "1" },
+                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
+                ]
             },
             {
                 "name": "A metric re-added identically does not let a converted user convert again",
@@ -79,7 +88,7 @@
                         "activeExperiments": [
                             { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
                         ],
-                        "enabledMetrics": ["reloadLoopFirst"],
+                        "enabledMetrics": ["reloadLoop"],
                         "events": [
                             { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
                         ]
@@ -91,7 +100,7 @@
                         ]
                     },
                     {
-                        "enabledMetrics": ["reloadLoopFirst"],
+                        "enabledMetrics": ["reloadLoop"],
                         "events": [
                             { "type": "reloadLoopDetected", "tabId": "tabC", "url": "https://example.com/", "day": 2 }
                         ]
@@ -111,7 +120,7 @@
                         "activeExperiments": [
                             { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
                         ],
-                        "enabledMetrics": ["reloadLoopFirst"],
+                        "enabledMetrics": ["reloadLoop"],
                         "events": [
                             { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
                         ]
@@ -120,7 +129,7 @@
                         "activeExperiments": [
                             { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-02-01" }
                         ],
-                        "enabledMetrics": ["reloadLoopFirst"],
+                        "enabledMetrics": ["reloadLoop"],
                         "events": [
                             { "type": "reloadLoopDetected", "tabId": "tabB", "url": "https://example.com/", "day": 0 }
                         ]
@@ -148,7 +157,7 @@
                         ]
                     },
                     {
-                        "enabledMetrics": ["reloadLoopFirst"],
+                        "enabledMetrics": ["reloadLoop"],
                         "events": [
                             { "type": "reloadLoopDetected", "tabId": "tabB", "url": "https://example.com/", "day": 1 }
                         ]
@@ -171,7 +180,7 @@
                         "events": []
                     },
                     {
-                        "enabledMetrics": ["reloadLoopFirst"],
+                        "enabledMetrics": ["reloadLoop"],
                         "events": [
                             { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://example.com/", "day": 8 }
                         ]

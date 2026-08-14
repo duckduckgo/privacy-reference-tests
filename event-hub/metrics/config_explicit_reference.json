@@ -1,5 +1,5 @@
 {
-    "readme": "Alternative reference configuration expressing experiment selection as explicit names and prefixes instead of full-match regular expressions. Kept so the alternative in the technical design is specified rather than described, and to make the safety difference testable: the prefix 'contentScopeExperiment1' matches contentScopeExperiment10, whereas the equivalent full-match pattern does not.",
+    "readme": "Alternative reference configuration expressing experiment selection as explicit names and prefixes instead of full-match regular expressions. Kept so the alternative in the technical design is specified rather than described, and to make the safety difference testable: the prefix contentScopeExperiment1 matches contentScopeExperiment10, whereas the equivalent full-match pattern does not.",
     "features": {
         "webEvents": {
             "state": "enabled",
@@ -10,36 +10,36 @@
             "exceptions": [],
             "settings": {
                 "metrics": {
-                    "exactNamesOnly": {
-                        "state": "enabled",
-                        "name": "exactMatch",
-                        "source": "exactMatchEvent",
-                        "windows": [
-                            [0, 7]
-                        ],
-                        "value": 1,
-                        "experiments": ["contentScopeExperiment1", "contentScopeExperiment3"]
-                    },
-                    "prefixMatched": {
-                        "state": "enabled",
-                        "name": "prefixMatch",
-                        "source": "prefixMatchEvent",
-                        "windows": [
-                            [0, 7]
-                        ],
-                        "value": 1,
-                        "experimentPrefixes": ["contentScopeExperiment1"]
-                    },
-                    "allExperiments": {
-                        "state": "enabled",
-                        "name": "pageLoad",
-                        "source": "pageLoaded",
-                        "windows": [
-                            [0, 5]
-                        ],
-                        "value": 1,
-                        "experiments": ["*"]
-                    }
+                    "exactMatch": [
+                        {
+                            "source": "exactMatchEvent",
+                            "windows": [
+                                [0, 7]
+                            ],
+                            "thresholds": [1],
+                            "experiments": ["contentScopeExperiment1", "contentScopeExperiment3"]
+                        }
+                    ],
+                    "prefixMatch": [
+                        {
+                            "source": "prefixMatchEvent",
+                            "windows": [
+                                [0, 7]
+                            ],
+                            "thresholds": [1],
+                            "experimentPrefixes": ["contentScopeExperiment1"]
+                        }
+                    ],
+                    "pageLoad": [
+                        {
+                            "source": "pageLoaded",
+                            "windows": [
+                                [0, 5]
+                            ],
+                            "thresholds": [1],
+                            "experiments": ["*"]
+                        }
+                    ]
                 }
             }
         },
