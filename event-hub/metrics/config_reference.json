@@ -1,5 +1,5 @@
 {
-    "readme": "Reference configuration for remotely-configured event-driven metrics. Each key under metrics is a metric name; each value is a list of entries. Windows and thresholds form a product within an entry, so searchLike demonstrates the partial product that production retention metrics use: threshold 1 over per-day windows in one entry, higher thresholds over range windows in another. There is no state field: presence means the metric converts. Experiment cohort weights are irrelevant here, because tests declare enrolled experiments directly via activeExperiments; cohort assignment and enrollment are owned by each experiment type and are out of scope.",
+    "readme": "Reference configuration for remotely-configured event-driven metrics, in the COMPILED shape that clients consume. Each key under metrics is a metric name; source and experiments belong to the metric, and conversions holds one or more {windows, thresholds} groups whose product defines how the metric converts. experiments is a list of literal experiment names: the user-facing config uses regular expressions, but those are expanded at build time, so no client performs pattern matching. searchLike demonstrates the partial product that production retention metrics use — threshold 1 over per-day windows in one group, higher thresholds over range windows in another. There is no state field: presence means the metric converts. Cohort weights are irrelevant here because tests declare enrolled experiments directly via activeExperiments; cohort assignment and enrollment are owned by each experiment type and are out of scope.",
     "features": {
         "webEvents": {
             "state": "enabled",
@@ -10,105 +10,115 @@
             "exceptions": [],
             "settings": {
                 "metrics": {
-                    "reloadLoop": [
-                        {
-                            "source": "reloadLoopDetected",
-                            "windows": [
-                                [0, 0],
-                                [0, 7]
-                            ],
-                            "thresholds": [1],
-                            "experiments": ["contentScopeExperiment3"]
-                        }
-                    ],
-                    "captchaSeen": [
-                        {
-                            "source": "captchaDetected",
-                            "windows": [
-                                [0, 7]
-                            ],
-                            "thresholds": [1, 3],
-                            "experiments": ["contentScopeExperiment.*"]
-                        }
-                    ],
-                    "searchLike": [
-                        {
-                            "source": "searchPerformed",
-                            "windows": [
-                                [0, 0],
-                                [1, 1]
-                            ],
-                            "thresholds": [1],
-                            "experiments": ["contentScopeExperiment1"]
-                        },
-                        {
-                            "source": "searchPerformed",
-                            "windows": [
-                                [0, 7]
-                            ],
-                            "thresholds": [2, 3],
-                            "experiments": ["contentScopeExperiment1"]
-                        }
-                    ],
-                    "exactMatch": [
-                        {
-                            "source": "exactMatchEvent",
-                            "windows": [
-                                [0, 7]
-                            ],
-                            "thresholds": [1],
-                            "experiments": ["contentScopeExperiment1"]
-                        }
-                    ],
-                    "blocklistFailure": [
-                        {
-                            "source": "tdsDownloadFailed",
-                            "windows": [
-                                [0, 7]
-                            ],
-                            "thresholds": [1],
-                            "experiments": ["tdsNextExperiment.*"]
-                        }
-                    ],
-                    "pageLoad": [
-                        {
-                            "source": "pageLoaded",
-                            "windows": [
-                                [0, 5]
-                            ],
-                            "thresholds": [1],
-                            "experiments": [".*"]
-                        }
-                    ],
-                    "appLaunched": [
-                        {
-                            "source": "appLaunch",
-                            "windows": [
-                                [0, 7]
-                            ],
-                            "thresholds": [1],
-                            "experiments": [".*"]
-                        }
-                    ],
-                    "unenrolled": [
-                        {
-                            "source": "reloadLoopDetected",
-                            "windows": [
-                                [0, 7]
-                            ],
-                            "thresholds": [1],
-                            "experiments": ["contentScopeExperiment19"]
-                        }
-                    ],
-                    "defaultThreshold": [
-                        {
-                            "source": "defaultThresholdEvent",
-                            "windows": [
-                                [0, 7]
-                            ],
-                            "experiments": ["contentScopeExperiment1"]
-                        }
-                    ]
+                    "reloadLoop": {
+                        "source": "reloadLoopDetected",
+                        "experiments": ["contentScopeExperiment3"],
+                        "conversions": [
+                            {
+                                "windows": [
+                                    [0, 0],
+                                    [0, 7]
+                                ],
+                                "thresholds": [1]
+                            }
+                        ]
+                    },
+                    "captchaSeen": {
+                        "source": "captchaDetected",
+                        "experiments": ["contentScopeExperiment1", "contentScopeExperiment10"],
+                        "conversions": [
+                            {
+                                "windows": [
+                                    [0, 7]
+                                ],
+                                "thresholds": [1, 3]
+                            }
+                        ]
+                    },
+                    "searchLike": {
+                        "source": "searchPerformed",
+                        "experiments": ["contentScopeExperiment1"],
+                        "conversions": [
+                            {
+                                "windows": [
+                                    [0, 0],
+                                    [1, 1]
+                                ],
+                                "thresholds": [1]
+                            },
+                            {
+                                "windows": [
+                                    [0, 7]
+                                ],
+                                "thresholds": [2, 3]
+                            }
+                        ]
+                    },
+                    "blocklistFailure": {
+                        "source": "tdsDownloadFailed",
+                        "experiments": ["tdsNextExperiment007"],
+                        "conversions": [
+                            {
+                                "windows": [
+                                    [0, 7]
+                                ],
+                                "thresholds": [1]
+                            }
+                        ]
+                    },
+                    "pageLoad": {
+                        "source": "pageLoaded",
+                        "experiments": [
+                            "contentScopeExperiment1",
+                            "contentScopeExperiment3",
+                            "contentScopeExperiment10",
+                            "contentScopeExperiment19",
+                            "tdsNextExperiment007"
+                        ],
+                        "conversions": [
+                            {
+                                "windows": [
+                                    [0, 5]
+                                ],
+                                "thresholds": [1]
+                            }
+                        ]
+                    },
+                    "appLaunched": {
+                        "source": "appLaunch",
+                        "experiments": ["contentScopeExperiment1"],
+                        "conversions": [
+                            {
+                                "windows": [
+                                    [0, 7]
+                                ],
+                                "thresholds": [1]
+                            }
+                        ]
+                    },
+                    "unenrolled": {
+                        "source": "reloadLoopDetected",
+                        "experiments": ["contentScopeExperiment19"],
+                        "conversions": [
+                            {
+                                "windows": [
+                                    [0, 7]
+                                ],
+                                "thresholds": [1]
+                            }
+                        ]
+                    },
+                    "defaultThreshold": {
+                        "source": "defaultThresholdEvent",
+                        "experiments": ["contentScopeExperiment1"],
+                        "conversions": [
+                            {
+                                "windows": [
+                                    [0, 7]
+                                ]
+                            }
+                        ]
+                    }
                 }
             }
         },

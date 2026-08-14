@@ -1,25 +1,11 @@
 {
     "selection": {
         "name": "Selecting target experiments for a metric",
-        "desc": "A metric converts against every experiment the user is already enrolled in whose name is a full match for one of the entry's patterns. Selection ignores the parent feature: a pattern may match content scope experiments, TDS experiments or anything else. A user enrolled in no matching experiment produces nothing, which is the primary reason a metric cannot convert outside its experiments. Enrollment itself is owned by each experiment type and is not exercised here.",
+        "desc": "A metric converts against every experiment the user is enrolled in that also appears in the metric's experiments list, and no others. Selection is set membership, not pattern matching: the user-facing config uses regular expressions but they are expanded at build time. Selection ignores the parent feature. A user enrolled in none of the listed experiments produces nothing, which is the primary reason a metric cannot convert outside its experiments. Enrollment itself is owned by each experiment type and is not exercised here.",
         "configReference": "config_reference.json",
         "tests": [
             {
-                "name": "A pattern without metacharacters is a full match, not a prefix",
-                "exceptPlatforms": [],
-                "activeExperiments": [
-                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 },
-                    { "experiment": "contentScopeExperiment10", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
-                ],
-                "events": [
-                    { "type": "exactMatchEvent", "tabId": "tab-1", "url": "https://example.com/" }
-                ],
-                "expectConversions": [
-                    { "metric": "exactMatch", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
-                ]
-            },
-            {
-                "name": "A trailing wildcard matches every experiment sharing the prefix",
+                "name": "A metric converts once for each enrolled experiment in its list",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "control", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 },
@@ -34,8 +20,47 @@
                 ]
             },
             {
-                "name": "A pattern matches experiments regardless of their parent feature",
-                "desc": "pageLoad selects with '.*'. contentScopeExperiment1 sits under contentScopeExperiments and tdsNextExperiment007 under contentBlocking; both are selected.",
+                "name": "An enrolled experiment absent from the list does not convert",
+                "desc": "reloadLoop lists only contentScopeExperiment3, and the unenrolled metric shares its source but lists contentScopeExperiment19. Only the intersection converts.",
+                "exceptPlatforms": [],
+                "activeExperiments": [
+                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 },
+                    { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
+                ],
+                "events": [
+                    { "type": "reloadLoopDetected", "tabId": "tab-1", "url": "https://example.com/" }
+                ],
+                "expectConversions": [
+                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0", "value": "1" },
+                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
+                ]
+            },
+            {
+                "name": "A metric whose listed experiments are all unenrolled converts for none of them",
+                "exceptPlatforms": [],
+                "activeExperiments": [
+                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
+                ],
+                "events": [
+                    { "type": "tdsDownloadFailed", "tabId": "tab-1", "url": "https://example.com/" }
+                ],
+                "expectConversions": []
+            },
+            {
+                "name": "A user enrolled in no experiments at all produces nothing",
+                "desc": "There is no pixel to fire without an experiment and cohort, so this holds regardless of which metrics are configured.",
+                "exceptPlatforms": [],
+                "activeExperiments": [],
+                "events": [
+                    { "type": "reloadLoopDetected", "tabId": "tab-1", "url": "https://example.com/" },
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/" },
+                    { "type": "pageLoaded", "tabId": "tab-1", "url": "https://example.com/" }
+                ],
+                "expectConversions": []
+            },
+            {
+                "name": "A list may span parent features",
+                "desc": "pageLoad lists contentScopeExperiment1 under contentScopeExperiments and tdsNextExperiment007 under contentBlocking; both convert.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 2 },
@@ -50,30 +75,15 @@
                 ]
             },
             {
-                "name": "A metric selecting only TDS experiments does not convert for a content scope experiment",
+                "name": "An event matching no metric source is ignored",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
                 ],
                 "events": [
-                    { "type": "tdsDownloadFailed", "tabId": "tab-1", "url": "https://example.com/" }
+                    { "type": "someUnrelatedEvent", "tabId": "tab-1", "url": "https://example.com/" }
                 ],
                 "expectConversions": []
-            },
-            {
-                "name": "A metric selecting an experiment the user is not enrolled in does not convert",
-                "desc": "The unenrolled metric selects contentScopeExperiment19 and shares the reloadLoopDetected source with reloadLoop. Only the enrolled experiment converts.",
-                "exceptPlatforms": [],
-                "activeExperiments": [
-                    { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
-                ],
-                "events": [
-                    { "type": "reloadLoopDetected", "tabId": "tab-1", "url": "https://example.com/" }
-                ],
-                "expectConversions": [
-                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0", "value": "1" },
-                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
-                ]
             },
             {
                 "name": "An entry omitting thresholds converts on the first occurrence",
@@ -88,17 +98,6 @@
                 "expectConversions": [
                     { "metric": "defaultThreshold", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
                 ]
-            },
-            {
-                "name": "An event matching no metric source is ignored",
-                "exceptPlatforms": [],
-                "activeExperiments": [
-                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
-                ],
-                "events": [
-                    { "type": "someUnrelatedEvent", "tabId": "tab-1", "url": "https://example.com/" }
-                ],
-                "expectConversions": []
             },
             {
                 "name": "A native event with no associated tab converts",
@@ -118,7 +117,7 @@
     },
     "conversionWindows": {
         "name": "Conversion window evaluation",
-        "desc": "Windows are inclusive at both ends and measured in whole days from the enrollment day, which is day 0. A metric with several windows reports one conversion per window that contains the current day, independently. Tests use whole-day offsets away from midnight because platforms differ in how they count a day.",
+        "desc": "Windows are inclusive at both ends and measured in whole days from the enrollment day, which is day 0. A conversion group with several windows converts once per window that contains the current day, independently. Tests use whole-day offsets away from midnight because platforms differ in how they count a day.",
         "configReference": "config_reference.json",
         "tests": [
             {
@@ -192,12 +191,12 @@
     },
     "thresholds": {
         "name": "Thresholds, cumulative histograms and the windows-by-thresholds product",
-        "desc": "An entry's windows and thresholds form a product, so one entry with two thresholds converts once per threshold crossed, giving a cumulative histogram. Several entries under one metric name express a partial product, which is the shape production retention metrics use.",
+        "desc": "A conversion group's windows and thresholds form a product, so one group with two thresholds converts once per threshold crossed, giving a cumulative histogram. Several groups under one metric express a partial product, which is the shape production retention metrics use.",
         "configReference": "config_reference.json",
         "tests": [
             {
-                "name": "Windows and thresholds form a product within an entry",
-                "desc": "searchLike entry two has one window and thresholds [2, 3]; entry one has windows [0,0] and [1,1] with threshold [1]. On day 0 with three occurrences, entry one contributes only its day 0 window and entry two contributes both thresholds.",
+                "name": "Windows and thresholds form a product within a conversion group",
+                "desc": "searchLike group two has one window and thresholds [2, 3]; group one has windows [0,0] and [1,1] with threshold [1]. On day 0 with three occurrences, group one contributes only its day 0 window and group two contributes both thresholds.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
@@ -214,8 +213,8 @@
                 ]
             },
             {
-                "name": "Entries under one metric name are independent, giving a partial product",
-                "desc": "On day 1 the day-1 window of entry one applies and the day-0 window does not, while entry two's wider window still applies. The per-day windows are never combined with the higher thresholds, which is the point of using two entries.",
+                "name": "Conversion groups under one metric name are independent, giving a partial product",
+                "desc": "On day 1 the day-1 window of group one applies and the day-0 window does not, while group two's wider window still applies. The per-day windows are never combined with the higher thresholds, which is the point of using two groups.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
@@ -230,7 +229,7 @@
                 ]
             },
             {
-                "name": "One occurrence crosses the value 1 threshold only",
+                "name": "One occurrence crosses the threshold 1 slice only",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
@@ -243,7 +242,7 @@
                 ]
             },
             {
-                "name": "Two occurrences still do not cross the value 3 threshold",
+                "name": "Two occurrences still do not cross the threshold 3 slice",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
@@ -257,7 +256,7 @@
                 ]
             },
             {
-                "name": "Three occurrences cross both thresholds, each reporting once",
+                "name": "Three occurrences cross both thresholds, each converting once",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
@@ -273,7 +272,7 @@
                 ]
             },
             {
-                "name": "A fourth occurrence reports nothing further",
+                "name": "A fourth occurrence converts nothing further",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
@@ -306,7 +305,7 @@
     },
     "eventStream": {
         "name": "Event stream semantics for metrics",
-        "desc": "Metrics observe the raw event stream and apply no de-duplication of their own, matching immediate-trigger telemetry rather than aggregate counters. This only affects metrics with a value above 1. See alternatives_tests.json for the tab-scoped de-duplication alternative under discussion.",
+        "desc": "Metrics observe the raw event stream and apply no de-duplication of their own, matching immediate-trigger telemetry rather than aggregate counters. This only affects thresholds above 1. See alternatives_tests.json for the tab-scoped de-duplication alternative under discussion.",
         "configReference": "config_reference.json",
         "tests": [
             {

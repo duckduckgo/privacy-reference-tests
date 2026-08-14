@@ -1,7 +1,7 @@
 {
     "lifecycle": {
         "name": "Metric configuration lifecycle",
-        "desc": "Covers metrics and experiments appearing in and disappearing from the configuration. Each test runs ordered phases; a phase replaces the set of enabled metric keys, optionally replaces the enrolled experiments, and then delivers its events. Conversions accumulate across all phases. Metric names refer to keys under metrics in the reference configuration.",
+        "desc": "Covers metrics and experiments appearing in and disappearing from the configuration. Each test runs ordered phases; a phase replaces the set of enabled metric keys, optionally replaces the enrolled experiments or a metric's experiments list, and then delivers its events. Conversions accumulate across all phases. Metric names refer to keys under metrics in the reference configuration.",
         "configReference": "config_reference.json",
         "tests": [
             {
@@ -189,20 +189,34 @@
                 "expectConversions": []
             },
             {
-                "name": "Narrowing a selector so it no longer matches stops conversions",
+                "name": "Removing an experiment from a metric's list stops conversions for that experiment only",
+                "desc": "Narrowing the selector in the user-facing config produces a shorter compiled list. The metric keeps converting for the experiments that remain.",
                 "exceptPlatforms": [],
                 "phases": [
                     {
                         "activeExperiments": [
-                            { "experiment": "contentScopeExperiment10", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
+                            { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10" },
+                            { "experiment": "contentScopeExperiment10", "cohort": "control", "enrollmentDate": "2026-01-10" }
                         ],
-                        "enabledMetrics": ["exactNameOnly"],
+                        "enabledMetrics": ["captchaSeen"],
                         "events": [
-                            { "type": "exactMatchEvent", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
+                            { "type": "captchaDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
+                        ]
+                    },
+                    {
+                        "metricExperiments": { "captchaSeen": ["contentScopeExperiment1"] },
+                        "events": [
+                            { "type": "captchaDetected", "tabId": "tabB", "url": "https://example.com/", "day": 1 },
+                            { "type": "captchaDetected", "tabId": "tabC", "url": "https://example.com/", "day": 1 },
+                            { "type": "captchaDetected", "tabId": "tabD", "url": "https://example.com/", "day": 1 }
                         ]
                     }
                 ],
-                "expectConversions": []
+                "expectConversions": [
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment10", "cohort": "control", "conversionWindowDays": "0-7", "value": "1" },
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "3" }
+                ]
             }
         ]
     }
