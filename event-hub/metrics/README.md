@@ -19,9 +19,8 @@ Fixtures use the **compiled** configuration shape, which is what clients receive
 | `config_reference.json` | Primary configuration: metric names mapping to a `source`, an experiments list and one or more `conversions` groups, plus the experiments they select across two parent features |
 | `tests.json` | `selection`, `conversionWindows`, `thresholds`, `eventStream` |
 | `lifecycle_tests.json` | Metrics and experiments appearing in and disappearing from the configuration |
-| `alternatives_tests.json` | `tabDeduplicatedStream` — the one alternative still open in the design |
 
-`alternatives_tests.json` specifies an option that is **not** the recommendation. It exists so the trade-off is testable rather than merely described, and so whichever option is chosen already has coverage. Only one de-duplication semantic should ultimately be adopted.
+These specify the recommended semantics only. The one behaviour still open in the design is de-duplication: if it resolves towards the tab-scoped semantics used by aggregate counters, the expectations in the `eventStream` set change, and no separate set is added. That decision only affects thresholds above 1.
 
 ## Test format
 

@@ -305,7 +305,7 @@
     },
     "eventStream": {
         "name": "Event stream semantics for metrics",
-        "desc": "Metrics observe the raw event stream and apply no de-duplication of their own, matching immediate-trigger telemetry rather than aggregate counters. This only affects thresholds above 1. See alternatives_tests.json for the tab-scoped de-duplication alternative under discussion.",
+        "desc": "Metrics observe the raw event stream and apply no de-duplication of their own, matching immediate-trigger telemetry rather than aggregate counters. This only affects thresholds above 1. If the open question about de-duplication resolves towards the tab-scoped semantics used by aggregate counters, the expectations in this set change.",
         "configReference": "config_reference.json",
         "tests": [
             {
