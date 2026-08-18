@@ -1,0 +1,153 @@
+{
+    "$schema": "./tests.schema.json",
+    "counters": {
+        "name": "Counter aggregation and bucketing",
+        "desc": "Period pixels count matching events, bucket the total at period end, and enqueue one pixel per period carrying the bucket name. A pixel whose parameters produce no values does not fire, which is why the zero-bucket cases differ: the captcha pixels have a 0 bucket and fire with count=0, the adwall day pixel has no zero bucket and stays silent. Time-derived parameters such as attributionPeriod are excluded from comparison.",
+        "configReference": "config_reference.json",
+        "tests": [
+            {
+                "name": "Occurrences across pages bucket at period end",
+                "desc": "Three occurrences on distinct pages count 3, landing in the 3-5 bucket for both the day and week pixels independently.",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://a.example/" },
+                    { "type": "captchaDetected", "tabId": "tab-2", "url": "https://b.example/" },
+                    { "type": "captchaDetected", "tabId": "tab-3", "url": "https://c.example/" }
+                ],
+                "expectPixels": [
+                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "3-5" } },
+                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "3-5" } }
+                ]
+            },
+            {
+                "name": "A zero count fires when a zero bucket exists",
+                "desc": "No matching events arrive. The captcha pixels' 0 bucket matches a zero count, so they fire with count=0; the adwall pixels stay silent.",
+                "exceptPlatforms": [],
+                "events": [],
+                "expectPixels": [
+                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "0" } },
+                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "0" } }
+                ]
+            },
+            {
+                "name": "A count matching no bucket does not fire",
+                "desc": "The adwall day pixel has no zero bucket, so with nothing counted it must not fire. The unrelated event does not count towards it either.",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "someUnrelatedEvent", "tabId": "tab-1", "url": "https://a.example/" }
+                ],
+                "expectPixels": [
+                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "0" } },
+                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "0" } }
+                ]
+            },
+            {
+                "name": "A disabled pixel never fires",
+                "desc": "webTelemetry_disabledPixel_day would fire on any count, but its state is disabled.",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://a.example/" }
+                ],
+                "expectPixels": [
+                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "1-2" } },
+                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "1-2" } }
+                ]
+            }
+        ]
+    },
+    "dedup": {
+        "name": "Counter de-duplication",
+        "desc": "Counter parameters count an event at most once per page per tab, scoped per pixel and parameter. A tab's de-duplication state clears when it navigates to a different URL; a same-URL reload does not clear it. This is the shipped behaviour metric conversions also rely on, so a change that breaks these tests breaks both consumers.",
+        "configReference": "config_reference.json",
+        "tests": [
+            {
+                "name": "Repeated occurrences on one page count once",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
+                ],
+                "expectPixels": [
+                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "1-2" } },
+                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "1-2" } }
+                ]
+            },
+            {
+                "name": "Navigating to a different URL counts the new page",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/one" },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/two" },
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/two" },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/three" },
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/three" }
+                ],
+                "expectPixels": [
+                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "3-5" } },
+                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "3-5" } }
+                ]
+            },
+            {
+                "name": "A same-URL reload does not count again",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
+                ],
+                "expectPixels": [
+                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "1-2" } },
+                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "1-2" } }
+                ]
+            },
+            {
+                "name": "Separate tabs count independently",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/" },
+                    { "type": "captchaDetected", "tabId": "tab-2", "url": "https://example.com/" },
+                    { "type": "captchaDetected", "tabId": "tab-3", "url": "https://example.com/" }
+                ],
+                "expectPixels": [
+                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "3-5" } },
+                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "3-5" } }
+                ]
+            }
+        ]
+    },
+    "immediate": {
+        "name": "Immediate pixels",
+        "desc": "Immediate pixels fire once per triggering event with data parameters forwarded from the event payload, and are not de-duplicated. The counter on the same event stream is, which the contrast test makes visible.",
+        "configReference": "config_reference.json",
+        "tests": [
+            {
+                "name": "Each occurrence fires with its own payload",
+                "desc": "Two occurrences on the same page fire two immediate pixels, while the counter on the same event counts the page once.",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "adwallDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "overlay" } },
+                    { "type": "adwallDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "redirect" } }
+                ],
+                "expectPixels": [
+                    { "pixel": "webTelemetry_adwallDetection_immediate", "params": { "reason": "overlay" } },
+                    { "pixel": "webTelemetry_adwallDetection_immediate", "params": { "reason": "redirect" } },
+                    { "pixel": "webTelemetry_adwallDetection_day", "params": { "count": "1-2" } },
+                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "0" } },
+                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "0" } }
+                ]
+            },
+            {
+                "name": "An event with no matching immediate trigger fires nothing immediately",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
+                ],
+                "expectPixels": [
+                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "1-2" } },
+                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "1-2" } }
+                ]
+            }
+        ]
+    }
+}

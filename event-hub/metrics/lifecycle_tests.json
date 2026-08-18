@@ -1,7 +1,8 @@
 {
+    "$schema": "./lifecycle_tests.schema.json",
     "lifecycle": {
         "name": "Metric configuration lifecycle",
-        "desc": "Covers metrics and experiments appearing in and disappearing from the configuration. Each test runs ordered phases. A phase may replace the enrolled experiments (activeExperiments) and may replace named experiments' metric sets (experimentMetrics, mapping an experiment name to the list of metric keys present in its settings for this phase); values carry forward from the previous phase where omitted, and experiments never mentioned keep their reference-configuration metrics. It then delivers its events, each carrying a day offset from enrollment. Conversions accumulate across all phases. Because definitions are read live at conversion time, removal takes effect immediately - this is the kill switch, and on platforms that snapshot metric definitions at enrollment it requires consulting current configuration when matching.",
+        "desc": "Covers metrics and experiments appearing in and disappearing from the configuration. Each test runs ordered phases. A phase may replace the enrolled experiments (activeExperiments) and may replace named experiments' metric sets (experimentMetrics, mapping an experiment name to the list of metric keys present in its settings for this phase); values carry forward from the previous phase where omitted, and experiments never mentioned keep their reference-configuration metrics. It then delivers its events, each carrying a day offset from enrollment. Conversions accumulate across all phases. Because definitions are read live at conversion time, removal takes effect as soon as new configuration is applied - this is the kill switch, and on platforms that snapshot metric definitions at enrollment it requires consulting current configuration when matching. Adding metrics to an experiment that is already enabled is prevented by config validation, so no test covers a metric appearing on a running experiment: metrics only ever arrive with their experiment, and only ever leave.",
         "configReference": "config_reference.json",
         "tests": [
             {
@@ -81,113 +82,32 @@
                 ]
             },
             {
-                "name": "A metric re-added identically does not let a converted user convert again",
-                "desc": "Framework conversion state survives the metric leaving the configuration, and is keyed on the experiment enrollment rather than on the metric definition.",
+                "name": "A later experiment declaring the same metric name converts fresh",
+                "desc": "Conversion state is keyed on the experiment enrollment, so a new experiment reusing a metric name starts from zero while the earlier experiment's state is untouched. This is why new measurements get new experiments rather than edits to running ones.",
                 "exceptPlatforms": [],
                 "phases": [
                     {
                         "activeExperiments": [
-                            { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
+                            { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
                         ],
-                        "experimentMetrics": { "contentScopeExperiment3": ["reloadLoop"] },
                         "events": [
-                            { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
+                            { "type": "captchaDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
                         ]
                     },
                     {
-                        "experimentMetrics": { "contentScopeExperiment3": [] },
+                        "activeExperiments": [
+                            { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10" },
+                            { "experiment": "contentScopeExperiment10", "cohort": "control", "enrollmentDate": "2026-01-11" }
+                        ],
                         "events": [
-                            { "type": "reloadLoopDetected", "tabId": "tabB", "url": "https://example.com/", "day": 1 }
-                        ]
-                    },
-                    {
-                        "experimentMetrics": { "contentScopeExperiment3": ["reloadLoop"] },
-                        "events": [
-                            { "type": "reloadLoopDetected", "tabId": "tabC", "url": "https://example.com/", "day": 2 }
+                            { "type": "captchaDetected", "tabId": "tabB", "url": "https://example.com/", "day": 1 }
                         ]
                     }
                 ],
                 "expectConversions": [
-                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0", "value": "1" },
-                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment10", "cohort": "control", "conversionWindowDays": "0-7", "value": "1" }
                 ]
-            },
-            {
-                "name": "A metric re-added against a new enrollment converts again",
-                "desc": "The counterpart to the previous test, and the reason the guidance is to start a new experiment rather than amend a running one.",
-                "exceptPlatforms": [],
-                "phases": [
-                    {
-                        "activeExperiments": [
-                            { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
-                        ],
-                        "experimentMetrics": { "contentScopeExperiment3": ["reloadLoop"] },
-                        "events": [
-                            { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
-                        ]
-                    },
-                    {
-                        "activeExperiments": [
-                            { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-02-01" }
-                        ],
-                        "experimentMetrics": { "contentScopeExperiment3": ["reloadLoop"] },
-                        "events": [
-                            { "type": "reloadLoopDetected", "tabId": "tabB", "url": "https://example.com/", "day": 0 }
-                        ]
-                    }
-                ],
-                "expectConversions": [
-                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10", "conversionWindowDays": "0", "value": "1" },
-                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10", "conversionWindowDays": "0-7", "value": "1" },
-                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-02-01", "conversionWindowDays": "0", "value": "1" },
-                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-02-01", "conversionWindowDays": "0-7", "value": "1" }
-                ]
-            },
-            {
-                "name": "A metric added to a running experiment converts for an already-enrolled user",
-                "desc": "OPEN QUESTION: not a recommended practice, and the expectation here is the proposed contract, not an agreed one. Definitions are read live at conversion time, which three platforms do naturally; the extension snapshots definitions at enrollment and would need to reconcile the snapshot on config update to pass. The alternative contract - late additions never fire for existing enrollments - is testable but diverges from what the other platforms do for free.",
-                "exceptPlatforms": ["web-extension", "web-extension-mv3"],
-                "phases": [
-                    {
-                        "activeExperiments": [
-                            { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
-                        ],
-                        "experimentMetrics": { "contentScopeExperiment3": [] },
-                        "events": [
-                            { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
-                        ]
-                    },
-                    {
-                        "experimentMetrics": { "contentScopeExperiment3": ["reloadLoop"] },
-                        "events": [
-                            { "type": "reloadLoopDetected", "tabId": "tabB", "url": "https://example.com/", "day": 1 }
-                        ]
-                    }
-                ],
-                "expectConversions": [
-                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
-                ]
-            },
-            {
-                "name": "A metric added mid-experiment measures its window from the original enrollment date",
-                "desc": "The window is anchored to enrollment, not to when the metric appeared, so a late addition can find every window already closed. This is the under-counting failure mode the process rule exists to avoid.",
-                "exceptPlatforms": ["web-extension", "web-extension-mv3"],
-                "phases": [
-                    {
-                        "activeExperiments": [
-                            { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
-                        ],
-                        "experimentMetrics": { "contentScopeExperiment3": [] },
-                        "events": []
-                    },
-                    {
-                        "experimentMetrics": { "contentScopeExperiment3": ["reloadLoop"] },
-                        "events": [
-                            { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://example.com/", "day": 8 }
-                        ]
-                    }
-                ],
-                "expectConversions": []
             },
             {
                 "name": "Removing a shared-name metric from one experiment stops that experiment only",

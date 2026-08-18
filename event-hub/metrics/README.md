@@ -1,6 +1,6 @@
 # Experiment metrics — reference tests
 
-**Status: proposal.** These tests accompany the [remotely-configured event-driven metrics design](https://app.asana.com/1/137249556945/project/72649045549333/task/1217052832008956?focus=true) and are for review alongside it. No platform implements them yet.
+These tests specify the behaviour required by the [remotely-configured event-driven metrics design](https://app.asana.com/1/137249556945/project/72649045549333/task/1217052832008956?focus=true).
 
 ## What is being tested
 
@@ -40,12 +40,12 @@ A conversion is `{ metric, experiment, cohort, conversionWindowDays, value }`, u
 
 - **Declaration is attachment.** A metric converts only for the experiment whose settings declare it, and only while the user is enrolled in that experiment. An enrolled experiment declaring no metrics converts nothing; a declared metric on an unenrolled experiment converts nothing; a user enrolled in nothing produces nothing.
 - **Both experiment types must work.** `pageLoad` is declared by a content scope experiment and a TDS experiment; a platform that only wired one parent feature fails the cross-parent selection test.
-- **A metric name may be shared across experiments only with the same `event`** (validation forbids mixing), in which case one event converts each declaring, enrolled experiment independently.
+- **Metric names are scoped to their experiment.** Several experiments may declare the same name — bound to the same event (each converts on that one event) or to different events (each converts on exactly the event its own declaration names). A conversion must be reported per (experiment, metric), never fanned out by name alone.
 - Windows are inclusive at both ends, day 0 is the enrollment day, and a group with several windows converts once per window independently.
 - **`windows` and `thresholds` form a product within a conversion group**; several groups under one metric express the partial product production retention metrics use. A group omitting `thresholds` defaults to `[1]`.
-- **Web events de-duplicate per page per event type.** Events carrying a tab context count at most once per page towards a metric; a navigation in the tab — including to the same URL — starts a new page. This matches the page-scoped semantics aggregate counters already use. Events without tab context are not de-duplicated. Only thresholds above 1 observe any of this.
-- **Definitions are read live at conversion time.** Removing a metric from its experiment's settings stops conversions immediately — deletion is the kill switch — and platforms that snapshot definitions at enrollment must consult current configuration when matching. Re-adding a metric does not let a converted user convert again, but a new enrollment does.
-- **Late addition is an open question.** The test for a metric added to a running experiment encodes the live-read behaviour and currently excepts the extension, which would need to reconcile its enrollment-time snapshot to comply. See the design's open questions before treating that expectation as settled.
+- **Web events de-duplicate exactly like aggregate counters.** Events carrying a tab context count at most once per page per event type; the tab's de-duplication state clears when it navigates to a **different URL**, so a same-URL reload does not produce a new occurrence, while returning to a page after navigating away does. Events without tab context are not de-duplicated. Only thresholds above 1 observe any of this.
+- **Definitions are read live at conversion time.** Removing a metric from its experiment's settings stops conversions as soon as the new configuration is applied — deletion is the kill switch — and platforms that snapshot definitions at enrollment must consult current configuration when matching. A later experiment declaring the same metric name converts fresh.
+- **Metrics never join a running experiment.** Config validation rejects adding metrics to an experiment that is already enabled, so that state is invalid rather than reference-tested: metrics arrive with their experiment and only ever leave.
 
 ## Two things these tests cannot assert
 

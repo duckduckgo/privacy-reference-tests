@@ -1,12 +1,13 @@
 {
+    "$schema": "./tests.schema.json",
     "selection": {
         "name": "Metrics attach to the experiment that declares them",
-        "desc": "A metric is declared inside an experiment subfeature's settings and converts only for that experiment, and only while the user is enrolled in it. There is no selector: declaration is attachment. The same metric name may be declared by several experiments provided it binds the same event everywhere, in which case one event converts each declaring, enrolled experiment independently. Enrollment itself is owned by each experiment type and is not exercised here.",
+        "desc": "A metric is declared inside an experiment subfeature's settings and converts only for that experiment, and only while the user is enrolled in it. There is no selector: declaration is attachment. Metric names are scoped to their experiment - the same name may be declared by several experiments, bound to the same event or to different events, and each declaring experiment converts on exactly the event its own declaration names. A conversion must therefore be reported per (experiment, metric), never by metric name alone. Enrollment itself is owned by each experiment type and is not exercised here.",
         "configReference": "config_reference.json",
         "tests": [
             {
                 "name": "A metric converts once for each enrolled experiment that declares it",
-                "desc": "captchaSeen is declared by contentScopeExperiment1 and contentScopeExperiment10 with the same event, so one event converts both.",
+                "desc": "captchaSeen is declared by contentScopeExperiment1 and contentScopeExperiment10 against the same event, so one event converts both.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "control", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 },
@@ -34,6 +35,39 @@
                 "expectConversions": [
                     { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0", "value": "1" },
                     { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
+                ]
+            },
+            {
+                "name": "A shared metric name bound to different events converts per experiment",
+                "desc": "The decisive scoping case. contentScopeExperiment21 binds captchaSeen to reloadLoopDetected while contentScopeExperiment1 binds it to captchaDetected. The reloadLoopDetected event converts experiment 21's captchaSeen (and experiment 3's reloadLoop) but must not touch experiment 1's captchaSeen. A client that fans a metric name out across experiments without checking each experiment's own event binding fails this test.",
+                "exceptPlatforms": [],
+                "activeExperiments": [
+                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 },
+                    { "experiment": "contentScopeExperiment3", "cohort": "control", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 },
+                    { "experiment": "contentScopeExperiment21", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
+                ],
+                "events": [
+                    { "type": "reloadLoopDetected", "tabId": "tab-1", "url": "https://example.com/" }
+                ],
+                "expectConversions": [
+                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "control", "conversionWindowDays": "0", "value": "1" },
+                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "control", "conversionWindowDays": "0-7", "value": "1" },
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment21", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
+                ]
+            },
+            {
+                "name": "The event named by another experiment's identically-named metric does not convert this one",
+                "desc": "The mirror of the previous case: captchaDetected converts experiment 1's captchaSeen but not experiment 21's, which is bound to a different event.",
+                "exceptPlatforms": [],
+                "activeExperiments": [
+                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 },
+                    { "experiment": "contentScopeExperiment21", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
+                ],
+                "events": [
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/" }
+                ],
+                "expectConversions": [
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
                 ]
             },
             {
@@ -320,7 +354,7 @@
     },
     "dedup": {
         "name": "Web event de-duplication",
-        "desc": "Events originating from web pages (those carrying a tabId and url) count towards a metric at most once per page per event type. A page ends at a navigation event in its tab, including a navigation to the same URL, or when the event arrives in a different tab. This matches the page-scoped semantics aggregate counters already use, so a metric and a counter on the same event stream agree. Events with no tab context are not de-duplicated. Only thresholds above 1 can observe any of this.",
+        "desc": "Events originating from web pages (those carrying a tabId and url) count towards a metric at most once per page per event type, with exactly the semantics aggregate counters already use: a tab's de-duplication state clears when the tab navigates to a different URL, so a reload of the same URL does not produce a new occurrence, and separate tabs count independently. One shared rule means a metric and a counter watching the same event stream always agree on what an occurrence is. Events with no tab context are not de-duplicated. Only thresholds above 1 can observe any of this. A consequence to be aware of: a page that forces same-URL reloads (some bot-detection loops do) contributes one occurrence per tab, so loop-like behaviour must be detected and counted detector-side, not inferred from repeated hub events.",
         "configReference": "config_reference.json",
         "tests": [
             {
@@ -358,8 +392,8 @@
                 ]
             },
             {
-                "name": "A navigation to the same URL starts a new page",
-                "desc": "A reload is a navigation, so an event that re-fires after a reload counts again. Detectors like reload loops depend on this.",
+                "name": "A reload of the same URL does not start a new page",
+                "desc": "De-duplication state clears only when the tab's URL changes, matching aggregate counters. Events re-fired after same-URL reloads collapse into the original occurrence, so the threshold 3 slice is not crossed.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
@@ -368,6 +402,26 @@
                     { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
                     { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
                     { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
+                ],
+                "expectConversions": [
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
+                ]
+            },
+            {
+                "name": "Returning to a previously seen URL counts again",
+                "desc": "State is per current page, not per URL ever seen: navigating away clears the tab's de-duplication state, so coming back produces a new occurrence.",
+                "exceptPlatforms": [],
+                "activeExperiments": [
+                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
+                ],
+                "events": [
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/other" },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/other2" },
                     { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
                     { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
                 ],
