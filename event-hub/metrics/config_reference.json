@@ -1,5 +1,5 @@
 {
-    "readme": "Reference configuration for remotely-configured event-driven metrics, in the COMPILED shape that clients consume. Each key under metrics is a metric name; source and experiments belong to the metric, and conversions holds one or more {windows, thresholds} groups whose product defines how the metric converts. experiments is a list of literal experiment names: the user-facing config uses regular expressions, but those are expanded at build time, so no client performs pattern matching. searchLike demonstrates the partial product that production retention metrics use — threshold 1 over per-day windows in one group, higher thresholds over range windows in another. There is no state field: presence means the metric converts. Cohort weights are irrelevant here because tests declare enrolled experiments directly via activeExperiments; cohort assignment and enrollment are owned by each experiment type and are out of scope.",
+    "readme": "Reference configuration for remotely-configured event-driven metrics. Metrics are declared in the settings of the experiment subfeatures they measure: content scope experiments and TDS experiments. Each key under settings.metrics is a metric name; its value carries the event that converts it and one or more {windows, thresholds} conversion groups whose product defines how it converts. searchLike demonstrates the partial product production retention metrics use - threshold 1 over per-day windows in one group, higher thresholds over range windows in another. captchaSeen and pageLoad appear in more than one experiment under the same name and event, which is the only permitted way to share a metric name: validation forbids binding one name to different events. The TDS experiment parent feature is blockList on Android and contentBlocking elsewhere, so this fixture carries identical TDS experiment definitions under both names; a client must read exactly the parent it ships against, never both. There is no state field on a metric: presence means it converts. Cohort weights are irrelevant here because tests declare enrolled experiments directly via activeExperiments; cohort assignment and enrollment are owned by each experiment type and are out of scope.",
     "features": {
         "webEvents": {
             "state": "enabled",
@@ -8,119 +8,7 @@
         "eventHub": {
             "state": "enabled",
             "exceptions": [],
-            "settings": {
-                "metrics": {
-                    "reloadLoop": {
-                        "source": "reloadLoopDetected",
-                        "experiments": ["contentScopeExperiment3"],
-                        "conversions": [
-                            {
-                                "windows": [
-                                    [0, 0],
-                                    [0, 7]
-                                ],
-                                "thresholds": [1]
-                            }
-                        ]
-                    },
-                    "captchaSeen": {
-                        "source": "captchaDetected",
-                        "experiments": ["contentScopeExperiment1", "contentScopeExperiment10"],
-                        "conversions": [
-                            {
-                                "windows": [
-                                    [0, 7]
-                                ],
-                                "thresholds": [1, 3]
-                            }
-                        ]
-                    },
-                    "searchLike": {
-                        "source": "searchPerformed",
-                        "experiments": ["contentScopeExperiment1"],
-                        "conversions": [
-                            {
-                                "windows": [
-                                    [0, 0],
-                                    [1, 1]
-                                ],
-                                "thresholds": [1]
-                            },
-                            {
-                                "windows": [
-                                    [0, 7]
-                                ],
-                                "thresholds": [2, 3]
-                            }
-                        ]
-                    },
-                    "blocklistFailure": {
-                        "source": "tdsDownloadFailed",
-                        "experiments": ["tdsNextExperiment007"],
-                        "conversions": [
-                            {
-                                "windows": [
-                                    [0, 7]
-                                ],
-                                "thresholds": [1]
-                            }
-                        ]
-                    },
-                    "pageLoad": {
-                        "source": "pageLoaded",
-                        "experiments": [
-                            "contentScopeExperiment1",
-                            "contentScopeExperiment3",
-                            "contentScopeExperiment10",
-                            "contentScopeExperiment19",
-                            "tdsNextExperiment007"
-                        ],
-                        "conversions": [
-                            {
-                                "windows": [
-                                    [0, 5]
-                                ],
-                                "thresholds": [1]
-                            }
-                        ]
-                    },
-                    "appLaunched": {
-                        "source": "appLaunch",
-                        "experiments": ["contentScopeExperiment1"],
-                        "conversions": [
-                            {
-                                "windows": [
-                                    [0, 7]
-                                ],
-                                "thresholds": [1]
-                            }
-                        ]
-                    },
-                    "unenrolled": {
-                        "source": "reloadLoopDetected",
-                        "experiments": ["contentScopeExperiment19"],
-                        "conversions": [
-                            {
-                                "windows": [
-                                    [0, 7]
-                                ],
-                                "thresholds": [1]
-                            }
-                        ]
-                    },
-                    "defaultThreshold": {
-                        "source": "defaultThresholdEvent",
-                        "experiments": ["contentScopeExperiment1"],
-                        "conversions": [
-                            {
-                                "windows": [
-                                    [0, 7]
-                                ]
-                            }
-                        ]
-                    }
-                }
-            }
+            "settings": {}
         },
         "contentScopeExperiments": {
             "state": "enabled",
@@ -128,6 +16,71 @@
             "features": {
                 "contentScopeExperiment1": {
                     "state": "enabled",
+                    "settings": {
+                        "metrics": {
+                            "captchaSeen": {
+                                "event": "captchaDetected",
+                                "conversions": [
+                                    {
+                                        "windows": [
+                                            [0, 7]
+                                        ],
+                                        "thresholds": [1, 3]
+                                    }
+                                ]
+                            },
+                            "searchLike": {
+                                "event": "searchPerformed",
+                                "conversions": [
+                                    {
+                                        "windows": [
+                                            [0, 0],
+                                            [1, 1]
+                                        ],
+                                        "thresholds": [1]
+                                    },
+                                    {
+                                        "windows": [
+                                            [0, 7]
+                                        ],
+                                        "thresholds": [2, 3]
+                                    }
+                                ]
+                            },
+                            "defaultThreshold": {
+                                "event": "defaultThresholdEvent",
+                                "conversions": [
+                                    {
+                                        "windows": [
+                                            [0, 7]
+                                        ]
+                                    }
+                                ]
+                            },
+                            "appLaunched": {
+                                "event": "appLaunch",
+                                "conversions": [
+                                    {
+                                        "windows": [
+                                            [0, 7]
+                                        ],
+                                        "thresholds": [1, 2]
+                                    }
+                                ]
+                            },
+                            "pageLoad": {
+                                "event": "pageLoaded",
+                                "conversions": [
+                                    {
+                                        "windows": [
+                                            [0, 5]
+                                        ],
+                                        "thresholds": [1]
+                                    }
+                                ]
+                            }
+                        }
+                    },
                     "cohorts": [
                         { "name": "control", "weight": 1 },
                         { "name": "treatment", "weight": 1 }
@@ -135,6 +88,22 @@
                 },
                 "contentScopeExperiment3": {
                     "state": "enabled",
+                    "settings": {
+                        "metrics": {
+                            "reloadLoop": {
+                                "event": "reloadLoopDetected",
+                                "conversions": [
+                                    {
+                                        "windows": [
+                                            [0, 0],
+                                            [0, 7]
+                                        ],
+                                        "thresholds": [1]
+                                    }
+                                ]
+                            }
+                        }
+                    },
                     "cohorts": [
                         { "name": "control", "weight": 1 },
                         { "name": "treatment", "weight": 1 }
@@ -142,6 +111,21 @@
                 },
                 "contentScopeExperiment10": {
                     "state": "enabled",
+                    "settings": {
+                        "metrics": {
+                            "captchaSeen": {
+                                "event": "captchaDetected",
+                                "conversions": [
+                                    {
+                                        "windows": [
+                                            [0, 7]
+                                        ],
+                                        "thresholds": [1, 3]
+                                    }
+                                ]
+                            }
+                        }
+                    },
                     "cohorts": [
                         { "name": "control", "weight": 1 },
                         { "name": "treatment", "weight": 1 }
@@ -156,12 +140,79 @@
                 }
             }
         },
+        "blockList": {
+            "state": "enabled",
+            "exceptions": [],
+            "features": {
+                "tdsNextExperiment007": {
+                    "state": "enabled",
+                    "settings": {
+                        "controlUrl": "v5/experiments/reference-tds-control.json",
+                        "treatmentUrl": "v5/experiments/reference-tds-treatment.json",
+                        "metrics": {
+                            "blocklistFailure": {
+                                "event": "tdsDownloadFailed",
+                                "conversions": [
+                                    {
+                                        "windows": [
+                                            [0, 7]
+                                        ]
+                                    }
+                                ]
+                            },
+                            "pageLoad": {
+                                "event": "pageLoaded",
+                                "conversions": [
+                                    {
+                                        "windows": [
+                                            [0, 5]
+                                        ],
+                                        "thresholds": [1]
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "cohorts": [
+                        { "name": "control", "weight": 1 },
+                        { "name": "treatment", "weight": 1 }
+                    ]
+                }
+            }
+        },
         "contentBlocking": {
             "state": "enabled",
             "exceptions": [],
             "features": {
                 "tdsNextExperiment007": {
                     "state": "enabled",
+                    "settings": {
+                        "controlUrl": "v5/experiments/reference-tds-control.json",
+                        "treatmentUrl": "v5/experiments/reference-tds-treatment.json",
+                        "metrics": {
+                            "blocklistFailure": {
+                                "event": "tdsDownloadFailed",
+                                "conversions": [
+                                    {
+                                        "windows": [
+                                            [0, 7]
+                                        ]
+                                    }
+                                ]
+                            },
+                            "pageLoad": {
+                                "event": "pageLoaded",
+                                "conversions": [
+                                    {
+                                        "windows": [
+                                            [0, 5]
+                                        ],
+                                        "thresholds": [1]
+                                    }
+                                ]
+                            }
+                        }
+                    },
                     "cohorts": [
                         { "name": "control", "weight": 1 },
                         { "name": "treatment", "weight": 1 }

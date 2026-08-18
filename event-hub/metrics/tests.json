@@ -1,11 +1,12 @@
 {
     "selection": {
-        "name": "Selecting target experiments for a metric",
-        "desc": "A metric converts against every experiment the user is enrolled in that also appears in the metric's experiments list, and no others. Selection is set membership, not pattern matching: the user-facing config uses regular expressions but they are expanded at build time. Selection ignores the parent feature. A user enrolled in none of the listed experiments produces nothing, which is the primary reason a metric cannot convert outside its experiments. Enrollment itself is owned by each experiment type and is not exercised here.",
+        "name": "Metrics attach to the experiment that declares them",
+        "desc": "A metric is declared inside an experiment subfeature's settings and converts only for that experiment, and only while the user is enrolled in it. There is no selector: declaration is attachment. The same metric name may be declared by several experiments provided it binds the same event everywhere, in which case one event converts each declaring, enrolled experiment independently. Enrollment itself is owned by each experiment type and is not exercised here.",
         "configReference": "config_reference.json",
         "tests": [
             {
-                "name": "A metric converts once for each enrolled experiment in its list",
+                "name": "A metric converts once for each enrolled experiment that declares it",
+                "desc": "captchaSeen is declared by contentScopeExperiment1 and contentScopeExperiment10 with the same event, so one event converts both.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "control", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 },
@@ -20,8 +21,8 @@
                 ]
             },
             {
-                "name": "An enrolled experiment absent from the list does not convert",
-                "desc": "reloadLoop lists only contentScopeExperiment3, and the unenrolled metric shares its source but lists contentScopeExperiment19. Only the intersection converts.",
+                "name": "Only the declaring experiment converts",
+                "desc": "reloadLoop is declared only by contentScopeExperiment3. Being enrolled in another experiment that does not declare it produces nothing for that experiment.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 },
@@ -36,7 +37,21 @@
                 ]
             },
             {
-                "name": "A metric whose listed experiments are all unenrolled converts for none of them",
+                "name": "An enrolled experiment declaring no metrics converts nothing",
+                "desc": "contentScopeExperiment19 has cohorts but no settings.metrics.",
+                "exceptPlatforms": [],
+                "activeExperiments": [
+                    { "experiment": "contentScopeExperiment19", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
+                ],
+                "events": [
+                    { "type": "reloadLoopDetected", "tabId": "tab-1", "url": "https://example.com/" },
+                    { "type": "captchaDetected", "tabId": "tab-2", "url": "https://example.com/" }
+                ],
+                "expectConversions": []
+            },
+            {
+                "name": "A declared metric whose experiment is not enrolled converts nothing",
+                "desc": "blocklistFailure is declared by tdsNextExperiment007, which the user is not enrolled in.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
@@ -53,14 +68,14 @@
                 "activeExperiments": [],
                 "events": [
                     { "type": "reloadLoopDetected", "tabId": "tab-1", "url": "https://example.com/" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/" },
-                    { "type": "pageLoaded", "tabId": "tab-1", "url": "https://example.com/" }
+                    { "type": "captchaDetected", "tabId": "tab-2", "url": "https://example.com/" },
+                    { "type": "pageLoaded", "tabId": "tab-3", "url": "https://example.com/" }
                 ],
                 "expectConversions": []
             },
             {
-                "name": "A list may span parent features",
-                "desc": "pageLoad lists contentScopeExperiment1 under contentScopeExperiments and tdsNextExperiment007 under contentBlocking; both convert.",
+                "name": "Metrics attach under both experiment parent features",
+                "desc": "pageLoad is declared by contentScopeExperiment1 (a content scope experiment) and by tdsNextExperiment007 (a TDS experiment, under blockList on Android and contentBlocking elsewhere). Both convert. A platform that only reads one of the two experiment types fails this test.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 2 },
@@ -75,7 +90,7 @@
                 ]
             },
             {
-                "name": "An event matching no metric source is ignored",
+                "name": "An event matching no declared metric is ignored",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
@@ -101,7 +116,7 @@
             },
             {
                 "name": "A native event with no associated tab converts",
-                "desc": "Metrics must work for any event, not only web events from content scope scripts. A native event carries no tabId or url.",
+                "desc": "The contract allows any event, not only web events from content scope scripts. A native event carries no tabId or url.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
@@ -173,7 +188,7 @@
             },
             {
                 "name": "A metric converts at most once per window per experiment",
-                "desc": "Two occurrences on the same day yield the same conversions as one, because each window has already converted.",
+                "desc": "Two occurrences on different pages yield the same conversions as one, because each window has already converted.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 0 }
@@ -191,7 +206,7 @@
     },
     "thresholds": {
         "name": "Thresholds, cumulative histograms and the windows-by-thresholds product",
-        "desc": "A conversion group's windows and thresholds form a product, so one group with two thresholds converts once per threshold crossed, giving a cumulative histogram. Several groups under one metric express a partial product, which is the shape production retention metrics use.",
+        "desc": "A conversion group's windows and thresholds form a product, so one group with two thresholds converts once per threshold crossed, giving a cumulative histogram. Several groups under one metric express a partial product, which is the shape production retention metrics use. Occurrences in these tests arrive on distinct pages so that web-event de-duplication does not collapse them; the dedup set covers what happens when it does.",
         "configReference": "config_reference.json",
         "tests": [
             {
@@ -303,14 +318,14 @@
             }
         ]
     },
-    "eventStream": {
-        "name": "Event stream semantics for metrics",
-        "desc": "Metrics observe the raw event stream and apply no de-duplication of their own, matching immediate-trigger telemetry rather than aggregate counters. This only affects thresholds above 1. If the open question about de-duplication resolves towards the tab-scoped semantics used by aggregate counters, the expectations in this set change.",
+    "dedup": {
+        "name": "Web event de-duplication",
+        "desc": "Events originating from web pages (those carrying a tabId and url) count towards a metric at most once per page per event type. A page ends at a navigation event in its tab, including a navigation to the same URL, or when the event arrives in a different tab. This matches the page-scoped semantics aggregate counters already use, so a metric and a counter on the same event stream agree. Events with no tab context are not de-duplicated. Only thresholds above 1 can observe any of this.",
         "configReference": "config_reference.json",
         "tests": [
             {
-                "name": "Repeated occurrences within one page in one tab all count",
-                "desc": "The decisive case. Aggregate counters would collapse these to one; metrics do not.",
+                "name": "Repeated occurrences on one page count once",
+                "desc": "The decisive case. Three identical events on the same page contribute one occurrence, so the threshold 3 slice is not crossed.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
@@ -321,12 +336,11 @@
                     { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
                 ],
                 "expectConversions": [
-                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
-                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "3" }
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
                 ]
             },
             {
-                "name": "Occurrences spread across navigations in one tab all count",
+                "name": "Occurrences separated by navigations in one tab each count",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
@@ -344,7 +358,26 @@
                 ]
             },
             {
-                "name": "Occurrences across separate tabs all count",
+                "name": "A navigation to the same URL starts a new page",
+                "desc": "A reload is a navigation, so an event that re-fires after a reload counts again. Detectors like reload loops depend on this.",
+                "exceptPlatforms": [],
+                "activeExperiments": [
+                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
+                ],
+                "events": [
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
+                ],
+                "expectConversions": [
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "3" }
+                ]
+            },
+            {
+                "name": "Occurrences across separate tabs each count",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
@@ -357,6 +390,39 @@
                 "expectConversions": [
                     { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
                     { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "3" }
+                ]
+            },
+            {
+                "name": "Different event types on one page are de-duplicated independently",
+                "desc": "De-duplication is per event type, so one page producing two different events converts both their metrics.",
+                "exceptPlatforms": [],
+                "activeExperiments": [
+                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
+                ],
+                "events": [
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "searchPerformed", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
+                ],
+                "expectConversions": [
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
+                    { "metric": "searchLike", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "1", "value": "1" }
+                ]
+            },
+            {
+                "name": "Native events are not de-duplicated",
+                "desc": "Events with no tab context have no page to scope by; every occurrence counts. appLaunched has thresholds [1, 2] so the second occurrence is observable.",
+                "exceptPlatforms": [],
+                "activeExperiments": [
+                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
+                ],
+                "events": [
+                    { "type": "appLaunch" },
+                    { "type": "appLaunch" }
+                ],
+                "expectConversions": [
+                    { "metric": "appLaunched", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
+                    { "metric": "appLaunched", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "2" }
                 ]
             }
         ]
