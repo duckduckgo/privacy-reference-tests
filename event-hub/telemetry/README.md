@@ -1,6 +1,6 @@
 # EventHub telemetry — reference tests
 
-These tests pin the **shipped behaviour** of eventHub telemetry pixels — counter aggregation, bucketing, per-page de-duplication and immediate triggers — as specified in the eventHub core design. They exist so that work touching shared hub paths (notably event ingestion and de-duplication, which experiment metrics also rely on) has to prove existing telemetry behaviour is preserved.
+These tests pin the **shipped behaviour** of eventHub telemetry pixels — counter aggregation, bucketing, per-page de-duplication and immediate triggers — as specified in the eventHub core design. They exist so that work touching shared hub paths (notably event ingestion and de-duplication, which experiment metrics also rely on) has to prove existing telemetry behaviour is preserved. The authoritative descriptive form of these cases (stable IDs `T-CNT-*`, `T-DED-*`, `T-IMM-*`) lives in the ddg-workflow repo at `docs/event-hub/tests/telemetry.md`; these fixtures are its machine-readable interpretation.
 
 ## Model
 

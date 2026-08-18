@@ -1,6 +1,6 @@
 # Experiment metrics — reference tests
 
-These tests specify the behaviour required by the [remotely-configured event-driven metrics design](https://app.asana.com/1/137249556945/project/72649045549333/task/1217052832008956?focus=true).
+These tests encode the behaviour required by the [remotely-configured event-driven metrics design](https://app.asana.com/1/137249556945/project/72649045549333/task/1217052832008956?focus=true). The authoritative descriptive form of these cases (stable IDs `M-SEL-*`, `M-WIN-*`, `M-THR-*`, `M-DED-*`, `M-LIF-*`) lives in the ddg-workflow repo at `docs/event-hub/tests/metrics.md`; these fixtures are its machine-readable interpretation, offered as one way for a platform to prove conformance. If the two disagree, the specification wins and these fixtures get fixed.
 
 ## What is being tested
 
