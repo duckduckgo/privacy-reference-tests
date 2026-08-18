@@ -7,6 +7,7 @@ const addFormats = require('ajv-formats');
 const ajv = new Ajv();
 addFormats(ajv);
 const checkTrackerRadar = require('./helpers/tracker-radar-checks');
+const checkEventHub = require('./helpers/event-hub-checks');
 
 const FOLDER_FORMAT = /^([a-z]+\-)*[a-z]+$/;
 const TEST_FILE_SCHEMA = JSON.parse(fs.readFileSync('./schemas/tests.json'))
@@ -33,6 +34,10 @@ dirs.forEach(dir => {
     }
 
     console.log('Processing feature directory:', featureFolderName);
+
+    if (featureFolderName === 'event-hub') {
+        checkEventHub(path.resolve(root, featureFolderName));
+    }
 
     featuresCount++;
 
