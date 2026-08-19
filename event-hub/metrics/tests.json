@@ -353,13 +353,13 @@
         ]
     },
     "dedup": {
-        "name": "Web event de-duplication",
-        "desc": "Events originating from web pages (those carrying a tabId and url) count towards a metric at most once per page per event type, with exactly the semantics aggregate counters already use: a tab's de-duplication state clears when the tab navigates to a different URL, so a reload of the same URL does not produce a new occurrence, and separate tabs count independently. One shared rule means a metric and a counter watching the same event stream always agree on what an occurrence is. Events with no tab context are not de-duplicated. Only thresholds above 1 can observe any of this. A consequence to be aware of: a page that forces same-URL reloads (some bot-detection loops do) contributes one occurrence per tab, so loop-like behaviour must be detected and counted detector-side, not inferred from repeated hub events.",
+        "name": "Metrics consume the hub's de-duplicated stream",
+        "desc": "The hub de-duplicates web events (those carrying a tabId and url) once at ingestion, before events fan out to any consumer - at most one delivery per event type per page per tab. Metrics implement no de-duplication of their own; this single integration case is the evidence that they consume the de-duplicated stream. The de-duplication semantics themselves (navigation reset, same-URL reloads, tab independence, payload dropping, native exemption) are pinned by the sibling event-hub/deduplication suite. Only thresholds above 1 can observe any of this.",
         "configReference": "config_reference.json",
         "tests": [
             {
                 "name": "Repeated occurrences on one page count once",
-                "desc": "The decisive case. Three identical events on the same page contribute one occurrence, so the threshold 3 slice is not crossed.",
+                "desc": "Three identical events on the same page are one delivery, so the threshold 3 slice is not crossed. This is the metrics leg of the deduplication suite's fan-out case: the metric observes exactly the delivery every other handler observes.",
                 "exceptPlatforms": [],
                 "activeExperiments": [
                     { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
@@ -371,112 +371,6 @@
                 ],
                 "expectConversions": [
                     { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
-                ]
-            },
-            {
-                "name": "Occurrences separated by navigations in one tab each count",
-                "exceptPlatforms": [],
-                "activeExperiments": [
-                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
-                ],
-                "events": [
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/one" },
-                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/two" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/two" },
-                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/three" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/three" }
-                ],
-                "expectConversions": [
-                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
-                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "3" }
-                ]
-            },
-            {
-                "name": "A reload of the same URL does not start a new page",
-                "desc": "De-duplication state clears only when the tab's URL changes, matching aggregate counters. Events re-fired after same-URL reloads collapse into the original occurrence, so the threshold 3 slice is not crossed.",
-                "exceptPlatforms": [],
-                "activeExperiments": [
-                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
-                ],
-                "events": [
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
-                ],
-                "expectConversions": [
-                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
-                ]
-            },
-            {
-                "name": "Returning to a previously seen URL counts again",
-                "desc": "State is per current page, not per URL ever seen: navigating away clears the tab's de-duplication state, so coming back produces a new occurrence.",
-                "exceptPlatforms": [],
-                "activeExperiments": [
-                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
-                ],
-                "events": [
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/other" },
-                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/other2" },
-                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
-                ],
-                "expectConversions": [
-                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
-                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "3" }
-                ]
-            },
-            {
-                "name": "Occurrences across separate tabs each count",
-                "exceptPlatforms": [],
-                "activeExperiments": [
-                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
-                ],
-                "events": [
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/" },
-                    { "type": "captchaDetected", "tabId": "tab-2", "url": "https://example.com/" },
-                    { "type": "captchaDetected", "tabId": "tab-3", "url": "https://example.com/" }
-                ],
-                "expectConversions": [
-                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
-                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "3" }
-                ]
-            },
-            {
-                "name": "Different event types on one page are de-duplicated independently",
-                "desc": "De-duplication is per event type, so one page producing two different events converts both their metrics.",
-                "exceptPlatforms": [],
-                "activeExperiments": [
-                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
-                ],
-                "events": [
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "searchPerformed", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
-                ],
-                "expectConversions": [
-                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
-                    { "metric": "searchLike", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "1", "value": "1" }
-                ]
-            },
-            {
-                "name": "Native events are not de-duplicated",
-                "desc": "Events with no tab context have no page to scope by; every occurrence counts. appLaunched has thresholds [1, 2] so the second occurrence is observable.",
-                "exceptPlatforms": [],
-                "activeExperiments": [
-                    { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10", "daysSinceEnrollment": 1 }
-                ],
-                "events": [
-                    { "type": "appLaunch" },
-                    { "type": "appLaunch" }
-                ],
-                "expectConversions": [
-                    { "metric": "appLaunched", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
-                    { "metric": "appLaunched", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "2" }
                 ]
             }
         ]

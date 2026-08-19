@@ -60,6 +60,20 @@
                         "items": { "type": "string" }
                     }
                 },
+                "experimentStates": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string",
+                        "enum": ["enabled", "disabled"]
+                    }
+                },
+                "featureStates": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string",
+                        "enum": ["enabled", "disabled"]
+                    }
+                },
                 "events": {
                     "type": "array",
                     "items": { "$ref": "#/definitions/event" }

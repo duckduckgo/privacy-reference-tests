@@ -1,5 +1,5 @@
 {
-    "readme": "Reference configuration for eventHub telemetry pixels, matching the shipped behaviour documented in the eventHub core design. webTelemetry_captchaDetection_day and _week aggregate the same event over different periods, proving counters are independent per pixel. webTelemetry_adwallDetection_day has no zero bucket, so it must not fire when nothing was counted, while the captcha pixels' 0 bucket means they fire with count=0. webTelemetry_adwallDetection_immediate fires per occurrence with the event payload's reason forwarded, and is not de-duplicated - contrast with the counter on the same event.",
+    "readme": "Reference configuration for eventHub telemetry pixels, matching the eventHub core design. webTelemetry_captchaDetection_day and _week aggregate the same event over different periods, proving counters are independent per pixel. webTelemetry_adwallDetection_day has no zero bucket, so it must not fire when nothing was counted, while the captcha pixels' 0 bucket means they fire with count=0. webTelemetry_adwallDetection_immediate fires per delivered event with the event payload's reason forwarded; the hub de-duplicates web events before fan-out, so repeats of an event type on one page fire it once. webTelemetry_disabledPixel_immediate shares that trigger but is disabled, so it must never fire.",
     "features": {
         "webEvents": {
             "state": "enabled",
@@ -84,6 +84,16 @@
                                 "buckets": {
                                     "0": { "gte": 0 }
                                 }
+                            }
+                        }
+                    },
+                    "webTelemetry_disabledPixel_immediate": {
+                        "state": "disabled",
+                        "trigger": { "type": "immediate", "source": "adwallDetected" },
+                        "parameters": {
+                            "reason": {
+                                "template": "data",
+                                "dataKey": "reason"
                             }
                         }
                     }

@@ -55,75 +55,14 @@
             }
         ]
     },
-    "dedup": {
-        "name": "Counter de-duplication",
-        "desc": "Counter parameters count an event at most once per page per tab, scoped per pixel and parameter. A tab's de-duplication state clears when it navigates to a different URL; a same-URL reload does not clear it. This is the shipped behaviour metric conversions also rely on, so a change that breaks these tests breaks both consumers.",
-        "configReference": "config_reference.json",
-        "tests": [
-            {
-                "name": "Repeated occurrences on one page count once",
-                "exceptPlatforms": [],
-                "events": [
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
-                ],
-                "expectPixels": [
-                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "1-2" } },
-                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "1-2" } }
-                ]
-            },
-            {
-                "name": "Navigating to a different URL counts the new page",
-                "exceptPlatforms": [],
-                "events": [
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/one" },
-                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/two" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/two" },
-                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/three" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/three" }
-                ],
-                "expectPixels": [
-                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "3-5" } },
-                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "3-5" } }
-                ]
-            },
-            {
-                "name": "A same-URL reload does not count again",
-                "exceptPlatforms": [],
-                "events": [
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/page" }
-                ],
-                "expectPixels": [
-                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "1-2" } },
-                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "1-2" } }
-                ]
-            },
-            {
-                "name": "Separate tabs count independently",
-                "exceptPlatforms": [],
-                "events": [
-                    { "type": "captchaDetected", "tabId": "tab-1", "url": "https://example.com/" },
-                    { "type": "captchaDetected", "tabId": "tab-2", "url": "https://example.com/" },
-                    { "type": "captchaDetected", "tabId": "tab-3", "url": "https://example.com/" }
-                ],
-                "expectPixels": [
-                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "3-5" } },
-                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "3-5" } }
-                ]
-            }
-        ]
-    },
     "immediate": {
         "name": "Immediate pixels",
-        "desc": "Immediate pixels fire once per triggering event with data parameters forwarded from the event payload, and are not de-duplicated. The counter on the same event stream is, which the contrast test makes visible.",
+        "desc": "Immediate pixels fire once per delivered event with data parameters forwarded from the event payload. The hub de-duplicates web events at ingestion, before fan-out (see the event-hub/deduplication suite), so repeats of an event type on one page fire once - the same single delivery the counter on that stream counts.",
         "configReference": "config_reference.json",
         "tests": [
             {
-                "name": "Each occurrence fires with its own payload",
-                "desc": "Two occurrences on the same page fire two immediate pixels, while the counter on the same event counts the page once.",
+                "name": "One immediate pixel per event type per page",
+                "desc": "Two occurrences on the same page are one delivery: one immediate pixel carrying the first occurrence's payload (the second is dropped at the hub, its payload with it), while the counter on the same event counts the page once.",
                 "exceptPlatforms": [],
                 "events": [
                     { "type": "adwallDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "overlay" } },
@@ -131,7 +70,6 @@
                 ],
                 "expectPixels": [
                     { "pixel": "webTelemetry_adwallDetection_immediate", "params": { "reason": "overlay" } },
-                    { "pixel": "webTelemetry_adwallDetection_immediate", "params": { "reason": "redirect" } },
                     { "pixel": "webTelemetry_adwallDetection_day", "params": { "count": "1-2" } },
                     { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "0" } },
                     { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "0" } }
@@ -146,6 +84,20 @@
                 "expectPixels": [
                     { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "1-2" } },
                     { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "1-2" } }
+                ]
+            },
+            {
+                "name": "A disabled immediate pixel never fires",
+                "desc": "webTelemetry_disabledPixel_immediate shares the adwallDetected trigger with the enabled immediate pixel but its state is disabled, so only the enabled one fires. Disabled state gates every trigger type, not only period pixels.",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "adwallDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "overlay" } }
+                ],
+                "expectPixels": [
+                    { "pixel": "webTelemetry_adwallDetection_immediate", "params": { "reason": "overlay" } },
+                    { "pixel": "webTelemetry_adwallDetection_day", "params": { "count": "1-2" } },
+                    { "pixel": "webTelemetry_captchaDetection_day", "params": { "count": "0" } },
+                    { "pixel": "webTelemetry_captchaDetection_week", "params": { "count": "0" } }
                 ]
             }
         ]
