@@ -1,0 +1,151 @@
+{
+    "$schema": "./tests.schema.json",
+    "delivery": {
+        "name": "One decision before fan-out",
+        "desc": "For every web event (an event carrying tab context) the hub makes exactly one de-duplication decision at ingestion, keyed (event type, tab) against the tab's current page, before any handler is invoked. The first occurrence of a key on a page is delivered to every handler; later occurrences of the same key on the same page are delivered to none. No handler de-duplicates for itself, and no handler can observe an occurrence another handler did not. The immediate pixel is the direct delivery observer; the counter on the same stream shows the fan-out sharing the single decision.",
+        "configReference": "config_reference.json",
+        "tests": [
+            {
+                "name": "Repeated occurrences on one page are delivered once",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "overlay" } },
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "overlay" } },
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "overlay" } }
+                ],
+                "expectPixels": [
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "overlay" } },
+                    { "pixel": "dedupProbe_day", "params": { "count": "1" } }
+                ]
+            },
+            {
+                "name": "The key is the event type, not the payload",
+                "desc": "The second occurrence is a duplicate and its payload is dropped with it. Per-occurrence payload signal belongs in the detector, which can encode what it saw into distinct event types or one richer event.",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "overlay" } },
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "redirect" } }
+                ],
+                "expectPixels": [
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "overlay" } },
+                    { "pixel": "dedupProbe_day", "params": { "count": "1" } }
+                ]
+            },
+            {
+                "name": "Event types de-duplicate independently",
+                "desc": "The repeat of a type is collapsed; a different type on the same page is not.",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "overlay" } },
+                    { "type": "otherDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "widget" } },
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "overlay" } }
+                ],
+                "expectPixels": [
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "overlay" } },
+                    { "pixel": "dedupOther_immediate", "params": { "reason": "widget" } },
+                    { "pixel": "dedupProbe_day", "params": { "count": "1" } }
+                ]
+            },
+            {
+                "name": "Every handler observes the same single delivery",
+                "desc": "The decision is made once at the hub, not per handler: the immediate pixel fires exactly once and the counter counts exactly one, from the same delivery. A consumer must never see an occurrence another consumer did not. The metrics handler's leg of this evidence is the metrics suite's dedup case.",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "overlay" } },
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "overlay" } }
+                ],
+                "expectPixels": [
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "overlay" } },
+                    { "pixel": "dedupProbe_day", "params": { "count": "1" } }
+                ]
+            }
+        ]
+    },
+    "navigation": {
+        "name": "Navigation resets the page",
+        "desc": "De-duplication state is scoped to a tab's current page. It clears when the tab navigates to a different URL; a same-URL reload does not clear it; separate tabs are independent. A navigation event signals the tab moving to a URL. Consequence, accepted deliberately: a page forcing repeated same-URL reloads contributes one delivery per tab until the URL changes - repetition-as-signal belongs in the detector.",
+        "configReference": "config_reference.json",
+        "tests": [
+            {
+                "name": "Navigating to a different URL makes the next occurrence deliverable",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/one", "data": { "reason": "one" } },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/two" },
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/two", "data": { "reason": "two" } },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/three" },
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/three", "data": { "reason": "three" } }
+                ],
+                "expectPixels": [
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "one" } },
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "two" } },
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "three" } },
+                    { "pixel": "dedupProbe_day", "params": { "count": "3+" } }
+                ]
+            },
+            {
+                "name": "A same-URL reload does not start a new page",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "first" } },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "second" } }
+                ],
+                "expectPixels": [
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "first" } },
+                    { "pixel": "dedupProbe_day", "params": { "count": "1" } }
+                ]
+            },
+            {
+                "name": "Returning to a previously seen URL delivers again",
+                "desc": "State is per current page, not per URL ever seen: navigating away clears the tab's state, so coming back produces a new delivery.",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "first" } },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/other" },
+                    { "type": "navigation", "tabId": "tab-1", "url": "https://example.com/page" },
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/page", "data": { "reason": "second" } }
+                ],
+                "expectPixels": [
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "first" } },
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "second" } },
+                    { "pixel": "dedupProbe_day", "params": { "count": "2" } }
+                ]
+            },
+            {
+                "name": "Separate tabs are independent",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "probeDetected", "tabId": "tab-1", "url": "https://example.com/", "data": { "reason": "tab1" } },
+                    { "type": "probeDetected", "tabId": "tab-2", "url": "https://example.com/", "data": { "reason": "tab2" } },
+                    { "type": "probeDetected", "tabId": "tab-3", "url": "https://example.com/", "data": { "reason": "tab3" } }
+                ],
+                "expectPixels": [
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "tab1" } },
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "tab2" } },
+                    { "pixel": "dedupProbe_immediate", "params": { "reason": "tab3" } },
+                    { "pixel": "dedupProbe_day", "params": { "count": "3+" } }
+                ]
+            }
+        ]
+    },
+    "native": {
+        "name": "Native events are exempt",
+        "desc": "Events with no tab context are never de-duplicated: once per page has no meaning without a page, and any substitute scope would silently cap native occurrence streams. Every native occurrence is delivered to every handler.",
+        "configReference": "config_reference.json",
+        "tests": [
+            {
+                "name": "Repeated native events are all delivered",
+                "exceptPlatforms": [],
+                "events": [
+                    { "type": "appLaunch", "data": { "launchType": "cold" } },
+                    { "type": "appLaunch", "data": { "launchType": "warm" } }
+                ],
+                "expectPixels": [
+                    { "pixel": "dedupAppLaunch_immediate", "params": { "launchType": "cold" } },
+                    { "pixel": "dedupAppLaunch_immediate", "params": { "launchType": "warm" } }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,65 @@
+{
+    "readme": "Reference configuration for the eventHub's ingestion de-duplication. De-duplication is observed through telemetry pixels: dedupProbe_immediate is the direct delivery observer (one pixel per delivered probeDetected event, forwarding the payload's reason), and dedupProbe_day counts the same stream with single-value buckets (1, 2, 3+ and deliberately no zero bucket, so it is silent when nothing was counted) - together they show the fan-out sharing one decision. dedupOther_immediate observes a second web event type for type independence. dedupAppLaunch_immediate observes appLaunch, a native event with no tab context, which is never de-duplicated.",
+    "features": {
+        "webEvents": {
+            "state": "enabled",
+            "exceptions": []
+        },
+        "eventHub": {
+            "state": "enabled",
+            "exceptions": [],
+            "settings": {
+                "telemetry": {
+                    "dedupProbe_immediate": {
+                        "state": "enabled",
+                        "trigger": { "type": "immediate", "source": "probeDetected" },
+                        "parameters": {
+                            "reason": {
+                                "template": "data",
+                                "dataKey": "reason"
+                            }
+                        }
+                    },
+                    "dedupProbe_day": {
+                        "state": "enabled",
+                        "trigger": {
+                            "period": { "days": 1 }
+                        },
+                        "parameters": {
+                            "count": {
+                                "template": "counter",
+                                "source": "probeDetected",
+                                "buckets": {
+                                    "1": { "gte": 1, "lt": 2 },
+                                    "2": { "gte": 2, "lt": 3 },
+                                    "3+": { "gte": 3 }
+                                }
+                            }
+                        }
+                    },
+                    "dedupOther_immediate": {
+                        "state": "enabled",
+                        "trigger": { "type": "immediate", "source": "otherDetected" },
+                        "parameters": {
+                            "reason": {
+                                "template": "data",
+                                "dataKey": "reason"
+                            }
+                        }
+                    },
+                    "dedupAppLaunch_immediate": {
+                        "state": "enabled",
+                        "trigger": { "type": "immediate", "source": "appLaunch" },
+                        "parameters": {
+                            "launchType": {
+                                "template": "data",
+                                "dataKey": "launchType"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "unprotectedTemporary": []
+}

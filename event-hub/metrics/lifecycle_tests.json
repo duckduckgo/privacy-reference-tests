@@ -1,0 +1,241 @@
+{
+    "$schema": "./lifecycle_tests.schema.json",
+    "lifecycle": {
+        "name": "Metric configuration lifecycle",
+        "desc": "Covers metrics and experiments appearing in and disappearing from the configuration. Each test runs ordered phases. A phase may replace the enrolled experiments (activeExperiments), may replace named experiments' metric sets (experimentMetrics, mapping an experiment name to the list of metric keys present in its settings for this phase), may replace named experiments' config-side state (experimentStates, mapping an experiment name to enabled or disabled - applied by editing the subfeature's state in the configuration fixture and re-applying it, leaving any enrollment record untouched), and may replace named top-level features' state (featureStates, mapping a feature name such as eventHub to enabled or disabled - applied the same way); values carry forward from the previous phase where omitted, and features and experiments never mentioned keep their reference-configuration metrics and state. It then delivers its events, each carrying a day offset from enrollment. Conversions accumulate across all phases. Because definitions are read live at conversion time, removal takes effect as soon as new configuration is applied - this is the kill switch, and on platforms that snapshot metric definitions at enrollment it requires consulting current configuration when matching. Adding metrics to an experiment that is already enabled is prevented by config validation, so no test covers a metric appearing on a running experiment: metrics only ever arrive with their experiment, and only ever leave.",
+        "configReference": "config_reference.json",
+        "tests": [
+            {
+                "name": "A metric and its experiment enabled in the same configuration both take effect",
+                "desc": "The guarantee this design most needs: metrics ship inside the experiment they measure, so a single config change introduces both. Platforms that snapshot the metric list at enrollment must parse the definitions before or during enrollment.",
+                "exceptPlatforms": [],
+                "phases": [
+                    {
+                        "activeExperiments": [],
+                        "experimentMetrics": { "contentScopeExperiment3": [] },
+                        "events": []
+                    },
+                    {
+                        "activeExperiments": [
+                            { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
+                        ],
+                        "experimentMetrics": { "contentScopeExperiment3": ["reloadLoop"] },
+                        "events": [
+                            { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
+                        ]
+                    }
+                ],
+                "expectConversions": [
+                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0", "value": "1" },
+                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
+                ]
+            },
+            {
+                "name": "A metric removed from its experiment stops converting immediately",
+                "desc": "Removal is not deferred to the end of the experiment, and an already-counting user is dropped straight away. Deletion is the kill switch; a platform matching against a stale enrollment-time snapshot fails this test.",
+                "exceptPlatforms": [],
+                "phases": [
+                    {
+                        "activeExperiments": [
+                            { "experiment": "contentScopeExperiment1", "cohort": "control", "enrollmentDate": "2026-01-10" }
+                        ],
+                        "experimentMetrics": { "contentScopeExperiment1": ["captchaSeen"] },
+                        "events": [
+                            { "type": "captchaDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 },
+                            { "type": "captchaDetected", "tabId": "tabB", "url": "https://example.com/", "day": 0 }
+                        ]
+                    },
+                    {
+                        "experimentMetrics": { "contentScopeExperiment1": [] },
+                        "events": [
+                            { "type": "captchaDetected", "tabId": "tabC", "url": "https://example.com/", "day": 1 }
+                        ]
+                    }
+                ],
+                "expectConversions": [
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "control", "conversionWindowDays": "0-7", "value": "1" }
+                ]
+            },
+            {
+                "name": "A metric declared before its experiment enrolls converts once enrollment happens",
+                "desc": "The metric definition arriving with a disabled or not-yet-enrolled experiment is inert rather than an error, and begins converting when the experiment's own machinery enrolls the user.",
+                "exceptPlatforms": [],
+                "phases": [
+                    {
+                        "activeExperiments": [],
+                        "events": [
+                            { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
+                        ]
+                    },
+                    {
+                        "activeExperiments": [
+                            { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
+                        ],
+                        "events": [
+                            { "type": "reloadLoopDetected", "tabId": "tabB", "url": "https://example.com/", "day": 0 }
+                        ]
+                    }
+                ],
+                "expectConversions": [
+                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0", "value": "1" },
+                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
+                ]
+            },
+            {
+                "name": "A later experiment declaring the same metric name converts fresh",
+                "desc": "Conversion state is keyed on the experiment enrollment, so a new experiment reusing a metric name starts from zero while the earlier experiment's state is untouched. This is why new measurements get new experiments rather than edits to running ones.",
+                "exceptPlatforms": [],
+                "phases": [
+                    {
+                        "activeExperiments": [
+                            { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
+                        ],
+                        "events": [
+                            { "type": "captchaDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
+                        ]
+                    },
+                    {
+                        "activeExperiments": [
+                            { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10" },
+                            { "experiment": "contentScopeExperiment10", "cohort": "control", "enrollmentDate": "2026-01-11" }
+                        ],
+                        "events": [
+                            { "type": "captchaDetected", "tabId": "tabB", "url": "https://example.com/", "day": 1 }
+                        ]
+                    }
+                ],
+                "expectConversions": [
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment10", "cohort": "control", "conversionWindowDays": "0-7", "value": "1" }
+                ]
+            },
+            {
+                "name": "Removing a shared-name metric from one experiment stops that experiment only",
+                "desc": "captchaSeen is declared by contentScopeExperiment1 and contentScopeExperiment10. Removing it from one experiment's settings leaves the other converting, including its running threshold count.",
+                "exceptPlatforms": [],
+                "phases": [
+                    {
+                        "activeExperiments": [
+                            { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10" },
+                            { "experiment": "contentScopeExperiment10", "cohort": "control", "enrollmentDate": "2026-01-10" }
+                        ],
+                        "events": [
+                            { "type": "captchaDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
+                        ]
+                    },
+                    {
+                        "experimentMetrics": { "contentScopeExperiment10": [] },
+                        "events": [
+                            { "type": "captchaDetected", "tabId": "tabB", "url": "https://example.com/", "day": 1 },
+                            { "type": "captchaDetected", "tabId": "tabC", "url": "https://example.com/", "day": 1 },
+                            { "type": "captchaDetected", "tabId": "tabD", "url": "https://example.com/", "day": 1 }
+                        ]
+                    }
+                ],
+                "expectConversions": [
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment10", "cohort": "control", "conversionWindowDays": "0-7", "value": "1" },
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "3" }
+                ]
+            },
+            {
+                "name": "A disabled experiment stops converting when the new configuration applies",
+                "desc": "The gate is the experiment being enabled, not only the metric being declared. Disabling contentScopeExperiment1 in config (its metrics still declared, the enrollment record untouched) stops conversions immediately - the experiment-level kill switch, distinct from metric removal.",
+                "exceptPlatforms": [],
+                "phases": [
+                    {
+                        "activeExperiments": [
+                            { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
+                        ],
+                        "events": [
+                            { "type": "captchaDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
+                        ]
+                    },
+                    {
+                        "experimentStates": { "contentScopeExperiment1": "disabled" },
+                        "events": [
+                            { "type": "captchaDetected", "tabId": "tabB", "url": "https://example.com/", "day": 1 },
+                            { "type": "captchaDetected", "tabId": "tabC", "url": "https://example.com/", "day": 1 }
+                        ]
+                    }
+                ],
+                "expectConversions": [
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
+                ]
+            },
+            {
+                "name": "Disabling the eventHub feature stops events reaching metrics",
+                "desc": "Events reach metrics only through the hub, so the eventHub feature state gates conversion on every platform - a platform without the hub's aggregation machinery still implements the hub's delivery layer (enablement gate and de-duplication) in front of metric conversion. Disabling eventHub (the experiment, its metrics and the enrollment all untouched) stops conversions immediately; the further occurrences arrive on different pages so de-duplication cannot explain the silence.",
+                "exceptPlatforms": [],
+                "phases": [
+                    {
+                        "activeExperiments": [
+                            { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
+                        ],
+                        "events": [
+                            { "type": "captchaDetected", "tabId": "tabA", "url": "https://example.com/", "day": 0 }
+                        ]
+                    },
+                    {
+                        "featureStates": { "eventHub": "disabled" },
+                        "events": [
+                            { "type": "captchaDetected", "tabId": "tabB", "url": "https://b.example/", "day": 1 },
+                            { "type": "captchaDetected", "tabId": "tabC", "url": "https://c.example/", "day": 1 }
+                        ]
+                    }
+                ],
+                "expectConversions": [
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
+                ]
+            }
+        ]
+    },
+    "multiDay": {
+        "name": "Accumulation and conversion state across days",
+        "desc": "Behaviour that spans more than one day, using the phased format solely for its per-event day offsets - the configuration never changes. Single-day cases live in tests.json; these prove that threshold counting and window conversion state persist across days within a window.",
+        "configReference": "config_reference.json",
+        "tests": [
+            {
+                "name": "Occurrences accumulate across days within a window",
+                "desc": "captchaSeen has window [0,7] with thresholds [1, 3]. One occurrence on day 0 crosses threshold 1; two more on day 3 bring the in-window total to three, crossing threshold 3. Threshold counting spans the window, not a single day.",
+                "exceptPlatforms": [],
+                "phases": [
+                    {
+                        "activeExperiments": [
+                            { "experiment": "contentScopeExperiment1", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
+                        ],
+                        "events": [
+                            { "type": "captchaDetected", "tabId": "tabA", "url": "https://a.example/", "day": 0 },
+                            { "type": "captchaDetected", "tabId": "tabB", "url": "https://b.example/", "day": 3 },
+                            { "type": "captchaDetected", "tabId": "tabC", "url": "https://c.example/", "day": 3 }
+                        ]
+                    }
+                ],
+                "expectConversions": [
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" },
+                    { "metric": "captchaSeen", "experiment": "contentScopeExperiment1", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "3" }
+                ]
+            },
+            {
+                "name": "A converted window stays converted on later days",
+                "desc": "reloadLoop converts both its windows on day 0. A further occurrence on day 3, still inside [0,7], converts nothing new: each window converts at most once, ever, per experiment enrollment.",
+                "exceptPlatforms": [],
+                "phases": [
+                    {
+                        "activeExperiments": [
+                            { "experiment": "contentScopeExperiment3", "cohort": "treatment", "enrollmentDate": "2026-01-10" }
+                        ],
+                        "events": [
+                            { "type": "reloadLoopDetected", "tabId": "tabA", "url": "https://a.example/", "day": 0 },
+                            { "type": "reloadLoopDetected", "tabId": "tabB", "url": "https://b.example/", "day": 3 }
+                        ]
+                    }
+                ],
+                "expectConversions": [
+                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0", "value": "1" },
+                    { "metric": "reloadLoop", "experiment": "contentScopeExperiment3", "cohort": "treatment", "conversionWindowDays": "0-7", "value": "1" }
+                ]
+            }
+        ]
+    }
+}

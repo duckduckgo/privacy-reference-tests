@@ -1,0 +1,105 @@
+{
+    "readme": "Reference configuration for eventHub telemetry pixels, matching the eventHub core design. webTelemetry_captchaDetection_day and _week aggregate the same event over different periods, proving counters are independent per pixel. webTelemetry_adwallDetection_day has no zero bucket, so it must not fire when nothing was counted, while the captcha pixels' 0 bucket means they fire with count=0. webTelemetry_adwallDetection_immediate fires per delivered event with the event payload's reason forwarded; the hub de-duplicates web events before fan-out, so repeats of an event type on one page fire it once. webTelemetry_disabledPixel_immediate shares that trigger but is disabled, so it must never fire.",
+    "features": {
+        "webEvents": {
+            "state": "enabled",
+            "exceptions": []
+        },
+        "eventHub": {
+            "state": "enabled",
+            "exceptions": [],
+            "settings": {
+                "telemetry": {
+                    "webTelemetry_captchaDetection_day": {
+                        "state": "enabled",
+                        "trigger": {
+                            "period": { "days": 1 }
+                        },
+                        "parameters": {
+                            "count": {
+                                "template": "counter",
+                                "source": "captchaDetected",
+                                "buckets": {
+                                    "0": { "gte": 0, "lt": 1 },
+                                    "1-2": { "gte": 1, "lt": 3 },
+                                    "3-5": { "gte": 3, "lt": 6 },
+                                    "6+": { "gte": 6 }
+                                }
+                            }
+                        }
+                    },
+                    "webTelemetry_captchaDetection_week": {
+                        "state": "enabled",
+                        "trigger": {
+                            "period": { "days": 7 }
+                        },
+                        "parameters": {
+                            "count": {
+                                "template": "counter",
+                                "source": "captchaDetected",
+                                "buckets": {
+                                    "0": { "gte": 0, "lt": 1 },
+                                    "1-2": { "gte": 1, "lt": 3 },
+                                    "3-5": { "gte": 3, "lt": 6 },
+                                    "6+": { "gte": 6 }
+                                }
+                            }
+                        }
+                    },
+                    "webTelemetry_adwallDetection_day": {
+                        "state": "enabled",
+                        "trigger": {
+                            "period": { "days": 1 }
+                        },
+                        "parameters": {
+                            "count": {
+                                "template": "counter",
+                                "source": "adwallDetected",
+                                "buckets": {
+                                    "1-2": { "gte": 1, "lt": 3 },
+                                    "3+": { "gte": 3 }
+                                }
+                            }
+                        }
+                    },
+                    "webTelemetry_adwallDetection_immediate": {
+                        "state": "enabled",
+                        "trigger": { "type": "immediate", "source": "adwallDetected" },
+                        "parameters": {
+                            "reason": {
+                                "template": "data",
+                                "dataKey": "reason"
+                            }
+                        }
+                    },
+                    "webTelemetry_disabledPixel_day": {
+                        "state": "disabled",
+                        "trigger": {
+                            "period": { "days": 1 }
+                        },
+                        "parameters": {
+                            "count": {
+                                "template": "counter",
+                                "source": "captchaDetected",
+                                "buckets": {
+                                    "0": { "gte": 0 }
+                                }
+                            }
+                        }
+                    },
+                    "webTelemetry_disabledPixel_immediate": {
+                        "state": "disabled",
+                        "trigger": { "type": "immediate", "source": "adwallDetected" },
+                        "parameters": {
+                            "reason": {
+                                "template": "data",
+                                "dataKey": "reason"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "unprotectedTemporary": []
+}

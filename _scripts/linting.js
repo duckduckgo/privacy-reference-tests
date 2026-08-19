@@ -7,6 +7,7 @@ const addFormats = require('ajv-formats');
 const ajv = new Ajv();
 addFormats(ajv);
 const checkTrackerRadar = require('./helpers/tracker-radar-checks');
+const checkEventHub = require('./helpers/event-hub-checks');
 
 const FOLDER_FORMAT = /^([a-z]+\-)*[a-z]+$/;
 const TEST_FILE_SCHEMA = JSON.parse(fs.readFileSync('./schemas/tests.json'))
@@ -33,6 +34,10 @@ dirs.forEach(dir => {
     }
 
     console.log('Processing feature directory:', featureFolderName);
+
+    if (featureFolderName === 'event-hub') {
+        checkEventHub(path.resolve(root, featureFolderName));
+    }
 
     featuresCount++;
 
@@ -86,7 +91,8 @@ dirs.forEach(dir => {
         if (featureFolderName === 'suggestions') {
             testsCount += 1; // Suggestion tests have 1 test per file
         } else {
-            Object.keys(testFileObject).forEach(set => testsCount += testFileObject[set].tests.length);
+            // '$schema' points at the file's schema rather than holding a test set
+            Object.keys(testFileObject).filter(set => set !== '$schema').forEach(set => testsCount += testFileObject[set].tests.length);
         }
     });
 
