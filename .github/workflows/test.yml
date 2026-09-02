@@ -24,7 +24,7 @@ jobs:
           path: 'extension'
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version-file: 'reference-tests/.nvmrc'
           cache: 'npm'
           cache-dependency-path: 'extension/package-lock.json'
       - run: cd reference-tests && npm link
@@ -50,7 +50,7 @@ jobs:
           path: 'extension'
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version-file: 'reference-tests/.nvmrc'
           cache: 'npm'
           cache-dependency-path: 'extension/package-lock.json'
       - run: cd reference-tests && npm link
