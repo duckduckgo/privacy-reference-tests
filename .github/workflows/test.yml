@@ -124,10 +124,11 @@ jobs:
       - name: Run tests
         working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
         # Only run the suites that load privacy-reference-tests; the rest of BSK
-        # is covered by apple-browsers' own CI.
+        # is covered by apple-browsers' own CI. AppHTTPSUpgradeStoreTests is left out
+        # because its CoreData store crashes under an unsigned `swift test`.
         run: |
           set -o pipefail && swift test --skip-build \
-            --filter 'BrowserServicesKitTests\.(AmpMatchingTests|AppHTTPSUpgradeStoreTests|ContentBlockerReferenceTests|DomainMatchingReportTests|DomainMatchingTests|FingerprintingReferenceTests|GPCReferenceTests|HTTPSUpgradeReferenceTests|PrivacyConfigurationReferenceTests|ReferrerTrimmingTests|TrackerAllowlistReferenceTests|URLParameterTests)/' \
+            --filter 'BrowserServicesKitTests\.(AmpMatchingTests|ContentBlockerReferenceTests|DomainMatchingReportTests|DomainMatchingTests|FingerprintingReferenceTests|GPCReferenceTests|HTTPSUpgradeReferenceTests|PrivacyConfigurationReferenceTests|ReferrerTrimmingTests|TrackerAllowlistReferenceTests|URLParameterTests)/' \
             | tee -a build-log.txt | xcbeautify --report junit --report-path . --junit-report-filename tests.xml
 
       - name: Publish Unit Tests Report
