@@ -117,6 +117,15 @@ jobs:
           sudo xcode-select -s "$xcode_path/Contents/Developer"
           xcodebuild -version
 
+      - name: Resolve packages
+        working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
+        run: |
+          xcodebuild -resolvePackageDependencies \
+            -scheme BrowserServicesKit-Package \
+            -derivedDataPath DerivedData \
+            -skipPackagePluginValidation \
+            -skipMacroValidation
+
       - name: Build BSK
         working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
         run: |
