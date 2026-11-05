@@ -99,7 +99,7 @@ jobs:
         if: env.cache_key_hash
         uses: actions/cache@v4
         with:
-          path: ./apple-monorepo/SharedPackages/BrowserServicesKit/DerivedData/SourcePackages
+          path: ./apple-monorepo/SharedPackages/BrowserServicesKit/.build
           key: ${{ runner.os }}-spm-${{ env.cache_key_hash }}
           restore-keys: |
             ${{ runner.os }}-spm-
@@ -117,49 +117,17 @@ jobs:
           sudo xcode-select -s "$xcode_path/Contents/Developer"
           xcodebuild -version
 
-      - name: Resolve packages
-        working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
-        run: |
-          xcodebuild -resolvePackageDependencies \
-            -scheme BrowserServicesKit-Package \
-            -derivedDataPath DerivedData \
-            -skipPackagePluginValidation \
-            -skipMacroValidation
-
       - name: Build BSK
         working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
-        run: |
-          set -o pipefail && xcodebuild build-for-testing \
-            -scheme BrowserServicesKit-Package \
-            -destination 'platform=macOS' \
-            -derivedDataPath DerivedData \
-            -skipPackagePluginValidation \
-            -skipMacroValidation \
-            CODE_SIGNING_ALLOWED=NO \
-            | tee build-log.txt | xcbeautify
+        run: set -o pipefail && swift build --build-tests | tee build-log.txt | xcbeautify
 
       - name: Run tests
         working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
         # Only run the suites that load privacy-reference-tests; the rest of BSK
         # is covered by apple-browsers' own CI.
         run: |
-          set -o pipefail && xcodebuild test-without-building \
-            -scheme BrowserServicesKit-Package \
-            -destination 'platform=macOS' \
-            -derivedDataPath DerivedData \
-            -only-testing:BrowserServicesKitTests/AmpMatchingTests \
-            -only-testing:BrowserServicesKitTests/AppHTTPSUpgradeStoreTests \
-            -only-testing:BrowserServicesKitTests/ContentBlockerReferenceTests \
-            -only-testing:BrowserServicesKitTests/DomainMatchingReportTests \
-            -only-testing:BrowserServicesKitTests/DomainMatchingTests \
-            -only-testing:BrowserServicesKitTests/FingerprintingReferenceTests \
-            -only-testing:BrowserServicesKitTests/GPCReferenceTests \
-            -only-testing:BrowserServicesKitTests/HTTPSUpgradeReferenceTests \
-            -only-testing:BrowserServicesKitTests/PrivacyConfigurationReferenceTests \
-            -only-testing:BrowserServicesKitTests/ReferrerTrimmingTests \
-            -only-testing:BrowserServicesKitTests/TrackerAllowlistReferenceTests \
-            -only-testing:BrowserServicesKitTests/URLParameterTests \
-            CODE_SIGNING_ALLOWED=NO \
+          set -o pipefail && swift test --skip-build \
+            --filter 'BrowserServicesKitTests\.(AmpMatchingTests|AppHTTPSUpgradeStoreTests|ContentBlockerReferenceTests|DomainMatchingReportTests|DomainMatchingTests|FingerprintingReferenceTests|GPCReferenceTests|HTTPSUpgradeReferenceTests|PrivacyConfigurationReferenceTests|ReferrerTrimmingTests|TrackerAllowlistReferenceTests|URLParameterTests)/' \
             | tee -a build-log.txt | xcbeautify --report junit --report-path . --junit-report-filename tests.xml
 
       - name: Publish Unit Tests Report
