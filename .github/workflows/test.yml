@@ -61,12 +61,16 @@ jobs:
           npm link @duckduckgo/privacy-reference-tests
       - name: Test ddg2dnr (MV3)
         working-directory: ./extension/packages/ddg2dnr
-        run: npm test -- --grep Reference
+        # npm 11+ no longer forwards args through the nested `npm run` calls in
+        # ddg2dnr's `test` script, so call each platform's script directly.
+        run: |
+          npm run test:chrome -- --grep Reference
+          npm run test:firefox -- --grep Reference
 
   BrowserServicesKit:
     name: BSK unit tests
 
-    runs-on: macos-15
+    runs-on: macos-26
     timeout-minutes: 30
 
     steps:
@@ -79,7 +83,7 @@ jobs:
       - name: Check out the tests
         uses: actions/checkout@v4
         with:
-          path: 'apple-monorepo/SharedPackages/BrowserServicesKit/Tests/BrowserServicesKitTests/Resources/privacy-reference-tests'
+          path: 'apple-monorepo/SharedPackages/BrowserServicesKit/Tests/BrowserServicesKitTests/Res/privacy-reference-tests'
 
       - name: Set cache key hash
         working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
@@ -101,7 +105,17 @@ jobs:
             ${{ runner.os }}-spm-
 
       - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_$(<apple-monorepo/.xcode-version).app/Contents/Developer
+        # apple-browsers may pin an Xcode that GitHub-hosted runners don't ship yet;
+        # fall back to the newest installed Xcode in that case.
+        run: |
+          xcode_version=$(<apple-monorepo/.xcode-version)
+          xcode_path="/Applications/Xcode_${xcode_version}.app"
+          if [[ ! -d "$xcode_path" ]]; then
+            xcode_path=$(ls -d /Applications/Xcode_*.app | sort -V | tail -n 1)
+            echo "::warning::Xcode ${xcode_version} is not installed, using ${xcode_path}"
+          fi
+          sudo xcode-select -s "$xcode_path/Contents/Developer"
+          xcodebuild -version
 
       - name: Build BSK
         working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
