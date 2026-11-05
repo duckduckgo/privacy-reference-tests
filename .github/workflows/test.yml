@@ -99,7 +99,7 @@ jobs:
         if: env.cache_key_hash
         uses: actions/cache@v4
         with:
-          path: ./apple-monorepo/SharedPackages/BrowserServicesKit/build
+          path: ./apple-monorepo/SharedPackages/BrowserServicesKit/DerivedData/SourcePackages
           key: ${{ runner.os }}-spm-${{ env.cache_key_hash }}
           restore-keys: |
             ${{ runner.os }}-spm-
@@ -119,11 +119,39 @@ jobs:
 
       - name: Build BSK
         working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
-        run: set -o pipefail && swift build | tee build-log.txt | xcbeautify
+        run: |
+          set -o pipefail && xcodebuild build-for-testing \
+            -scheme BrowserServicesKit-Package \
+            -destination 'platform=macOS' \
+            -derivedDataPath DerivedData \
+            -skipPackagePluginValidation \
+            -skipMacroValidation \
+            CODE_SIGNING_ALLOWED=NO \
+            | tee build-log.txt | xcbeautify
 
       - name: Run tests
         working-directory: ./apple-monorepo/SharedPackages/BrowserServicesKit
-        run: set -o pipefail && swift test | tee -a build-log.txt | xcbeautify --report junit --report-path . --junit-report-filename tests.xml
+        # Only run the suites that load privacy-reference-tests; the rest of BSK
+        # is covered by apple-browsers' own CI.
+        run: |
+          set -o pipefail && xcodebuild test-without-building \
+            -scheme BrowserServicesKit-Package \
+            -destination 'platform=macOS' \
+            -derivedDataPath DerivedData \
+            -only-testing:BrowserServicesKitTests/AmpMatchingTests \
+            -only-testing:BrowserServicesKitTests/AppHTTPSUpgradeStoreTests \
+            -only-testing:BrowserServicesKitTests/ContentBlockerReferenceTests \
+            -only-testing:BrowserServicesKitTests/DomainMatchingReportTests \
+            -only-testing:BrowserServicesKitTests/DomainMatchingTests \
+            -only-testing:BrowserServicesKitTests/FingerprintingReferenceTests \
+            -only-testing:BrowserServicesKitTests/GPCReferenceTests \
+            -only-testing:BrowserServicesKitTests/HTTPSUpgradeReferenceTests \
+            -only-testing:BrowserServicesKitTests/PrivacyConfigurationReferenceTests \
+            -only-testing:BrowserServicesKitTests/ReferrerTrimmingTests \
+            -only-testing:BrowserServicesKitTests/TrackerAllowlistReferenceTests \
+            -only-testing:BrowserServicesKitTests/URLParameterTests \
+            CODE_SIGNING_ALLOWED=NO \
+            | tee -a build-log.txt | xcbeautify --report junit --report-path . --junit-report-filename tests.xml
 
       - name: Publish Unit Tests Report
         uses: mikepenz/action-junit-report@v4
